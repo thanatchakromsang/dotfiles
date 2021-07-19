@@ -139,6 +139,7 @@ declare -a kube_pkgs=(
 	"docker"
 	"docker-compose"
 
+	"k9s"
 	"kubectl"
 	"helm"
 	"krew-bin"
