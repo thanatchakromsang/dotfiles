@@ -12,6 +12,7 @@ if exists exa; then
   alias ll.='exa -dlg .*'
   alias l1='exa -1'
   alias ll='exa -glh --group-directories-first --git'
+  alias tree='exa --tree'
 else
   alias la='ls -A'
   alias l='ls -CF'
@@ -20,9 +21,9 @@ else
   alias ls='ls -Fh'
 fi
 
-# if exists rg; then
-#   alias grep='rg'
-# fi
+if exists rg; then
+  alias grep='rg'
+fi
 
 # bat instead of cat
 if exists bat; then
@@ -40,31 +41,27 @@ if exists nvim; then
   alias tmp='vim ~/.tmp.md'
 fi
 
-alias c=clear
-
-# dotfiles
-alias dot="cd $HOME/.dotfiles"
-
-# other
-if exists ranger; then
-  # source current ranger dir
-  alias ranger='. ranger'
-  alias r='ranger'
-fi
-
 if exists xdg-open; then
   alias open='xdg-open'
 fi
 
-if exists xclip; then
-  alias pbcopy='xclip -selection clipboard'
-  alias pbpaste='xclip -selection clipboard -o'
+if exists wl-copy; then
+  alias pbcopy='wl-copy'
 fi
 
-alias nvmload='[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
+if exists wl-paste; then
+  alias pbpaste='wl-paste'
+fi
 
-# scripts
+if exists lazygit; then
+  alias g=lazygit
+fi
 
-alias gitall='ls -D | xargs -P10 -I{} git -C {}'
+if exists ranger; then
+  alias r='. ranger'
+fi
+
+alias c=clear
+
 
 $*

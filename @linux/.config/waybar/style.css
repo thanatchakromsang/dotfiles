@@ -1,0 +1,199 @@
+/* // Dark Background */
+/* $gb-dm-bg0: #282828; */
+/* $gb-dm-bg0-hard: #1d2021; */
+/* $gb-dm-bg0-soft: #32302f; */
+/* $gb-dm-bg1: #3c3836; */
+/* $gb-dm-bg2: #504945; */
+/* $gb-dm-bg3: #665c54; */
+/* $gb-dm-bg4: #7c6f64; */
+
+/* // Dark Foreground */
+/* $gb-dm-fg0: #fbf1c7; */
+/* $gb-dm-fg1: #ebdbb2; */
+/* $gb-dm-fg2: #d5c4a1; */
+/* $gb-dm-fg3: #bdae93; */
+/* $gb-dm-fg4: #a89984; */
+
+/* // Dark Colors */
+/* $gb-dm-dark-red: #cc241d; */
+/* $gb-dm-dark-green: #98971a; */
+/* $gb-dm-dark-yellow: #d79921; */
+/* $gb-dm-dark-blue: #458588; */
+/* $gb-dm-dark-purple: #b16286; */
+/* $gb-dm-dark-aqua: #689d6a; */
+/* $gb-dm-dark-orange: #d65d0e; */
+/* $gb-dm-dark-gray: #928374; */
+
+/* $gb-dm-light-red: #fb4934; */
+/* $gb-dm-light-green: #b8bb26; */
+/* $gb-dm-light-yellow: #fabd2f; */
+/* $gb-dm-light-blue: #83a598; */
+/* $gb-dm-light-purple: #d3869b; */
+/* $gb-dm-light-aqua: #8ec07c; */
+/* $gb-dm-light-orange: #f38019; */
+/* $gb-dm-light-gray: #a89984; */
+
+* {
+    border: none;
+    border-radius: 0;
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: 'Font Awesome 5 Free', Hack Nerd Font, Dejavu Sans;
+    font-size: 12px;
+    min-height: 0;
+    box-shadow: none;
+    text-shadow: none;
+    transition-duration: 0s;
+}
+window#waybar {
+    background: #1d2021;
+    color: #fbf1c7;
+}
+
+window#waybar.empty {
+    /* background-color: transparent; */
+}
+window#waybar.solo {
+    /* background-color: #FFFFFF; */
+}
+
+#workspaces button {
+  padding: 0 4px;
+  background: transparent;
+  color: #fbf1c7;
+}
+
+
+#workspaces button.visible {
+    background: #b16286;
+    color: #282828;
+}
+
+#workspaces button.persistent {}
+
+#workspaces button.current_output {}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+
+#workspaces button.focused {
+    background: #689d6a;
+    color: #282828;
+}
+
+#workspaces button.urgent {
+    background-color: #cc241d;
+}
+
+#mode {
+    background: #fe8019;
+    color: #282828;
+    padding: 0 4px;
+}
+
+#clock {}
+
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#custom-media,
+#tray,
+#language,
+#custom-pacman,
+#custom-gammastep,
+#idle_inhibitor,
+#mpd {
+    /* padding: 0 4px; */
+    margin: 0 2px;
+    color: #fbf1c7;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#clock {
+}
+
+#battery {
+}
+
+#battery.charging {
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* label:focus { */
+/*     background-color: #000000; */
+/* } */
+
+#cpu {
+}
+
+#memory {
+}
+
+#backlight {
+}
+
+#network {
+}
+
+#network.disconnected {
+}
+
+#pulseaudio {
+}
+
+#pulseaudio.muted {
+}
+
+#temperature {
+}
+
+#temperature.critical {
+}
+
+#idle_inhibitor {
+}
+
+#idle_inhibitor.activated {
+}
+
+#language {
+    /* background: #00b093; */
+    /* color: #740864; */
+    min-width: 16px;
+}

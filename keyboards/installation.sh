@@ -4,7 +4,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 echo "*** Initialize submodule... ***"
 git submodule init
-git submodule update
+git submodule update --remote
 
 echo "*** QMK Setup... ***"
 python3 -m pip install --user qmk

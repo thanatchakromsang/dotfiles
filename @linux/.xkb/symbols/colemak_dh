@@ -1,0 +1,11 @@
+default partial alphanumeric_keys
+xkb_symbols "colemak_dh_matrix" {
+        include "us(colemak_dh)"
+        name[Group1] = "English (Colemak DH)";
+
+        key <AB01> { [            z,            Z,              ae,               AE ] };
+        key <AB02> { [            x,            X, dead_circumflex,       asciitilde ] };
+        key <AB03> { [            c,            C,        ccedilla,         Ccedilla ] };
+        key <AB04> { [            d,            D,  dead_diaeresis,       asciitilde ] };
+        key <AB05> { [            v,            V,              oe,               OE ] };
+};

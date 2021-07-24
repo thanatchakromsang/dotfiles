@@ -1,0 +1,12 @@
+#!/bin/bash
+
+CURRENT_OUTPUT=$(swaymsg -t get_outputs | jq -r '.[] | select(.focused)' | jq -r '.name')
+
+systemctl --user stop pipewire
+
+killall -p xdg-desktop-portal
+killall -p xdg-desktop-portal-wlr
+
+systemctl --user start pipewire-media-session
+
+/usr/lib/xdg-desktop-portal -r & /usr/lib/xdg-desktop-portal-wlr --loglevel=INFO --output=$CURRENT_OUTPUT

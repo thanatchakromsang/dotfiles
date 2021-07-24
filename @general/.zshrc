@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export DOTFILES=$HOME/.dotfiles
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -5,9 +12,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # if [[ $(tput cols) -gt 90 && $(tput lines) -gt 19 ]]; then
 #   source $DOTFILES/zsh/startup.sh
 # fi
-#
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
   git
@@ -36,7 +42,7 @@ esac
 source $ZSH/oh-my-zsh.sh
 
 # source useful script
-source $DOTFILES/scripts/exists.sh
+source $DOTFILES/scripts/bin/exists.sh
 
 source $DOTFILES/@general/.aliases
 source $DOTFILES/@general/.zshenv
@@ -65,7 +71,7 @@ function pet-select() {
   zle redisplay
 }
 zle -N pet-select
-stty -ixon
+stty -ixon <$TTY >$TTY
 
 bindkey '^s' pet-select
 
@@ -81,42 +87,29 @@ f() {
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
-# fd - Find any directory and cd to selected directory
-fd() {
+# d - Find any directory and cd to selected directory
+d() {
  local dir
- dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d \
-      -print 2> /dev/null | fzf +m) &&
+
+ dir=$(fd --type d --hidden --follow --exclude .git 2> /dev/null | fzf +m --query="$1") &&
  cd "$dir"
 }
 
-pw() {
-  ID=$(lpass ls --format "%/as%ag - %an (%au) [%ai]" 2>&1 | fzf +m | grep -oE '\[[0-9]+\]$' | tr -d '[]')
+w() {
+  IFS=$'\n' files=($(rg --trim --line-number --hidden "$1" | fzf --delimiter=: --preview '([[ -f {1} ]] && (bat --style=numbers --line-range {2}: --highlight-line {2} --color=always {1} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'))
 
-  USER=$(lpass show $ID --username)
-  if [[ ! -z "$USER" ]]
-  then
-    echo "username: $(lpass show $ID --username)"
-    lpass show -cp $ID
-    echo "password: *copied to clipboard*"
-  else
-    lpass show $ID
-  fi
-}
-
-fw() {
-  IFS=$'\n' files=($(rg --trim --line-number "$1" | fzf --delimiter=: --preview '([[ -f {1} ]] && (bat --style=numbers --line-range {2}: --highlight-line {2} --color=always {1} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'))
 
   # Open files with specific lines
   [[ -n "$files" ]] && ${EDITOR:-vim} +$(echo ${files[@]} | awk '{split($0,a,":"); print a[2] }') $(echo ${files[@]} | awk '{split($0,a,":"); print a[1] }')
 }
 
-if [ -f '/Users/thanatchaya.K/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source "$HOME/Downloads/google-cloud-sdk/path.zsh.inc"; fi
-if [ -f '/Users/thanatchaya.K/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source "$HOME/Downloads/google-cloud-sdk/completion.zsh.inc"; fi
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/thanatchaya/google-cloud-sdk/path.zsh.inc' ]; then . '/home/thanatchaya/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/home/thanatchaya/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/thanatchaya/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/thanatchaya/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/thanatchaya/google-cloud-sdk/completion.zsh.inc'; fi
+
+if [ -f '/home/thanatchaya/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/thanatchaya/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

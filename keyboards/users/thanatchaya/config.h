@@ -18,9 +18,6 @@
 
 #include "config_common.h"
 
-#undef DEBOUNCE
-#define DEBOUNCE 25
-
 #undef TAPPING_TERM
 #define TAPPING_TERM 150
 

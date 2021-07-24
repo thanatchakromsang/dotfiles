@@ -21,7 +21,7 @@
 
 enum user_layers {
   QWERTY_LAYER,
-  WORKMAN_LAYER,
+  COLEMAK_LAYER,
   NUMBER_LAYER,
   SYMBOL_LAYER,
   FUNCTION_LAYER,
@@ -38,10 +38,11 @@ enum user_layers {
 // Alias layout macros that expand groups of keys.
 #define LAYOUT_ergodox_ez_wrapper(...) LAYOUT_ergodox_pretty(__VA_ARGS__)
 #define LAYOUT_keyboardio_atreus_wrapper(...) LAYOUT(__VA_ARGS__)
+#define LAYOUT_crkbd_wrapper(...) LAYOUT(__VA_ARGS__)
 
   /* ---------------------------------------------------------------------
    *
-   *   Qwerty Layout (Switched Quote and Slash)
+   *   Qwerty Layout
    *
    *     ┌─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┐
    *     │  Q  │  W  │  E  │  R  │  T  │   │  Y  │  U  │  I  │  O  │  P  │
@@ -62,24 +63,24 @@ enum user_layers {
 
   /* ---------------------------------------------------------------------
    *
-   *   Workman Layout (Switched Quote and Slash)
+   *   Colemak Layout
    *
    *     ┌─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┐
-   *     │  Q  │  D  │  R  │  W  │  B  │   │  J  │  F  │  U  │  P  │  ;  │
+   *     │  Q  │  W  │  F  │  P  │  B  │   │  J  │  L  │  U  │  Y  │  ;  │
    *     ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
-   *     │ A/⇧ │ S/^ │ H/⌥ │ T/⌘ │  G  │   │  Y  │ N/⌘ │ E/⌥ │ O/^ │ I/⇧ │
+   *     │ A/⇧ │ R/^ │ S/⌥ │ T/⌘ │  G  │   │  M  │ N/⌘ │ E/⌥ │ I/^ │ O/⇧ │
    *     ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
-   *     │  Z  │  X  │  M  │  C  │  V  │   │  K  │  L  │  ,  │  .  │  /  │
+   *     │  Z  │  X  │  C  │  D  │  V  │   │  K  │  H  │  ,  │  .  │  /  │
    *     └─────┴─────┴─────┴─────┴─────┘   └─────┴─────┴─────┴─────┴─────┘
    */
 
-#define _________________WORKMAN_L1________________ KC_Q,         KC_D,         KC_R,         KC_W,         KC_B
-#define _________________WORKMAN_L2________________ LSFT_T(KC_A), LCTL_T(KC_S), LALT_T(KC_H), LGUI_T(KC_T), KC_G
-#define _________________WORKMAN_L3________________ KC_Z,         KC_X,         KC_M,         KC_C,         KC_V
+#define _________________COLEMAK_L1________________ KC_Q,         KC_W,         KC_F,         KC_P,         KC_B
+#define _________________COLEMAK_L2________________ LSFT_T(KC_A), LCTL_T(KC_R), LALT_T(KC_S), LGUI_T(KC_T), KC_G
+#define _________________COLEMAK_L3________________ KC_Z,         KC_X,         KC_C,         KC_D,         KC_V
 
-#define _________________WORKMAN_R1________________ KC_J, KC_F,         KC_U,         KC_P,         KC_SCLN
-#define _________________WORKMAN_R2________________ KC_Y, LGUI_T(KC_N), LALT_T(KC_E), LCTL_T(KC_O), LSFT_T(KC_I)
-#define _________________WORKMAN_R3________________ KC_K, KC_L,         KC_COMM,      KC_DOT,       KC_SLSH
+#define _________________COLEMAK_R1________________ KC_J, KC_L,         KC_U,         KC_Y,         KC_SCLN
+#define _________________COLEMAK_R2________________ KC_M, LGUI_T(KC_N), LALT_T(KC_E), LCTL_T(KC_I), LSFT_T(KC_O)
+#define _________________COLEMAK_R3________________ KC_K, KC_H,         KC_COMM,      KC_DOT,       KC_SLSH
 
   /* ---------------------------------------------------------------------
    *
@@ -213,11 +214,11 @@ enum user_layers {
    *
    *   Layer Switcher
    *     ┌─────┬─────┬─────┬─────┬─────┐
-   *     │LANG │QWRTY│     │     │WKMN │
+   *     │LANG │QWRTY│     │     │COLE │
    *     └─────┴─────┴─────┴─────┴─────┘
    */
 
-#define _________________LANGUAGE_SWITCHER_________ LGUI(KC_SPC),    TO(QWERTY_LAYER),   XXXXXXX,     XXXXXXX,     TO(WORKMAN_LAYER)
+#define _________________LANGUAGE_SWITCHER_________ LALT(KC_SPC),    TO(QWERTY_LAYER),   XXXXXXX,     XXXXXXX,     TO(COLEMAK_LAYER)
 
   /* ---------------------------------------------------------------------
    *
@@ -295,7 +296,7 @@ enum user_layers {
    *
    *   Media Layer
    *     ┌─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┐
-   *     │     │     │     │     │     │   │ XXX │ XXX │ XXX │ XXX │ XXX │
+   *     │     │     │     │     │     │   │ XXX │ XXX │ XXX │ XXX │    │
    *     ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
    *     │     │     │     │     │     │   │  ◀  │    │    │  ▶  │    │
    *     ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
@@ -314,7 +315,7 @@ enum user_layers {
 #define ______MEDL2_____ _______, _______
 #define _______MEDIA_L4__________ _MEDL1_, ______MEDL2_____
 
-#define _________________MEDIA_R1__________________ _________________DISABLED__________________
+#define _________________MEDIA_R1__________________ XXXXXXX,    XXXXXXX,       XXXXXXX,       XXXXXXX,    KC_F20
 #define _________________MEDIA_R2__________________ KC_MPRV,    KC__VOLDOWN,   KC__VOLUP,     KC_MNXT,    KC__MUTE
 #define _________________MEDIA_R3__________________ _________________DISABLED__________________
 

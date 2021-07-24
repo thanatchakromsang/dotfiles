@@ -1,0 +1,30 @@
+#!/bin/bash
+case $(rofi -dmenu << EOF | sed 's/^ *//'
+shutdown
+reboot
+logoff
+hibernate
+sleep
+lock
+console
+EOF
+) in
+    "shutdown")
+        systemctl poweroff
+        ;;
+    "reboot")
+        systemctl reboot
+        ;;
+    "hibernate")
+        systemctl hibernate
+        ;;
+    "sleep")
+        systemctl suspend
+        ;;
+    "lock")
+        swaylock -f -c 000000
+        ;;
+    "logoff")
+        swaymsg exit
+        ;;
+esac

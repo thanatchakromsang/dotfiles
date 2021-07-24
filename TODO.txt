@@ -1,0 +1,5 @@
+1. Run oh-my-zsh script update to starship
+
+2. and run ./stow.sh
+
+3. Update nvim for lightspeed
