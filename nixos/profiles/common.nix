@@ -1,8 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  unstable = import <nixos-unstable> {};
-in
 {
   imports =
     [
@@ -77,9 +74,11 @@ in
   };
 
   environment.variables = {
-    "EDITOR"        = "nvim";
-    "VISUAL"        = "nvim";
-    "FZF_BASE"      = "${pkgs.fzf}/share/fzf";
+    "EDITOR"              = "nvim";
+    "VISUAL"              = "nvim";
+    "FZF_BASE"            = "${pkgs.fzf}/share/fzf";
+    "FZF_DEFAULT_OPTS"    = "--height 40% --border --reverse";
+    "FZF_DEFAULT_COMMAND" = "fd --type f --hidden --follow --exclude .git";
   };
 
   environment.shellAliases = {
@@ -100,7 +99,6 @@ in
     g       = "lazygit";
     r       = ". ranger";
     c       = "clear";
-
   };
 
   system.copySystemConfiguration = true;

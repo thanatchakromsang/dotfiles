@@ -4,18 +4,25 @@
 
 { config, pkgs, ... }:
 
+let
+  nixos-hardware = builtins.fetchTarball {
+    url = "https://github.com/NixOS/nixos-hardware/archive/master.tar.gz";
+  };
+in
 {
   imports =
     [
-      <nixos-hardware/lenovo/thinkpad/t14s/amd/gen1>
+      "${nixos-hardware}/lenovo/thinkpad/t14s/amd/gen1"
       /etc/nixos/hardware-configuration.nix
 
-      ../../users/thanatchaya/personal.nix
+      ../../channel.nix
 
       ../../profiles/workstation.nix
       ../../profiles/desktop.nix
       ../../profiles/notebook.nix
       ../../profiles/development.nix
+
+      ../../users/thanatchaya/personal.nix
     ];
 
   boot.loader = {

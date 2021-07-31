@@ -1,8 +1,5 @@
 { config, pkgs, lib, ... }:
 
-let
-  unstable = import <nixos-unstable> {};
-in
 {
   environment.systemPackages = with pkgs; [
     # Go
@@ -66,6 +63,8 @@ in
     awscli2
     docker-compose
     google-cloud-sdk
+    sops
+    unstable.cloudflared
 
     # Static site generator
     hugo

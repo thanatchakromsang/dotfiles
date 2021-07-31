@@ -4,11 +4,6 @@ let
   configsDir = ../../../configs;
 in
 {
-  imports =
-    [
-      <home-manager/nixos>
-    ];
-
   users.extraUsers.thanatchaya = {
     isNormalUser = true;
     createHome = true;
@@ -21,34 +16,37 @@ in
   home-manager.useGlobalPkgs = true;
 
   home-manager.users.thanatchaya = { pkgs, ... }: {
-    programs = {
-      zsh = {
-        enable = true;
-        initExtraFirst = ''
-          if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-            source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-          fi
+    programs.zsh = {
+      enable = true;
+      initExtraFirst = ''
+        if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+          source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+        fi
 
-          [[ ! -f ~/.config/p10k.zsh ]] || source ~/.config/p10k.zsh
-        '';
-      };
+        [[ ! -f ~/.config/p10k.zsh ]] || source ~/.config/p10k.zsh
+      '';
+    };
 
-      ssh = {
-        enable = true;
-        serverAliveInterval = 60;
-      };
+    programs.ssh = {
+      enable = true;
+      serverAliveInterval = 60;
+    };
 
-      git = {
-        enable = true;
-        extraConfig = {
-          push = { default = "current"; };
-          pull = { rebase = true; };
-        };
+    programs.git = {
+      enable = true;
+      extraConfig = {
+        core = { hooksPath = "git-hooks"; };
+        push = { default = "current"; };
+        pull = { rebase = true; };
+        init = { defaultBranch = "main"; };
       };
     };
 
     xdg.configFile."p10k.zsh".source = "${configsDir}/p10k.zsh";
-
+    xdg.configFile."nvim" = {
+      source = "${configsDir}/nvim";
+      recursive = true;
+    };
 
     manual.html.enable = false;
     manual.json.enable = false;

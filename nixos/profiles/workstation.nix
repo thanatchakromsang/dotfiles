@@ -1,8 +1,6 @@
 { config, pkgs, lib, ... }:
 
 let
-  unstable = import <nixos-unstable> {};
-  pubkey = import ../services/pubkey.nix;
   inherit (lib) optionals;
 in
 {
