@@ -1,3 +1,3 @@
 {
-	thanatchaya = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILiegZRXw8qUjR2hp6weLLkIBkfpDZV9Jp0WPQddFsam thanatchakromsang@gmail.com";
+	thanatchaya = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJgH3BeVMWrzpKlYisbFPaQz4VQvDs+AqcC3LhCKu+7O thanatchakromsang@gmail.com";
 }
