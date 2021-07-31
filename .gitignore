@@ -1,22 +1,15 @@
-keyboards/qmk
-
 # NVIM
-@general/.config/nvim/plugged/
-@general/.config/nvim/autoload
-@general/.config/nvim/session*
-@general/.config/nvim/.netrwhist
-@general/.config/nvim/.cache/
-@general/.config/nvim/plugin/
+configs/nvim/plugged/
+configs/nvim/autoload
+configs/nvim/session*
+configs/nvim/sessions/**
+configs/nvim/.netrwhist
+configs/nvim/.cache/
+configs/nvim/plugin/
 
 # git secret
 .gitsecret/keys/random_seed
 !*.secret
-@general/.config/pet/snippet.toml
-@general/.gitconfig
-@general/.warprc
-@linux/.config/gammastep/config.ini
 
-@general/.config/nvim/sessions/**
-
-@linux/.config/lazygit/*
-!@linux/.config/lazygit/config.yml
+configs/lazygit/*
+configs/lazygit/config.yml
