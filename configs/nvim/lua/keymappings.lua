@@ -34,13 +34,37 @@ map('n', '<C-Right>', '<C-w>l', {silent = true})
 map('', '<PageUp>', '10<C-U>', {silent = true})
 map('', '<PageDown>', '10<C-D>', {silent = true})
 
--- Move selected line / block of text in visual mode
-map('x', 'K', ':move \'<-2<CR>gvgv', {noremap = true, silent = true})
-map('x', 'J', ':move \'>+1<CR>gv-gv', {noremap = true, silent = true})
+-- Move text
+map('x', 'J', ':move \'<-2<CR>gvgv', {noremap = true, silent = true})
+map('x', 'K', ':move \'>+1<CR>gv-gv', {noremap = true, silent = true})
+map('i', '<C-j>', '<esc>:m .+1<CR>==', {noremap = true, silent = true})
+map('i', '<C-k>', '<esc>:m .-2<CR>==', {noremap = true, silent = true})
+map('n', '<leader>j', ':move .+1<CR>==', {noremap = true, silent = true})
+map('n', '<leader>k', ':move .-2<CR>==', {noremap = true, silent = true})
 
 -- better indenting
 map('v', '<', '<gv', {noremap = true, silent = true})
 map('v', '>', '>gv', {noremap = true, silent = true})
+
+-- ThePrimeagen recommended https://www.youtube.com/watch?v=hSHATqh8svM
+map('n', 'Y', 'y$', {noremap = true}) -- Yank to end of line
+map('v', 'y', 'myy`y', {noremap = true }) -- Set mark after visual yanks
+map('v', 'Y', 'myY`y', {noremap = true }) -- Set mark after visual yanks
+
+-- keeping things centered
+map('n', 'n', 'nzzzv', {noremap = true})
+map('n', 'N', 'Nzzzv', {noremap = true})
+map('n', 'J', 'mzJ`z', {noremap = true})
+
+-- Undo break points
+map('i', ',', ',<c-g>u', {noremap = true})
+map('i', '.', '.<c-g>u', {noremap = true})
+map('i', '!', '!<c-g>u', {noremap = true})
+map('i', '?', '?<c-g>u', {noremap = true})
+
+-- Jumplist mutations
+map('i', 'k', "(v:count > 5 ? \"m'\") . v:count : \"\") . 'k'", {noremap = true, expr = true})
+map('i', 'j', "(v:count > 5 ? \"m'\") . v:count : \"\") . 'j'", {noremap = true, expr = true})
 
 -- tab switch buffer
 map('n', '<TAB>', ':BufferLineCycleNext<CR>', {noremap = true, silent = true})
@@ -48,11 +72,11 @@ map('n', '<S-TAB>', ':BufferLineCyclePrev<CR>', {noremap = true, silent = true})
 
 map('n', '<ESC>', ':noh<CR>', {noremap = true, silent = true}) -- Remove search highlight after esc
 
--- navigate between display lines
-map('n', 'k', 'v:count == 0 ? "gk" : "k"', {noremap = true, expr = true})
-map('n', 'j', 'v:count == 0 ? "gj" : "j"', {noremap = true, expr = true})
-map('n', '<Up>', 'v:count == 0 ? "gk" : "k"', {noremap = true, expr = true})
-map('n', '<Down>', 'v:count == 0 ? "gj" : "j"', {noremap = true, expr = true})
+-- -- navigate between display lines
+-- map('n', 'k', 'v:count == 0 ? "gk" : "k"', {noremap = true, expr = true})
+-- map('n', 'j', 'v:count == 0 ? "gj" : "j"', {noremap = true, expr = true})
+-- map('n', '<Up>', 'v:count == 0 ? "gk" : "k"', {noremap = true, expr = true})
+-- map('n', '<Down>', 'v:count == 0 ? "gj" : "j"', {noremap = true, expr = true})
 
 -- no need for ex mode
 map('n', 'Q', '<nop>', {noremap = true, silent = true})

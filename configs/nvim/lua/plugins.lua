@@ -9,8 +9,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
     execute 'packadd packer.nvim'
 end
 
-vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
-
 return require('packer').startup(function(use)
     -- Packer can manage itself as an optional plugin
     use 'wbthomason/packer.nvim'
@@ -79,7 +77,7 @@ return require('packer').startup(function(use)
     use 'shumphrey/fugitive-gitlab.vim'
 
     -- General Plugins
-    use 'editorconfig/editorconfig-vim'
+    -- use 'editorconfig/editorconfig-vim'
     use 'windwp/nvim-autopairs'
     -- use 'unblevable/quick-scope' -- find and to keyword on steroid
     use 'ggandor/lightspeed.nvim' -- quickscope, sneak replacement
