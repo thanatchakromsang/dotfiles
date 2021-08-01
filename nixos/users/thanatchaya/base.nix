@@ -2,20 +2,21 @@
 
 let
   configsDir = ../../../configs;
+  homeDir = ../../../home;
 in
 {
   users.extraUsers.thanatchaya = {
     isNormalUser = true;
     createHome = true;
     uid = 1000;
-    extraGroups = lib.mkDefault [ "wheel" "networkmanager" "audio" "video" "docker"];
+    extraGroups = lib.mkDefault [ "wheel" "networkmanager" "audio" "video" "docker" ];
     shell = pkgs.zsh;
   };
 
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
 
-  home-manager.users.thanatchaya = { pkgs, ... }: {
+  home-manager.users.thanatchaya = { pkgs, config, ... }: {
     programs.zsh = {
       enable = true;
       initExtraFirst = ''
@@ -47,6 +48,17 @@ in
       source = "${configsDir}/nvim";
       recursive = true;
     };
+    xdg.configFile."kitty" = {
+      source = "${configsDir}/kitty";
+      recursive = true;
+    };
+    xdg.configFile."config.toml".source = "${configsDir}/pet/config.toml";
+    xdg.configFile."ranger" = {
+      source = "${configsDir}/ranger";
+      recursive = true;
+    };
+    xdg.configFile."zathurarc".source = "${configsDir}/zathura/zathurarc";
+    home.file.".xkb".source = "${homeDir}/xkb";
 
     manual.html.enable = false;
     manual.json.enable = false;
