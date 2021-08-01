@@ -145,7 +145,8 @@ lspconfig.gopls.setup {
 -----------------------------------------------------
 
 lspconfig.sumneko_lua.setup {
-    cmd = {"/usr/bin/lua-language-server", "-E", "/usr/share/lua-language-server/main.lua"},
+    -- cmd = {"lua-language-server", "-E", "/usr/share/lua-language-server/main.lua"},
+    cmd = {"lua-language-server"},
     on_attach = custom_attach,
     capabilities = capabilities,
     settings = {
@@ -275,6 +276,7 @@ lspconfig.terraformls.setup {
 -- general LSP
 -----------------------------------------------------
 
-local servers = {'dockerls', 'rust_analyzer', 'pyright', 'vimls', 'jsonls', 'graphql'}
+-- Avaliable LSP https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
+local servers = {'dockerls', 'rust_analyzer', 'pyright', 'vimls', 'rnix'}
 
 for _, server in ipairs(servers) do lspconfig[server].setup {on_init = custom_init, on_attach = custom_attach, capabilities = capabilities} end

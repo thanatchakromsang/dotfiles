@@ -26,7 +26,7 @@ vim.o.showbreak = "↳"
 vim.o.wildignorecase = true
 vim.o.wildignore = ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**";
 vim.o.listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←"
-vim.o.shell = "/bin/bash" -- enable this if zsh slow down vim
+vim.o.shell = "zsh" -- enable this if zsh slow down vim
 
 -- Buffer scoped options
 vim.bo.expandtab = true -- Converts tabs to spaces
