@@ -8,6 +8,7 @@ in
     [
       ./common.nix
       ../users/thanatchaya/base.nix
+      ../services/avahi.nix
     ];
 
   programs.ssh.startAgent = true;
@@ -15,7 +16,11 @@ in
 
   networking = {
     networkmanager.enable = true;
-
+    networkmanager.insertNameservers = 
+      [
+        "1.1.1.1"
+        "8.8.8.8"
+      ];
     firewall.enable = true;
     firewall.allowPing = true;
   };
