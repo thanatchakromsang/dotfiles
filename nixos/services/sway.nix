@@ -2,10 +2,6 @@
 { config, pkgs, lib, ... }:
 
 {
-  environment.loginShellInit = ''
-    [[ "$(tty)" == /dev/tty1 ]] && startsway
-  '';
-
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true; # so that gtk works properly
@@ -21,7 +17,7 @@
       rofi
       brightnessctl
       alacritty
-      gammastep
+      networkmanager_dmenu
     ];
   };
 
@@ -39,6 +35,10 @@
       }
     )
   ];
+
+  environment.loginShellInit = ''
+    [[ "$(tty)" == /dev/tty1 ]] && startsway
+  '';
 
   systemd.user.targets.sway-session = {
     description = "Sway compositor session";
