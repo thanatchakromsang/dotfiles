@@ -18,6 +18,7 @@
       waybar
       grim
       slurp
+      rofi
       brightnessctl
       alacritty
       gammastep
