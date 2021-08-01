@@ -47,7 +47,7 @@ map('v', '<', '<gv', {noremap = true, silent = true})
 map('v', '>', '>gv', {noremap = true, silent = true})
 
 -- ThePrimeagen recommended https://www.youtube.com/watch?v=hSHATqh8svM
-map('n', 'Y', 'y$', {noremap = true}) -- Yank to end of line
+map('n', 'Y', 'yg_', {noremap = true}) -- Yank to end of line
 map('v', 'y', 'myy`y', {noremap = true }) -- Set mark after visual yanks
 map('v', 'Y', 'myY`y', {noremap = true }) -- Set mark after visual yanks
 
@@ -62,9 +62,13 @@ map('i', '.', '.<c-g>u', {noremap = true})
 map('i', '!', '!<c-g>u', {noremap = true})
 map('i', '?', '?<c-g>u', {noremap = true})
 
--- Jumplist mutations
-map('i', 'k', "(v:count > 5 ? \"m'\") . v:count : \"\") . 'k'", {noremap = true, expr = true})
-map('i', 'j', "(v:count > 5 ? \"m'\") . v:count : \"\") . 'j'", {noremap = true, expr = true})
+-- Change word
+map('n', 'cn', '*``cgn', {noremap = true})
+map('n', 'cN', '*``cgN', {noremap = true})
+
+-- FIX: should not occur in Telescope -- Jumplist mutations
+-- map('i', 'k', "(v:count > 5 ? \"m'\") . v:count : \"\") . 'k'", {noremap = true, expr = true})
+-- map('i', 'j', "(v:count > 5 ? \"m'\") . v:count : \"\") . 'j'", {noremap = true, expr = true})
 
 -- tab switch buffer
 map('n', '<TAB>', ':BufferLineCycleNext<CR>', {noremap = true, silent = true})
