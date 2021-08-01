@@ -31,7 +31,6 @@
       ripgrep
       ranger
       lazygit
-      pet # snippets manager
       unstable.neovim
       zsh-powerlevel10k
     ];
@@ -42,18 +41,6 @@
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
     histSize = 10000;
-    promptInit = "
-      # Add powerlevel10k themes
-      source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-
-      # Completion
-      source ${pkgs.google-cloud-sdk}/google-cloud-sdk/completion.zsh.inc
-
-      bindkey '^ ' autosuggest-accept
-      bindkey '^p' up-line-or-beginning-search
-      bindkey '^n' down-line-or-beginning-search
-      bindkey '^H' backward-kill-word
-    ";
     ohMyZsh = {
       enable = true;
       plugins =
