@@ -54,6 +54,9 @@
     # YAML
     unstable.nodePackages.yaml-language-server
 
+    # Nix
+    rnix-lsp
+
     # Ops Toolsets
     unstable.kubectl
     unstable.kubectx
