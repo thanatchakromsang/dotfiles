@@ -5,6 +5,7 @@
     [
       <home-manager/nixos>
       ../services/sway.nix
+      ../services/keyboard/keyboard.nix
     ];
 
   boot.plymouth.enable = true;
@@ -15,18 +16,18 @@
 
     fonts = with pkgs; [
       fira-mono
-      nerdfonts
       ubuntu_font_family
       font-awesome
       twemoji-color-font
       tlwg
+      (nerdfonts.override { fonts = [ "Hack" ]; })
     ];
 
     fontconfig = {
       enable = true;
       antialias = true;
       defaultFonts = {
-        monospace = [ "Fira Mono" ];
+        monospace = [ "Hack Nerd Font Mono" ];
         serif = [ "Tlwg" "Ubuntu" ];
         sansSerif = [ "Tlwg" "Ubuntu" ];
         emoji = [ "Twitter Color Emoji" ];
