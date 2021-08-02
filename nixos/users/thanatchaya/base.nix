@@ -17,6 +17,10 @@ in
   home-manager.useGlobalPkgs = true;
 
   home-manager.users.thanatchaya = { pkgs, config, ... }: {
+    # Workaround for firefox pkgs error ref: https://github.com/nix-community/home-manager/issues/2010
+    # FIXME: Find a way to do global import of home.stateVersion
+    home.stateVersion = "21.05";
+
     programs.zsh = {
       enable = true;
       initExtraFirst = ''

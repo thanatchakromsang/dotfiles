@@ -12,10 +12,10 @@ let
   home-manager = builtins.fetchTarball {
     url = "https://github.com/nix-community/home-manager/archive/release-21.05.tar.gz";
   };
-  # # https://github.com/nix-community/NUR
-  # nur = builtins.fetchTarball {
-  #   url = "https://github.com/nix-community/NUR/archive/master.tar.gz";
-  # };
+  # https://github.com/nix-community/NUR
+  nur = builtins.fetchTarball {
+    url = "https://github.com/nix-community/NUR/archive/master.tar.gz";
+  };
 in
 {
   nixpkgs.config = {
@@ -29,10 +29,9 @@ in
         config = config.nixpkgs.config;
         inherit pkgs;
       };
-      # nur = import nur {
-      #   # config = config.nixpkgs.config;
-      #   inherit pkgs;
-      # };
+      nur = import nur {
+        inherit pkgs;
+      };
     };
   };
 }

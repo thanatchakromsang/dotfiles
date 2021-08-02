@@ -6,6 +6,8 @@
       <home-manager/nixos>
       ../services/sway.nix
       ../services/keyboard/keyboard.nix
+
+      ../profiles/applications/firefox.nix
     ];
 
   boot.plymouth.enable = true;
@@ -38,7 +40,6 @@
   environment.systemPackages = with pkgs; [
     anki
     zathura
-    firefox-wayland
     tdesktop # telegram
     bluez
     pavucontrol
@@ -86,10 +87,5 @@
       ];
       gtkUsePortal = true;
     };
-  };
-
-  environment.sessionVariables = {
-     MOZ_ENABLE_WAYLAND = "1";
-     XDG_CURRENT_DESKTOP = "sway";
   };
 }
