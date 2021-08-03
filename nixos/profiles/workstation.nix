@@ -12,6 +12,9 @@ in
     ];
 
   programs.ssh.startAgent = true;
+  programs.gnupg.agent = {
+    enable = true;
+  };
   services.gnome.gnome-keyring.enable = true;
 
   networking = {

@@ -2,6 +2,13 @@
 { config, pkgs, lib, ... }:
 
 {
+  environment.sessionVariables = {
+    _JAVA_AWT_WM_NONREPARENTING = "1";
+    XDG_SESSION_TYPE = "wayland";
+    QT_QPA_PLATFORM = "wayland";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+  };
+
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true; # so that gtk works properly
@@ -17,6 +24,7 @@
       rofi
       brightnessctl
       alacritty
+      light
       networkmanager_dmenu
     ];
   };
@@ -69,6 +77,7 @@
   };
 
   programs.waybar.enable = true;
+  programs.light.enable = true;
 
   systemd.user.services.swayidle = {
     description = "Idle Manager for Wayland";

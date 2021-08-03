@@ -13,9 +13,6 @@ in
     shell = pkgs.zsh;
   };
 
-  home-manager.useUserPackages = true;
-  home-manager.useGlobalPkgs = true;
-
   home-manager.users.thanatchaya = { pkgs, config, ... }: {
     # Workaround for firefox pkgs error ref: https://github.com/nix-community/home-manager/issues/2010
     # FIXME: Find a way to do global import of home.stateVersion
@@ -77,10 +74,10 @@ in
       ".editorconfig".source = "${homeDir}/editorconfig";
       ".p10k.zsh".source = "${homeDir}/p10k.zsh";
     };
-    
+
     # disable keyboard management using home-manager
     home.keyboard = null;
-    
+
     manual.html.enable = false;
     manual.json.enable = false;
     manual.manpages.enable = false;

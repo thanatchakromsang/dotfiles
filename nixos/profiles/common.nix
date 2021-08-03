@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 
+
 {
   imports =
     [
@@ -88,6 +89,4 @@
     r = ". ranger";
     c = "clear";
   };
-
-  system.copySystemConfiguration = true;
 }

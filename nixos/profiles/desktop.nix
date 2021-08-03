@@ -3,7 +3,6 @@
 {
   imports =
     [
-      <home-manager/nixos>
       ../services/sway.nix
       ../services/keyboard/keyboard.nix
 
@@ -22,6 +21,7 @@
       font-awesome
       twemoji-color-font
       tlwg
+      font-awesome
       (nerdfonts.override { fonts = [ "Hack" ]; })
     ];
 

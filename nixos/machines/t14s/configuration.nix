@@ -4,18 +4,10 @@
 
 { config, pkgs, ... }:
 
-let
-  nixos-hardware = builtins.fetchTarball {
-    url = "https://github.com/NixOS/nixos-hardware/archive/master.tar.gz";
-  };
-in
 {
   imports =
     [
-      "${nixos-hardware}/lenovo/thinkpad/t14s/amd/gen1"
-      /etc/nixos/hardware-configuration.nix
-
-      ../../channel.nix
+      ./hardware-configuration.nix
 
       ../../profiles/workstation.nix
       ../../profiles/desktop.nix
@@ -25,13 +17,20 @@ in
       ../../users/thanatchaya/personal.nix
     ];
 
+  nix = {
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
+
   boot.loader = {
     efi = {
       canTouchEfiVariables = true;
       efiSysMountPoint = "/boot";
     };
     grub = {
-      devices = ["nodev"];
+      devices = [ "nodev" ];
       efiSupport = true;
     };
   };
@@ -45,4 +44,3 @@ in
 
   system.stateVersion = "21.05";
 }
-

@@ -6,25 +6,16 @@ in
 {
   services.openssh = {
     enable = true;
-    permitRootLogin = "yes";
+    permitRootLogin = "no";
     passwordAuthentication = lib.mkDefault false;
   };
 
-  programs.ssh.extraConfig = "
-Host gitlab.com
-  HostName gitlab.com
-  Preferredauthentications publickey
-  AddKeysToAgent yes
-  IdentityFile ~/.ssh/personal
+  programs.ssh.extraConfig = ''
+    Host *.lan
+      StrictHostKeyChecking no
+  '';
 
-Host github.com
-  Hostname github.com
-  Preferredauthentications publickey
-  AddKeysToAgent yes
-  IdentityFile ~/.ssh/personal
-  ";
-
-  users.extraUsers.root.openssh.authorizedKeys.keys = lib.mkDefault [ pubkey.thanatchaya ];
+  # users.extraUsers.root.openssh.authorizedKeys.keys = lib.mkDefault [ pubkey.thanatchaya ];
 
   users.extraUsers.thanatchaya.openssh.authorizedKeys.keys = lib.mkDefault [ pubkey.thanatchaya ];
 }

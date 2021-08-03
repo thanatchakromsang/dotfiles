@@ -69,15 +69,15 @@ in
       # https://github.com/nix-community/nur-combined/blob/master/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         bitwarden
-        tab-session-manager
-        tree-style-tab
         darkreader
         grammarly
-        i-dont-care-about-cookies
-        refined-github
         ublock-origin
-        # vimium
-        tridactyl # vimium alternative
+        vimium
+        # tab-session-manager
+        # tree-style-tab
+        # i-dont-care-about-cookies
+        # refined-github
+        # tridactyl # vimium alternative
         # leechblock-ng
       ];
     };
