@@ -62,11 +62,6 @@ in
       "lazygit/config.yml" = { source = "${configsDir}/lazygit/config.yml"; force = true; };
       "ranger" = { source = "${configsDir}/ranger"; recursive = true; };
       "zathurarc".source = "${configsDir}/zathura/zathurarc";
-      "networkmanager-dmenu".source = "${configsDir}/networkmanager-dmenu";
-      "sway" = { source = "${configsDir}/sway"; recursive = true; };
-      "waybar" = { source = "${configsDir}/waybar"; recursive = true; };
-      "mako" = { source = "${configsDir}/mako"; recursive = true; };
-      "rofi" = { source = "${configsDir}/rofi"; recursive = true; };
     };
 
     # ~ symlinks

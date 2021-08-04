@@ -11,6 +11,7 @@
 
   boot.plymouth.enable = true;
 
+  # TODO: refactor to fonts services
   fonts = {
     fontDir.enable = true;
     enableDefaultFonts = true;
@@ -50,6 +51,7 @@
 
   services.blueman.enable = true;
 
+  # TODO: refactor to audio services
   services.pipewire = {
     enable = true;
     alsa.enable = true;
