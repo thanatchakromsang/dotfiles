@@ -10,6 +10,10 @@
       url = "github:nix-community/home-manager/release-21.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # rofi-bluetooth = {
+    #   url = "github:nickclyde/rofi-bluetooth";
+    #   flake = false;
+    # };
   };
 
   outputs =
@@ -23,30 +27,37 @@
     }@inputs:
       let
         inherit (nixpkgs) lib;
-        overlays = {
-          unstable = final: prev: {
-            unstable = (
-              import nixpkgs-unstable {
-                system = "x86_64-linux";
-                config.allowUnfree = true;
-              }
-            );
-          };
+        unstable-overlay = final: prev: {
+          unstable = (
+            import nixpkgs-unstable {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
+            }
+          );
         };
+        overlays = [
+          (
+            self: super: {
+              rofi-bluetooth = super.callPackage ./packages/rofi-bluetooth;
+            }
+          )
+          (
+            self: super: {
+              bitwarden-rofi = super.callPackage ./packages/bitwarden-rofi;
+            }
+          )
+          unstable-overlay
+          nur.overlay
+        ];
       in
         {
           nixosConfigurations.t14s = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             modules = [
               {
-                nixpkgs.overlays = [
-                  nur.overlay
-                  overlays.unstable
-                ];
+                nixpkgs.overlays = overlays;
                 nixpkgs.config.allowUnfree = true;
-
                 home-manager.useUserPackages = true;
-
                 system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
               }
               nixos-hardware.nixosModules.lenovo-thinkpad-t14s-amd-gen1
