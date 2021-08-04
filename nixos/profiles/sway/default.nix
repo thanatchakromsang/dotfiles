@@ -2,14 +2,19 @@
 { config, pkgs, lib, ... }:
 
 let
-  configsDir = ../../configs;
+  configsDir = ../../../configs;
 in
 {
+  imports =
+    [
+      ./waybar.nix
+      ./mako.nix
+    ];
+
   home-manager.users.thanatchaya = { pkgs, config, ... }: {
     xdg.configFile = {
       "networkmanager-dmenu".source = "${configsDir}/networkmanager-dmenu";
       "sway" = { source = "${configsDir}/sway"; recursive = true; };
-      "mako" = { source = "${configsDir}/mako"; recursive = true; };
       "rofi" = { source = "${configsDir}/rofi"; recursive = true; };
     };
 
@@ -33,9 +38,7 @@ in
         swaylock
         swayidle
         wl-clipboard
-        mako
         kitty
-        waybar
         grim
         slurp
         rofi

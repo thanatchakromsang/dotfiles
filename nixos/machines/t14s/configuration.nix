@@ -42,12 +42,5 @@
     domain = "lan";
   };
 
-  home-manager.users.thanatchaya = { pkgs, config, ... }: {
-    xdg.configFile = {
-      "waybar/config" = { source = ../../../configs/waybar/t14s.conf; };
-      "waybar/style.css" = { source = ../../../configs/waybar/style.css; };
-    };
-  };
-
   system.stateVersion = "21.05";
 }

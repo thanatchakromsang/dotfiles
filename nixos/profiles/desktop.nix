@@ -3,9 +3,8 @@
 {
   imports =
     [
-      ../services/sway.nix
+      ../profiles/sway/default.nix
       ../services/keyboard/keyboard.nix
-
       ../profiles/applications/firefox.nix
     ];
 
