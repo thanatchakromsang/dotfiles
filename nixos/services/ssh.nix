@@ -13,6 +13,24 @@ in
   programs.ssh.extraConfig = ''
     Host *.lan
       StrictHostKeyChecking no
+
+    Host gitlab.com
+      HostName gitlab.com
+      Preferredauthentications publickey
+      AddKeysToAgent yes
+      IdentityFile ~/.ssh/personal.pri
+
+    Host gitlab.com-work
+      HostName gitlab.com
+      Preferredauthentications publickey
+      AddKeysToAgent yes
+      IdentityFile ~/.ssh/work.pri
+
+    Host github.com
+      Hostname github.com
+      Preferredauthentications publickey
+      AddKeysToAgent yes
+      IdentityFile ~/.ssh/personal.pri
   '';
 
   # users.extraUsers.root.openssh.authorizedKeys.keys = lib.mkDefault [ pubkey.thanatchaya ];
