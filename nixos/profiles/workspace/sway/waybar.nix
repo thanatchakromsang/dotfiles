@@ -1,5 +1,8 @@
 { config, pkgs, lib, ... }:
-
+let
+  colors = config.themes.colors;
+  fonts = config.themes.fonts;
+in
 {
   home-manager.users.thanatchaya = { pkgs, config, ... }: {
     programs.waybar = {
@@ -21,7 +24,8 @@
           ];
           modules = {
             "sway/workspaces" = {
-              format = "{icon}";
+              disable-scroll = true;
+              format = "{name}";
               format-icon = {
                 "1" = "";
                 "2" = "";
@@ -32,7 +36,7 @@
                 "7" = "";
                 "8" = "";
                 "9" = "";
-                "10" = "";
+                # "10" = "";
                 "urgent" = "";
                 "focused" = "";
                 "default" = "";
@@ -50,7 +54,7 @@
             };
             clock = {
               tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-              format = " {:%b %d, %Y %H:%M}";
+              format = " {:%b %-d, %Y %H:%M}";
             };
             backlight = {
               format = "{percent}%{icon}";
@@ -98,35 +102,27 @@
         * {
             border: none;
             border-radius: 0;
-            font-family: 'Hack Nerd Font';
-            font-size: 12px;
+            font-family: ${fonts.sansSerif.family};
+            font-size: ${toString fonts.sansSerif.size}px;
             min-height: 0;
             box-shadow: none;
             text-shadow: none;
             transition-duration: 0s;
         }
         window#waybar {
-            background: #1d2021;
-            color: #fbf1c7;
-        }
-
-        window#waybar.empty {
-            /* background-color: transparent; */
-        }
-        window#waybar.solo {
-            /* background-color: #FFFFFF; */
+          background: ${colors.bg1};
+          color: ${colors.fg};
         }
 
         #workspaces button {
           padding: 0 6px;
           background: transparent;
-          color: #fbf1c7;
+          color: ${colors.fg};
         }
 
-
         #workspaces button.visible {
-            background: #b16286;
-            color: #282828;
+            background: ${colors.purple};
+            color: ${colors.bg};
         }
 
         #workspaces button.persistent {}
@@ -140,21 +136,19 @@
         }
 
         #workspaces button.focused {
-            background: #689d6a;
-            color: #282828;
+            background: ${colors.aqua};
+            color: ${colors.bg};
         }
 
         #workspaces button.urgent {
-            background-color: #cc241d;
+            background-color: ${colors.red};
         }
 
         #mode {
-            background: #fe8019;
-            color: #282828;
+            background: ${colors.light_orange};
+            color: ${colors.bg};
             padding: 0 4px;
         }
-
-        #clock {}
 
         #battery,
         #cpu,
@@ -169,7 +163,7 @@
         #mpd {
             padding: 0 4px;
             /* margin: 0 4px; */
-            color: #fbf1c7;
+            color: ${colors.fg};
         }
 
         #window,
@@ -192,51 +186,7 @@
             margin-right: 4px;
         }
 
-        #clock {
-        }
-
-        #battery {
-        }
-
-        #battery.charging {
-        }
-
-        #cpu {
-        }
-
-        #memory {
-        }
-
-        #backlight {
-        }
-
-        #network {
-        }
-
-        #network.disconnected {
-        }
-
-        #pulseaudio {
-        }
-
-        #pulseaudio.muted {
-        }
-
-        #temperature {
-        }
-
-        #temperature.critical {
-        }
-
-        #idle_inhibitor {
-        }
-
-        #idle_inhibitor.activated {
-        }
-
         #language {
-            /* background: #00b093; */
-            /* color: #740864; */
             min-width: 16px;
         }
       '';

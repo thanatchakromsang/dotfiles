@@ -3,39 +3,16 @@
 {
   imports =
     [
-      ../profiles/sway/default.nix
       ../services/keyboard/keyboard.nix
+
+      ../profiles/workspace/sway/default.nix
+      ../profiles/workspace/fonts.nix
+
       ../profiles/applications/firefox.nix
+
     ];
 
   boot.plymouth.enable = true;
-
-  # TODO: refactor to fonts services
-  fonts = {
-    fontDir.enable = true;
-    enableDefaultFonts = true;
-
-    fonts = with pkgs; [
-      fira-mono
-      ubuntu_font_family
-      font-awesome
-      twemoji-color-font
-      tlwg
-      font-awesome
-      (nerdfonts.override { fonts = [ "Hack" ]; })
-    ];
-
-    fontconfig = {
-      enable = true;
-      antialias = true;
-      defaultFonts = {
-        monospace = [ "Hack Nerd Font Mono" ];
-        serif = [ "Tlwg" "Ubuntu" ];
-        sansSerif = [ "Tlwg" "Ubuntu" ];
-        emoji = [ "Twitter Color Emoji" ];
-      };
-    };
-  };
 
   environment.systemPackages = with pkgs; [
     anki

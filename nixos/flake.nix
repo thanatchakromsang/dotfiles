@@ -36,16 +36,16 @@
           );
         };
         overlays = [
-          (
-            self: super: {
-              rofi-bluetooth = super.callPackage ./packages/rofi-bluetooth;
-            }
-          )
-          (
-            self: super: {
-              bitwarden-rofi = super.callPackage ./packages/bitwarden-rofi;
-            }
-          )
+          # (
+          #   self: super: {
+          #     rofi-bluetooth = super.callPackage ./packages/rofi-bluetooth;
+          #   }
+          # )
+          # (
+          #   self: super: {
+          #     bitwarden-rofi = super.callPackage ./packages/bitwarden-rofi;
+          #   }
+          # )
           unstable-overlay
           nur.overlay
         ];
@@ -64,6 +64,7 @@
               nixpkgs.nixosModules.notDetected
               home-manager.nixosModules.home-manager
               # sops-nix.nixosModules.sops
+              ./modules/default.nix
               ./machines/t14s/configuration.nix
             ];
             # extraArgs = { inputs = inputs; };

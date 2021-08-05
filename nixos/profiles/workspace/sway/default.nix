@@ -2,7 +2,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  configsDir = ../../../configs;
+  configsDir = ../../../../configs;
 in
 {
   imports =
@@ -30,6 +30,7 @@ in
     };
   };
 
+  # TODO: using home-manager
   programs = {
     sway = {
       enable = true;

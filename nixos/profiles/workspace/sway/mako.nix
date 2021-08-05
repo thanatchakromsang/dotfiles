@@ -1,13 +1,17 @@
 { config, pkg, lib, ... }:
 
 # https://github.com/nix-community/home-manager/blob/master/modules/services/mako.nix
+let
+  fonts = config.themes.fonts;
+  colors = config.themes.colors;
+in
 {
-  home-manager.users.thanatchaya = { pkgs, config, ... }: {
+  home-manager.users.thanatchaya = {
     programs.mako = {
       enable = true;
-      font = "Ubuntu 10";
-      backgroundColor = "#d79921";
-      textColor = "#333333";
+      font = "${fonts.sansSerif.family} ${toString fonts.sansSerif.size}";
+      backgroundColor = "${colors.yellow}";
+      textColor = "${colors.bg}";
       width = 300;
       height = 100;
       padding = "10";
