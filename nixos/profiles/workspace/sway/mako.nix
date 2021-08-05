@@ -1,4 +1,4 @@
-{ config, pkg, lib, ... }:
+{ config, lib, ... }:
 
 # https://github.com/nix-community/home-manager/blob/master/modules/services/mako.nix
 let

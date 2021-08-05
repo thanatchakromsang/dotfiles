@@ -9,13 +9,13 @@ in
     [
       ./waybar.nix
       ./mako.nix
+      ./rofi.nix
     ];
 
   home-manager.users.thanatchaya = { pkgs, config, ... }: {
-    xdg.configFile = {
-      "networkmanager-dmenu".source = "${configsDir}/networkmanager-dmenu";
-      "sway" = { source = "${configsDir}/sway"; recursive = true; };
-      "rofi" = { source = "${configsDir}/rofi"; recursive = true; };
+    xdg.configFile."sway" = {
+      source = "${configsDir}/sway";
+      recursive = true;
     };
 
     programs.zsh.loginExtra = ''
@@ -44,7 +44,6 @@ in
         rofi
         light
         kanshi
-        networkmanager_dmenu
       ];
     };
     light.enable = true;
