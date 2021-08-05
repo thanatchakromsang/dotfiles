@@ -39,11 +39,9 @@ in
         swaylock
         swayidle
         wl-clipboard
-        kitty
         grim
         slurp
         rofi
-        alacritty
         light
         kanshi
         networkmanager_dmenu

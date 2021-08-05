@@ -24,6 +24,7 @@ in
           "bg3"
           "bg4"
           "fg"
+          "fg0"
           "fg1"
           "fg2"
           "fg3"
@@ -43,6 +44,7 @@ in
           "light_purple"
           "light_aqua"
           "light_orange"
+          "light_gray"
         ]
       );
       fonts = {
@@ -60,10 +62,11 @@ in
       bg3 = "#665c54";
       bg4 = "#7c6f64";
       fg = "#ebdbb2";
+      fg0 = "#fbf1c7";
       fg1 = "#ebdbb2";
       fg2 = "#d5c4a1";
       fg3 = "#bdae93";
-      fg4 = "#fbf1c7";
+      fg4 = "#a89984";
       yellow = "#d79921";
       green = "#98971a";
       orange = "#d65d0e";
@@ -79,6 +82,7 @@ in
       light_purple = "#d3869b";
       light_aqua = "#8ec07c";
       light_orange = "#fe8019";
+      light_gray = "#928374";
     };
   };
 }

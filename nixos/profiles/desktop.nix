@@ -7,6 +7,7 @@
 
       ../profiles/workspace/sway/default.nix
       ../profiles/workspace/fonts.nix
+      ../profiles/workspace/kitty.nix
 
       ../profiles/applications/firefox.nix
 
