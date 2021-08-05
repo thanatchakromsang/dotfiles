@@ -72,7 +72,7 @@ in
             network = {
               format-wifi = "{essid}直";
               format-ethernet = "{ifname}:{ipaddr}/{cidr}";
-              format-disconnected = "Disconnected ⚠";
+              format-disconnected = "Disconnected⚠";
               format-alt = "{ifname}:{ipaddr}/{cidr}";
             };
             pulseaudio = {
