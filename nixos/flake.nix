@@ -70,5 +70,21 @@
             # extraArgs = { inputs = inputs; };
             specialArgs = { inherit inputs; };
           };
+          nixosConfigurations.canyon = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            modules = [
+              {
+                nixpkgs.overlays = overlays;
+                nixpkgs.config.allowUnfree = true;
+                home-manager.useUserPackages = true;
+                system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+              }
+              nixpkgs.nixosModules.notDetected
+              home-manager.nixosModules.home-manager
+              ./modules
+              ./machines/canyon/configuration.nix
+            ];
+            specialArgs = { inherit inputs; };
+          };
         };
 }

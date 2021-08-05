@@ -34,6 +34,7 @@
       ripgrep
       ranger
       unstable.neovim
+      unstable.bitwarden-cli
       zsh-powerlevel10k
     ];
 
