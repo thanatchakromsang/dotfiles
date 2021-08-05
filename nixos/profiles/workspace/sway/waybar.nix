@@ -79,10 +79,10 @@ in
               scroll-step = 1;
               format = "{volume}%{icon} {format_source}";
               format-bluetooth = "{volume}%";
-              format-bluetooth-muted = "muted";
+              format-bluetooth-muted = "muted";
               format-source = "{volume}%";
               format-source-muted = "muted";
-              format-muted = "muted {format_source}";
+              format-muted = "muted {format_source}";
               format-icons = {
                 headphone = "";
                 hands-free = "";
