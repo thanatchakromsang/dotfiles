@@ -58,7 +58,6 @@ in
     # ~/.config symlinks
     xdg.configFile = {
       "nvim" = { source = "${configsDir}/nvim"; recursive = true; };
-      "lazygit/config.yml" = { source = "${configsDir}/lazygit/config.yml"; force = true; };
       "ranger" = { source = "${configsDir}/ranger"; recursive = true; };
       "zathurarc".source = "${configsDir}/zathura/zathurarc";
     };

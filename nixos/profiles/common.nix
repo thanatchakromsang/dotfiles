@@ -9,6 +9,8 @@
       ../services/ntp.nix
       ../services/dns.nix
       ../services/localization.nix
+
+      ./workspace/lazygit.nix
     ];
 
   environment.systemPackages = with pkgs;
@@ -31,7 +33,6 @@
       gnupg
       ripgrep
       ranger
-      lazygit
       unstable.neovim
       zsh-powerlevel10k
     ];
