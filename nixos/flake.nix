@@ -64,7 +64,7 @@
               nixpkgs.nixosModules.notDetected
               home-manager.nixosModules.home-manager
               # sops-nix.nixosModules.sops
-              ./modules/default.nix
+              ./modules
               ./machines/t14s/configuration.nix
             ];
             # extraArgs = { inputs = inputs; };
