@@ -20,9 +20,14 @@ in
         ) [
           "bg"
           "bg1"
+          "bg2"
           "bg3"
+          "bg4"
           "fg"
+          "fg1"
+          "fg2"
           "fg3"
+          "fg4"
           "yellow"
           "green"
           "orange"
@@ -51,9 +56,14 @@ in
     themes.colors = {
       bg = "#282828";
       bg1 = "#3c3836";
+      bg2 = "#504945";
       bg3 = "#665c54";
+      bg4 = "#7c6f64";
       fg = "#ebdbb2";
+      fg1 = "#ebdbb2";
+      fg2 = "#d5c4a1";
       fg3 = "#bdae93";
+      fg4 = "#fbf1c7";
       yellow = "#d79921";
       green = "#98971a";
       orange = "#d65d0e";
