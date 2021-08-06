@@ -41,9 +41,8 @@ in
         wl-clipboard
         grim
         slurp
-        rofi
         light
-        kanshi
+        # kanshi
       ];
     };
     light.enable = true;

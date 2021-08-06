@@ -39,6 +39,10 @@
     rustup
     rust-analyzer
 
+    # Jsonnet
+    go-jsonnet
+    jsonnet-bundler
+
     # Lua
     sumneko-lua-language-server
 

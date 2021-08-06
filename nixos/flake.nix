@@ -36,11 +36,16 @@
           );
         };
         overlays = [
-          # (
-          #   self: super: {
-          #     rofi-bluetooth = super.callPackage ./packages/rofi-bluetooth;
-          #   }
-          # )
+          (
+            self: super: {
+              rofi = super.fetchFromGitHub {
+                owner = "ibonn";
+                repo = "rofi";
+                rev = "ab1ce4a4ca3ea236af1cbf13ec60ecc27b7e8fb8";
+                sha256 = "0925ki783hf1bil52s6adwm3c4j15c38p4m5243i0imh8hzcc1f6";
+              };
+            }
+          )
           # (
           #   self: super: {
           #     bitwarden-rofi = super.callPackage ./packages/bitwarden-rofi;
