@@ -11,7 +11,7 @@ in
         {
           layer = "top";
           position = "top";
-          height = 20;
+          height = 24;
           modules-left = [ "sway/workspaces" "sway/mode" "sway/window" ];
           modules-center = [ "clock" ];
           modules-right = [
