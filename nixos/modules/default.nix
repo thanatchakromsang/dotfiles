@@ -9,6 +9,10 @@ let
   };
 in
 {
+  imports = [
+    ./waybar.nix
+  ];
+
   options = {
     themes = {
       colors = builtins.listToAttrs (

@@ -2,17 +2,19 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
     [
       ./hardware-configuration.nix
+      ./override.nix
 
       ../../profiles/workstation.nix
       ../../profiles/desktop.nix
       ../../profiles/notebook.nix
       ../../profiles/development.nix
+      # ../../profiles/streaming.nix
 
       ../../users/thanatchaya/personal.nix
     ];

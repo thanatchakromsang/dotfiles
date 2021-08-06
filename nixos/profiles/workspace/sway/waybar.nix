@@ -2,16 +2,21 @@
 let
   colors = config.themes.colors;
   fonts = config.themes.fonts;
+  waybar = config.themes.waybar;
 in
 {
-  home-manager.users.thanatchaya = { pkgs, config, ... }: {
+  themes.waybar = {
+    height = 24;
+  };
+
+  home-manager.users.thanatchaya = {
     programs.waybar = {
       enable = true;
       settings = [
         {
           layer = "top";
           position = "top";
-          height = 24;
+          height = waybar.height;
           modules-left = [ "sway/workspaces" "sway/mode" "sway/window" ];
           modules-center = [ "clock" ];
           modules-right = [
