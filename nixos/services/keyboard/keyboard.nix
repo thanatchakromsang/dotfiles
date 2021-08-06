@@ -12,4 +12,10 @@
     languages   = [ "th" ];
     symbolsFile = ./pat_modern;
   };
+
+  services.xserver.extraLayouts.manoonchai = {
+    description = "TH layout generated using Algorithm and AI";
+    languages   = [ "th" ];
+    symbolsFile = ./manoonchai;
+  };
 }
