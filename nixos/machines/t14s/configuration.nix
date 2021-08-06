@@ -39,7 +39,7 @@
 
   networking = {
     hostName = "t14s";
-    domain = "lan";
+    domain = "local";
   };
 
   system.stateVersion = "21.05";

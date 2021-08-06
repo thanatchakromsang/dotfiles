@@ -39,7 +39,7 @@
 
   networking = {
     hostName = "canyon";
-    domain = "lan";
+    domain = "local";
   };
 
   system.stateVersion = "21.05";
