@@ -48,7 +48,6 @@ in
       font = "${fonts.sansSerif.family} ${toString fonts.sansSerif.size}";
       borderWidth = 3;
       rowHeight = 1;
-      # FIXME(rofi): using terminal variable from config
       terminal = "${pkgs.kitty}/bin/kitty";
       separator = "none";
       scrollbar = false;

@@ -77,8 +77,8 @@ in
 
         enabled_layouts grid,fat, horizontal, stack, tall, vertical
 
-        scrollback_pager nvim -u NONE -c "set norelativenumber nonumber nolist showtabline=0 foldcolumn=0 laststatus=0" -c "autocmd TermOpen * normal G" -c "vnoremap y myy`y:qa!<CR>" -c "map q :qa!<CR>" -c "map i <nop>" -c "set clipboard+=unnamedplus" -c "silent write! /tmp/kitty_scrollback_buffer | te cat /tmp/kitty_scrollback_buffer - "
-        
+        scrollback_pager ${pkgs.neovim}/bin/nvim -u NONE -c "set norelativenumber nonumber nolist showtabline=0 foldcolumn=0 laststatus=0" -c "autocmd TermOpen * normal G" -c "vnoremap y myy`y:qa!<CR>" -c "map q :qa!<CR>" -c "map i <nop>" -c "set clipboard+=unnamedplus" -c "silent write! /tmp/kitty_scrollback_buffer | te cat /tmp/kitty_scrollback_buffer - "
+
         ${style}
       '';
       keybindings = {
