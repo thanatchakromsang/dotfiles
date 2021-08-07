@@ -10,10 +10,6 @@
       url = "github:nix-community/home-manager/release-21.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # rofi-bluetooth = {
-    #   url = "github:nickclyde/rofi-bluetooth";
-    #   flake = false;
-    # };
   };
 
   outputs =
@@ -36,21 +32,11 @@
           );
         };
         overlays = [
-          (
-            self: super: {
-              rofi = super.fetchFromGitHub {
-                owner = "ibonn";
-                repo = "rofi";
-                rev = "ab1ce4a4ca3ea236af1cbf13ec60ecc27b7e8fb8";
-                sha256 = "0925ki783hf1bil52s6adwm3c4j15c38p4m5243i0imh8hzcc1f6";
-              };
-            }
-          )
-          # (
-          #   self: super: {
-          #     bitwarden-rofi = super.callPackage ./packages/bitwarden-rofi;
-          #   }
-          # )
+          # TODO: Refactor custom overlay
+          (self: super: {
+            bitwarden-rofi = super.callPackage ./packages/bitwarden-rofi { };
+            rofi-bluetooth = super.callPackage ./packages/rofi-bluetooth { };
+          })
           unstable-overlay
           nur.overlay
         ];
@@ -72,7 +58,6 @@
               ./modules
               ./machines/t14s/configuration.nix
             ];
-            # extraArgs = { inputs = inputs; };
             specialArgs = { inherit inputs; };
           };
           nixosConfigurations.canyon = nixpkgs.lib.nixosSystem {

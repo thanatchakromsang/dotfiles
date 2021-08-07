@@ -1,11 +1,11 @@
 { stdenv, fetchFromGitHub, pkgs, lib }:
 
-# { lib, pkgs }:
-
 # Get updated src info using following command
 # nix-shell -p nix-prefetch-git
 # nix-prefetch-git --url https://github.com/nickclyde/rofi-bluetooth.git
 stdenv.mkDerivation rec {
+  # without this rebuild cause SEGV
+  name = "rofi-bluetooth";
   pname = "rofi-bluetooth";
 
   src = fetchFromGitHub {
@@ -17,15 +17,14 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     mkdir -p $out/bin
-    install -D rofi-bluetooth $out/bin/rofi-bluetooth
+    cp rofi-bluetooth $out/bin/rofi-bluetooth
   '';
-
-  doCheck = false;
 
   meta = with lib; {
     maintainers = with maintainers; [ thanatchaya ];
     license = licenses.gpl3;
     description =
       "A script that generates a rofi menu that uses bluetoothctl to connect to bluetooth devices and display status info.";
+    platforms = platforms.linux;
   };
 }
