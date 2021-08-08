@@ -36,10 +36,21 @@ let
   '';
 in
 {
-  # make swaylock work properly without `programs.sway.enable`
-  security.pam.services.swaylock = {};
+  programs.sway.enable = true;
+  programs.light.enable = true;
 
   home-manager.users.thanatchaya = {
+    programs.zsh.loginExtra = ''
+      [[ "$(tty)" == /dev/tty1 ]] && sway
+    '';
+
+    home.sessionVariables = {
+      _JAVA_AWT_WM_NONREPARENTING = "1";
+      XDG_SESSION_TYPE = "wayland";
+      QT_QPA_PLATFORM = "wayland";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    };
+
     home.packages = with pkgs; [
       wl-clipboard
     ];
