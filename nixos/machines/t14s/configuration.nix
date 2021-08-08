@@ -8,6 +8,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ./override.nix
 
       ../../profiles/workstation.nix
       ../../profiles/desktop.nix
