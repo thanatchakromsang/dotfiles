@@ -14,6 +14,20 @@ in
 {
   home-manager.users.thanatchaya = {
     wayland.windowManager.sway = {
+      config = {
+        workspaceOutputAssign = [
+          { workspace = "1"; output = "HDMI-A-1"; }
+          { workspace = "2"; output = "HDMI-A-1"; }
+          { workspace = "3"; output = "HDMI-A-1"; }
+          { workspace = "4"; output = "HDMI-A-1"; }
+          { workspace = "5"; output = "eDP-1"; }
+          { workspace = "6"; output = "eDP-1"; }
+          { workspace = "7"; output = "eDP-1"; }
+          { workspace = "8"; output = "eDP-1"; }
+          { workspace = "9"; output = "eDP-1"; }
+          { workspace = "10"; output = "eDP-1"; }
+        ];
+      };
       extraConfig = ''
         bindswitch --reload --locked lid:on output ${monitor} disable
         bindswitch --reload --locked lid:off output ${monitor} enable
