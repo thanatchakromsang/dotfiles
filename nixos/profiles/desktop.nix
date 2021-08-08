@@ -22,7 +22,6 @@
     tdesktop # telegram
     bluez
     pavucontrol
-    pulseaudio
   ];
 
   # Sound / Screen sharing
