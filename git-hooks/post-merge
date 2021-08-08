@@ -1,5 +1,5 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 echo "nix flakes rebuild"
 
-sudo nixos-rebuild switch --flake ./nixos
+sudo nixos-rebuild switch --flake "$HOME"/.dotfiles/nixos
