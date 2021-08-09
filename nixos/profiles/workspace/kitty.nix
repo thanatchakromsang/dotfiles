@@ -46,7 +46,7 @@ let
     inactive_tab_background ${colors.bg3}
     inactive_tab_font_style normal
 
-    active_border_color     ${colors.light_yellow}
+    active_border_color     ${colors.aqua}
     inactive_border_color   ${colors.bg3}
   '';
 in

@@ -176,21 +176,21 @@ in
               text = color.bg1;
               border = color.aqua;
               background = color.aqua;
-              childBorder = color.fg2;
+              childBorder = color.aqua;
               indicator = color.aqua;
             };
             focusedInactive = {
               text = color.bg1;
               border = color.purple;
               background = color.purple;
-              childBorder = color.bg2;
+              childBorder = color.purple;
               indicator = color.bg1;
             };
             unfocused = {
               text = color.bg1;
               border = color.gray;
               background = color.gray;
-              childBorder = color.bg1;
+              childBorder = color.gray;
               indicator = color.gray;
             };
             urgent = {
