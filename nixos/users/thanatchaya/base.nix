@@ -37,6 +37,10 @@ in
 
         [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
       '';
+      # TODO(sshconfig): Remove this when `ssh -V` is > 8.7 and use sshconfig to control TERM instead following https://wiki.archlinux.org/title/kitty under `Terminal issues with SSH` section
+      sessionVariables = {
+        TERM = "xterm-256color";
+      };
     };
 
     programs.ssh = {
