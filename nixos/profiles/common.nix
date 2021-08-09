@@ -88,7 +88,7 @@
     pbcopy = "wl-copy";
     pbpaste = "wl-paste";
     g = "lazygit";
-    r = ". ranger";
+    r = "ranger";
     c = "clear";
   };
 }
