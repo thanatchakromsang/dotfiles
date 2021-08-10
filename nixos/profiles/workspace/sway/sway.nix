@@ -61,7 +61,7 @@ in
       wrapperFeatures.gtk = true;
       config = rec {
         modifier = "Mod4";
-        workspaceAutoBackAndForth = true;
+        workspaceAutoBackAndForth = false;
         fonts = {
           names = [ config.themes.fonts.sansSerif.family ];
           style = "Regular";
