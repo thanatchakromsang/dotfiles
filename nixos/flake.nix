@@ -33,10 +33,24 @@
         };
         overlays = [
           # TODO: Refactor custom overlay
-          (self: super: {
-            bitwarden-rofi = super.callPackage ./packages/bitwarden-rofi { };
-            rofi-bluetooth = super.callPackage ./packages/rofi-bluetooth { };
-          })
+          (
+            self: super: {
+              bitwarden-rofi = super.callPackage ./packages/bitwarden-rofi {};
+              rofi-bluetooth = super.callPackage ./packages/rofi-bluetooth {};
+              # Override to create `kubectl-ctx`, `kubectl-ns` as kubectl plugins
+              kubectx = super.kubectx.overrideAttrs (
+                old: {
+                  postInstall = ''
+                    ${old.postInstall}
+
+                    mkdir -p $out/bin
+                    cp kubectx $out/bin/kubectl-ctx
+                    cp kubens $out/bin/kubectl-ns
+                  '';
+                }
+              );
+            }
+          )
           unstable-overlay
           nur.overlay
         ];

@@ -1,5 +1,4 @@
 { config, pkgs, lib, ... }:
-
 {
   environment.systemPackages = with pkgs; [
     # Go
@@ -63,7 +62,7 @@
 
     # Ops Toolsets
     unstable.kubectl
-    unstable.kubectx
+    kubectx
     unstable.kubernetes-helm
     unstable.kind
     unstable.fluxcd
