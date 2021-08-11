@@ -14,13 +14,12 @@ in
   programs.ssh.startAgent = true;
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "curses";
   };
   services.gnome.gnome-keyring.enable = true;
 
   networking = {
     networkmanager.enable = true;
-    networkmanager.insertNameservers = 
+    networkmanager.insertNameservers =
       [
         "1.1.1.1"
         "8.8.8.8"
