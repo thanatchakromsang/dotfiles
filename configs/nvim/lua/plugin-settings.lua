@@ -48,15 +48,15 @@ require'lightspeed'.setup {
     full_inclusive_prefix_key = '<c-x>'
 }
 
-function repeat_ft(reverse)
+function Repeat_ft(reverse)
     local ls = require 'lightspeed'
     ls.ft['instant-repeat?'] = true
     ls.ft:to(reverse, ls.ft['prev-t-like?'])
 end
-vim.api.nvim_set_keymap('n', ';', '<cmd>lua repeat_ft(false)<cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('x', ';', '<cmd>lua repeat_ft(false)<cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', ',', '<cmd>lua repeat_ft(true)<cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('x', ',', '<cmd>lua repeat_ft(true)<cr>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', ';', '<cmd>lua Repeat_ft(false)<cr>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('x', ';', '<cmd>lua Repeat_ft(false)<cr>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', ',', '<cmd>lua Repeat_ft(true)<cr>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('x', ',', '<cmd>lua Repeat_ft(true)<cr>', {noremap = true, silent = true})
 
 -- Match up
 vim.g.matchup_matchparen_offscreen = {method = 'popup'}
