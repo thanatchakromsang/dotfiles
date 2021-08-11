@@ -72,8 +72,8 @@ in
           hideEdgeBorders = "smart";
           commands = [
             {
+              criteria = { title = "Firefox — Sharing Indicator"; };
               command = "floating enable, kill";
-              criteria = { title = "Firefox - Sharing Indicator"; };
             }
           ];
         };
@@ -209,7 +209,7 @@ in
         defaultWorkspace = "1";
         workspaceOutputAssign = [];
         focus = {
-          followMouse = false;
+          followMouse = true;
           forceWrapping = true;
         };
         keybindings = {
