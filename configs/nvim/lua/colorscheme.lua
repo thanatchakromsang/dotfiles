@@ -1,6 +1,4 @@
 vim.cmd('colorscheme gruvbox')
-vim.cmd('syntax enable')
-vim.cmd('syntax on')
 
 vim.o.termguicolors=true
 
@@ -40,7 +38,7 @@ vim.api.nvim_exec([[
 ]], false)
 
 -- Indent Blankline
-vim.cmd('hi link IndentBlanklineContextChar GruvboxGray')
+vim.cmd('hi link IndentBlanklineContextChar GruvboxYellow')
 
 -- folke/lsp-trouble.nvim
 vim.api.nvim_exec([[
