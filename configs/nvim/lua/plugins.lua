@@ -66,15 +66,13 @@ return require('packer').startup(function(use)
     use 'kyazdani42/nvim-tree.lua'
 
     -- Appearance
-    use 'gruvbox-community/gruvbox'
+    use 'sainnhe/gruvbox-material'
     -- use {'RRethy/vim-hexokinase', run = 'make hexokinase'} -- XXX: Enable when work more with colors
     use {'lukas-reineke/indent-blankline.nvim'}
 
     -- Git
     use 'lewis6991/gitsigns.nvim'
-    use 'tpope/vim-fugitive'
-    use 'tpope/vim-rhubarb'
-    use 'shumphrey/fugitive-gitlab.vim'
+    use { 'TimUntersberger/neogit', requires = {'nvim-lua/plenary.nvim', 'sindrets/diffview.nvim' } }
 
     -- General Plugins
     use 'editorconfig/editorconfig-vim'

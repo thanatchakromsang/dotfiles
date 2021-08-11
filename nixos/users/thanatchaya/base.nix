@@ -60,7 +60,7 @@ in
 
     # ~/.config symlinks
     xdg.configFile = {
-      "nvim" = { source = "${configsDir}/nvim"; recursive = true; };
+      # "nvim" = { source = "${configsDir}/nvim"; recursive = true; };
       "ranger" = { source = "${configsDir}/ranger"; recursive = true; };
     };
 

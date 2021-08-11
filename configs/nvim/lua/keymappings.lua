@@ -95,6 +95,14 @@ map('n', '<leader>gn', ':lua require"gitsigns".next_hunk()<CR>', {noremap = true
 map('n', '<leader>gp', ':lua require"gitsigns".prev_hunk()<CR>', {noremap = true, silent = true})
 map('n', '<leader>gbl', ':lua require"gitsigns".blame_line()<CR>', {noremap = true, silent = true})
 
+-- Neogit
+map('n', '<leader>gg', ':Neogit kind=vsplit<CR>', {noremap = true, silent = true})
+
+-- Diffview.nvim
+map('n', '<leader>gdd', ':DiffviewOpen<CR>', {noremap = true, silent = true})
+map('n', '<leader>gdc', ':DiffviewClose<CR>', {noremap = true, silent = true})
+map('n', '<leader>gdr', ':DiffviewRefresh<CR>', {noremap = true, silent = true})
+
 -- split
 map('n', '<localleader>b', ':split<CR>', {noremap = true, silent = true})
 map('n', '<localleader>v', ':vsplit<CR>', {noremap = true, silent = true})

@@ -1,6 +1,9 @@
-vim.cmd('colorscheme gruvbox')
-
+vim.g.gruvbox_material_background = 'soft'
+vim.g.gruvbox_material_background = 'soft'
+vim.g.gruvbox_material_better_performance = 1
 vim.o.termguicolors=true
+vim.cmd('colorscheme gruvbox-material')
+vim.cmd('set background=dark')
 
 vim.cmd('hi TelescopeBorder         guifg=#665c54')
 vim.cmd('hi TelescopePromptBorder   guifg=#665c54')
@@ -11,7 +14,7 @@ vim.cmd('hi TelescopePreviewBorder  guifg=#665c54')
 vim.api.nvim_exec([[
     augroup highlight_yank
         autocmd!
-        au TextYankPost * silent! lua vim.highlight.on_yank { higroup='IncSearch', timeout=500 }
+        au TextYankPost * silent! lua vim.highlight.on_yank { higroup='Search', timeout=500 }
     augroup END
 ]], false)
 

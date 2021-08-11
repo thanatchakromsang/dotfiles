@@ -137,7 +137,10 @@ lspconfig.gopls.setup {
         custom_attach(client)
     end,
     capabilities = capabilities,
-    init_options = {usePlaceholders = true, completeUnimported = true}
+    init_options = {usePlaceholders = true, completeUnimported = true},
+    flags = {
+      debounce_text_changes = 150,
+    },
 }
 
 -----------------------------------------------------
@@ -156,7 +159,10 @@ lspconfig.sumneko_lua.setup {
             workspace = {library = {[vim.fn.expand('$VIMRUNTIME/lua')] = true, [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true}},
             telemetry = {enable = false}
         }
-    }
+    },
+    flags = {
+      debounce_text_changes = 150,
+    },
 }
 
 -----------------------------------------------------
@@ -173,7 +179,10 @@ lspconfig.yamlls.setup {
             -- },
             schemaStore = {enable = true}
         }
-    }
+    },
+    flags = {
+      debounce_text_changes = 150,
+    },
 }
 
 -----------------------------------------------------
@@ -187,7 +196,10 @@ lspconfig.tsserver.setup {
         custom_attach(client)
     end,
     capabilities = capabilities,
-    filetypes = {"javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx"}
+    filetypes = {"javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx"},
+    flags = {
+      debounce_text_changes = 150,
+    },
 }
 
 -----------------------------------------------------
@@ -269,7 +281,10 @@ lspconfig.terraformls.setup {
         client.resolved_capabilities.signature_help = false
         custom_attach(client)
     end,
-    capabilities = capabilities
+    capabilities = capabilities,
+    flags = {
+      debounce_text_changes = 150,
+    },
 }
 
 -----------------------------------------------------
@@ -279,4 +294,12 @@ lspconfig.terraformls.setup {
 -- Avaliable LSP https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
 local servers = {'dockerls', 'rust_analyzer', 'pyright', 'vimls', 'rnix'}
 
-for _, server in ipairs(servers) do lspconfig[server].setup {on_init = custom_init, on_attach = custom_attach, capabilities = capabilities} end
+for _, server in ipairs(servers) do lspconfig[server].setup {
+        on_init = custom_init,
+        on_attach = custom_attach,
+        capabilities = capabilities,
+        flags = {
+            debounce_text_changes = 150
+        },
+    }
+end

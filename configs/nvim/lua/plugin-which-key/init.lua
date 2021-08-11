@@ -79,8 +79,13 @@ wk.register({
         },
         g = {
             name = "+git",
-            d = {":Gdiffsplit<CR>", "git diff"},
-            g = {":FloatermNew --height=0.9 --width=0.9 --name=git --wintype=float lazygit<CR>", "lazygit"},
+            g = {"neogit"},
+            d = {
+                name = "+diff",
+                d = {"diff open"},
+                c = {"diff close"},
+                r = {"diff refresh"},
+            },
             S = {":Telescope git_stash<CR>", "git stash"},
             c = {":Telescope git_bcommits<CR>", "git current file history"},
             C = {":Telescope git_commits<CR>", "git history"},
@@ -91,15 +96,11 @@ wk.register({
             r = {"reset hunk"},
             R = {"reset buffer"},
             P = {"preview hunk"},
-            B = {"browse git"},
-            b = {name = "+blame", l = {"blame line"}, b = {":Git blame<CR>", "blame buffer"}}
+            b = {name = "+blame", l = {"blame line"}}
         },
         t = {
             name = "+terminal",
-            g = {":FloatermNew --height=0.9 --width=0.9 --wintype=float --name=git lazygit<CR>", "lazygit"},
-            d = {":FloatermNew --height=0.8 --width=0.8 --wintype=float --name=docker lazydocker<CR>", "docker"},
             r = {":FloatermNew --height=0.8 --width=0.8 --wintype=float --name=ranger ranger<CR>", "ranger"},
-            h = {":FloatermNew --height=0.8 --width=0.8 --wintype=float --name=htop htop<CR>", "htop"},
             t = {":FloatermToggle<CR>", "toggle"}
         },
         T = {
@@ -118,12 +119,12 @@ wk.register({
     nowait = false -- use `nowait` when creating keymaps
 })
 
-wk.register({["<leader>"] = {name = "leader", g = {name = "+git", B = {"browse git visual line"}}}}, {
-    mode = "v",
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = false -- use `nowait` when creating keymaps
-})
+-- wk.register({["<leader>"] = {name = "leader", g = {name = "+git", B = {"browse git visual line"}}}}, {
+--     mode = "v",
+--     silent = true, -- use `silent` when creating keymaps
+--     noremap = true, -- use `noremap` when creating keymaps
+--     nowait = false -- use `nowait` when creating keymaps
+-- })
 
 -- Normal Local Leader
 wk.register({

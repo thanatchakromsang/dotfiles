@@ -167,3 +167,31 @@ vim.g.symbols_outline = {
     keymaps = {close = "<Esc>", goto_location = "<Cr>", focus_location = "o", hover_symbol = "<C-space>", rename_symbol = "r", code_actions = "a"},
     lsp_blacklist = {}
 }
+
+-- neogit
+require("neogit").setup {
+  disable_signs = false,
+  disable_context_highlighting = true,
+  disable_commit_confirmation = false,
+  -- customize displayed signs
+  integrations = {
+    -- Requires you to have `sindrets/diffview.nvim` installed.
+    -- use {
+    --   'TimUntersberger/neogit',
+    --   requires = {
+    --     'nvim-lua/plenary.nvim',
+    --     'sindrets/diffview.nvim'
+    --   }
+    -- }
+    --
+    diffview = true
+  },
+  -- override/add mappings
+  mappings = {
+    -- modify status buffer mappings
+    status = {
+      -- Adds a mapping with "B" as key that does the "BranchPopup" command
+      ["B"] = "BranchPopup",
+    }
+  }
+}
