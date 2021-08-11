@@ -70,7 +70,6 @@ in
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         bitwarden
         darkreader
-        grammarly
         ublock-origin
         vimium
         # tab-session-manager
@@ -78,7 +77,7 @@ in
         # i-dont-care-about-cookies
         # refined-github
         # tridactyl # vimium alternative
-        # leechblock-ng
+        leechblock-ng
       ];
     };
   };
