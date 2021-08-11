@@ -39,8 +39,6 @@ map('x', 'J', ':move \'<-2<CR>gvgv', {noremap = true, silent = true})
 map('x', 'K', ':move \'>+1<CR>gv-gv', {noremap = true, silent = true})
 map('i', '<C-j>', '<esc>:m .+1<CR>==', {noremap = true, silent = true})
 map('i', '<C-k>', '<esc>:m .-2<CR>==', {noremap = true, silent = true})
-map('n', '<leader>j', ':move .+1<CR>==', {noremap = true, silent = true})
-map('n', '<leader>k', ':move .-2<CR>==', {noremap = true, silent = true})
 
 -- better indenting
 map('v', '<', '<gv', {noremap = true, silent = true})
@@ -88,10 +86,6 @@ map('n', 'Q', '<nop>', {noremap = true, silent = true})
 -- Bufferline
 map('n', 'gb', ':BufferLinePick<CR>', {noremap = true, silent = true})
 
--- Fugitive
-map('n', '<leader>gB', ':GBrowse<CR>', {noremap = true, silent = true})
-map('v', '<leader>gB', ':GBrowse<CR>', {noremap = true, silent = true})
-
 -- Gitsigns
 map('n', '<leader>gs', ':lua require"gitsigns".stage_hunk()<CR>', {noremap = true, silent = true})
 map('n', '<leader>gu', ':lua require"gitsigns".undo_stage_hunk()<CR>', {noremap = true, silent = true})
@@ -106,7 +100,7 @@ map('n', '<localleader>b', ':split<CR>', {noremap = true, silent = true})
 map('n', '<localleader>v', ':vsplit<CR>', {noremap = true, silent = true})
 
 -- local leader misc
-map('n', '<localleader>c', ':bdelete<CR>', {noremap = true, silent = true})
+map('n', '<localleader>c', ':Bdelete<CR>', {noremap = true, silent = true})
 map('n', '<localleader>w', ':close<CR>', {noremap = true, silent = true})
 map('n', '<localleader>.', ':lcd %:p:h<CR>', {noremap = true, silent = true}) -- set working dir
 
