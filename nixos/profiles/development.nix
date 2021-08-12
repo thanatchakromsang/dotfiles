@@ -44,6 +44,7 @@
 
     # Lua
     sumneko-lua-language-server
+    luaformatter
 
     # General
     unstable.efm-langserver
