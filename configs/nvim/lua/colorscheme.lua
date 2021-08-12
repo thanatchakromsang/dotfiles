@@ -1,9 +1,9 @@
-vim.g.gruvbox_material_background = 'soft'
-vim.g.gruvbox_material_background = 'soft'
+vim.g.gruvbox_material_background = 'medium'
+vim.g.gruvbox_material_background = 'medium'
 vim.g.gruvbox_material_enable_italic = 0
 vim.g.gruvbox_material_disable_italic_comment = 1
 vim.g.gruvbox_material_better_performance = 1
-vim.o.termguicolors=true
+vim.o.termguicolors = true
 vim.cmd('colorscheme gruvbox-material')
 vim.cmd('set background=dark')
 
@@ -20,30 +20,23 @@ vim.api.nvim_exec([[
     augroup END
 ]], false)
 
--- vim.cmd('hi link QuickScopePrimary IncSearch')
--- vim.cmd('hi link QuickScopeSecondary Search')
--- lightspeed
--- vim.api.nvim_exec([[
---     hi link LightspeedOneCharMatch IncSearch
--- ]], false)
-
 -- WhichKey
 vim.api.nvim_exec([[
-    hi link WhichKey GruvboxYellow
-    hi link WhichKeyGroup GruvboxRedBold
-    hi link WhichKeyDesc GruvboxGreen
+    hi link WhichKey Yellow
+    hi link WhichKeyGroup RedBold
+    hi link WhichKeyDesc Green
 ]], false)
 
 -- Lsp
 vim.api.nvim_exec([[
-    hi link LspDiagnosticsSignError GruvboxRedSign
-    hi link LspDiagnosticsSignWarning GruvboxYellowSign
-    hi link LspDiagnosticsSignInformation GruvboxGreenSign
-    hi link LspDiagnosticsSignHint GruvboxBlueSign
+    hi link LspDiagnosticsSignError RedSign
+    hi link LspDiagnosticsSignWarning YellowSign
+    hi link LspDiagnosticsSignInformation GreenSign
+    hi link LspDiagnosticsSignHint BlueSign
 ]], false)
 
 -- Indent Blankline
-vim.cmd('hi link IndentBlanklineContextChar GruvboxYellow')
+vim.cmd('hi link IndentBlanklineContextChar Yellow')
 
 -- folke/lsp-trouble.nvim
 vim.api.nvim_exec([[
@@ -54,13 +47,18 @@ vim.api.nvim_exec([[
     hi link LspTroubleFoldIcon LspDiagnosticsDefaultWarning
 ]], false)
 
--- NvimTree
-vim.cmd('hi link NvimTreeIndentMarker GruvboxBg4')
-vim.cmd('hi link NvimTreeFolderIcon GruvboxFg4')
-vim.cmd('hi link NvimTreeRootFolder GruvboxPurpleBold')
-
 -- WhichKey
 vim.cmd('hi link WhichKeyFloat Normal')
 
 -- symbols-outline.nvim
 vim.cmd('hi link FocusedSymbol IncSearch')
+
+-- Neogit
+vim.api.nvim_exec([[
+    hi link NeogitHunkHeader TabLine
+    hi link NeogitHunkHeaderHighlight TabLine
+    sign define NeogitOpen:section texthl=StatusLine
+    sign define NeogitClosed:section texthl=StatusLine
+    sign define NeogitOpen:item texthl=StatusLine
+    sign define NeogitClosed:item texthl=StatusLine
+]], false)
