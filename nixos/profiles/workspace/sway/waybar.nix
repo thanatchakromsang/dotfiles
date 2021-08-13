@@ -7,6 +7,14 @@ in
 {
   themes.waybar = {
     height = 24;
+    modules-right = [
+      "pulseaudio"
+      "network"
+      "backlight"
+      "battery"
+      "sway/language"
+      "idle_inhibitor"
+    ];
   };
 
   home-manager.users.thanatchaya = {
@@ -19,14 +27,7 @@ in
           height = waybar.height;
           modules-left = [ "sway/workspaces" "sway/mode" "sway/window" ];
           modules-center = [ "clock" ];
-          modules-right = [
-            "pulseaudio"
-            "network"
-            "backlight"
-            "battery"
-            "sway/language"
-            "idle_inhibitor"
-          ];
+          modules-right = waybar.modules-right;
           modules = {
             "sway/workspaces" = {
               disable-scroll = true;

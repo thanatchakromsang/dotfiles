@@ -9,6 +9,12 @@
 
   themes.waybar = {
     height = lib.mkForce 20;
+    modules-right = lib.mkForce [
+      "pulseaudio"
+      "network"
+      "sway/language"
+      "idle_inhibitor"
+    ];
   };
 
   home-manager.users.thanatchaya = {
