@@ -1,20 +1,7 @@
--- General mappings
-require('plugins')
+require('options')
 require('keymappings')
-require('settings')
-require('colorscheme')
-
--- Plugins settings
-require('plugin-settings')
-require('plugin-galaxyline')
-require('plugin-autopairs')
-require('plugin-compe')
-require('plugin-bufferline')
-require('plugin-treesitter')
-require('plugin-telescope')
-require('plugin-which-key')
-require('plugin-nvimtree')
-
--- LSP
-require('lsp')
-require('lsp/dap') -- debugger
+require('utils')
+-- require('plugin-list')
+-- require('plugin-settings')
+-- require('theme')
+-- require('plugins')

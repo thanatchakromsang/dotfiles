@@ -127,3 +127,10 @@ map("n", "<leader>e", ":NvimTreeToggle<CR>", {silent = true, noremap = true})
 
 -- Telescope
 map('n', 'gb', ':Telescope buffers<CR>', {noremap = true, silent = true})
+
+-- Packer commands till because we are not loading it at startup
+vim.cmd("silent! command PackerCompile lua require 'plugin-list' require('packer').compile()")
+vim.cmd("silent! command PackerInstall lua require 'plugin-list' require('packer').install()")
+vim.cmd("silent! command PackerStatus lua require 'plugin-list' require('packer').status()")
+vim.cmd("silent! command PackerSync lua require 'plugin-list' require('packer').sync()")
+vim.cmd("silent! command PackerUpdate lua require 'plugin-list' require('packer').update()")

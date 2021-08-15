@@ -13,7 +13,7 @@ require'nvim-treesitter.configs'.setup {
     },
 
     autotag = {enable = true},
-    rainbow = {enable = false},
+    rainbow = {enable = true},
 
     refactor = {
         -- smart_rename = {
@@ -21,8 +21,22 @@ require'nvim-treesitter.configs'.setup {
         -- },
     },
 
-    context_commentstring = {
-        enable = true
+    context_commentstring = {enable = true},
+
+    textobjects = {
+        select = {
+            enable = true,
+
+            -- Automatically jump forward to textobj, similar to targets.vim
+            lookahead = true,
+
+            keymaps = {
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["ac"] = "@class.outer",
+                ["ic"] = "@class.inner",
+            }
+        }
     }
 }
 

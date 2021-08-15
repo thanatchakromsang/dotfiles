@@ -1,5 +1,3 @@
-local trouble = require("trouble.providers.telescope")
-
 require("telescope").setup {
     defaults = {
         vimgrep_arguments = {"rg", "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case"},
@@ -30,8 +28,6 @@ require("telescope").setup {
         file_previewer = require"telescope.previewers".vim_buffer_cat.new,
         grep_previewer = require"telescope.previewers".vim_buffer_vimgrep.new,
         qflist_previewer = require"telescope.previewers".vim_buffer_qflist.new,
-
-        mappings = {i = {["<c-t>"] = trouble.open_with_trouble}, n = {["<c-t>"] = trouble.open_with_trouble}}
     },
     extensions = {
         media_files = {
