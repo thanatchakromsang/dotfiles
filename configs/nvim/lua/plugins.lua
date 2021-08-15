@@ -1,4 +1,4 @@
--- vim.cmd [[packadd packer.nvim]]
+vim.cmd [[packadd packer.nvim]]
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
@@ -46,7 +46,7 @@ return require('packer').startup(function(use)
     use 'nvim-treesitter/playground'
     use 'p00f/nvim-ts-rainbow'
     use 'JoosepAlviste/nvim-ts-context-commentstring' -- dynamically set commentstring based on treesitter
-    use 'sheerun/vim-polyglot'
+    -- use 'sheerun/vim-polyglot'
 
     -- Icons
     use 'ryanoasis/vim-devicons'
@@ -85,7 +85,7 @@ return require('packer').startup(function(use)
     -- use 'psliwka/vim-smoothie' -- smooth scrolling
     use 'moll/vim-bbye'
     use 'terrortylor/nvim-comment'
-    use {'iamcco/markdown-preview.nvim', run = 'cd app && npm install'}
+    -- use {'iamcco/markdown-preview.nvim', run = 'cd app && npm install'}
     use 'folke/which-key.nvim' -- i can't remember hotkey
     use 'voldikss/vim-floaterm' -- floating terminal
     -- use 'liuchengxu/vista.vim' -- lsp outline
@@ -93,7 +93,7 @@ return require('packer').startup(function(use)
     use 'andymass/vim-matchup'
     -- use 'justinmk/vim-sneak' -- movement on steroid
     -- use 'phaazon/hop.nvim' -- better easymotion
-    use 'tpope/vim-sleuth'
+    -- use 'tpope/vim-sleuth'
     use 'tpope/vim-repeat'
     use 'tpope/vim-surround'
     use 'wellle/targets.vim' -- vim text object on steroid

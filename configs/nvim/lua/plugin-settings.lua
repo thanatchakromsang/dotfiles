@@ -168,16 +168,13 @@ vim.g.symbols_outline = {
     lsp_blacklist = {}
 }
 
--- neogit
+-- Neogit
 require("neogit").setup {
     disable_signs = false,
     disable_context_highlighting = true,
     disable_commit_confirmation = false,
     -- customize displayed signs
-    signs = {
-        section = {"", ""},
-        item = {"", ""},
-    },
+    signs = {section = {"", ""}, item = {"", ""}},
     integrations = {
         -- Requires you to have `sindrets/diffview.nvim` installed.
         -- use {
@@ -195,7 +192,9 @@ require("neogit").setup {
         -- modify status buffer mappings
         status = {
             -- Adds a mapping with "B" as key that does the "BranchPopup" command
-            ["B"] = "BranchPopup"
+            ["B"] = "BranchPopup",
+            ["b"] = "",
+            ["za"] = "Toggle"
         }
     }
 }
