@@ -198,7 +198,12 @@ return require('packer').startup(function(use)
     }
     -- use 'psliwka/vim-smoothie' -- smooth scrolling
     use 'moll/vim-bbye'
-    use 'terrortylor/nvim-comment'
+    use {
+      'terrortylor/nvim-comment',
+      config = function()
+        require 'plugins.misc'.comment()
+      end
+    }
     use {
       'folke/which-key.nvim', -- i can't remember hotkey
       config = function()
@@ -207,6 +212,7 @@ return require('packer').startup(function(use)
     }
     use {
       'voldikss/vim-floaterm', -- floating terminal
+      cmd = {'FloatermNew', 'FloatermToggle'},
       config = function()
         require 'plugins.vim-floaterm'
       end
