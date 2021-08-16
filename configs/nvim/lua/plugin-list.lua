@@ -215,6 +215,9 @@ return require('packer').startup(function(use)
     use {
       'andymass/vim-matchup',
       event = 'CursorMoved',
+      config = function()
+        require 'plugins.misc'.matchup()
+      end
     }
     use 'tpope/vim-repeat'
     use 'tpope/vim-surround'
