@@ -94,7 +94,9 @@ return require('packer').startup(function(use)
     }
     -- TODO(refactoring.nvim): Support/revisit configuration
     use { 'ThePrimeagen/refactoring.nvim', opt = true }
-    -- use 'sheerun/vim-polyglot'
+
+    -- Individual Syntax highlights without Treesitter support
+    use 'google/vim-jsonnet'
 
     -- Icons
     use 'ryanoasis/vim-devicons'
