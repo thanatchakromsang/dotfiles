@@ -142,10 +142,7 @@ return require('packer').startup(function(use)
           require "plugins.telescope"
       end
     }
-    use {
-      'nvim-lua/popup.nvim',
-      after = 'plenary.nvim'
-    }
+    use 'nvim-lua/popup.nvim'
     use 'nvim-telescope/telescope-media-files.nvim'
 
 
@@ -161,7 +158,6 @@ return require('packer').startup(function(use)
     -- Git
     use {
       'lewis6991/gitsigns.nvim',
-      after = 'plenary.nvim',
       config = function()
         require 'plugins.gitsigns'
       end
