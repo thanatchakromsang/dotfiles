@@ -208,7 +208,6 @@ return require('packer').startup(function(use)
     }
     use {
       'voldikss/vim-floaterm', -- floating terminal
-      cmd = {'FloatermNew', 'FloatermToggle'},
       config = function()
         require 'plugins.vim-floaterm'
       end
