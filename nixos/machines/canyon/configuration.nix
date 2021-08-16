@@ -16,6 +16,7 @@
       ../../profiles/development.nix
       # ../../profiles/streaming.nix
       ../../profiles/gaming.nix
+      ../../profiles/keyboard.nix
 
       ../../users/thanatchaya/personal.nix
     ];
