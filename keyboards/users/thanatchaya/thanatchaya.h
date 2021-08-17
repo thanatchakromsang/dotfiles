@@ -321,4 +321,4 @@ enum user_layers {
 
 #define ______MEDR2_____ KC_MSTP, KC_MPLY
 #define _MEDR1_ _______
-#define _______MEDIA_R4__________ ______MEDL2_____, _MEDL1_
+#define _______MEDIA_R4__________ ______MEDR2_____, _MEDR1_
