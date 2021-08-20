@@ -46,8 +46,8 @@ map('v', '>', '>gv', {noremap = true, silent = true})
 
 -- ThePrimeagen recommended https://www.youtube.com/watch?v=hSHATqh8svM
 map('n', 'Y', 'yg_', {noremap = true}) -- Yank to end of line
-map('v', 'y', 'myy`y', {noremap = true }) -- Set mark after visual yanks
-map('v', 'Y', 'myY`y', {noremap = true }) -- Set mark after visual yanks
+map('v', 'y', 'myy`y', {noremap = true}) -- Set mark after visual yanks
+map('v', 'Y', 'myY`y', {noremap = true}) -- Set mark after visual yanks
 
 -- keeping things centered
 map('n', 'n', 'nzzzv', {noremap = true})
@@ -68,10 +68,6 @@ map('n', 'cN', '*``cgN', {noremap = true})
 -- map('i', 'k', "(v:count > 5 ? \"m'\") . v:count : \"\") . 'k'", {noremap = true, expr = true})
 -- map('i', 'j', "(v:count > 5 ? \"m'\") . v:count : \"\") . 'j'", {noremap = true, expr = true})
 
--- tab switch buffer
-map('n', '<TAB>', ':BufferLineCycleNext<CR>', {noremap = true, silent = true})
-map('n', '<S-TAB>', ':BufferLineCyclePrev<CR>', {noremap = true, silent = true})
-
 map('n', '<ESC>', ':noh<CR>', {noremap = true, silent = true}) -- Remove search highlight after esc
 
 -- -- navigate between display lines
@@ -84,49 +80,51 @@ map('n', '<ESC>', ':noh<CR>', {noremap = true, silent = true}) -- Remove search 
 map('n', 'Q', '<nop>', {noremap = true, silent = true})
 
 -- Bufferline
-map('n', 'gb', ':BufferLinePick<CR>', {noremap = true, silent = true})
+map('n', 'gb', '<cmd>BufferLinePick<CR>', {noremap = true, silent = true})
+map('n', '<TAB>', '<cmd>BufferLineCycleNext<CR>', {noremap = true, silent = true})
+map('n', '<S-TAB>', '<cmd>BufferLineCyclePrev<CR>', {noremap = true, silent = true})
 
 -- Gitsigns
-map('n', '<leader>gs', ':lua require"gitsigns".stage_hunk()<CR>', {noremap = true, silent = true})
-map('n', '<leader>gu', ':lua require"gitsigns".undo_stage_hunk()<CR>', {noremap = true, silent = true})
-map('n', '<leader>gr', ':lua require"gitsigns".reset_hunk()<CR>', {noremap = true, silent = true})
-map('n', '<leader>gP', ':lua require"gitsigns".preview_hunk()<CR>', {noremap = true, silent = true})
-map('n', '<leader>gn', ':lua require"gitsigns".next_hunk()<CR>', {noremap = true, silent = true})
-map('n', '<leader>gp', ':lua require"gitsigns".prev_hunk()<CR>', {noremap = true, silent = true})
-map('n', '<leader>gb', ':lua require"gitsigns".blame_line()<CR>', {noremap = true, silent = true})
+map('n', '<leader>gs', '<cmd>lua require"gitsigns".stage_hunk()<CR>', {noremap = true, silent = true})
+map('n', '<leader>gu', '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', {noremap = true, silent = true})
+map('n', '<leader>gr', '<cmd>lua require"gitsigns".reset_hunk()<CR>', {noremap = true, silent = true})
+map('n', '<leader>gP', '<cmd>lua require"gitsigns".preview_hunk()<CR>', {noremap = true, silent = true})
+map('n', '<leader>gn', '<cmd>lua require"gitsigns".next_hunk()<CR>', {noremap = true, silent = true})
+map('n', '<leader>gp', '<cmd>lua require"gitsigns".prev_hunk()<CR>', {noremap = true, silent = true})
+map('n', '<leader>gb', '<cmd>lua require"gitsigns".blame_line()<CR>', {noremap = true, silent = true})
 
 -- Neogit
-map('n', '<leader>gg', ':Neogit kind=vsplit<CR>', {noremap = true, silent = true})
-map('n', '<leader>gl', ':Neogit kind=vsplit log<CR>', {noremap = true, silent = true})
+map('n', '<leader>gg', '<cmd>Neogit kind=vsplit<CR>', {noremap = true, silent = true})
+map('n', '<leader>gl', '<cmd>Neogit kind=vsplit log<CR>', {noremap = true, silent = true})
 
 -- Diffview.nvim
-map('n', '<leader>gdd', ':DiffviewOpen<CR>', {noremap = true, silent = true})
-map('n', '<leader>gdc', ':DiffviewClose<CR>', {noremap = true, silent = true})
-map('n', '<leader>gdr', ':DiffviewRefresh<CR>', {noremap = true, silent = true})
+map('n', '<leader>gdd', '<cmd>DiffviewOpen<CR>', {noremap = true, silent = true})
+map('n', '<leader>gdc', '<cmd>DiffviewClose<CR>', {noremap = true, silent = true})
+map('n', '<leader>gdr', '<cmd>DiffviewRefresh<CR>', {noremap = true, silent = true})
 
 -- split
-map('n', '<localleader>b', ':split<CR>', {noremap = true, silent = true})
-map('n', '<localleader>v', ':vsplit<CR>', {noremap = true, silent = true})
+map('n', '<localleader>b', '<cmd>split<CR>', {noremap = true, silent = true})
+map('n', '<localleader>v', '<cmd>vsplit<CR>', {noremap = true, silent = true})
 
 -- local leader misc
-map('n', '<localleader>c', ':Bdelete<CR>', {noremap = true, silent = true})
-map('n', '<localleader>w', ':close<CR>', {noremap = true, silent = true})
-map('n', '<localleader>.', ':lcd %:p:h<CR>', {noremap = true, silent = true}) -- set working dir
+map('n', '<localleader>c', '<cmd>Bdelete<CR>', {noremap = true, silent = true})
+map('n', '<localleader>w', '<cmd>close<CR>', {noremap = true, silent = true})
+map('n', '<localleader>.', '<cmd>lcd %:p:h<CR>', {noremap = true, silent = true}) -- set working dir
 
 -- Lua
-map("n", "<F11>", ":LspTroubleToggle<CR>", {silent = true, noremap = true})
-map("n", "<leader>Tt", ":LspTroubleToggle<CR>", {silent = true, noremap = true})
-map("n", "<leader>Tw", ":LspTroubleToggle lsp_workspace_diagnostics<CR>", {silent = true, noremap = true})
-map("n", "<leader>Td", ":LspTroubleToggle lsp_document_diagnostics<CR>", {silent = true, noremap = true})
-map("n", "<leader>Tl", ":LspTroubleToggle loclist<CR>", {silent = true, noremap = true})
-map("n", "<leader>Tq", ":LspTroubleToggle quickfix<CR>", {silent = true, noremap = true})
-map("n", "gR", ":LspTrouble lsp_references<CR>", {silent = true, noremap = true})
+map("n", "<F11>", "<cmd>LspTroubleToggle<CR>", {silent = true, noremap = true})
+map("n", "<leader>Tt", "<cmd>LspTroubleToggle<CR>", {silent = true, noremap = true})
+map("n", "<leader>Tw", "<cmd>LspTroubleToggle lsp_workspace_diagnostics<CR>", {silent = true, noremap = true})
+map("n", "<leader>Td", "<cmd>LspTroubleToggle lsp_document_diagnostics<CR>", {silent = true, noremap = true})
+map("n", "<leader>Tl", "<cmd>LspTroubleToggle loclist<CR>", {silent = true, noremap = true})
+map("n", "<leader>Tq", "<cmd>LspTroubleToggle quickfix<CR>", {silent = true, noremap = true})
+map("n", "gR", "<cmd>LspTrouble lsp_references<CR>", {silent = true, noremap = true})
 
 -- NvimTree
-map("n", "<leader>e", ":NvimTreeToggle<CR>", {silent = true, noremap = true})
+map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", {silent = true, noremap = true})
 
 -- Telescope
-map('n', 'gb', ':Telescope buffers<CR>', {noremap = true, silent = true})
+map('n', 'gb', '<cmd>Telescope buffers<CR>', {noremap = true, silent = true})
 
 -- Packer commands till because we are not loading it at startup
 vim.cmd("silent! command PackerCompile lua require 'plugin-list' require('packer').compile()")

@@ -88,7 +88,7 @@ in
         "${kitty_mod}+s" = "paste_from_selection";
 
         # Window management
-        "${kitty_mod}+enter" = "new_window";
+        "${kitty_mod}+enter" = "new_window_with_cwd";
         "${kitty_mod}+n" = "new_os_window";
         "${kitty_mod}+w" = "close_window";
         "${kitty_mod}+]" = "next_window";

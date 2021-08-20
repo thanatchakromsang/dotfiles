@@ -9,12 +9,8 @@ require'lightspeed'.setup {
     full_inclusive_prefix_key = '<c-x>'
 }
 
-function Repeat_ft(reverse)
-    local ls = require 'lightspeed'
-    ls.ft['instant-repeat?'] = true
-    ls.ft:to(reverse, ls.ft['prev-t-like?'])
-end
-vim.api.nvim_set_keymap('n', ';', '<cmd>lua Repeat_ft(false)<cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('x', ';', '<cmd>lua Repeat_ft(false)<cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', ',', '<cmd>lua Repeat_ft(true)<cr>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('x', ',', '<cmd>lua Repeat_ft(true)<cr>', {noremap = true, silent = true})
+-- use native f,t for navigation after load
+vim.cmd('unmap f')
+vim.cmd('unmap F')
+vim.cmd('unmap t')
+vim.cmd('unmap T')
