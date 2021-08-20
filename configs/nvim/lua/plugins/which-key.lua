@@ -79,7 +79,7 @@ wk.register({
         },
         g = {
             name = "+git",
-            g = {"neogit"},
+            g = {"<cmd>FloatermNew --height=0.9 --width=0.9 --name=git --wintype=float lazygit<CR>", "lazygit"},
             d = {
                 name = "+diff",
                 d = {"diff open"},
