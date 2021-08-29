@@ -11,7 +11,7 @@ in
   };
 
   programs.ssh.extraConfig = ''
-    Host *.lan
+    Host *.local
       StrictHostKeyChecking no
 
     Host gitlab.com
