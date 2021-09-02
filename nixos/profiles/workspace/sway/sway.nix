@@ -2,38 +2,38 @@
 
 let
   # https://discourse.nixos.org/t/install-shell-script-on-nixos/6849/10
-  rofi-poweroff = pkgs.writeScriptBin "rofi-poweroff" ''
-    #!${pkgs.bash}/bin/bash
-    case $(${pkgs.rofi}/bin/rofi -dmenu << EOF | sed 's/^ *//'
-    shutdown
-    reboot
-    logoff
-    hibernate
-    sleep
-    lock
-    console
-    EOF
-    ) in
-        "shutdown")
-            ${pkgs.systemd}/bin/systemctl poweroff
-            ;;
-        "reboot")
-            ${pkgs.systemd}/bin/systemctl reboot
-            ;;
-        "hibernate")
-            ${pkgs.systemd}/bin/systemctl hibernate
-            ;;
-        "sleep")
-            ${pkgs.systemd}/bin/systemctl suspend
-            ;;
-        "lock")
-            ${pkgs.swaylock}/bin/swaylock -f -c 000000
-            ;;
-        "logoff")
-            ${pkgs.sway}/bin/swaymsg exit
-            ;;
-    esac
-  '';
+  # rofi-poweroff = pkgs.writeScriptBin "rofi-poweroff" ''
+  #   #!${pkgs.bash}/bin/bash
+  #   case $(${pkgs.rofi}/bin/rofi -dmenu << EOF | sed 's/^ *//'
+  #   shutdown
+  #   reboot
+  #   logoff
+  #   hibernate
+  #   sleep
+  #   lock
+  #   console
+  #   EOF
+  #   ) in
+  #       "shutdown")
+  #           ${pkgs.systemd}/bin/systemctl poweroff
+  #           ;;
+  #       "reboot")
+  #           ${pkgs.systemd}/bin/systemctl reboot
+  #           ;;
+  #       "hibernate")
+  #           ${pkgs.systemd}/bin/systemctl hibernate
+  #           ;;
+  #       "sleep")
+  #           ${pkgs.systemd}/bin/systemctl suspend
+  #           ;;
+  #       "lock")
+  #           ${pkgs.swaylock}/bin/swaylock -f -c 000000
+  #           ;;
+  #       "logoff")
+  #           ${pkgs.sway}/bin/swaymsg exit
+  #           ;;
+  #   esac
+  # '';
 in
 {
   programs.sway.enable = true;
@@ -57,7 +57,7 @@ in
 
     wayland.windowManager.sway = {
       enable = true;
-      xwayland = true;
+      xwayland = false;
       wrapperFeatures.gtk = true;
       config = rec {
         modifier = "Mod4";
@@ -224,8 +224,7 @@ in
 
           "${modifier}+Shift+r" = "reload";
 
-          # TODO(sway.nix): migrate rofi-poweroff to global packages and update reference
-          "${modifier}+Shift+e" = "exec ${rofi-poweroff}/bin/rofi-poweroff";
+          # "${modifier}+Shift+e" = "exec ${rofi-poweroff}/bin/rofi-poweroff";
 
           "${modifier}+h" = "focus left";
           "${modifier}+j" = "focus down";
@@ -329,6 +328,7 @@ in
           "${modifier}+r" = "mode resize";
           "Print" = "mode 'copy (s) screen, (a) area, (w) window, (o) output to clipboard'";
           "${modifier}+Print" = "mode 'save (s) screen, (a) area, (w) window, (o) output to Pictures'";
+          "${modifier}+Shift+e" = "mode 'poweroff (p), reboot (r), suspend (s), lock (l)'";
         };
         modes = {
           resize = {
@@ -363,6 +363,15 @@ in
                 "Escape" = "mode default";
                 "Return" = "mode default";
               };
+          "poweroff (p), reboot (r), suspend (s), lock (l)" =
+            {
+              "p" = "exec ${pkgs.systemd}/bin/systemctl poweroff, mode default";
+              "r" = "exec ${pkgs.systemd}/bin/systemctl reboot, mode default";
+              "s" = "exec ${pkgs.systemd}/bin/systemctl suspend, mode default";
+              "l" = "exec ${pkgs.swaylock}/bin/swaylock -f -c 000000, mode default";
+              "Escape" = "mode default";
+              "Return" = "mode default";
+            };
         };
       };
     };

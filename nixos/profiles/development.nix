@@ -67,6 +67,7 @@
     unstable.kubernetes-helm
     unstable.kind
     unstable.fluxcd
+    fluxctl # v1
     awscli2
     docker-compose
     google-cloud-sdk
