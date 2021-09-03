@@ -71,6 +71,7 @@
     awscli2
     docker-compose
     google-cloud-sdk
+    kubeseal
     sops
     unstable.cloudflared
 

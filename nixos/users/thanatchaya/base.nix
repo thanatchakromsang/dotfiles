@@ -38,6 +38,18 @@ in
         [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
       '';
       # TODO(sshconfig): Remove this when `ssh -V` is > 8.7 and use sshconfig to control TERM instead following https://wiki.archlinux.org/title/kitty under `Terminal issues with SSH` section
+      plugins = [
+        {
+          name = "zsh-nix-shell";
+          file = "nix-shell.plugin.zsh";
+          src = pkgs.fetchFromGitHub {
+            owner = "chisui";
+            repo = "zsh-nix-shell";
+            rev = "v0.4.0";
+            sha256 = "037wz9fqmx0ngcwl9az55fgkipb745rymznxnssr3rx9irb6apzg";
+          };
+        }
+      ];
       sessionVariables = {
         TERM = "xterm-256color";
       };
