@@ -36,30 +36,6 @@ in
       ];
     };
 
-
-    /*   programs.ssh.extraConfig = '' */
-    /*     Include ~/.ssh/cloudflared */
-
-    /*     Host gitlab.com */
-    /*       HostName gitlab.com */
-    /*       Preferredauthentications publickey */
-    /*       AddKeysToAgent yes */
-    /*       IdentityFile ~/.ssh/personal.pri */
-
-    /*     Host gitlab.com-work */
-    /*       HostName gitlab.com */
-    /*       Preferredauthentications publickey */
-    /*       AddKeysToAgent yes */
-    /*       IdentityFile ~/.ssh/work.pri */
-
-    /*     Host github.com */
-    /*       Hostname github.com */
-    /*       Preferredauthentications publickey */
-    /*       AddKeysToAgent yes */
-    /*       IdentityFile ~/.ssh/personal.pri */
-    /*   ''; */
-
-
     programs.ssh = {
       enable = true;
       extraConfig = ''
