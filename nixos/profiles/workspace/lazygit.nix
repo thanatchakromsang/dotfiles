@@ -7,6 +7,15 @@
       enable = true;
       settings = {
         disableStartupPopups = true;
+        customCommands = [
+          {
+            key = "C";
+            command = "git commit -v";
+            context = "files";
+            loadingText = "opening git commit verbose";
+            subprocess = true;
+          }
+        ];
       };
     };
   };
