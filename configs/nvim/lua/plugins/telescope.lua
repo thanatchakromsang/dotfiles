@@ -1,8 +1,11 @@
-require("telescope").setup {
+local telescope = require('telescope')
+local actions = require('telescope.actions')
+
+telescope.setup({
     defaults = {
         vimgrep_arguments = {"rg", "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case"},
-        prompt_prefix = " ",
-        selection_caret = " ",
+        prompt_prefix = " ",
+        selection_caret = " ",
         entry_prefix = "  ",
         initial_mode = "insert",
         selection_strategy = "reset",
@@ -27,14 +30,40 @@ require("telescope").setup {
         set_env = {["COLORTERM"] = "truecolor"}, -- default = nil,
         file_previewer = require"telescope.previewers".vim_buffer_cat.new,
         grep_previewer = require"telescope.previewers".vim_buffer_vimgrep.new,
-        qflist_previewer = require"telescope.previewers".vim_buffer_qflist.new,
+        qflist_previewer = require"telescope.previewers".vim_buffer_qflist.new
     },
     extensions = {
         media_files = {
             filetypes = {"png", "webp", "jpg", "jpeg"},
             find_cmd = "rg" -- find command (defaults to `fd`)
         }
+    },
+    pickers = {
+        git_commits = {
+            mappings = {
+                i = {
+                    ["<C-o>"] = function(prompt_bufnr)
+                        actions.close(prompt_bufnr)
+                        local value = actions.get_selected_entry(prompt_bufnr).value
+                        -- changes from commit against current index
+                        vim.cmd('DiffviewOpen ' .. value)
+                    end
+                }
+            }
+        },
+        git_bcommits = {
+            mappings = {
+                i = {
+                    -- change from current commit against current index specific file
+                    ["<C-o>"] = function(prompt_bufnr)
+                        actions.close(prompt_bufnr)
+                        local value = actions.get_selected_entry(prompt_bufnr).value
+                        vim.cmd('DiffviewOpen ' .. value .. ' -- %')
+                    end
+                }
+            }
+        }
     }
-}
+})
 
-require("telescope").load_extension("media_files")
+telescope.load_extension("media_files")
