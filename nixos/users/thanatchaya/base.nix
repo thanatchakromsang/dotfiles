@@ -30,14 +30,22 @@ in
         # Completion
         source ${pkgs.google-cloud-sdk}/google-cloud-sdk/completion.zsh.inc
 
+        bindkey '^[[1;5A' history-substring-search-up
+        bindkey '^[[1;5B' history-substring-search-down
+
         bindkey '^ ' autosuggest-accept
         bindkey '^p' up-line-or-beginning-search
         bindkey '^n' down-line-or-beginning-search
         bindkey '^H' backward-kill-word
 
+        # Alt movement
+        bindkey '^[[1;3D' backward-word
+        bindkey '^[[1;3C' forward-word
+        bindkey '^[[1;3A' up-line-or-beginning-search
+        bindkey '^[[1;3B' down-line-or-beginning-search
+
         [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
       '';
-      # TODO(sshconfig): Remove this when `ssh -V` is > 8.7 and use sshconfig to control TERM instead following https://wiki.archlinux.org/title/kitty under `Terminal issues with SSH` section
       plugins = [
         {
           name = "zsh-nix-shell";
@@ -50,6 +58,7 @@ in
           };
         }
       ];
+      # TODO(sshconfig): Remove this when `ssh -V` is > 8.7 and use sshconfig to control TERM instead following https://wiki.archlinux.org/title/kitty under `Terminal issues with SSH` section
       sessionVariables = {
         TERM = "xterm-256color";
       };

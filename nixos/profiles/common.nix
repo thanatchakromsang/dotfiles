@@ -60,6 +60,7 @@
           "helm"
           "rust"
           "aws"
+          "history-substring-search"
         ];
     };
   };
