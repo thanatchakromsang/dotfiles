@@ -2,4 +2,4 @@
 #define USE_SERIAL_PD2
 
 #undef DEBOUNCE
-#define DEBOUNCE 5
+#define DEBOUNCE 25

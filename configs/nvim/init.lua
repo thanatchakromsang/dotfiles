@@ -1,0 +1,7 @@
+require('options')
+require('keymappings')
+require('utils')
+-- require('plugin-list')
+-- require('plugin-settings')
+-- require('theme')
+-- require('plugins')

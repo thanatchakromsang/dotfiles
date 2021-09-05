@@ -1,3 +1,5 @@
-##!/bin/bash
-#echo "descrypting files"
-#git secret reveal
+#!/usr/bin/env bash
+
+echo "nix flakes rebuild"
+
+sudo nixos-rebuild switch --flake "$HOME"/.dotfiles/nixos

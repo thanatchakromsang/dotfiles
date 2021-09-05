@@ -27,7 +27,7 @@ This is the source code for my keyboard layouts
 ## QMK Setup
 
 ```bash
-./installation.sh
+./installation.sh # This might take hour because nix-shell compile everything
 ./symlinks.sh
 ```
 
