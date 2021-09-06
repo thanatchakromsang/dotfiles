@@ -238,7 +238,7 @@ enum user_layers {
    *     ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
    *     │ `/⇧ │ 4/^ │ 5/⌥ │ 6/⌘ │  =  │   │  ←  │  ↓  │  ↑  │  →  │ XXX │
    *     ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
-   *     │  0  │  1  │  2  │  3  │  \  │   │ALT← │ALT↓ │ALT↑ │ALT→ │ XXX │
+   *     │  0  │  1  │  2  │  3  │  \  │   │ XXX │ XXX │ XXX │ XXX │ XXX │
    *     └─────┴─────┴─────┴─────┴─────┘   └─────┴─────┴─────┴─────┴─────┘
    *                ┌─────┐┌─────┬─────┐   ┌─────┬─────┐┌─────┐
    *                │     ││ XXX │     │   │Enter│ Spc ││     │
@@ -255,7 +255,7 @@ enum user_layers {
 
 #define _________________NAVIGATION_R1_____________ KC_HOME,    KC_PGDN,   KC_PGUP,     KC_END,     XXXXXXX
 #define _________________NAVIGATION_R2_____________ KC_LEFT,    KC_DOWN,   KC_UP,       KC_RGHT,    XXXXXXX
-#define _________________NAVIGATION_R3_____________ LALT(KC_LEFT), LALT(KC_DOWN), LALT(KC_UP), LALT(KC_RGHT), XXXXXXX
+#define _________________NAVIGATION_R3_____________ _________________DISABLED__________________
 
 #define ______NAVR2_____ KC_ENT, KC_SPC
 #define _NAVR1_ _______
