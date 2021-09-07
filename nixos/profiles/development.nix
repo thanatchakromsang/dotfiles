@@ -30,8 +30,8 @@
     gnumake
 
     # Terraform
-    terraform
-    terraform-ls
+    unstable.terraform
+    unstable.terraform-ls
 
     # Rust
     rustc
