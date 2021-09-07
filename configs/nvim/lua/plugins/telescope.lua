@@ -42,7 +42,7 @@ telescope.setup({
         git_commits = {
             mappings = {
                 i = {
-                    ["<C-o>"] = function(prompt_bufnr)
+                    ["<CR>"] = function(prompt_bufnr)
                         actions.close(prompt_bufnr)
                         local value = actions.get_selected_entry(prompt_bufnr).value
                         -- changes from commit against current index
@@ -55,7 +55,7 @@ telescope.setup({
             mappings = {
                 i = {
                     -- change from current commit against current index specific file
-                    ["<C-o>"] = function(prompt_bufnr)
+                    ["<CR>"] = function(prompt_bufnr)
                         actions.close(prompt_bufnr)
                         local value = actions.get_selected_entry(prompt_bufnr).value
                         vim.cmd('DiffviewOpen ' .. value .. ' -- %')
@@ -66,4 +66,5 @@ telescope.setup({
     }
 })
 
+-- TODO: add dap integration with telescope
 telescope.load_extension("media_files")
