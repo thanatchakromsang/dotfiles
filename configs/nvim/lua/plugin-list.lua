@@ -151,7 +151,7 @@ return require('packer').startup(function(use)
     -- Explorer
     use {
       'kyazdani42/nvim-tree.lua',
-      cmd = 'NvimTreeToggle',
+      -- cmd = 'NvimTreeToggle',
       config = function()
         require 'plugins.nvim-tree'
       end
