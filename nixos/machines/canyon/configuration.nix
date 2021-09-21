@@ -15,8 +15,11 @@
       ../../profiles/notebook.nix
       ../../profiles/development.nix
       /* ../../profiles/streaming.nix */
-      /* ../../profiles/gaming.nix */
+      ../../profiles/gaming.nix
       ../../profiles/keyboard.nix
+
+      ../../profiles/monitoring/home-server.nix
+      ../../profiles/monitoring/home-client.nix
 
       ../../users/thanatchaya/personal.nix
     ];
