@@ -15,6 +15,8 @@
       ../../profiles/notebook.nix
       ../../profiles/development.nix
 
+      ../../profiles/monitoring/home-client.nix
+
       ../../users/thanatchaya/personal.nix
     ];
 
