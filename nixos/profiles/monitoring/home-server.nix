@@ -1,10 +1,18 @@
 { config, pkgs, ... }:
 
 {
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+    13100
+    13000
+    19090
+    19093
+  ];
+
   networking.extraHosts =
     ''
       127.0.0.1 grafana.canyon.local
-      127.0.0.1 loki.canyon.local
       127.0.0.1 prometheus.canyon.local
     '';
 
@@ -14,11 +22,6 @@
       "grafana.canyon.local" = {
         locations."/" = {
           proxyPass = "http://127.0.0.1:13000";
-        };
-      };
-      "loki.canyon.local" = {
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:13100";
         };
       };
       "prometheus.canyon.local" = {

@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  networking.firewall.allowedTCPPorts = [
+    19100
+  ];
+
   services.prometheus = {
     exporters = {
       node = {
