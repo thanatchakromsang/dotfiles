@@ -96,21 +96,21 @@ in
         input = {
           # External keyboards
           "12951:18804:ZSA_Technology_Labs_ErgoDox_EZ" = {
-            xkb_layout = "colemak_dh_matrix,pat_modern";
+            xkb_layout = "colemak_dh_matrix,manoonchai";
             xkb_variant = ",";
             xkb_options = "grp:alt_space_toggle";
             repeat_delay = "300";
             repeat_rate = "30";
           };
           "18003:1:foostan_Corne" = {
-            xkb_layout = "colemak_dh_matrix,pat_modern";
+            xkb_layout = "colemak_dh_matrix,manoonchai";
             xkb_variant = ",";
             xkb_options = "grp:alt_space_toggle";
             repeat_delay = "300";
             repeat_rate = "30";
           };
           "4617:8963:Keyboardio_Atreus" = {
-            xkb_layout = "colemak_dh_matrix,pat_modern";
+            xkb_layout = "colemak_dh_matrix,manoonchai";
             xkb_variant = ",";
             xkb_options = "grp:alt_space_toggle";
             repeat_delay = "300";
