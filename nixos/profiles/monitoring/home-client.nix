@@ -3,12 +3,16 @@
 {
   networking.firewall.allowedTCPPorts = [
     19100
+    13101
   ];
 
   services.prometheus = {
     exporters = {
       node = {
         enable = true;
+        extraFlags = [
+          "--no-collector.rapl"
+        ];
         enabledCollectors = [
           "systemd"
         ];
@@ -35,6 +39,12 @@
               host = config.networking.hostName;
             };
           };
+          relabel_configs = [
+            {
+              source_labels = [ "__journal__systemd_unit" ];
+              target_label = "unit";
+            }
+          ];
         }
       ];
     };
