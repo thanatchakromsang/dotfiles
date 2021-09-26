@@ -29,42 +29,11 @@ vim.lsp.handlers["textDocument/formatting"] = function(err, _, result, _, bufnr)
 end
 
 -----------------------------------------------------
--- Symbol overrides
------------------------------------------------------
-vim.lsp.protocol.CompletionItemKind = {
-    "   (Text) ",
-    "   (Method)",
-    "   (Function)",
-    "   (Constructor)",
-    " ﴲ  (Field)",
-    "[] (Variable)",
-    "   (Class)",
-    " ﰮ  (Interface)",
-    "   (Module)",
-    " 襁 (Property)",
-    "   (Unit)",
-    "   (Value)",
-    " 練 (Enum)",
-    "   (Keyword)",
-    "   (Snippet)",
-    "   (Color)",
-    "   (File)",
-    "   (Reference)",
-    "   (Folder)",
-    "   (EnumMember)",
-    " ﲀ  (Constant)",
-    " ﳤ  (Struct)",
-    "   (Event)",
-    "   (Operator)",
-    "   (TypeParameter)"
-}
-
------------------------------------------------------
 -- Custom on_attach / capabilities
 -----------------------------------------------------
 
 -- Add LSP Snippets capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- Got this from tjdevries/config_manager
@@ -80,22 +49,21 @@ local custom_attach = function(client, bufnr)
     buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
     local opts = {noremap = true, silent = true}
-    buf_set_keymap("n", "gd", ":Telescope lsp_definitions<CR>", opts)
-    buf_set_keymap("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", opts)
-    buf_set_keymap("n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
-    buf_set_keymap("n", "<localleader>a", ":lua vim.lsp.buf.code_action()<CR>", opts)
-    buf_set_keymap("v", "<localleader>a", ":lua vim.lsp.buf.range_code_action()<CR>", opts)
-    buf_set_keymap("n", "gn", ":lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-    buf_set_keymap("n", "gp", ":lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+    buf_set_keymap("n", "gd", "<Cmd>Telescope lsp_definitions<CR>", opts)
+    buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    buf_set_keymap("n", "gn", "<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+    buf_set_keymap("n", "gp", "<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
 
-    if client.resolved_capabilities.implementation then buf_set_keymap("n", "gi", ":lua vim.lsp.buf.implementation()<CR>", opts) end
-    if client.resolved_capabilities.find_references then buf_set_keymap("n", "gr", ":Telescope lsp_references<CR>", opts) end
-    if client.resolved_capabilities.type_definition then buf_set_keymap("n", "gt", ":lua vim.lsp.buf.type_definition()<CR>", opts) end
-    if client.resolved_capabilities.rename then buf_set_keymap("n", "<localleader>r", ":lua vim.lsp.buf.rename()<CR>", opts) end
-    if client.resolved_capabilities.signature_help then
-        buf_set_keymap("n", "gs", ":lua vim.lsp.buf.signature_help()<CR>", opts)
-        vim.api.nvim_command [[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]]
+    if client.resolved_capabilities.code_action then
+        buf_set_keymap("n", "<localleader>a", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+        buf_set_keymap("v", "<localleader>a", "<Cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
     end
+    if client.resolved_capabilities.declaration then buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) end
+    if client.resolved_capabilities.implementation then buf_set_keymap("n", "gi", "<Cmd>lua vim.lsp.buf.implementation()<CR>", opts) end
+    if client.resolved_capabilities.find_references then buf_set_keymap("n", "gr", "<Cmd>Telescope lsp_references<CR>", opts) end
+    if client.resolved_capabilities.type_definition then buf_set_keymap("n", "gt", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", opts) end
+    if client.resolved_capabilities.rename then buf_set_keymap("n", "<localleader>r", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts) end
+    if client.resolved_capabilities.signature_help then buf_set_keymap("n", "gs", ":lua vim.lsp.buf.signature_help()<CR>", opts) end
 
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then
@@ -138,9 +106,7 @@ lspconfig.gopls.setup {
     end,
     capabilities = capabilities,
     init_options = {usePlaceholders = true, completeUnimported = true},
-    flags = {
-      debounce_text_changes = 150,
-    },
+    flags = {debounce_text_changes = 150}
 }
 
 -----------------------------------------------------
@@ -160,9 +126,7 @@ lspconfig.sumneko_lua.setup {
             telemetry = {enable = false}
         }
     },
-    flags = {
-      debounce_text_changes = 150,
-    },
+    flags = {debounce_text_changes = 150}
 }
 
 -----------------------------------------------------
@@ -180,9 +144,7 @@ lspconfig.yamlls.setup {
             schemaStore = {enable = true}
         }
     },
-    flags = {
-      debounce_text_changes = 150,
-    },
+    flags = {debounce_text_changes = 150}
 }
 
 -----------------------------------------------------
@@ -197,9 +159,7 @@ lspconfig.tsserver.setup {
     end,
     capabilities = capabilities,
     filetypes = {"javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx"},
-    flags = {
-      debounce_text_changes = 150,
-    },
+    flags = {debounce_text_changes = 150}
 }
 
 -----------------------------------------------------
@@ -282,9 +242,7 @@ lspconfig.terraformls.setup {
         custom_attach(client)
     end,
     capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 150,
-    },
+    flags = {debounce_text_changes = 150}
 }
 
 -----------------------------------------------------
@@ -294,12 +252,6 @@ lspconfig.terraformls.setup {
 -- Avaliable LSP https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
 local servers = {'dockerls', 'rust_analyzer', 'pyright', 'vimls', 'rnix'}
 
-for _, server in ipairs(servers) do lspconfig[server].setup {
-        on_init = custom_init,
-        on_attach = custom_attach,
-        capabilities = capabilities,
-        flags = {
-            debounce_text_changes = 150
-        },
-    }
+for _, server in ipairs(servers) do
+    lspconfig[server].setup {on_init = custom_init, on_attach = custom_attach, capabilities = capabilities, flags = {debounce_text_changes = 150}}
 end

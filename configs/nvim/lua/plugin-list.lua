@@ -65,16 +65,20 @@ return require('packer').startup(function(use)
 
     -- Autocomplete
     use {
-      'hrsh7th/nvim-compe',
-      event = 'InsertEnter *',
+      'hrsh7th/nvim-cmp',
+      requires = {
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-path',
+        'ray-x/cmp-treesitter',
+
+        'L3MON4D3/LuaSnip',
+        'saadparwaiz1/cmp_luasnip',
+        'rafamadriz/friendly-snippets',
+      },
       config = function()
-        require 'plugins.nvim-compe'
-      end
-    }
-    use {
-      'hrsh7th/vim-vsnip',
-      event = 'InsertEnter *',
-      requires = {'rafamadriz/friendly-snippets'}
+        require 'plugins.nvim-cmp'
+      end,
     }
 
     -- Treesitter
@@ -177,6 +181,7 @@ return require('packer').startup(function(use)
     use 'editorconfig/editorconfig-vim'
     use {
       'windwp/nvim-autopairs',
+      after = 'nvim-cmp',
       config = function()
         require 'plugins.nvim-autopairs'
       end
