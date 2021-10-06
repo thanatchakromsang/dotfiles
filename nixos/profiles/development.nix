@@ -9,6 +9,7 @@
     python39
     python27Full
     pipenv
+    poetry
     nodePackages.pyright
 
     # Javascript / Typescript
@@ -74,6 +75,7 @@
     kubeseal
     sops
     unstable.cloudflared
+    k9s
 
     # Static site generator
     hugo

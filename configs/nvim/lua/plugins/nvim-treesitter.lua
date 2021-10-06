@@ -21,7 +21,10 @@ require'nvim-treesitter.configs'.setup {
         -- },
     },
 
-    context_commentstring = {enable = true},
+    context_commentstring = {
+      enable = true,
+      enable_autocmd = false,
+    },
 
     textobjects = {
         select = {
@@ -30,12 +33,7 @@ require'nvim-treesitter.configs'.setup {
             -- Automatically jump forward to textobj, similar to targets.vim
             lookahead = true,
 
-            keymaps = {
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-                ["ac"] = "@class.outer",
-                ["ic"] = "@class.inner",
-            }
+            keymaps = {["af"] = "@function.outer", ["if"] = "@function.inner", ["ac"] = "@class.outer", ["ic"] = "@class.inner"}
         }
     }
 }
