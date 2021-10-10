@@ -9,15 +9,8 @@ in
   home-manager.users.thanatchaya = {
     programs.rofi = {
       enable = true;
-      width = 30;
-      lines = 10;
-      padding = 20;
       font = "${fonts.sansSerif.family} ${toString fonts.sansSerif.size}";
-      borderWidth = 3;
-      rowHeight = 1;
       terminal = "${pkgs.kitty}/bin/kitty";
-      separator = "none";
-      scrollbar = false;
       theme = "gruvbox-dark";
       extraConfig = {
         columns = 1;
