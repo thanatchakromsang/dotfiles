@@ -1,59 +1,160 @@
 # Dotfiles
 
-My unix dotfiles for Archlinux
+My NixOS configuration
 
-- neovim, kitty and zsh
-- sway (mako, waybar, swaylock, rofi)
+- Neovim, kitty and zsh
+- Sway (mako, waybar, swaylock, rofi)
+- Firefox + preinstalled extension with NUR
+- Application Profiles for Development workstation, Server and Client (Grafana, Prometheus, Promtail and Loki)
 
-## __Installation__
+## NixOS Installation
 
-```bash
-sudo pacman -S git
-
-git clone https://github.com/thanatchakromsang/dotfiles.git ~/.dotfiles
-```
-
-## git secret
-
-### Import GPG public/private key
-
-Import those 2 for ability to encrypt and decrypt secret files
+1. Download and create [NixOS bootable ISO](https://nixos.org/download.html) using flashdrive and `dd`
+2. Boot to NixOS
+3. Connect Wifi using `wpa`
 
 ```bash
-gpg --import public.gpg
-gpg --import private.gpg
+export NETWORK_NAME='<SSID>'
+export PASSWORD='<REDACTED>'
+wpa_passphrase '$NETWORK_NAME' '$PASSWORD' | sudo tee /etc/wpa_supplicant.conf
+
+# Restart wpa
+sudo systemctl restart wpa_supplicant.service
 ```
 
-### Reveal Secret
-
-Some configuration needed to be encrypted because personal information. In that
-case we need to decrypt secret using following
+4. Partition Disk (Example)
 
 ```bash
-git secret reveal
+lsblk # check avaliable disk
+sudo cfdisk /dev/nvme0n1 # preferred disk
 ```
 
-### Hide Secret
-
-Hide secret after some changes. Usually we don't need to do this because git-hooks
-will take care of precommit hide secret after installation
+Partition disk to following (Thinkpad T14s)
 
 ```bash
-git secret hide
+300MiB EFI System
+16GiB Linux Swap
+Remaining Linux File System
 ```
 
-## Installation
+Format disk
 
 ```bash
-~/.dotfiles/setup.sh
+sudo mkfs.fat -F32 /dev/xxx1 # EFI
+sudo mkswap /dev/xxx2 # Swap
+sudo mkfs.ext4 /dev/xxx3 # Remaining
+
+# Example
+sudo mkfs.fat /dev/nvme0n1p1
+sudo mkswap /dev/nvme0n1p2
+sudo mkfs.ext4 /dev/nvme0n1p3
 ```
 
-## Upgrade Packages
+Mount formatted partition to certain directory
 
 ```bash
-~/.dotfiles/upgrade.sh
+sudo mount /dev/xxx3 /mnt
+sudo swapon /dev/xxx2
+sudo mkdir -p /mnt/boot
+sudo mount /dev/xxx1 /mnt/boot
 ```
 
-## Google Chrome Desktop Application on wayland
+5. Generate default config
 
-- After add desktop application need to modify it a bit in `~/.local/share/applications`
+```bash
+sudo nixos-generate-config --root /mnt # generate default config
+```
+
+6. Modify default config to install minimum working solution (select and modify to your need)
+
+```nix
+# Add following command to configuration.nix
+{
+  boot.loader = {
+    systemd-boot.enable = false;
+    efi = {
+      canTouchEfiVariables = true;
+    };
+    grub = {
+      devices = ["nodev"];
+      enable = true;
+      efiSupport = true;
+      version = 2;
+    };
+  };
+  services.openssh.enable = true;
+  services.openssh.permitRootLogin = "yes";
+  networking.hostName = "canyon"; # Define your hostname.
+  networking.networkmanager.enable = true;
+  environment.systemPackages = with pkgs; [
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    git
+    jq
+  ];
+  users.extraUsers.thanatchaya = {
+    isNormalUser = true;
+    createHome = true;
+    uid = 1000;
+    extraGroups = [ "wheel" "networkmanager" ];
+  };
+  nix = {
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
+}
+```
+
+Then run following command and reboot
+
+```bash
+nixos-install
+```
+
+## Dotfile Installation
+
+connect to WIFI and create password on provisioning machine 
+
+```bash
+nmtui # connect to WIFI
+
+passwd thanatchaya
+```
+
+rsync from avaliable machine or git clone depending on situation 
+
+```bash
+rsync -ah --delete --progress ~/.dotfiles thanatchaya@<destination>:/home/thanatchaya
+# git clone https://github.com/thanatchakromsang/dotfiles.git ~/.dotfiles
+
+ssh thanatchaya@<destination>
+```
+
+For initial installation we have to copy `hardware-configuration.nix` from provisioning machine to dotfiles and have to create new configuration by copying what's avaliable and modify to your liking
+
+```bash
+mkdir ~/.dotfiles/nixos/machines/canyon/
+cp /etc/nixos/hardware-configuration.nix ~/.dotfiles/nixos/machines/canyon/
+```
+
+Then rebuild
+
+```bash
+sudo nixos-rebuild switch --flake '.'
+```
+
+Import GPG/SSH keys
+
+## Upgrade
+
+Update `flake.lock` and nix install
+
+```bash
+# cd ~/.dotfiles/nixos
+
+# nix flake update
+
+$ nixos-rebuild switch --flake .
+```
