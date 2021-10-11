@@ -113,11 +113,11 @@ map('n', '<localleader>.', '<cmd>lcd %:p:h<CR>', {noremap = true, silent = true}
 
 -- Lua
 map("n", "<F11>", "<cmd>LspTroubleToggle<CR>", {silent = true, noremap = true})
-map("n", "<leader>Tt", "<cmd>LspTroubleToggle<CR>", {silent = true, noremap = true})
-map("n", "<leader>Tw", "<cmd>LspTroubleToggle lsp_workspace_diagnostics<CR>", {silent = true, noremap = true})
-map("n", "<leader>Td", "<cmd>LspTroubleToggle lsp_document_diagnostics<CR>", {silent = true, noremap = true})
-map("n", "<leader>Tl", "<cmd>LspTroubleToggle loclist<CR>", {silent = true, noremap = true})
-map("n", "<leader>Tq", "<cmd>LspTroubleToggle quickfix<CR>", {silent = true, noremap = true})
+map("n", "<leader>tt", "<cmd>LspTroubleToggle<CR>", {silent = true, noremap = true})
+map("n", "<leader>tw", "<cmd>LspTroubleToggle lsp_workspace_diagnostics<CR>", {silent = true, noremap = true})
+map("n", "<leader>td", "<cmd>LspTroubleToggle lsp_document_diagnostics<CR>", {silent = true, noremap = true})
+map("n", "<leader>tl", "<cmd>LspTroubleToggle loclist<CR>", {silent = true, noremap = true})
+map("n", "<leader>tq", "<cmd>LspTroubleToggle quickfix<CR>", {silent = true, noremap = true})
 map("n", "gR", "<cmd>LspTrouble lsp_references<CR>", {silent = true, noremap = true})
 
 -- NvimTree

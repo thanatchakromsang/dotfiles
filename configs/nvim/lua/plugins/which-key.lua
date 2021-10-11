@@ -100,11 +100,6 @@ wk.register({
             b = {"blame line"}
         },
         t = {
-            name = "+terminal",
-            r = {":FloatermNew --height=0.8 --width=0.8 --wintype=float --name=ranger ranger<CR>", "ranger"},
-            t = {":FloatermToggle<CR>", "toggle"}
-        },
-        T = {
             name = "+trouble",
             t = "toggle",
             w = "workspace diagnostics",
