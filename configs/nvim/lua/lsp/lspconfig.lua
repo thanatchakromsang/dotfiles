@@ -63,7 +63,7 @@ local custom_attach = function(client, bufnr)
     if client.resolved_capabilities.find_references then buf_set_keymap("n", "gr", "<Cmd>Telescope lsp_references<CR>", opts) end
     if client.resolved_capabilities.type_definition then buf_set_keymap("n", "gt", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", opts) end
     if client.resolved_capabilities.rename then buf_set_keymap("n", "<localleader>r", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts) end
-    if client.resolved_capabilities.signature_help then buf_set_keymap("n", "gs", ":lua vim.lsp.buf.signature_help()<CR>", opts) end
+    if client.resolved_capabilities.signature_help then buf_set_keymap("n", "gs", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts) end
 
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then
@@ -86,9 +86,9 @@ local custom_attach = function(client, bufnr)
 
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
-        buf_set_keymap("n", "<localleader>f", ":lua vim.lsp.buf.formatting()<CR>", opts)
+        buf_set_keymap("n", "<localleader>f", "<Cmd>lua vim.lsp.buf.formatting()<CR>", opts)
     elseif client.resolved_capabilities.document_range_formatting then
-        buf_set_keymap("v", "<localleader>f", ":lua vim.lsp.buf.range_formatting()<CR>", opts)
+        buf_set_keymap("v", "<localleader>f", "<Cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
 
     print("'" .. client.name .. "' server attached")
@@ -100,10 +100,7 @@ end
 
 lspconfig.gopls.setup {
     cmd = {"gopls", "--remote=auto"},
-    on_attach = function(client)
-        client.resolved_capabilities.document_formatting = false
-        custom_attach(client)
-    end,
+    on_attach = custom_attach,
     capabilities = capabilities,
     init_options = {usePlaceholders = true, completeUnimported = true},
     flags = {debounce_text_changes = 150}

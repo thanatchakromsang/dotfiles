@@ -1,9 +1,5 @@
 { config, pkgs, lib, ... }:
 
-let
-  configsDir = ../../../configs;
-  homeDir = ../../../home;
-in
 {
   users.extraUsers.thanatchaya = {
     isNormalUser = true;
@@ -81,14 +77,14 @@ in
 
     # ~/.config symlinks
     xdg.configFile = {
-      "nvim" = { source = "${configsDir}/nvim"; recursive = true; };
-      "ranger" = { source = "${configsDir}/ranger"; recursive = true; };
+      "nvim" = { source = config.lib.file.mkOutOfStoreSymlink (config.home.homeDirectory + "/.dotfiles/configs/nvim"); recursive = true; };
+      "ranger" = { source = config.lib.file.mkOutOfStoreSymlink (config.home.homeDirectory + "/.dotfiles/configs/ranger"); recursive = true; };
     };
 
     # ~ symlinks
     home.file = {
-      ".editorconfig".source = "${homeDir}/editorconfig";
-      ".p10k.zsh".source = "${homeDir}/p10k.zsh";
+      ".editorconfig".source = config.lib.file.mkOutOfStoreSymlink (config.home.homeDirectory + "/.dotfiles/home/editorconfig");
+      ".p10k.zsh".source = config.lib.file.mkOutOfStoreSymlink (config.home.homeDirectory + "/.dotfiles/home/p10k.zsh");
     };
 
     # disable keyboard management using home-manager

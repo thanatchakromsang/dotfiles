@@ -62,3 +62,9 @@ vim.api.nvim_exec([[
     sign define NeogitOpen:item texthl=StatusLine
     sign define NeogitClosed:item texthl=StatusLine
 ]], false)
+
+-- nvim-cmp
+vim.api.nvim_exec([[
+    hi link CmpItemMenu CmpItemAbbrDeprecatedDefault
+    hi link CmpItemKind Aqua
+]], false)
