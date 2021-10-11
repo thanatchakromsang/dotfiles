@@ -71,7 +71,6 @@ return require('packer').startup(function(use)
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-path',
         'ray-x/cmp-treesitter',
-
         'L3MON4D3/LuaSnip',
         'saadparwaiz1/cmp_luasnip',
         'rafamadriz/friendly-snippets',
@@ -101,6 +100,7 @@ return require('packer').startup(function(use)
 
     -- Individual Syntax highlights without Treesitter support
     use 'google/vim-jsonnet'
+    use 'hashivim/vim-terraform'
 
     -- Icons
     use 'ryanoasis/vim-devicons'
