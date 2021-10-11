@@ -24,7 +24,6 @@ local tree_cb = require("nvim-tree.config").nvim_tree_callback
 require'nvim-tree'.setup {
   disable_netrw       = false,
   hijack_netrw        = true,
-  lsp_diagnostics     = true,
   update_cwd          = false,
   auto_close          = true,
   ignore_ft_on_setup  = {'startify', 'dashboard'},
@@ -43,5 +42,8 @@ require'nvim-tree'.setup {
         { key = "v", cb = tree_cb "vsplit" },
       }
     }
+  },
+  diagnostics = {
+    enable = true
   }
 }
