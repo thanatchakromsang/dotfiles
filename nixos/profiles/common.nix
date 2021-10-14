@@ -33,8 +33,8 @@
       gnupg
       ripgrep
       ranger
-      unstable.neovim
-      unstable.bitwarden-cli
+      neovim
+      bitwarden-cli
       zsh-powerlevel10k
     ];
 

@@ -49,5 +49,5 @@
     domain = "local";
   };
 
-  system.stateVersion = "21.05";
+  system.stateVersion = "21.11";
 }

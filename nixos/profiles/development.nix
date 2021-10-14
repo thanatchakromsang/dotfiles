@@ -31,8 +31,8 @@
     gnumake
 
     # Terraform
-    unstable.terraform
-    unstable.terraform-ls
+    terraform
+    terraform-ls
 
     # Rust
     rustc
@@ -48,7 +48,7 @@
     luaformatter
 
     # General
-    unstable.efm-langserver
+    efm-langserver
 
     # Docker
     nodePackages.dockerfile-language-server-nodejs
@@ -57,24 +57,24 @@
     nodePackages.vim-language-server
 
     # YAML
-    unstable.nodePackages.yaml-language-server
+    nodePackages.yaml-language-server
 
     # Nix
     rnix-lsp
 
     # Ops Toolsets
-    unstable.kubectl
+    kubectl
     kubectx
-    unstable.kubernetes-helm
-    unstable.kind
-    unstable.fluxcd
+    kubernetes-helm
+    kind
+    fluxcd
     fluxctl # v1
     awscli2
     docker-compose
     google-cloud-sdk
     kubeseal
     sops
-    unstable.cloudflared
+    cloudflared
     k9s
 
     # Static site generator

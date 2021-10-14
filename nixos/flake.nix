@@ -1,21 +1,21 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    /* nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable"; */
     nur.url = "github:nix-community/NUR";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     # # TODO: use sops-nix for secrets
     # sops-nix.url = "github:Mic92/sops-nix";
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs =
     { self
     , nixpkgs
-    , nixpkgs-unstable
+    # , nixpkgs-unstable
     , home-manager
     , nur
     , nixos-hardware
@@ -23,14 +23,14 @@
     }@inputs:
       let
         inherit (nixpkgs) lib;
-        unstable-overlay = final: prev: {
-          unstable = (
-            import nixpkgs-unstable {
-              system = "x86_64-linux";
-              config.allowUnfree = true;
-            }
-          );
-        };
+        # unstable-overlay = final: prev: {
+        #   unstable = (
+        #     import nixpkgs-unstable {
+        #       system = "x86_64-linux";
+        #       config.allowUnfree = true;
+        #     }
+        #   );
+        # };
         overlays = [
           # TODO: Refactor custom overlay
           (
@@ -51,7 +51,7 @@
               );
             }
           )
-          unstable-overlay
+          /* unstable-overlay */
           nur.overlay
         ];
       in
