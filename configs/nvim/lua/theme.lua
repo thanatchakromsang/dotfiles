@@ -68,3 +68,10 @@ vim.api.nvim_exec([[
     hi link CmpItemMenu CmpItemAbbrDeprecatedDefault
     hi link CmpItemKind Aqua
 ]], false)
+
+-- Lsp
+vim.api.nvim_exec([[
+  hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646
+  hi LspReferenceText cterm=bold ctermbg=red guibg=#464646
+  hi LspReferenceWrite cterm=bold ctermbg=red guibg=#464646
+]], false)
