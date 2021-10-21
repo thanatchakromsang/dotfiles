@@ -43,7 +43,7 @@
     enableCompletion = true;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
-    histSize = 10000;
+    histSize = 1000000000;
     ohMyZsh = {
       enable = true;
       plugins =
