@@ -76,7 +76,7 @@ in
               command = "floating enable, kill";
             }
             {
-              criteria = { app_id = "__tridactyl_scratchpad"; };
+              criteria = { app_id = "tridactyl_editor"; };
               command = "floating enable";
             }
           ];
