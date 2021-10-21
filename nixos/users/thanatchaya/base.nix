@@ -11,10 +11,14 @@
 
   home-manager.users.thanatchaya = { pkgs, config, ... }: {
     # Workaround for firefox pkgs error ref: https://github.com/nix-community/home-manager/issues/2010
-    home.stateVersion = "21.05";
+    home.stateVersion = "21.11";
 
     programs.zsh = {
       enable = true;
+      history =  {
+         save = 1000000000;
+         size = 1000000000;
+        };
       initExtraFirst = ''
         if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
           source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
