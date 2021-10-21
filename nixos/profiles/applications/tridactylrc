@@ -1,0 +1,20 @@
+" Make tridactyl open Vim in my prefered terminal
+set editorcmd kitty --single-instance --class __tridactyl_scratchpad 'nvim'
+
+" }}}
+" Search {{{
+" Case insensitive only if fully lowercase
+set findcase smart
+
+" Search forward/backward
+bind / fillcmdline find
+bind ? fillcmdline find -?
+
+" Go to next/previous match
+bind n findnext 1
+bind N findnext -1
+
+" Because :nohls never works
+bind <Space><Space> nohlsearch
+
+" vim: set filetype=vim foldmethod=marker:

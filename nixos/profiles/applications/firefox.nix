@@ -131,5 +131,7 @@ in
         leechblock-ng
       ];
     };
+
+    xdg.configFile."tridactyl/tridactylrc".source = ./tridactylrc;
   };
 }

@@ -75,6 +75,10 @@ in
               criteria = { title = "Firefox — Sharing Indicator"; };
               command = "floating enable, kill";
             }
+            {
+              criteria = { app_id = "__tridactyl_scratchpad"; };
+              command = "floating enable";
+            }
           ];
         };
         bars = [
