@@ -151,12 +151,12 @@ in
         } // lib.optionalAttrs (config.networking.hostName == "canyon") {
           HDMI-A-1 = {
             resolution = "1920x1080";
-            transform = "90";
-            position = "0 0";
+            transform = "270";
+            position = "1920 0";
           };
           HDMI-A-2 = {
             resolution = "1920x1080";
-            position = "1080 480";
+            position = "0 480";
           };
         } // lib.optionalAttrs (config.networking.hostName == "t14s") {
           eDP-1 = {
