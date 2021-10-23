@@ -79,6 +79,9 @@
 
     # Static site generator
     hugo
+
+    # Database
+    dbeaver
   ];
 
   virtualisation.docker = {
