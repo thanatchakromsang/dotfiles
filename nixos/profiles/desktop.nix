@@ -22,6 +22,7 @@
     tdesktop # telegram
     bluez
     pavucontrol
+    wdisplays
   ];
 
   # Sound / Screen sharing
