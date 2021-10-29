@@ -75,3 +75,8 @@ vim.api.nvim_exec([[
   hi LspReferenceText cterm=bold ctermbg=red guibg=#464646
   hi LspReferenceWrite cterm=bold ctermbg=red guibg=#464646
 ]], false)
+
+-- NvimTree
+vim.api.nvim_exec([[
+  hi link NvimTreeWindowPicker TabLineSel
+]], false)

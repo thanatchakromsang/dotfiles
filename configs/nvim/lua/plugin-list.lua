@@ -113,12 +113,20 @@ return require('packer').startup(function(use)
         require 'theme'
       end
     }
+    -- use {
+    --   'glepnir/galaxyline.nvim',
+    --   after = 'gruvbox-material',
+    --   requires = {'kyazdani42/nvim-web-devicons', opt = true},
+    --   config = function()
+    --       require 'plugins.galaxyline'
+    --   end
+    -- }
     use {
-      'glepnir/galaxyline.nvim',
+      'nvim-lualine/lualine.nvim',
       after = 'gruvbox-material',
       requires = {'kyazdani42/nvim-web-devicons', opt = true},
       config = function()
-          require 'plugins.galaxyline'
+          require 'plugins.lualine'
       end
     }
     use {
