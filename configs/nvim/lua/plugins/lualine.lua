@@ -11,7 +11,7 @@ local colors = {
 require('lualine').setup {
     options = {
         icons_enabled = false,
-        theme = 'gruvbox_material',
+        theme = 'auto',
         component_separators = {left = '', right = '|'},
         section_separators = {left = '', right = ''}
         -- disabled_filetypes = {'packer', 'NvimTree', 'dbui'}
