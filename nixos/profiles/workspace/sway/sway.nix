@@ -151,7 +151,7 @@ in
         } // lib.optionalAttrs (config.networking.hostName == "canyon") {
           HDMI-A-1 = {
             resolution = "1920x1080";
-            transform = "270";
+            transform = "0";
             position = "1920 0";
           };
           HDMI-A-2 = {
