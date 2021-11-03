@@ -30,10 +30,6 @@
     gcc
     gnumake
 
-    # Terraform
-    terraform
-    terraform-ls
-
     # Rust
     rustc
     rustup
@@ -76,12 +72,20 @@
     sops
     cloudflared
     k9s
+    pulumi-bin
+
+    # Terraform
+    terraform
+    terraform-ls
 
     # Static site generator
     hugo
 
     # Database
     dbeaver
+
+    # Network
+    dnsutils
   ];
 
   virtualisation.docker = {

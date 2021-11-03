@@ -23,6 +23,8 @@
     bluez
     pavucontrol
     wdisplays
+    wf-recorder
+    mpv
   ];
 
   # Sound / Screen sharing
