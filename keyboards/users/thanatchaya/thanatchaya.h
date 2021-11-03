@@ -22,6 +22,7 @@
 enum user_layers {
   QWERTY_LAYER,
   COLEMAK_LAYER,
+  GAME_LAYER,
   NUMBER_LAYER,
   SYMBOL_LAYER,
   FUNCTION_LAYER,
@@ -81,6 +82,27 @@ enum user_layers {
 #define _________________COLEMAK_R1________________ KC_J, KC_L,         KC_U,         KC_Y,         KC_SCLN
 #define _________________COLEMAK_R2________________ KC_M, LGUI_T(KC_N), LALT_T(KC_E), LCTL_T(KC_I), LSFT_T(KC_O)
 #define _________________COLEMAK_R3________________ KC_K, KC_H,         KC_COMM,      KC_DOT,       KC_SLSH
+
+  /* ---------------------------------------------------------------------
+   *
+   *   Game Layout
+   *
+   *     ┌─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┐
+   *     │  Q  │  W  │  E  │  R  │  T  │   │  Y  │  U  │  I  │  O  │  P  │
+   *     ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
+   *     │  A  │  S  │  D  │  F  │  G  │   │  H  │  J  │  K  │  L  │  ;  │
+   *     ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
+   *     │  Z  │  X  │  C  │  V  │  B  │   │  N  │  M  │  ,  │  .  │  /  │
+   *     └─────┴─────┴─────┴─────┴─────┘   └─────┴─────┴─────┴─────┴─────┘
+   */
+
+#define __________________GAME_L1__________________ KC_Q,         KC_W,         KC_E,         KC_R,         KC_T
+#define __________________GAME_L2__________________ KC_A,         KC_S,         KC_D,         KC_F,         KC_G
+#define __________________GAME_L3__________________ KC_Z,         KC_X,         KC_C,         KC_V,         KC_B
+
+#define __________________GAME_R1__________________ KC_Y, KC_U,         KC_I,         KC_O,         KC_P
+#define __________________GAME_R2__________________ KC_H, KC_J,         KC_K,         KC_L,         KC_SCLN
+#define __________________GAME_R3__________________ KC_N, KC_M,         KC_COMM,      KC_DOT,       KC_SLSH
 
   /* ---------------------------------------------------------------------
    *
@@ -214,11 +236,11 @@ enum user_layers {
    *
    *   Layer Switcher
    *     ┌─────┬─────┬─────┬─────┬─────┐
-   *     │LANG │QWRTY│     │     │COLE │
+   *     │LANG │QWRTY│GAME │     │COLE │
    *     └─────┴─────┴─────┴─────┴─────┘
    */
 
-#define _________________LANGUAGE_SWITCHER_________ LALT(KC_SPC),    TO(QWERTY_LAYER),   XXXXXXX,     XXXXXXX,     TO(COLEMAK_LAYER)
+#define _________________LANGUAGE_SWITCHER_________ LALT(KC_SPC),    TO(QWERTY_LAYER),   TO(GAME_LAYER),     XXXXXXX,     TO(COLEMAK_LAYER)
 
   /* ---------------------------------------------------------------------
    *
