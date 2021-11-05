@@ -35,8 +35,8 @@ map('', '<PageUp>', '10<C-U>', {silent = true})
 map('', '<PageDown>', '10<C-D>', {silent = true})
 
 -- Move text
-map('x', 'J', ':move \'<-2<CR>gvgv', {noremap = true, silent = true})
-map('x', 'K', ':move \'>+1<CR>gv-gv', {noremap = true, silent = true})
+map('x', 'K', ':move \'<-2<CR>gvgv', {noremap = true, silent = true})
+map('x', 'J', ':move \'>+1<CR>gv-gv', {noremap = true, silent = true})
 map('i', '<C-j>', '<esc>:m .+1<CR>==', {noremap = true, silent = true})
 map('i', '<C-k>', '<esc>:m .-2<CR>==', {noremap = true, silent = true})
 

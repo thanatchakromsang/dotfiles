@@ -137,13 +137,13 @@ in
             tap = "enabled";
             dwt = "enabled";
             scroll_factor = "0.5";
-            events = "enabled";
+            events = "disabled";
           };
           "2:14:ETPS/2_Elantech_TrackPoint" = {
             accel_profile = "adaptive";
-            pointer_accel = "0.5";
+            pointer_accel = "0.0";
             dwt = "enabled";
-            events = "disabled";
+            events = "enabled";
           };
         };
         output = {
