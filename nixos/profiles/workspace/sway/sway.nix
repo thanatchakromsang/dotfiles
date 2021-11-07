@@ -156,7 +156,7 @@ in
           };
           HDMI-A-2 = {
             resolution = "1920x1080";
-            position = "0 480";
+            position = "0 0";
           };
         } // lib.optionalAttrs (config.networking.hostName == "t14s") {
           eDP-1 = {
