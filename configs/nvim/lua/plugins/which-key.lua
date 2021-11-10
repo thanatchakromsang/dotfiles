@@ -86,7 +86,6 @@ wk.register({
                 c = {"diff close"},
                 r = {"diff refresh"},
             },
-            l = {"neogit log"},
             S = {":Telescope git_stash<CR>", "git stash"},
             c = {":Telescope git_bcommits<CR>", "git current file history"},
             C = {":Telescope git_commits<CR>", "git history"},

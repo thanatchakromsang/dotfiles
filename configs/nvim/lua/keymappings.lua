@@ -80,7 +80,6 @@ map('n', '<ESC>', ':noh<CR>', {noremap = true, silent = true}) -- Remove search 
 map('n', 'Q', '<nop>', {noremap = true, silent = true})
 
 -- Bufferline
-map('n', 'gb', '<cmd>BufferLinePick<CR>', {noremap = true, silent = true})
 map('n', '<TAB>', '<cmd>BufferLineCycleNext<CR>', {noremap = true, silent = true})
 map('n', '<S-TAB>', '<cmd>BufferLineCyclePrev<CR>', {noremap = true, silent = true})
 
@@ -92,10 +91,6 @@ map('n', '<leader>gP', '<cmd>lua require"gitsigns".preview_hunk()<CR>', {noremap
 map('n', '<leader>gn', '<cmd>lua require"gitsigns".next_hunk()<CR>', {noremap = true, silent = true})
 map('n', '<leader>gp', '<cmd>lua require"gitsigns".prev_hunk()<CR>', {noremap = true, silent = true})
 map('n', '<leader>gb', '<cmd>lua require"gitsigns".blame_line()<CR>', {noremap = true, silent = true})
-
--- Neogit
-map('n', '<leader>gg', '<cmd>Neogit kind=vsplit<CR>', {noremap = true, silent = true})
-map('n', '<leader>gl', '<cmd>Neogit kind=vsplit log<CR>', {noremap = true, silent = true})
 
 -- Diffview.nvim
 map('n', '<leader>gdd', '<cmd>DiffviewOpen<CR>', {noremap = true, silent = true})
