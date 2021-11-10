@@ -89,7 +89,7 @@
     pbcopy = "wl-copy";
     pbpaste = "wl-paste";
     g = "lazygit";
-    r = "ranger";
+    r = "ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd $LASTDIR";
     c = "clear";
   };
 }
