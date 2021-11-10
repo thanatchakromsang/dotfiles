@@ -35,7 +35,6 @@
           # TODO: Refactor custom overlay
           (
             self: super: {
-              bitwarden-rofi = super.callPackage ./packages/bitwarden-rofi {};
               rofi-bluetooth = super.callPackage ./packages/rofi-bluetooth {};
               # Override to create `kubectl-ctx`, `kubectl-ns` as kubectl plugins
               kubectx = super.kubectx.overrideAttrs (

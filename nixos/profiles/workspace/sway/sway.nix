@@ -94,6 +94,7 @@ in
             '';
           }
           { command = "${pkgs.mako}/bin/mako --default-timeout 5000 &"; always = true; }
+          { command = "${pkgs.keyutils}/bin/keyctl link @u @s"; } # Workaround for bitwarden-rofi https://github.com/NixOS/nixpkgs/issues/95928
         ];
         # swaymsg -t get_inputs
         # read `man 5 sway-input` for more information
@@ -171,9 +172,10 @@ in
         seat = {
           "*".hide_cursor = "when-typing enable";
         };
-        colors = let
-          color = config.themes.colors;
-        in
+        colors =
+          let
+            color = config.themes.colors;
+          in
           {
             background = color.bg;
             focused = {
@@ -211,7 +213,7 @@ in
           smartBorders = "on";
         };
         defaultWorkspace = "1";
-        workspaceOutputAssign = [];
+        workspaceOutputAssign = [ ];
         focus = {
           followMouse = true;
           forceWrapping = true;
@@ -224,7 +226,7 @@ in
           "${modifier}+q" = "kill";
 
           # Start launcher
-          "${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -width 30 -show drun | xargs swaymsg exec";
+          "${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -width 30 -show drun | xargs swaymsg exec &";
 
           "${modifier}+Shift+r" = "reload";
 
@@ -325,8 +327,9 @@ in
           "--locked XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -T 1.4";
           "--locked XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -T 0.72";
 
-          "${modifier}+n" = "exec ${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
+          "${modifier}+n" = "exec ${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu &";
           "${modifier}+u" = "exec ${pkgs.rofi-bluetooth}/bin/rofi-bluetooth &";
+          "${modifier}+y" = "exec ${pkgs.nur.repos.reedrw.bitwarden-rofi-patched}/bin/bwmenu &";
 
           # Mode binding
           "${modifier}+r" = "mode resize";
@@ -359,14 +362,14 @@ in
             let
               screenshot_dir = "Pictures/$(date +'%Y-%m-%d+%H:%M:%S').png";
             in
-              {
-                "s" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save output ${screenshot_dir}, mode default";
-                "a" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save area ${screenshot_dir}, mode default";
-                "w" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save window ${screenshot_dir}, mode default";
-                "o" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save output ${screenshot_dir}, mode default";
-                "Escape" = "mode default";
-                "Return" = "mode default";
-              };
+            {
+              "s" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save output ${screenshot_dir}, mode default";
+              "a" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save area ${screenshot_dir}, mode default";
+              "w" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save window ${screenshot_dir}, mode default";
+              "o" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save output ${screenshot_dir}, mode default";
+              "Escape" = "mode default";
+              "Return" = "mode default";
+            };
           "poweroff (p), reboot (r), suspend (s), lock (l)" =
             {
               "p" = "exec ${pkgs.systemd}/bin/systemctl poweroff, mode default";
