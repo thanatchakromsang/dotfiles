@@ -88,21 +88,33 @@ enum user_layers {
    *   Game Layout
    *
    *     ┌─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┐
-   *     │  Q  │  W  │  E  │  R  │  T  │   │  Y  │  U  │  I  │  O  │  P  │
+   *     │  Q  │  W  │  E  │  R  │  T  │   │  Y  │  U  │  ↑  │  O  │  P  │
    *     ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
-   *     │  A  │  S  │  D  │  F  │  G  │   │  H  │  J  │  K  │  L  │  ;  │
+   *     │  A  │  S  │  D  │  F  │  G  │   │  H  │  ←  │  ↓  │  →  │  ;  │
    *     ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
-   *     │  Z  │  X  │  C  │  V  │  B  │   │  N  │  M  │  ,  │  .  │  /  │
+   *     │  ^  │  X  │  C  │  V  │  B  │   │  N  │  M  │  ,  │  .  │QWRTY│
    *     └─────┴─────┴─────┴─────┴─────┘   └─────┴─────┴─────┴─────┴─────┘
+   *
+   *                 ┌─────┬─────┬─────┐   ┌─────┬─────┬─────┐
+   *                 │ Esc │BSpc │ Tab │   │Enter│ Spc │BSPC │
+   *                 └─────┴─────┴─────┘   └─────┴─────┴─────┘
    */
 
-#define __________________GAME_L1__________________ KC_Q,         KC_W,         KC_E,         KC_R,         KC_T
-#define __________________GAME_L2__________________ KC_A,         KC_S,         KC_D,         KC_F,         KC_G
-#define __________________GAME_L3__________________ KC_Z,         KC_X,         KC_C,         KC_V,         KC_B
+#define __________________GAME_L1__________________ KC_Q,     KC_W, KC_E, KC_R, KC_T
+#define __________________GAME_L2__________________ KC_A,     KC_S, KC_D, KC_F, KC_G
+#define __________________GAME_L3__________________ KC_LCTRL, KC_X, KC_C, KC_V, KC_B
 
-#define __________________GAME_R1__________________ KC_Y, KC_U,         KC_I,         KC_O,         KC_P
-#define __________________GAME_R2__________________ KC_H, KC_J,         KC_K,         KC_L,         KC_SCLN
-#define __________________GAME_R3__________________ KC_N, KC_M,         KC_COMM,      KC_DOT,       KC_SLSH
+#define ____GAME_L2_____ KC_ESC, KC_BSPC
+#define GAME_L1 KC_TAB
+#define ________GAME_L4__________ ____GAME_L2_____, GAME_L1
+
+#define __________________GAME_R1__________________ KC_Y, KC_U,    KC_UP,   KC_O,     KC_P
+#define __________________GAME_R2__________________ KC_H, KC_LEFT, KC_DOWN, KC_RIGHT, KC_SCLN
+#define __________________GAME_R3__________________ KC_N, KC_M,    KC_COMM, KC_DOT,   TO(QWERTY_LAYER)
+
+#define ____GAME_R2_____ KC_ENTER, KC_SPC
+#define GAME_R1 KC_BSPC
+#define ________GAME_R4__________ ____GAME_R2_____, GAME_R1
 
   /* ---------------------------------------------------------------------
    *
@@ -177,7 +189,7 @@ enum user_layers {
 
 #define _________________SYMBOL_L1_________________ KC_LCBR,  KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR
 #define _________________SYMBOL_L2_________________ KC_TILDE, KC_DLR,  KC_PERC, KC_CIRC, KC_PLUS
-#define _________________SYMBOL_L3_________________ KC_RPRN, KC_EXLM, KC_AT,   KC_HASH, KC_PIPE
+#define _________________SYMBOL_L3_________________ KC_RPRN,  KC_EXLM, KC_AT,   KC_HASH, KC_PIPE
 
 #define _SYML1_ KC_GT
 #define ______SYML2_____ KC_RPRN, KC_UNDS
@@ -236,11 +248,11 @@ enum user_layers {
    *
    *   Layer Switcher
    *     ┌─────┬─────┬─────┬─────┬─────┐
-   *     │LANG │QWRTY│GAME │     │COLE │
+   *     │ XXX │QWRTY│GAME │ XXX │COLE │
    *     └─────┴─────┴─────┴─────┴─────┘
    */
 
-#define _________________LANGUAGE_SWITCHER_________ LALT(KC_SPC),    TO(QWERTY_LAYER),   TO(GAME_LAYER),     XXXXXXX,     TO(COLEMAK_LAYER)
+#define _________________LANGUAGE_SWITCHER_________ XXXXXXX,    TO(QWERTY_LAYER),   TO(GAME_LAYER),     XXXXXXX,     TO(COLEMAK_LAYER)
 
   /* ---------------------------------------------------------------------
    *
