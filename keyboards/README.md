@@ -80,6 +80,14 @@ qmk flash -kb crkbd -km thanatchaya
 After flash one will need to do hardware reset using a pen to click onto Atmega
 hardware reset button
 
+## Flash CRKBD/Elite C 
+
+```bash
+cd ./qmk
+
+qmk flash -kb crkbd -km thanatchaya -bl dfu
+```
+
 ## Troubleshoot
 
 ### Atreus
