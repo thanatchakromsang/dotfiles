@@ -67,7 +67,7 @@ wk.register({
             q = {":Telescope quickfix<CR>", "quickfix"},
             l = {":Telescope loclist<CR>", "loclist"},
             c = {":Telescope git_commits<CR>", "git current file history"},
-            C = {":Telescope git_commits<CR>", "git history"},
+            C = {":Telescope git_commits<CR>", "git history"}
         },
         s = {
             name = "+startify",
@@ -80,12 +80,7 @@ wk.register({
         g = {
             name = "+git",
             g = {"<cmd>FloatermNew --height=0.9 --width=0.9 --name=git --wintype=float lazygit<CR>", "lazygit"},
-            d = {
-                name = "+diff",
-                d = {"diff open"},
-                c = {"diff close"},
-                r = {"diff refresh"},
-            },
+            d = {name = "+diff", d = {"diff open"}, c = {"diff close"}, r = {"diff refresh"}},
             S = {":Telescope git_stash<CR>", "git stash"},
             c = {":Telescope git_bcommits<CR>", "git current file history"},
             C = {":Telescope git_commits<CR>", "git history"},
@@ -96,16 +91,10 @@ wk.register({
             r = {"reset hunk"},
             R = {"reset buffer"},
             P = {"preview hunk"},
-            b = {"blame line"}
+            b = {"blame line"},
+            B = {"browse git remote"}
         },
-        t = {
-            name = "+trouble",
-            t = "toggle",
-            w = "workspace diagnostics",
-            d = "document diagnostics",
-            l = "local list",
-            q = "quickfix list"
-        }
+        t = {name = "+trouble", t = "toggle", w = "workspace diagnostics", d = "document diagnostics", l = "local list", q = "quickfix list"}
     }
 }, {
     mode = "n", -- NORMAL mode
@@ -114,12 +103,12 @@ wk.register({
     nowait = false -- use `nowait` when creating keymaps
 })
 
--- wk.register({["<leader>"] = {name = "leader", g = {name = "+git", B = {"browse git visual line"}}}}, {
---     mode = "v",
---     silent = true, -- use `silent` when creating keymaps
---     noremap = true, -- use `noremap` when creating keymaps
---     nowait = false -- use `nowait` when creating keymaps
--- })
+wk.register({["<leader>"] = {name = "leader", g = {name = "+git", B = {"browse git remote"}}}}, {
+    mode = "v",
+    silent = true, -- use `silent` when creating keymaps
+    noremap = true, -- use `noremap` when creating keymaps
+    nowait = false -- use `nowait` when creating keymaps
+})
 
 -- Normal Local Leader
 wk.register({

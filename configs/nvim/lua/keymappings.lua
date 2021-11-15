@@ -92,6 +92,9 @@ map('n', '<leader>gn', '<cmd>lua require"gitsigns".next_hunk()<CR>', {noremap = 
 map('n', '<leader>gp', '<cmd>lua require"gitsigns".prev_hunk()<CR>', {noremap = true, silent = true})
 map('n', '<leader>gb', '<cmd>lua require"gitsigns".blame_line()<CR>', {noremap = true, silent = true})
 
+-- Fugitive
+map('', '<leader>gB', '<cmd>GBrowse!<CR>', {noremap = true, silent = true})
+
 -- Diffview.nvim
 map('n', '<leader>gdd', '<cmd>DiffviewOpen<CR>', {noremap = true, silent = true})
 map('n', '<leader>gdc', '<cmd>DiffviewClose<CR>', {noremap = true, silent = true})

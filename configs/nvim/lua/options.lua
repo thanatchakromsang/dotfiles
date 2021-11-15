@@ -54,10 +54,10 @@ wo.number = true -- Show number line
 wo.relativenumber = true -- Show relative to current line number instead
 
 local disabled_built_ins = {
-    "netrw",
-    "netrwPlugin",
-    "netrwSettings",
-    "netrwFileHandlers",
+    -- "netrw",
+    -- "netrwPlugin",
+    -- "netrwSettings",
+    -- "netrwFileHandlers",
     "gzip",
     "zip",
     "zipPlugin",

@@ -184,6 +184,10 @@ return require('packer').startup(function(use)
         require 'plugins.neogit'
       end
     }
+    use {
+      'tpope/vim-fugitive',
+      requires = {'shumphrey/fugitive-gitlab.vim', 'tpope/vim-rhubarb' },
+    }
 
     -- General Plugins
     use 'editorconfig/editorconfig-vim'
