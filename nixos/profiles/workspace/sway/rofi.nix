@@ -14,7 +14,7 @@ in
       terminal = "${pkgs.kitty}/bin/kitty";
       theme = "gruvbox-dark";
       extraConfig = {
-        columns = 1;
+        /* columns = 1; */
         modi = "run,drun";
       };
     };

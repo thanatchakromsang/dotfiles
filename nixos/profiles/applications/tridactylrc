@@ -4,7 +4,7 @@ set editorcmd kitty --single-instance --class tridactyl_editor 'nvim'
 " }}}
 " Search {{{
 " Case insensitive only if fully lowercase
-set findcase smart
+" set findcase smart
 
 " " Search forward/backward
 " bind / fillcmdline find
@@ -15,6 +15,6 @@ set findcase smart
 " bind N findnext -1
 
 " Because :nohls never works
-bind <Space><Space> nohlsearch
+" bind <Space><Space> nohlsearch
 
 " vim: set filetype=vim foldmethod=marker:

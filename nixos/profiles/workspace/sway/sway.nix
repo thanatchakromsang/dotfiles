@@ -53,6 +53,7 @@ in
 
     home.packages = with pkgs; [
       wl-clipboard
+      nur.repos.reedrw.bitwarden-rofi-patched
     ];
 
     wayland.windowManager.sway = {
