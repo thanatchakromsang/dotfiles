@@ -60,6 +60,10 @@ in
       enable = true;
       xwayland = false;
       wrapperFeatures.gtk = true;
+      /* extraConfig = '' */
+      /*   bindsym --input-device=1390:269:ELECOM_TrackBall_Mouse_HUGE_TrackBall --whole-window BTN_EXTRA seat - cursor press BTN_LEFT, seat - cursor release BTN_LEFT */
+      /*   bindsym --input-device=1390:269:ELECOM_TrackBall_Mouse_HUGE_TrackBall --whole-window BTN_SIDE seat - cursor press BTN_RIGHT, seat - cursor release BTN_RIGHT */
+      /* ''; */
       config = rec {
         modifier = "Mod4";
         workspaceAutoBackAndForth = false;
@@ -146,6 +150,10 @@ in
             pointer_accel = "0.0";
             dwt = "enabled";
             events = "enabled";
+          };
+          "1390:269:ELECOM_TrackBall_Mouse_HUGE_TrackBall" = {
+            events = "enabled";
+            middle_emulation = "enabled";
           };
         };
         output = {
