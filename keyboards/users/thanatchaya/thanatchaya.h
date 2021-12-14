@@ -92,11 +92,11 @@ enum user_layers {
    *     ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
    *     │  A  │  S  │  D  │  F  │  G  │   │  H  │  ←  │  ↓  │  →  │  ;  │
    *     ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
-   *     │  ^  │  X  │  C  │  V  │  B  │   │  N  │  M  │  ,  │  .  │QWRTY│
+   *     │  ^  │  X  │  C  │  V  │  B  │   │  N  │  M  │  ,  │  .  │  /  │
    *     └─────┴─────┴─────┴─────┴─────┘   └─────┴─────┴─────┴─────┴─────┘
    *
    *                 ┌─────┬─────┬─────┐   ┌─────┬─────┬─────┐
-   *                 │ Esc │BSpc │ Tab │   │Enter│ Spc │ DEL │
+   *                 │ Esc │BSpc │ Tab │   │Enter│ Spc │QWRTY│
    *                 └─────┴─────┴─────┘   └─────┴─────┴─────┘
    */
 
@@ -110,10 +110,10 @@ enum user_layers {
 
 #define __________________GAME_R1__________________ KC_Y, KC_U,    KC_UP,   KC_O,     KC_P
 #define __________________GAME_R2__________________ KC_H, KC_LEFT, KC_DOWN, KC_RIGHT, KC_SCLN
-#define __________________GAME_R3__________________ KC_N, KC_M,    KC_COMM, KC_DOT,   TO(QWERTY_LAYER)
+#define __________________GAME_R3__________________ KC_N, KC_M,    KC_COMM, KC_DOT,   KC_SLSH
 
 #define ____GAME_R2_____ KC_ENTER, KC_SPC
-#define GAME_R1 KC_DEL
+#define GAME_R1 TO(QWERTY_LAYER)
 #define ________GAME_R4__________ ____GAME_R2_____, GAME_R1
 
   /* ---------------------------------------------------------------------
