@@ -162,7 +162,8 @@ lspconfig.tsserver.setup {
 local luafmt = {formatCommand = "lua-format -i --column-limit=150", formatStdin = true}
 
 local isort = {formatCommand = "isort --quiet -", formatStdin = true}
-local yapf = {formatCommand = "yapf --quiet", formatStdin = true}
+-- local yapf = {formatCommand = "yapf --quiet", formatStdin = true}
+local black = {formatCommand = "black --quiet -", formatStdin = true}
 
 -- JavaScript/React/TypeScript
 -- local prettier = {formatCommand = "./node_modules/.bin/prettier --stdin-filepath ${INPUT}", formatStdin = true}
@@ -201,7 +202,7 @@ local languages = {
     scss = {prettier},
     css = {prettier},
     markdown = {markdownlint},
-    python = {isort, yapf},
+    python = {isort, black},
     sh = {shfmt, shellcheck}
 }
 

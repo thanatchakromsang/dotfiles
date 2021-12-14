@@ -11,6 +11,8 @@
     pipenv
     poetry
     nodePackages.pyright
+    black
+    python39Packages.isort
 
     # Javascript / Typescript
     yarn
