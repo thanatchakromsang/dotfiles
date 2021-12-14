@@ -84,7 +84,7 @@ in
             pulseaudio = {
               scroll-step = 1;
               format = "{volume}%{icon} {format_source}";
-              format-bluetooth = "{volume}%";
+              format-bluetooth = "{volume}%{icon} {format_source}";
               format-bluetooth-muted = "muted";
               format-source = "{volume}%";
               format-source-muted = "muted";
