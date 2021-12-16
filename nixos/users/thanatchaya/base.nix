@@ -27,9 +27,6 @@
         # Add powerlevel10k themes
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
 
-        # Completion
-        source ${pkgs.google-cloud-sdk}/google-cloud-sdk/completion.zsh.inc
-
         bindkey '^[[1;5A' history-substring-search-up
         bindkey '^[[1;5B' history-substring-search-down
 
