@@ -13,6 +13,7 @@
     nodePackages.pyright
     black
     python39Packages.isort
+    cookiecutter
 
     # Javascript / Typescript
     yarn
@@ -79,12 +80,14 @@
     # Terraform
     terraform
     terraform-ls
+    nodePackages.cdktf-cli
 
     # Static site generator
     hugo
 
     # Database
     dbeaver
+    postgresql
 
     # Network
     dnsutils

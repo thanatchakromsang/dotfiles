@@ -58,7 +58,6 @@ in
 
     wayland.windowManager.sway = {
       enable = true;
-      xwayland = false;
       wrapperFeatures.gtk = true;
       /* extraConfig = '' */
       /*   bindsym --input-device=1390:269:ELECOM_TrackBall_Mouse_HUGE_TrackBall --whole-window BTN_EXTRA seat - cursor press BTN_LEFT, seat - cursor release BTN_LEFT */
