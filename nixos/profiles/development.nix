@@ -71,6 +71,7 @@
     awscli2
     docker-compose
     google-cloud-sdk
+    cloud-sql-proxy
     kubeseal
     sops
     cloudflared
