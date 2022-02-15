@@ -77,6 +77,8 @@
     cloudflared
     k9s
     pulumi-bin
+    step-cli
+    linkerd
 
     # Terraform
     terraform
