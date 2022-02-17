@@ -36,6 +36,10 @@ vim.api.nvim_exec([[
     hi! link LspDiagnosticsSignWarning YellowSign
     hi! link LspDiagnosticsSignInformation GreenSign
     hi! link LspDiagnosticsSignHint BlueSign
+
+    hi! LspReferenceRead cterm=bold ctermbg=red guibg=#464646
+    hi! LspReferenceText cterm=bold ctermbg=red guibg=#464646
+    hi! LspReferenceWrite cterm=bold ctermbg=red guibg=#464646
 ]], false)
 
 -- Indent Blankline
@@ -70,13 +74,6 @@ vim.api.nvim_exec([[
 vim.api.nvim_exec([[
     hi! link CmpItemMenu CmpItemAbbrDeprecatedDefault
     hi! link CmpItemKind Aqua
-]], false)
-
--- Lsp
-vim.api.nvim_exec([[
-  hi! LspReferenceRead cterm=bold ctermbg=red guibg=#464646
-  hi! LspReferenceText cterm=bold ctermbg=red guibg=#464646
-  hi! LspReferenceWrite cterm=bold ctermbg=red guibg=#464646
 ]], false)
 
 -- NvimTree

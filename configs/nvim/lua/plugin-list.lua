@@ -27,13 +27,13 @@ return require('packer').startup(function(use)
     use {
       'neovim/nvim-lspconfig',
       config = function()
-          require "lsp.lspconfig"
+          require 'lsp.lspconfig'
       end
     }
     -- use 'glepnir/lspsaga.nvim'
     use {
-      'folke/lsp-trouble.nvim',
-      cmd = {'LspTroubleToggle', 'LspTrouble'},
+      'folke/trouble.nvim',
+      -- cmd = {'TroubleToggle', 'Trouble'},
       config = function()
         require 'lsp.trouble'
       end

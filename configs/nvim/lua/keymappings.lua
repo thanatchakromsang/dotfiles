@@ -109,14 +109,14 @@ map('n', '<localleader>c', '<cmd>Bdelete<CR>', {noremap = true, silent = true})
 map('n', '<localleader>w', '<cmd>close<CR>', {noremap = true, silent = true})
 map('n', '<localleader>.', '<cmd>lcd %:p:h<CR>', {noremap = true, silent = true}) -- set working dir
 
--- Lua
-map("n", "<F11>", "<cmd>LspTroubleToggle<CR>", {silent = true, noremap = true})
-map("n", "<leader>tt", "<cmd>LspTroubleToggle<CR>", {silent = true, noremap = true})
-map("n", "<leader>tw", "<cmd>LspTroubleToggle lsp_workspace_diagnostics<CR>", {silent = true, noremap = true})
-map("n", "<leader>td", "<cmd>LspTroubleToggle lsp_document_diagnostics<CR>", {silent = true, noremap = true})
-map("n", "<leader>tl", "<cmd>LspTroubleToggle loclist<CR>", {silent = true, noremap = true})
-map("n", "<leader>tq", "<cmd>LspTroubleToggle quickfix<CR>", {silent = true, noremap = true})
-map("n", "gR", "<cmd>LspTrouble lsp_references<CR>", {silent = true, noremap = true})
+-- Trouble
+map("n", "<F11>", "<cmd>TroubleToggle<CR>", {silent = true, noremap = true})
+map("n", "<leader>tt", "<cmd>TroubleToggle<CR>", {silent = true, noremap = true})
+map("n", "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<CR>", {silent = true, noremap = true})
+map("n", "<leader>td", "<cmd>TroubleToggle document_diagnostics<CR>", {silent = true, noremap = true})
+map("n", "<leader>tl", "<cmd>TroubleToggle loclist<CR>", {silent = true, noremap = true})
+map("n", "<leader>tq", "<cmd>TroubleToggle quickfix<CR>", {silent = true, noremap = true})
+map("n", "gR", "<cmd>Trouble lsp_references<CR>", {silent = true, noremap = true})
 
 -- NvimTree
 map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", {silent = true, noremap = true})
