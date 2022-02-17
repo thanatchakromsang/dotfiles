@@ -25,6 +25,7 @@
     wdisplays
     wf-recorder
     mpv
+    xdg-utils # for xdg-open
   ];
 
   # Sound / Screen sharing

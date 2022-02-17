@@ -15,10 +15,10 @@
 
     programs.zsh = {
       enable = true;
-      history =  {
-         save = 1000000000;
-         size = 1000000000;
-        };
+      history = {
+        save = 1000000000;
+        size = 1000000000;
+      };
       initExtraFirst = ''
         if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
           source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
@@ -86,6 +86,14 @@
     home.file = {
       ".editorconfig".source = config.lib.file.mkOutOfStoreSymlink (config.home.homeDirectory + "/.dotfiles/home/editorconfig");
       ".p10k.zsh".source = config.lib.file.mkOutOfStoreSymlink (config.home.homeDirectory + "/.dotfiles/home/p10k.zsh");
+    };
+
+    xdg.mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "application/pdf" = [ "zathura" "firefox.desktop" ];
+        "video/H264" = [ "mpv.desktop" ];
+      };
     };
 
     # disable keyboard management using home-manager
