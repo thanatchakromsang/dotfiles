@@ -10,9 +10,10 @@
   themes.waybar = {
     height = lib.mkForce 20;
     modules-right = lib.mkForce [
+      "disk"
       "pulseaudio"
       "network"
-      "sway/language"
+      /* "sway/language" /* XXX: waiting for fixes in waybar */
       "idle_inhibitor"
     ];
   };

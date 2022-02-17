@@ -83,7 +83,6 @@
     # Terraform
     terraform
     terraform-ls
-    nodePackages.cdktf-cli
 
     # Static site generator
     hugo

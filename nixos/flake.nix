@@ -1,6 +1,8 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    /* TODO: Revert back to unstable once build issues has been solved */
+    /* nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; */
     /* nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable"; */
     nur.url = "github:nix-community/NUR";
     nixos-hardware.url = "github:NixOS/nixos-hardware";

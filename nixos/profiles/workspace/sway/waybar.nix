@@ -4,6 +4,7 @@ let
   fonts = config.themes.fonts;
   waybar = config.themes.waybar;
 in
+  /* XXX: waiting for https://github.com/Alexays/Waybar/pull/1406 on upstream to merge to enable sway/language back (failed due to custom layout) */
 {
   themes.waybar = {
     height = 24;
@@ -12,7 +13,7 @@ in
       "network"
       "backlight"
       "battery"
-      "sway/language"
+      /* "sway/language" */
       "idle_inhibitor"
     ];
   };
@@ -28,79 +29,81 @@ in
           modules-left = [ "sway/workspaces" "sway/mode" "sway/window" ];
           modules-center = [ "clock" ];
           modules-right = waybar.modules-right;
-          modules = {
-            "sway/workspaces" = {
-              disable-scroll = true;
-              format = "{name}";
-              format-icon = {
-                "1" = "";
-                "2" = "";
-                "3" = "";
-                "4" = "";
-                "5" = "";
-                "6" = "";
-                "7" = "";
-                "8" = "";
-                "9" = "";
-                /* "10" = ""; */
-                "urgent" = "";
-                "focused" = "";
-                "default" = "";
-              };
+          "sway/workspaces" = {
+            disable-scroll = true;
+            format = "{name}:{icon}";
+            format-icons = {
+              "1" = "";
+              "2" = "";
+              "3" = "";
+              "4" = "";
+              "5" = "";
+              "6" = "";
+              "7" = "";
+              "8" = "";
+              "9" = "";
+              "urgent" = "";
+              "focused" = "";
+              "default" = "";
             };
-            "sway/language" = {
-              format = "{}";
+          };
+          "sway/language" = {
+            format = "{shortDescription} ";
+          };
+          "idle_inhibitor" = {
+            format = "{icon}";
+            format-icons = {
+              activated = "";
+              deactivated = "";
             };
-            idle_inhibitor = {
-              format = "{icon}";
-              format-icons = {
-                activated = "";
-                deactivated = "";
-              };
+          };
+          "clock" = {
+            tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+            format = " {:%b %-d, %Y %H:%M}";
+          };
+          "backlight" = {
+            format = "{percent}%{icon}";
+            format-icons = [ "" "" "" "" ];
+          };
+          "battery" = {
+            states = {
+              critical = 5;
             };
-            clock = {
-              tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-              format = " {:%b %-d, %Y %H:%M}";
+            format = "{capacity}%{icon}";
+            format-charging = "{capacity}%";
+            format-critical = "";
+            format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
+          };
+          "network" = {
+            format-wifi = "{essid}直";
+            format-ethernet = "{ifname}:{ipaddr}/{cidr}";
+            format-disconnected = "Disconnected⚠";
+            format-alt = "{ifname}:{ipaddr}/{cidr}";
+          };
+          "pulseaudio" = {
+            scroll-step = 1;
+            format = "{volume}%{icon} {format_source}";
+            format-bluetooth = "{volume}%{icon} {format_source}";
+            format-bluetooth-muted = "muted";
+            format-source = "{volume}%";
+            format-source-muted = "muted";
+            format-muted = "muted {format_source}";
+            format-icons = {
+              headphone = "";
+              hands-free = "";
+              headset = "";
+              phone = "";
+              portable = "";
+              car = "";
+              default = [ "" "" "" ];
             };
-            backlight = {
-              format = "{percent}%{icon}";
-              format-icons = [ "" "" "" "" ];
-            };
-            battery = {
-              states = {
-                critical = 5;
-              };
-              format = "{capacity}%{icon}";
-              format-charging = "{capacity}%";
-              format-critical = "";
-              format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
-            };
-            network = {
-              format-wifi = "{essid}直";
-              format-ethernet = "{ifname}:{ipaddr}/{cidr}";
-              format-disconnected = "Disconnected⚠";
-              format-alt = "{ifname}:{ipaddr}/{cidr}";
-            };
-            pulseaudio = {
-              scroll-step = 1;
-              format = "{volume}%{icon} {format_source}";
-              format-bluetooth = "{volume}%{icon} {format_source}";
-              format-bluetooth-muted = "muted";
-              format-source = "{volume}%";
-              format-source-muted = "muted";
-              format-muted = "muted {format_source}";
-              format-icons = {
-                headphone = "";
-                hands-free = "";
-                headset = "";
-                phone = "";
-                portable = "";
-                car = "";
-                default = [ "" "" "" ];
-              };
-              on-click = "~/.config/sway/volume.sh toggle &";
-              on-click-right = "~/.config/sway/mic.sh toggle &";
-            };
+            on-click = "~/.config/sway/volume.sh toggle &";
+            on-click-right = "~/.config/sway/mic.sh toggle &";
+          };
+          "disk" = {
+            interval = 30;
+            format = "{percentage_used}%";
+            path = "/";
           };
         }
       ];
@@ -166,6 +169,7 @@ in
         #tray,
         #language,
         #idle_inhibitor,
+        #disk,
         #mpd {
             padding: 0 4px;
             /* margin: 0 4px; */
