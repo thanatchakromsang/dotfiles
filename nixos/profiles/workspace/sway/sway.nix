@@ -142,7 +142,7 @@ in
             tap = "enabled";
             dwt = "enabled";
             scroll_factor = "0.5";
-            events = "disabled";
+            events = "enabled";
           };
           "2:14:ETPS/2_Elantech_TrackPoint" = {
             accel_profile = "adaptive";
@@ -170,11 +170,11 @@ in
         } // lib.optionalAttrs (config.networking.hostName == "t14s") {
           eDP-1 = {
             resolution = "1920x1080";
-            position = "0 0";
+            position = "0 1080";
           };
           HDMI-A-1 = {
             resolution = "1920x1080";
-            position = "1920 0";
+            position = "0 0";
           };
         };
         seat = {

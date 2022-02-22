@@ -13,7 +13,7 @@ in
       "network"
       "backlight"
       "battery"
-      /* "sway/language" */
+      "sway/language"
       "idle_inhibitor"
     ];
   };
@@ -48,7 +48,7 @@ in
             };
           };
           "sway/language" = {
-            format = "{shortDescription} ";
+            format = "{shortDescription}";
           };
           "idle_inhibitor" = {
             format = "{icon}";

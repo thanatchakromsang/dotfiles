@@ -11,7 +11,7 @@
       ../profiles/workspace/zathura.nix
 
       ../profiles/applications/firefox.nix
-
+      ../profiles/applications/slack.nix
     ];
 
   boot.plymouth.enable = true;
