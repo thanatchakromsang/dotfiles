@@ -20,7 +20,7 @@
       htop
       wget
       curl
-      telnet
+      inetutils
       unzip
       jq
       yq

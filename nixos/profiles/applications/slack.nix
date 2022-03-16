@@ -3,7 +3,8 @@
 {
   home-manager.users.thanatchaya = {
     home.sessionVariables = {
-      NIXOS_OZONE_WL = "1";
+      # FIXME: Enable native wayland when electron upsteam fix issues follow up in https://github.com/NixOS/nixpkgs/issues/161402
+      # NIXOS_OZONE_WL = "1";
     };
   };
 

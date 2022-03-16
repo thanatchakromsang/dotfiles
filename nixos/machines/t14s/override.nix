@@ -27,6 +27,17 @@ in
           { workspace = "9"; output = "HDMI-A-1"; }
           { workspace = "10"; output = "HDMI-A-1"; }
         ];
+        output = {
+          "*".bg = "~/.dotfiles/wallpapers/gruvbox-dark-rainbow.png fill";
+          eDP-1 = {
+            resolution = "1920x1080";
+            position = "0 1080";
+          };
+          HDMI-A-1 = {
+            resolution = "1920x1080";
+            position = "0 0";
+          };
+        };
       };
       extraConfig = ''
         bindswitch --reload --locked lid:on output ${monitor} disable

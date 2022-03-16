@@ -33,6 +33,18 @@
           { workspace = "9"; output = "HDMI-A-1"; }
           { workspace = "10"; output = "HDMI-A-1"; }
         ];
+        output = {
+          "*".bg = "~/.dotfiles/wallpapers/gruvbox-dark-rainbow.png fill";
+          HDMI-A-1 = {
+            resolution = "1920x1080";
+            transform = "0";
+            position = "1920 0";
+          };
+          HDMI-A-2 = {
+            resolution = "1920x1080";
+            position = "0 0";
+          };
+        };
       };
     };
   };
