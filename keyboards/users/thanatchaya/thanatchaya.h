@@ -120,7 +120,7 @@ enum user_layers {
    *
    *   Modifier on base layer
    *                 ┌─────┬─────┬─────┐   ┌─────┬─────┬─────┐
-   *                 │ Esc │BSpc │ Tab │   │Enter│ Spc │  '  │
+   *                 │ Esc │ NAV │ Tab │   │Enter│ Spc │  '  │
    *                 └─────┴─────┴─────┘   └─────┴─────┴─────┘
    *                    |     |     |         |     |     |
    *                    V     |     |         V     |     |
@@ -134,7 +134,7 @@ enum user_layers {
    */
 
 #define _MODL1_ LT(MEDIA_LAYER, KC_ESC)
-#define ______MODL2_____ LT(NAVIGATION_LAYER, KC_BSPC), LT(MOUSE_LAYER, KC_TAB)
+#define ______MODL2_____ MO(NAVIGATION_LAYER), LT(MOUSE_LAYER, KC_TAB)
 #define _______MODIFIER_L________ _MODL1_, ______MODL2_____
 
 #define ______MODR2_____ LT(SYMBOL_LAYER, KC_ENT), LT(NUMBER_LAYER, KC_SPC)
@@ -215,7 +215,7 @@ enum user_layers {
    *     └─────┴─────┴─────┴─────┴─────┘   └─────┴─────┴─────┴─────┴─────┘
    *
    *                ┌─────┐┌─────┬─────┐   ┌─────┬─────┐┌─────┐
-   *                │     ││     │     │   │ XXX │     ││     │
+   *                │     ││     │     │   │     │     ││ XXX │
    *                └─────┘└─────┴─────┘   └─────┴─────┘└─────┘
    */
 
@@ -268,9 +268,9 @@ enum user_layers {
    *
    *   Navigation Layer
    *     ┌─────┬─────┬─────┬─────┬─────┐    ┌─────┬─────┬─────┬─────┬─────┐
-   *     │     │     │     │     │     │    │Home │PgDn │PgUp │ End │ XXX │
+   *     │     │     │     │     │     │    │Home │PgDn │PgUp │ End │ DEL │
    *     ├─────┼─────┼─────┼─────┼─────┤    ├─────┼─────┼─────┼─────┼─────┤
-   *     │     │     │     │     │     │    │  ←  │  ↓  │  ↑  │  →  │ XXX │
+   *     │     │     │     │     │     │    │  ←  │  ↓  │  ↑  │  →  │BSPC │
    *     ├─────┼─────┼─────┼─────┼─────┤    ├─────┼─────┼─────┼─────┼─────┤
    *     │     │     │     │     │     │    │ XXX │ XXX │ XXX │ XXX │ XXX │
    *     └─────┴─────┴─────┴─────┴─────┘    └─────┴─────┴─────┴─────┴─────┘
@@ -287,8 +287,8 @@ enum user_layers {
 #define ______NAVL2_____ XXXXXXX, _______
 #define _______NAVIGATION_L4_____ _NAVL1_, ______NAVL2_____
 
-#define _________________NAVIGATION_R1_____________ KC_HOME,    KC_PGDN,   KC_PGUP,     KC_END,     XXXXXXX
-#define _________________NAVIGATION_R2_____________ KC_LEFT,    KC_DOWN,   KC_UP,       KC_RGHT,    XXXXXXX
+#define _________________NAVIGATION_R1_____________ KC_HOME,    KC_PGDN,   KC_PGUP,     KC_END,     KC_DEL
+#define _________________NAVIGATION_R2_____________ KC_LEFT,    KC_DOWN,   KC_UP,       KC_RGHT,    KC_BSPC
 #define _________________NAVIGATION_R3_____________ _________________DISABLED__________________
 
 #define ______NAVR2_____ _______, _______

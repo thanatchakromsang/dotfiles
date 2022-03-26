@@ -19,7 +19,7 @@
 #include "config_common.h"
 
 #undef TAPPING_TERM
-#define TAPPING_TERM 170
+#define TAPPING_TERM 150
 
 // Prevent normal rollover on alphas from accidentally triggering mods.
 #define IGNORE_MOD_TAP_INTERRUPT
@@ -37,6 +37,7 @@
 #define MOUSEKEY_DELAY          0
 #define MOUSEKEY_TIME_TO_MAX    60
 #define MOUSEKEY_MAX_SPEED      7
+# undef MOUSEKEY_WHEEL_DELAY
 #define MOUSEKEY_WHEEL_DELAY    0
 
 #define COMBO_COUNT 5
