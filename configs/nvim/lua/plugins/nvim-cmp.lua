@@ -22,10 +22,10 @@ cmp.setup({
         ['<C-e>'] = cmp.mapping.close(),
         ['<CR>'] = cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Replace, select = true}),
         ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
+            if luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
+            -- elseif cmp.visible() then
+            --     cmp.select_next_item()
             elseif has_words_before() then
                 cmp.complete()
             else
@@ -33,10 +33,10 @@ cmp.setup({
             end
         end, {"i", "s"}),
         ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
+            if luasnip.jumpable(-1) then
                 luasnip.jump(-1)
+            -- elseif cmp.visible() then
+            --     cmp.select_prev_item()
             else
                 fallback()
             end
@@ -47,7 +47,7 @@ cmp.setup({
         format = function(entry, vim_item)
             vim_item.menu = ({
                 buffer = '[Buffer]',
-                nvim_lsp = '[LSP]',
+                nvim_lsp = '[Lsp]',
                 path = '[Filesystem]',
                 spell = '[Spelling]',
                 treesitter = '[Treesitter]',

@@ -75,8 +75,3 @@ vim.api.nvim_exec([[
     hi! link CmpItemMenu CmpItemAbbrDeprecatedDefault
     hi! link CmpItemKind Aqua
 ]], false)
-
--- NvimTree
-vim.api.nvim_exec([[
-  hi! link NvimTreeWindowPicker TabLineSel
-]], false)

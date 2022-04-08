@@ -1,4 +1,6 @@
-require("which-key").setup {
+local wk = require("which-key")
+
+wk.setup {
     marks = true, -- shows a list of your marks on ' and `
     registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
     presets = {
@@ -31,14 +33,12 @@ require("which-key").setup {
     triggers = {"<leader>", "<localleader>", "g", "\'", "\"", "<C-r>", "z"} -- automatically setup triggers
 }
 
-local wk = require("which-key")
-
 -- Normal Leader
 wk.register({
     ["<leader>"] = {
         name = "leader",
-        [" "] = {"fold toggle"},
-        e = "explorer toggle",
+        [" "] = {"fold"},
+        e = "explorer",
         r = {":FloatermNew --height=0.8 --width=0.8 --name=ranger --wintype=float ranger<CR>", "ranger"},
         o = {":SymbolsOutline<CR>", "outline"},
         p = {
@@ -63,6 +63,7 @@ wk.register({
             m = {":Telescope marks<CR>", "marks"},
             o = {":Telescope vim_options<CR>", "vim options"},
             t = {":Telescope live_grep<CR>", "text"},
+            T = {":TodoTelescope<CR>", "TODO"},
             b = {":Telescope buffers<CR>", "buffers"},
             q = {":Telescope quickfix<CR>", "quickfix"},
             l = {":Telescope loclist<CR>", "loclist"},
@@ -80,7 +81,7 @@ wk.register({
         g = {
             name = "+git",
             g = {"<cmd>FloatermNew --height=0.9 --width=0.9 --name=git --wintype=float lazygit<CR>", "lazygit"},
-            d = {name = "+diff", d = {"diff open"}, c = {"diff close"}, r = {"diff refresh"}},
+            d = {name = "+diff", d = {"diff this"}, o = {"diff view open"}, c = {"diff view close"}, r = {"diff view refresh"}},
             S = {":Telescope git_stash<CR>", "git stash"},
             c = {":Telescope git_bcommits<CR>", "git current file history"},
             C = {":Telescope git_commits<CR>", "git history"},
@@ -94,7 +95,15 @@ wk.register({
             b = {"blame line"},
             B = {"browse git remote"}
         },
-        t = {name = "+trouble", t = "toggle", w = "workspace diagnostics", d = "document diagnostics", l = "local list", q = "quickfix list"}
+        t = {
+            name = "+trouble",
+            T = "TODO",
+            t = "toggle",
+            w = "workspace diagnostics",
+            d = "document diagnostics",
+            l = "local list",
+            q = "quickfix list"
+        }
     }
 }, {
     mode = "n", -- NORMAL mode
@@ -114,7 +123,7 @@ wk.register({["<leader>"] = {name = "leader", g = {name = "+git", B = {"browse g
 wk.register({
     ["<localleader>"] = {
         name = "localleader",
-        ['.'] = "set working dir",
+        ['.'] = "set current working dir",
         a = "code action",
         b = "horizontal split",
         c = "close buffer",
@@ -122,7 +131,8 @@ wk.register({
         f = "code format",
         v = "vertical split",
         w = "close window",
-        r = "rename"
+        r = "rename",
+        R = "set root working dir"
     }
 }, {
     mode = "n", -- NORMAL mode

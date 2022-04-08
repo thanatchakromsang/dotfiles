@@ -33,15 +33,20 @@ return require('packer').startup(function(use)
     -- use 'glepnir/lspsaga.nvim'
     use {
       'folke/trouble.nvim',
-      -- cmd = {'TroubleToggle', 'Trouble'},
       config = function()
         require 'lsp.trouble'
+      end
+    }
+    use {
+      "folke/todo-comments.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      config = function()
+        require 'plugins.todo-comments'
       end
     }
     -- use 'kosayoda/nvim-lightbulb'
     use {
       'simrat39/symbols-outline.nvim',
-      cmd = 'SymbolsOutline',
       config = function()
         require 'plugins.symbols-outline'
       end
@@ -113,14 +118,6 @@ return require('packer').startup(function(use)
         require 'theme'
       end
     }
-    -- use {
-    --   'glepnir/galaxyline.nvim',
-    --   after = 'gruvbox-material',
-    --   requires = {'kyazdani42/nvim-web-devicons', opt = true},
-    --   config = function()
-    --       require 'plugins.galaxyline'
-    --   end
-    -- }
     use {
       'nvim-lualine/lualine.nvim',
       after = 'gruvbox-material',
@@ -162,12 +159,17 @@ return require('packer').startup(function(use)
 
     -- Explorer
     use {
-      'kyazdani42/nvim-tree.lua',
-      -- cmd = 'NvimTreeToggle',
-      config = function()
-        require 'plugins.nvim-tree'
-      end
-    }
+      "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        requires = {
+          "nvim-lua/plenary.nvim",
+          "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+          "MunifTanjim/nui.nvim"
+        },
+        config = function()
+          require 'plugins.neo-tree'
+        end
+      }
 
     -- Git
     use {
@@ -204,7 +206,12 @@ return require('packer').startup(function(use)
         require 'plugins.lightspeed'
       end
     }
-    use 'airblade/vim-rooter'
+    use {
+      'airblade/vim-rooter',
+      config = function()
+        require 'plugins.vim-rooter'
+      end
+    }
     use {
       'mhinz/vim-startify',
       config = function()
@@ -231,7 +238,6 @@ return require('packer').startup(function(use)
         require 'plugins.vim-floaterm'
       end
     }
-    -- use 'liuchengxu/vista.vim' -- lsp outline
     use {
       'andymass/vim-matchup',
       event = 'CursorMoved',
@@ -242,5 +248,4 @@ return require('packer').startup(function(use)
     use 'tpope/vim-repeat'
     use 'tpope/vim-surround'
     use 'wellle/targets.vim' -- vim text object on steroid
-
 end)

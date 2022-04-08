@@ -13,8 +13,11 @@ require('lualine').setup {
         icons_enabled = false,
         theme = 'auto',
         component_separators = {left = '', right = '|'},
-        section_separators = {left = '', right = ''}
-        -- disabled_filetypes = {'packer', 'NvimTree', 'dbui'}
+        section_separators = {left = '', right = ''},
+        -- TODO(lualine): enable `globalstatus` line after 0.7+
+        disabled_filetypes = {'packer', 'neo-tree', 'dbui', 'Trouble'},
+        always_divide_middle = true,
+        globalstatus = false
     },
     sections = {
         lualine_a = {{'mode', fmt = function(str) return str:sub(1, 1) end}},
@@ -45,5 +48,5 @@ require('lualine').setup {
         lualine_y = {'progress'},
         lualine_z = {'location'}
     },
-    extensions = {'nvim-tree'}
+    extensions = {'symbols-outline', 'quickfix'}
 }

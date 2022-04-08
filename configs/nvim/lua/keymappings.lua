@@ -91,12 +91,13 @@ map('n', '<leader>gP', '<cmd>lua require"gitsigns".preview_hunk()<CR>', {noremap
 map('n', '<leader>gn', '<cmd>lua require"gitsigns".next_hunk()<CR>', {noremap = true, silent = true})
 map('n', '<leader>gp', '<cmd>lua require"gitsigns".prev_hunk()<CR>', {noremap = true, silent = true})
 map('n', '<leader>gb', '<cmd>lua require"gitsigns".blame_line()<CR>', {noremap = true, silent = true})
+map('n', '<leader>gdd', '<cmd>Gitsigns diffthis<CR>', {noremap = true, silent = true})
 
 -- Fugitive
 map('', '<leader>gB', '<cmd>GBrowse!<CR>', {noremap = true, silent = true})
 
 -- Diffview.nvim
-map('n', '<leader>gdd', '<cmd>DiffviewOpen<CR>', {noremap = true, silent = true})
+map('n', '<leader>gdo', '<cmd>DiffviewOpen<CR>', {noremap = true, silent = true})
 map('n', '<leader>gdc', '<cmd>DiffviewClose<CR>', {noremap = true, silent = true})
 map('n', '<leader>gdr', '<cmd>DiffviewRefresh<CR>', {noremap = true, silent = true})
 
@@ -107,7 +108,8 @@ map('n', '<localleader>v', '<cmd>vsplit<CR>', {noremap = true, silent = true})
 -- local leader misc
 map('n', '<localleader>c', '<cmd>Bdelete<CR>', {noremap = true, silent = true})
 map('n', '<localleader>w', '<cmd>close<CR>', {noremap = true, silent = true})
-map('n', '<localleader>.', '<cmd>lcd %:p:h<CR>', {noremap = true, silent = true}) -- set working dir
+map('n', '<localleader>.', '<cmd>lcd %:p:h<CR>', {noremap = true, silent = true}) -- set current working dir
+map('n', '<localleader>R', '<cmd>Rooter<CR>', {noremap = true, silent = true}) -- set current working dir
 
 -- Trouble
 map("n", "<F11>", "<cmd>TroubleToggle<CR>", {silent = true, noremap = true})
@@ -116,10 +118,11 @@ map("n", "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<CR>", {silent =
 map("n", "<leader>td", "<cmd>TroubleToggle document_diagnostics<CR>", {silent = true, noremap = true})
 map("n", "<leader>tl", "<cmd>TroubleToggle loclist<CR>", {silent = true, noremap = true})
 map("n", "<leader>tq", "<cmd>TroubleToggle quickfix<CR>", {silent = true, noremap = true})
+map("n", "<leader>tT", "<cmd>TodoTrouble<CR>", {silent = true, noremap = true})
 map("n", "gR", "<cmd>Trouble lsp_references<CR>", {silent = true, noremap = true})
 
--- NvimTree
-map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", {silent = true, noremap = true})
+-- Neotree
+map("n", "<leader>e", "<cmd>NeoTreeFocusToggle<CR>", {silent = true, noremap = true})
 
 -- Telescope
 map('n', 'gb', '<cmd>Telescope buffers<CR>', {noremap = true, silent = true})

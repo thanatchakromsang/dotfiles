@@ -11,4 +11,3 @@ vim.g.floaterm_autoinsert = 1
 vim.g.floaterm_height = 13
 vim.g.floaterm_width = 0.7
 vim.g.floaterm_wintype = 'split'
-
