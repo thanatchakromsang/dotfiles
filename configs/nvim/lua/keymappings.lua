@@ -127,6 +127,13 @@ map("n", "<leader>e", "<cmd>NeoTreeFocusToggle<CR>", {silent = true, noremap = t
 -- Telescope
 map('n', 'gb', '<cmd>Telescope buffers<CR>', {noremap = true, silent = true})
 
+-- Test.vim
+map('n', '<leader>Tt', '<cmd>TestNearest -strategy=neovim<CR>', {noremap = true, silent = true})
+map('n', '<leader>Tf', '<cmd>TestFile -strategy=neovim<CR>', {noremap = true, silent = true})
+map('n', '<leader>Tl', '<cmd>TestLast -strategy=neovim<CR>', {noremap = true, silent = true})
+map('n', '<leader>Tv', '<cmd>TestVisit -strategy=neovim<CR>', {noremap = true, silent = true})
+map('n', '<leader>Ts', '<cmd>TestSuite -strategy=neovim<CR>', {noremap = true, silent = true})
+
 -- Packer commands till because we are not loading it at startup
 vim.cmd("silent! command PackerCompile lua require 'plugin-list' require('packer').compile()")
 vim.cmd("silent! command PackerInstall lua require 'plugin-list' require('packer').install()")

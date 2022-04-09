@@ -103,6 +103,14 @@ wk.register({
             d = "document diagnostics",
             l = "local list",
             q = "quickfix list"
+        },
+        T = {
+            name = "+test",
+            t = "test nearest",
+            f = "test file",
+            l = "test last",
+            v = "test visit",
+            s = "test suite",
         }
     }
 }, {

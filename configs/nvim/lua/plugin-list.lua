@@ -68,6 +68,10 @@ return require('packer').startup(function(use)
       end
     }
 
+    -- Test
+    use 'vim-test/vim-test'
+
+
     -- Autocomplete
     use {
       'hrsh7th/nvim-cmp',
