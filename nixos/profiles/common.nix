@@ -23,7 +23,7 @@
       inetutils
       unzip
       jq
-      yq
+      yq-go
       vim
       exa
       bat

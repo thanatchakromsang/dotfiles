@@ -10,6 +10,7 @@
       ../profiles/workspace/kitty.nix
       ../profiles/workspace/zathura.nix
 
+      /* ../profiles/applications/chromium.nix */
       ../profiles/applications/firefox.nix
       ../profiles/applications/slack.nix
     ];
@@ -18,7 +19,6 @@
 
   environment.systemPackages = with pkgs; [
     anki
-    zathura
     tdesktop # telegram
     bluez
     pavucontrol
@@ -41,7 +41,7 @@
     # https://nixos.wiki/wiki/PipeWire
     media-session.config.bluez-monitor.rules = [
       {
-        matches = [ { "device.name" = "~bluez_card.*"; } ];
+        matches = [{ "device.name" = "~bluez_card.*"; }];
         actions = {
           "update-props" = {
             "bluez5.reconnect-profiles" = [ "hfp_hf" "hsp_hs" "a2dp_sink" ];

@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, stable, ... }:
 
 let
   defaultSettings = {
@@ -42,6 +42,8 @@ let
     "experiments.enabled" = false;
     "experiments.supported" = false;
     "network.allow-experiments" = false;
+
+    "layout.css.prefers-color-scheme.content-override" = 1; # INFO: default to 3 (use browser theme text color), 1 will force light
   };
   userChrome = ''
     /* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/autohide_main_toolbar.css made available under Mozilla Public License v. 2.0
@@ -102,18 +104,14 @@ in
 
     programs.firefox = {
       enable = true;
-      package = pkgs.firefox-wayland.override {
+      /* INFO: Reverted to stable firefox due to https://github.com/NixOS/nixpkgs/issues/167785 */
+      package = pkgs.stable.firefox-wayland.override {
         cfg = {
           enableTridactylNative = true;
         };
       };
       profiles.personal = {
         id = 0;
-        userChrome = userChrome;
-        settings = defaultSettings;
-      };
-      profiles.work = {
-        id = 1;
         userChrome = userChrome;
         settings = defaultSettings;
       };
@@ -126,7 +124,7 @@ in
         # vimium
         # tab-session-manager
         # tree-style-tab
-        # i-dont-care-about-cookies
+        i-dont-care-about-cookies
         # refined-github
         tridactyl # vimium alternative
         leechblock-ng

@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     /* nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable"; */
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-21.11";
     nur.url = "github:nix-community/NUR";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     # # TODO: use sops-nix for secrets
@@ -16,6 +17,7 @@
     { self
     , nixpkgs
       # , nixpkgs-unstable
+    , nixpkgs-stable
     , home-manager
     , nur
     , nixos-hardware
@@ -31,6 +33,14 @@
       #     }
       #   );
       # };
+      stable-overlay = final: prev: {
+        stable = (
+          import nixpkgs-stable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          }
+        );
+      };
       overlays = [
         # TODO: Refactor custom overlay
         (
@@ -51,6 +61,7 @@
           }
         )
         /* unstable-overlay */
+        stable-overlay
         nur.overlay
       ];
     in

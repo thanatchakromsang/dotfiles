@@ -17,7 +17,7 @@
       /* ../../profiles/streaming.nix */
       ../../profiles/gaming.nix
       ../../profiles/keyboard.nix
-      ../../profiles/plex.nix
+      /* ../../profiles/plex.nix */
 
       ../../profiles/monitoring/home-server.nix
       ../../profiles/monitoring/home-client.nix
