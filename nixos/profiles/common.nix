@@ -91,5 +91,6 @@
     g = "lazygit";
     r = "ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd $LASTDIR";
     c = "clear";
+    ssh = "kitty +kitten ssh"; # INFO: copy kitty term info over to ssh server
   };
 }
