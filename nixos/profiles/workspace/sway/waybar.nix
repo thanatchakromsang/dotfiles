@@ -4,7 +4,6 @@ let
   fonts = config.themes.fonts;
   waybar = config.themes.waybar;
 in
-  /* XXX: waiting for https://github.com/Alexays/Waybar/pull/1406 on upstream to merge to enable sway/language back (failed due to custom layout) */
 {
   themes.waybar = {
     height = 24;
@@ -49,6 +48,7 @@ in
           };
           "sway/language" = {
             format = "{shortDescription}";
+            on-click = "swaymsg input type:keyboard xkb_switch_layout next";
           };
           "idle_inhibitor" = {
             format = "{icon}";

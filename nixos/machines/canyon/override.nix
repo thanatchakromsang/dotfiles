@@ -13,7 +13,7 @@
       "disk"
       "pulseaudio"
       "network"
-      /* "sway/language" /* XXX: waiting for fixes in waybar */
+      "sway/language"
       "idle_inhibitor"
     ];
   };

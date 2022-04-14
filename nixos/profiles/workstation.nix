@@ -9,6 +9,7 @@ in
       ./common.nix
       ../users/thanatchaya/base.nix
       ../services/avahi.nix
+      ../services/ddc-ci.nix
     ];
 
   programs.ssh.startAgent = true;

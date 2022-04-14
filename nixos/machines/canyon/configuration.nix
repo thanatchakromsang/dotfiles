@@ -43,6 +43,11 @@
     };
   };
 
+  /* # INFO: Fix display port connect to GPU unable to detect the correct display port resolution https://nixos.wiki/wiki/AMD_GPU */
+  /* boot.kernelParams = [ */
+  /*   "video=card0-DP-1:1920x1080@60" */
+  /* ]; */
+
   hardware.bluetooth.enable = true;
 
   networking = {
