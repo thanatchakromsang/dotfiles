@@ -5,7 +5,7 @@
     isNormalUser = true;
     createHome = true;
     uid = 1000;
-    extraGroups = lib.mkDefault [ "wheel" "networkmanager" "audio" "video" "docker" ];
+    extraGroups = lib.mkDefault [ "wheel" "networkmanager" "audio" "video" "docker" "i2c"];
     shell = pkgs.zsh;
   };
 
@@ -84,13 +84,14 @@
       ".p10k.zsh".source = config.lib.file.mkOutOfStoreSymlink (config.home.homeDirectory + "/.dotfiles/home/p10k.zsh");
     };
 
-    xdg.mimeApps = {
-      enable = true;
-      defaultApplications = {
-        "application/pdf" = [ "zathura" "firefox.desktop" ];
-        "video/H264" = [ "mpv.desktop" ];
-      };
-    };
+    /* # TODO: XDG MIMEAPPS without conflict */
+    /* xdg.mimeApps = { */
+    /*   enable = true; */
+    /*   defaultApplications = { */
+    /*     "application/pdf" = [ "zathura" "firefox.desktop" ]; */
+    /*     "video/H264" = [ "mpv.desktop" ]; */
+    /*   }; */
+    /* }; */
 
     # disable keyboard management using home-manager
     home.keyboard = null;
