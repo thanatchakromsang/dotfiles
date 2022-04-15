@@ -3,6 +3,7 @@ let
   colors = config.themes.colors;
   fonts = config.themes.fonts;
   waybar = config.themes.waybar;
+  ddcutils-pkgs = "~/.dotfiles/nixos/profiles/workspace/sway/waybar-modules/ddcutil-brightness";
 in
 {
   themes.waybar = {
@@ -97,13 +98,24 @@ in
               car = "";
               default = [ "" "" "" ];
             };
-            on-click = "~/.config/sway/volume.sh toggle &";
-            on-click-right = "~/.config/sway/mic.sh toggle &";
+            on-click = "${pkgs.pamixer}/bin/pamixer --toggle-mute &";
+            on-click-right = "${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute";
           };
           "disk" = {
             interval = 30;
             format = "{percentage_used}%";
             path = "/";
+          };
+          "custom/ddcutil" = {
+            interval = "once";
+            format = " {percentage}%{icon}";
+            format-icons = [ "" "" "" "" ];
+            exec = "${ddcutils-pkgs} -c";
+            on-scroll-up = "${ddcutils-pkgs} -m 1.4; pkill -SIGRTMIN+15 waybar";
+            on-scroll-down = "${ddcutils-pkgs} -m 0.72; pkill -SIGRTMIN+15 waybar";
+            signal = 15;
+            exec-on-event = "true";
+            return-type = "json";
           };
         }
       ];
@@ -170,6 +182,7 @@ in
         #language,
         #idle_inhibitor,
         #disk,
+        #custom-ddcutil,
         #mpd {
             padding: 0 4px;
             /* margin: 0 4px; */

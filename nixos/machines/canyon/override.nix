@@ -13,6 +13,7 @@
       "disk"
       "pulseaudio"
       "network"
+      "custom/ddcutil"
       "sway/language"
       "idle_inhibitor"
     ];
