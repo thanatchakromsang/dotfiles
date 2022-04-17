@@ -73,7 +73,7 @@ in
         };
         window = {
           titlebar = false;
-          hideEdgeBorders = "smart";
+          hideEdgeBorders = "none";
           commands = [
             {
               criteria = { title = "Firefox — Sharing Indicator"; };
@@ -195,8 +195,8 @@ in
           };
         gaps = {
           inner = 5;
-          smartGaps = true;
-          smartBorders = "on";
+          smartGaps = false;
+          smartBorders = "off";
         };
         defaultWorkspace = "1";
         workspaceOutputAssign = [ ];
