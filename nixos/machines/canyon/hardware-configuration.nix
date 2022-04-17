@@ -11,7 +11,8 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ pkgs.linuxKernel.packages.linux_5_15.hid-nintendo ];
+  /* boot.extraModulePackages = [ pkgs.linuxKernel.packages.linux_5_15.hid-nintendo ]; */
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/3eaac046-253a-4f1e-baab-9047725a812f";
@@ -27,5 +28,5 @@
     [ { device = "/dev/disk/by-uuid/11678589-7553-4545-b7d7-5724db20051a"; }
     ];
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
 }
