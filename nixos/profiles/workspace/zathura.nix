@@ -52,7 +52,7 @@ in
 
         recolor-lightcolor = colors.bg;
         recolor-darkcolor = colors.fg;
-        recolor = true;
+        recolor = false;
       };
       extraConfig = ''
         map k scroll half-up
