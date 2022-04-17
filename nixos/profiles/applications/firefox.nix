@@ -49,50 +49,72 @@ let
     /* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/autohide_main_toolbar.css made available under Mozilla Public License v. 2.0
     See the above repository for updates as well as full license text. */
 
-      /*     /* This style hides the main toolbar and shows it when the cursor is over the tabs toolbar as well as whenever the focus is inside nav-bar, such as when urlbar is focused. */ */
+    /* This style hides the main toolbar and shows it when the cursor is over the tabs toolbar as well as whenever the focus is inside nav-bar, such as when urlbar is focused. */
 
-      /*     :root{ --uc-navbar-transform: -40px } */
-      /*     :root[uidensity="compact"]{ --uc-navbar-transform: -34px } */
+    :root{ --uc-navbar-transform: -40px }
+    :root[uidensity="compact"]{ --uc-navbar-transform: -34px }
 
-      /*     :root[sessionrestored] :where(#nav-bar,#PersonalToolbar,#tab-notification-deck){ */
-      /*       transform: translateY(var(--uc-navbar-transform)) */
-      /*     } */
+    #navigator-toolbox > div{ display: contents; }
+    :root[sessionrestored] :where(#nav-bar,#PersonalToolbar,#tab-notification-deck,.global-notificationbox){
+      transform: translateY(var(--uc-navbar-transform))
+    }
+    :root:is([customizing],[chromehidden*="toolbar"]) :where(#nav-bar,#PersonalToolbar,#tab-notification-deck,.global-notificationbox){
+      transform: none !important;
+      opacity: 1 !important;
+    }
 
-      /*     :root:is([customizing],[chromehidden*="toolbar"]) :where(#nav-bar,#PersonalToolbar,#tab-notification-deck){ */
-      /*       transform: none !important; */
-      /*       opacity: 1 !important; */
-      /*     } */
+    #nav-bar:not([customizing]){
+      opacity: 0;
+      transition:  transform 400ms ease 1.8s, opacity 400ms ease 1.8s !important;
+      position: relative;
+      z-index: 2;
+    }
+    #TabsToolbar{ position: relative; z-index: 3 }
 
-      /*     #nav-bar:not([customizing]){ */
-      /*       opacity: 0; */
-      /*       transition:  transform 0s ease 0s, opacity 0s ease 0s !important; */
-      /*       position: relative; */
-      /*       z-index: 2; */
-      /*     } */
-      /*     #TabsToolbar{ position: relative; z-index: 3 } */
+    /* Show when toolbox is focused, like when urlbar has received focus */
+    #navigator-toolbox:focus-within > .browser-toolbar{
+      transform: translateY(0);
+      opacity: 1;
+      transition-duration: 500ms, 200ms !important;
+      transition-delay: 0s !important;
+    }
+    /* Show when toolbox is hovered */
+    #titlebar:hover ~ .browser-toolbar,
+    #nav-bar:hover,
+    #nav-bar:hover + #PersonalToolbar{
+      transform: translateY(0);
+      opacity: 1;
+      transition-duration: 500ms, 200ms !important;
+      transition-delay: 0s !important;
+    }
 
-      /*     /* Show when toolbox is focused, like when urlbar has received focus */ */
-      /*     #navigator-toolbox:focus-within > .browser-toolbar{ */
-      /*       transform: translateY(0); */
-      /*       opacity: 1; */
-      /*       transition-duration: 0s, 0s !important; */
-      /*       transition-delay: 0s !important; */
-      /*     } */
-      /*     /* Show when toolbox is hovered */ */
-      /*     #titlebar:hover ~ .browser-toolbar, */
-      /*     #nav-bar:hover, */
-      /*     #nav-bar:hover + #PersonalToolbar{ */
-      /*       transform: translateY(0); */
-      /*       opacity: 1; */
-      /*       transition-duration: 0s, 0s !important; */
-      /*       transition-delay: 0s !important; */
-      /*     } */
+    /* Bookmarks toolbar needs so extra rules */
+    #PersonalToolbar{ transition: transform 400ms ease 1.8s !important; position: relative; z-index: 1 }
 
-      /*     /* Bookmarks toolbar needs so extra rules */ */
-      /*     #PersonalToolbar{ transition: transform 400ms ease 1.8s !important; position: relative; z-index: 1 } */
+    /* Move up the content view */
+    :root[sessionrestored]:not([inFullscreen]) > body > #browser{ margin-top: var(--uc-navbar-transform); }
 
-      /*     /* Move up the content view */ */
-      /*     :root[sessionrestored]:not([inFullscreen]) > body > #browser{ margin-top: var(--uc-navbar-transform); } */
+    /* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/numbered_tabs.css made available under Mozilla Public License v. 2.0
+    See the above repository for updates as well as full license text. */
+
+    /* Show a number before tab text*/
+
+    .tabbrowser-tab:first-child{ counter-reset: nth-tab 0 } /* Change to -1 for 0-indexing */
+    .tab-text::before{ content: counter(nth-tab) ": "; counter-increment: nth-tab }
+
+    /* "Better" default at bottom. */
+    .tabbrowser-tab > .tab-stack > .tab-background > .tab-context-line
+    {
+      background-color: var(--identity-icon-color) !important;
+      height: 2px !important;
+      border-radius: 0px 0px var(--tab-border-radius) var(--tab-border-radius) !important;
+      margin: 34px var(--tab-border-radius) 0px !important;
+    }
+
+    .tabbrowser-tab > .tab-stack > .tab-background
+    {
+        border-width: 0px !important;
+    }
   '';
 in
 {
