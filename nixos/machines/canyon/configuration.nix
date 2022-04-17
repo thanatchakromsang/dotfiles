@@ -27,6 +27,8 @@
 
   nix = {
     package = pkgs.nixUnstable;
+    gc.automatic = true;
+    gc.options = "--delete-older-than 8d";
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
@@ -43,9 +45,11 @@
     };
   };
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   /* # INFO: Fix display port connect to GPU unable to detect the correct display port resolution https://nixos.wiki/wiki/AMD_GPU */
   /* boot.kernelParams = [ */
-  /*   "video=card0-DP-1:1920x1080@60" */
+  /*   "video=HDMI-A-2:1920x1080@60" */
+  /*   "video=DP-2:1920x1080@60" */
   /* ]; */
 
   hardware.bluetooth.enable = true;
