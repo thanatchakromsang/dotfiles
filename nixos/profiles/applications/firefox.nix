@@ -102,6 +102,17 @@ let
     .tabbrowser-tab:first-child{ counter-reset: nth-tab 0 } /* Change to -1 for 0-indexing */
     .tab-text::before{ content: counter(nth-tab) ": "; counter-increment: nth-tab }
 
+    /* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/blank_page_background.css made available under Mozilla Public License v. 2.0
+    See the above repository for updates as well as full license text. */
+
+    /* Set blank page background-color */
+    /* Uses color from theme_colors if available */
+
+#tabbrowser-tabpanels{
+      background-color: var(--uc-light-bkgnd-color,rgb(46,54,69)) !important;
+    }
+
+    /* Multi account container */
     /* "Better" default at bottom. */
     .tabbrowser-tab > .tab-stack > .tab-background > .tab-context-line
     {
