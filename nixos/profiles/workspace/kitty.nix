@@ -55,8 +55,8 @@ in
     programs.kitty = {
       enable = true;
       font = {
-        name = fonts.sansSerif.family;
-        size = fonts.sansSerif.size;
+        name = fonts.monospace.family;
+        size = fonts.monospace.size;
       };
       settings = {
         clear_all_shortcuts = true;

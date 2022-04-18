@@ -6,16 +6,16 @@
     enableDefaultFonts = true;
 
     fonts = with pkgs; [
-      fira-mono
       ubuntu_font_family
       twemoji-color-font
       tlwg
-      (nerdfonts.override { fonts = [ "Hack" ]; })
+      (nerdfonts.override { fonts = [ "Hack" "FiraCode" ]; })
     ];
 
-    fontconfig = let
-      fonts = config.themes.fonts;
-    in
+    fontconfig =
+      let
+        fonts = config.themes.fonts;
+      in
       {
         enable = true;
         antialias = true;
@@ -28,17 +28,18 @@
       };
   };
   # Use in various place
+  # kitty +list-fonts --psnames
   themes.fonts = {
     sansSerif = {
-      family = "Hack Nerd Font";
+      family = "Ubuntu";
       size = 13;
     };
     serif = {
-      family = "Hack Nerd Font";
+      family = "Ubuntu";
       size = 13;
     };
     monospace = {
-      family = "Hack Nerd Font Mono";
+      family = "FiraCode Nerd Font Mono";
       size = 13;
     };
   };

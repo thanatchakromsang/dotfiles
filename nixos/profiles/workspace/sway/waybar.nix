@@ -108,7 +108,7 @@ in
           };
           "custom/ddcutil" = {
             interval = "once";
-            format = " {percentage}%{icon}";
+            format = "{percentage}%{icon}";
             format-icons = [ "" "" "" "" ];
             exec = "${ddcutils-pkgs} -c";
             on-scroll-up = "${ddcutils-pkgs} -m 1.4; pkill -SIGRTMIN+15 waybar";
@@ -123,12 +123,13 @@ in
         * {
             border: none;
             border-radius: 0;
-            font-family: ${fonts.sansSerif.family};
-            font-size: ${toString fonts.sansSerif.size}px;
+            font-family: ${fonts.monospace.family};
+            font-size: ${toString fonts.monospace.size}px;
             min-height: 0;
             box-shadow: none;
             text-shadow: none;
             transition-duration: 0s;
+            font-weight: 600;
         }
         window#waybar {
           background: ${colors.bg1};
