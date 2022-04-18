@@ -11,8 +11,9 @@ in
       settings = {
         font = {
           normal = {
-            family = fonts.sansSerif.family;
+            family = fonts.monospace.family;
           };
+          size = fonts.monospace.size;
         };
       };
     };
