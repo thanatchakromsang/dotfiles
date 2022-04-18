@@ -60,4 +60,13 @@
     '';
     serviceConfig.Type = "oneshot";
   };
+
+  # Automatic brightness change for monitor
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "* 9 * * *      root    ${pkgs.ddcutil} setvcp 10 100 -d 1;${pkgs.ddcutil} setvcp 10 100 -d 2"
+      "* 19 * * *      root    ${pkgs.ddcutil} setvcp 10 50 -d 1;${pkgs.ddcutil} setvcp 10 50 -d 2"
+    ];
+  };
 }
