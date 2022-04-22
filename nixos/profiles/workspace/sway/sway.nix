@@ -65,7 +65,7 @@ in
       /* ''; */
       config = rec {
         modifier = "Mod4";
-        workspaceAutoBackAndForth = false;
+        workspaceAutoBackAndForth = true;
         fonts = {
           names = [ config.themes.fonts.sansSerif.family ];
           style = "Regular";

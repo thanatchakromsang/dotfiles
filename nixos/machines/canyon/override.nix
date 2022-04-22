@@ -23,24 +23,25 @@
     wayland.windowManager.sway = {
       config = {
         workspaceOutputAssign = [
-          { workspace = "1"; output = "HDMI-A-2"; }
-          { workspace = "2"; output = "HDMI-A-2"; }
-          { workspace = "3"; output = "HDMI-A-2"; }
-          { workspace = "4"; output = "HDMI-A-2"; }
-          { workspace = "5"; output = "HDMI-A-1"; }
-          { workspace = "6"; output = "HDMI-A-1"; }
-          { workspace = "7"; output = "HDMI-A-1"; }
-          { workspace = "8"; output = "HDMI-A-1"; }
-          { workspace = "9"; output = "HDMI-A-1"; }
-          { workspace = "10"; output = "HDMI-A-1"; }
+          { workspace = "1"; output = "DP-1"; }
+          { workspace = "2"; output = "DP-1"; }
+          { workspace = "3"; output = "DP-1"; }
+          { workspace = "4"; output = "DP-1"; }
+          { workspace = "5"; output = "HDMI-A-2"; }
+          { workspace = "6"; output = "HDMI-A-2"; }
+          { workspace = "7"; output = "HDMI-A-2"; }
+          { workspace = "8"; output = "HDMI-A-2"; }
+          { workspace = "9"; output = "HDMI-A-2"; }
+          { workspace = "10"; output = "HDMI-A-2"; }
         ];
         output = {
           "*".bg = "~/.dotfiles/wallpapers/gruvbox-dark-rainbow.png fill";
-          HDMI-A-2 = {
+          DP-1 = {
             resolution = "1920x1080";
             position = "0 0";
           };
-          HDMI-A-1 = {
+          DP-2 = {}; # type c connector
+          HDMI-A-2 = {
             resolution = "1920x1080";
             transform = "0";
             position = "1920 0";
@@ -59,14 +60,5 @@
       fi
     '';
     serviceConfig.Type = "oneshot";
-  };
-
-  # Automatic brightness change for monitor
-  services.cron = {
-    enable = true;
-    systemCronJobs = [
-      "* 9 * * *      root    ${pkgs.ddcutil} setvcp 10 100 -d 1;${pkgs.ddcutil} setvcp 10 100 -d 2"
-      "* 19 * * *      root    ${pkgs.ddcutil} setvcp 10 50 -d 1;${pkgs.ddcutil} setvcp 10 50 -d 2"
-    ];
   };
 }
