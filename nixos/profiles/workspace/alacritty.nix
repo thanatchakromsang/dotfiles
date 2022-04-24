@@ -61,7 +61,7 @@ in
             foreground = colors.bg;
           };
           mouse = {
-            hide_when_typing = true;
+            hide_when_typing = false; # Enable this on sway level
           };
           selection = {
             save_to_clipboard = true;
