@@ -27,24 +27,23 @@
           { workspace = "2"; output = "DP-1"; }
           { workspace = "3"; output = "DP-1"; }
           { workspace = "4"; output = "DP-1"; }
-          { workspace = "5"; output = "HDMI-A-2"; }
-          { workspace = "6"; output = "HDMI-A-2"; }
-          { workspace = "7"; output = "HDMI-A-2"; }
-          { workspace = "8"; output = "HDMI-A-2"; }
-          { workspace = "9"; output = "HDMI-A-2"; }
-          { workspace = "10"; output = "HDMI-A-2"; }
+          { workspace = "5"; output = "DP-4"; }
+          { workspace = "6"; output = "DP-4"; }
+          { workspace = "7"; output = "DP-4"; }
+          { workspace = "8"; output = "DP-4"; }
+          { workspace = "9"; output = "DP-4"; }
+          { workspace = "10"; output = "DP-4"; }
         ];
         output = {
           "*".bg = "~/.dotfiles/wallpapers/gruvbox-dark-rainbow.png fill";
           DP-1 = {
-            resolution = "1920x1080";
-            position = "0 0";
+            resolution = "3840x1600";
+            position = "0 150";
           };
-          DP-2 = {}; # type c connector
-          HDMI-A-2 = {
+          DP-4 = {
             resolution = "1920x1080";
-            transform = "0";
-            position = "1920 0";
+            position = "3840 0";
+            transform = "90";
           };
         };
       };
