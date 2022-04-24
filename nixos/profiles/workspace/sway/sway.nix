@@ -206,7 +206,7 @@ in
         };
         keybindings = {
           # Start terminal
-          "${modifier}+Return" = "exec ${pkgs.kitty}/bin/kitty";
+          "${modifier}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
 
           # Kill focused window
           "${modifier}+q" = "kill";

@@ -7,8 +7,8 @@
 
       ../profiles/workspace/sway/default.nix
       ../profiles/workspace/fonts.nix
-      ../profiles/workspace/kitty.nix
-      # ../profiles/workspace/alacritty.nix
+      # ../profiles/workspace/kitty.nix
+      ../profiles/workspace/alacritty.nix
       ../profiles/workspace/zathura.nix
 
       # ../profiles/applications/chromium.nix
