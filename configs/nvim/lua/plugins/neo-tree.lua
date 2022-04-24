@@ -24,8 +24,8 @@ require("neo-tree").setup({
         git_status = {
             symbols = {
                 -- Change type
-                added = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
-                modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
+                added = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
+                modified = "", -- or "", but this is redundant info if you use git_status_colors on the name
                 deleted = "✖", -- this can only be used in the git_status source
                 renamed = "", -- this can only be used in the git_status source
                 -- Status type
@@ -40,14 +40,17 @@ require("neo-tree").setup({
     window = {
         position = "left",
         width = 30,
+        mapping_options = {noremap = true, nowait = false},
         mappings = {
             ["<space><space>"] = "toggle_node",
             ["<2-LeftMouse>"] = "open",
-            ["o"] = "open",
+            ["oo"] = "open",
             ["<cr>"] = "open",
-            ["b"] = "open_split",
-            ["v"] = "open_vsplit",
-            ["t"] = "open_tabnew",
+            ["ob"] = "open_split",
+            ["ov"] = "open_vsplit",
+            ["ot"] = "open_tabnew",
+            ["ow"] = "open_with_window_picker",
+            ["w"] = "", -- ["w"] = "open_with_window_picker",
             ["C"] = "close_node",
             ["a"] = "add",
             ["A"] = "add_directory",
@@ -77,7 +80,7 @@ require("neo-tree").setup({
                 -- "thumbs.db"
             }
         },
-        follow_current_file = true, -- This will find and focus the file in the active buffer every
+        follow_current_file = false, -- This will find and focus the file in the active buffer every
         -- time the current file is changed while the tree is open.
         hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
         -- in whatever position is specified in window.position
@@ -88,12 +91,13 @@ require("neo-tree").setup({
         -- instead of relying on nvim autocmd events.
         window = {
             mappings = {
+                ["u"] = "navigate_up",
                 ["<bs>"] = "navigate_up",
                 ["."] = "set_root",
                 ["H"] = "toggle_hidden",
                 ["f"] = "fuzzy_finder",
                 ["/"] = "filter_on_submit",
-                ["<c-x>"] = "clear_filter"
+                ["<esc>"] = "clear_filter"
             }
         }
     },
