@@ -16,18 +16,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
     update_in_insert = false
 })
 
--- vim.api.nvim_command [[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=False})]]
-
-vim.lsp.handlers["textDocument/formatting"] = function(err, _, result, _, bufnr)
-    if err ~= nil or result == nil then return end
-    if not vim.api.nvim_buf_get_option(bufnr, "modified") then
-        local view = vim.fn.winsaveview()
-        vim.lsp.util.apply_text_edits(result, bufnr)
-        vim.fn.winrestview(view)
-        if bufnr == vim.api.nvim_get_current_buf() then vim.cmd [[noautocmd :update]] end
-    end
-end
-
 -----------------------------------------------------
 -- Custom on_attach / capabilities
 -----------------------------------------------------
@@ -68,9 +56,6 @@ local custom_attach = function(client, bufnr)
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then
         vim.api.nvim_exec([[
-          hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646
-          hi LspReferenceText cterm=bold ctermbg=red guibg=#464646
-          hi LspReferenceWrite cterm=bold ctermbg=red guibg=#464646
           augroup lsp_document_highlight
             autocmd! * <buffer>
             autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
@@ -78,6 +63,17 @@ local custom_attach = function(client, bufnr)
           augroup END
     ]], false)
     end
+
+    -- -- TODO: codelens integration
+    -- if client.resolved_capabilities.code_lens then
+    --     vim.api.nvim_exec([[
+    --       augroup lsp_code_lens_refresh
+    --         autocmd! * <buffer>
+    --         autocmd InsertLeave <buffer> lua vim.lsp.codelens.refresh()
+    --         autocmd InsertLeave <buffer> lua vim.lsp.codelens.display()
+    --       augroup END
+    --     ]], false)
+    -- end
 
     -- -- autoformat after save
     -- if client.resolved_capabilities.document_formatting then
@@ -166,7 +162,8 @@ lspconfig.tsserver.setup {
 local luafmt = {formatCommand = "lua-format -i --column-limit=150", formatStdin = true}
 
 local isort = {formatCommand = "isort --quiet -", formatStdin = true}
-local yapf = {formatCommand = "yapf --quiet", formatStdin = true}
+-- local yapf = {formatCommand = "yapf --quiet", formatStdin = true}
+local black = {formatCommand = "black --quiet -", formatStdin = true}
 
 -- JavaScript/React/TypeScript
 -- local prettier = {formatCommand = "./node_modules/.bin/prettier --stdin-filepath ${INPUT}", formatStdin = true}
@@ -182,10 +179,6 @@ local shellcheck = {LintCommand = 'shellcheck -f gcc -x', lintFormats = {'%f:%l:
 
 local shfmt = {formatCommand = 'shfmt -ci -s -bn', formatStdin = true}
 
-local golint = {lintCommand = "golint", lintIgnoreExitCode = true, lintFormats = {"%f:%l:%c: %m"}}
-
-local goimports = {formatCommand = "goimports", formatStdin = true}
-
 -- local misspell = {
 --     lintCommand = "misspell",
 --     lintIgnoreExitCode = true,
@@ -197,7 +190,6 @@ local markdownlint = {lintCommand = 'markdownlint -s', lintStdin = true, lintFor
 
 local languages = {
     lua = {luafmt},
-    go = {golint, goimports},
     typescript = {prettier, eslint},
     javascript = {prettier, eslint},
     typescriptreact = {prettier, eslint},
@@ -210,7 +202,7 @@ local languages = {
     scss = {prettier},
     css = {prettier},
     markdown = {markdownlint},
-    python = {isort, yapf},
+    python = {isort, black},
     sh = {shfmt, shellcheck}
 }
 

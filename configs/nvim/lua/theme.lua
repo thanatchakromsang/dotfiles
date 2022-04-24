@@ -7,10 +7,13 @@ vim.o.termguicolors = true
 vim.cmd('colorscheme gruvbox-material')
 vim.cmd('set background=dark')
 
-vim.cmd('hi TelescopeBorder         guifg=#665c54')
-vim.cmd('hi TelescopePromptBorder   guifg=#665c54')
-vim.cmd('hi TelescopeResultsBorder  guifg=#665c54')
-vim.cmd('hi TelescopePreviewBorder  guifg=#665c54')
+-- Telescope
+vim.api.nvim_exec([[
+    hi! TelescopeBorder         guifg=#665c54
+    hi! TelescopePromptBorder   guifg=#665c54
+    hi! TelescopeResultsBorder  guifg=#665c54
+    hi! TelescopePreviewBorder  guifg=#665c54
+]], false)
 
 -- Highlight yank
 vim.api.nvim_exec([[
@@ -22,41 +25,45 @@ vim.api.nvim_exec([[
 
 -- WhichKey
 vim.api.nvim_exec([[
-    hi link WhichKey Yellow
-    hi link WhichKeyGroup RedBold
-    hi link WhichKeyDesc Green
+    hi! link WhichKey Yellow
+    hi! link WhichKeyGroup RedBold
+    hi! link WhichKeyDesc Green
 ]], false)
 
 -- Lsp
 vim.api.nvim_exec([[
-    hi link LspDiagnosticsSignError RedSign
-    hi link LspDiagnosticsSignWarning YellowSign
-    hi link LspDiagnosticsSignInformation GreenSign
-    hi link LspDiagnosticsSignHint BlueSign
+    hi! link LspDiagnosticsSignError RedSign
+    hi! link LspDiagnosticsSignWarning YellowSign
+    hi! link LspDiagnosticsSignInformation GreenSign
+    hi! link LspDiagnosticsSignHint BlueSign
+
+    hi! LspReferenceRead cterm=bold ctermbg=red guibg=#464646
+    hi! LspReferenceText cterm=bold ctermbg=red guibg=#464646
+    hi! LspReferenceWrite cterm=bold ctermbg=red guibg=#464646
 ]], false)
 
 -- Indent Blankline
-vim.cmd('hi link IndentBlanklineContextChar Yellow')
+vim.cmd('hi! link IndentBlanklineContextChar Yellow')
 
 -- folke/lsp-trouble.nvim
 vim.api.nvim_exec([[
-    hi link LspTroubleSignWarning LspDiagnosticsDefaultWarning
-    hi link LspTroubleSignError LspDiagnosticsDefaultError
-    hi link LspTroubleSignHint LspDiagnosticsDefaultHint
-    hi link LspTroubleSignInformation LspDiagnosticsDefaultInformation
-    hi link LspTroubleFoldIcon LspDiagnosticsDefaultWarning
+    hi! link LspTroubleSignWarning LspDiagnosticsDefaultWarning
+    hi! link LspTroubleSignError LspDiagnosticsDefaultError
+    hi! link LspTroubleSignHint LspDiagnosticsDefaultHint
+    hi! link LspTroubleSignInformation LspDiagnosticsDefaultInformation
+    hi! link LspTroubleFoldIcon LspDiagnosticsDefaultWarning
 ]], false)
 
 -- WhichKey
-vim.cmd('hi link WhichKeyFloat Normal')
+vim.cmd('hi! link WhichKeyFloat Normal')
 
 -- symbols-outline.nvim
-vim.cmd('hi link FocusedSymbol IncSearch')
+vim.cmd('hi! link FocusedSymbol IncSearch')
 
 -- Neogit
 vim.api.nvim_exec([[
-    hi link NeogitHunkHeader TabLine
-    hi link NeogitHunkHeaderHighlight TabLine
+    hi! link NeogitHunkHeader TabLine
+    hi! link NeogitHunkHeaderHighlight TabLine
     sign define NeogitOpen:section texthl=StatusLine
     sign define NeogitClosed:section texthl=StatusLine
     sign define NeogitOpen:item texthl=StatusLine
@@ -65,6 +72,10 @@ vim.api.nvim_exec([[
 
 -- nvim-cmp
 vim.api.nvim_exec([[
-    hi link CmpItemMenu CmpItemAbbrDeprecatedDefault
-    hi link CmpItemKind Aqua
+    hi! link CmpItemMenu CmpItemAbbrDeprecatedDefault
+    hi! link CmpItemKind Aqua
+    hi! link CmpPmenu Pmenu
+    hi! link CmpPmenuBorder Pmenu
+    hi! CmpPmenu guibg=#282828
+    hi! CmpPmenuBorder guifg=#615750
 ]], false)

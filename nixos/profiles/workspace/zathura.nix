@@ -1,4 +1,4 @@
-{ config, pkg, lib, ... }:
+{ config, pkgs, lib, stable, ... }:
 
 # https://github.com/nix-community/home-manager/blob/master/modules/programs/zathura.nix
 let
@@ -8,6 +8,7 @@ in
   home-manager.users.thanatchaya = {
     programs.zathura = {
       enable = true;
+      package = pkgs.stable.zathura;
       options = {
         adjust-open = "best-fit";
         selection-clipboard = "clipboard";
@@ -51,7 +52,7 @@ in
 
         recolor-lightcolor = colors.bg;
         recolor-darkcolor = colors.fg;
-        recolor = true;
+        recolor = false;
       };
       extraConfig = ''
         map k scroll half-up

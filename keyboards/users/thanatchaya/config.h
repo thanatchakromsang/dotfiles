@@ -21,7 +21,12 @@
 #undef TAPPING_TERM
 #define TAPPING_TERM 150
 
-#define IGNORE_MOD_TAP_INTERRUPT // this makes it possible to do rolling combos (zx) with keys that convert to other keys on hold (z becomes ctrl when you hold it, and when this option isn't enabled, z rapidly followed by x actually sends Ctrl-x. That's bad.)
+// Prevent normal rollover on alphas from accidentally triggering mods.
+#define IGNORE_MOD_TAP_INTERRUPT
+
+// This prevents accidental repeats of the tap-hold keys when typing quickly.
+#define TAPPING_FORCE_HOLD_PER_KEY
+
 #undef PERMISSIVE_HOLD
 #define PERMISSIVE_HOLD
 
@@ -31,7 +36,8 @@
 #define MOUSEKEY_INTERVAL       16
 #define MOUSEKEY_DELAY          0
 #define MOUSEKEY_TIME_TO_MAX    60
-#define MOUSEKEY_MAX_SPEED      3
+#define MOUSEKEY_MAX_SPEED      7
+# undef MOUSEKEY_WHEEL_DELAY
 #define MOUSEKEY_WHEEL_DELAY    0
 
 #define COMBO_COUNT 5

@@ -5,16 +5,20 @@
     isNormalUser = true;
     createHome = true;
     uid = 1000;
-    extraGroups = lib.mkDefault [ "wheel" "networkmanager" "audio" "video" "docker" ];
+    extraGroups = lib.mkDefault [ "wheel" "networkmanager" "audio" "video" "docker" "i2c"];
     shell = pkgs.zsh;
   };
 
   home-manager.users.thanatchaya = { pkgs, config, ... }: {
     # Workaround for firefox pkgs error ref: https://github.com/nix-community/home-manager/issues/2010
-    home.stateVersion = "21.05";
+    home.stateVersion = "22.05";
 
     programs.zsh = {
       enable = true;
+      history = {
+        save = 1000000000;
+        size = 1000000000;
+      };
       initExtraFirst = ''
         if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
           source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
@@ -22,9 +26,6 @@
 
         # Add powerlevel10k themes
         source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-
-        # Completion
-        source ${pkgs.google-cloud-sdk}/google-cloud-sdk/completion.zsh.inc
 
         bindkey '^[[1;5A' history-substring-search-up
         bindkey '^[[1;5B' history-substring-search-down
@@ -54,10 +55,6 @@
           };
         }
       ];
-      # TODO(sshconfig): Remove this when `ssh -V` is > 8.7 and use sshconfig to control TERM instead following https://wiki.archlinux.org/title/kitty under `Terminal issues with SSH` section
-      sessionVariables = {
-        TERM = "xterm-256color";
-      };
     };
 
     programs.ssh = {
@@ -86,6 +83,15 @@
       ".editorconfig".source = config.lib.file.mkOutOfStoreSymlink (config.home.homeDirectory + "/.dotfiles/home/editorconfig");
       ".p10k.zsh".source = config.lib.file.mkOutOfStoreSymlink (config.home.homeDirectory + "/.dotfiles/home/p10k.zsh");
     };
+
+    /* # TODO: XDG MIMEAPPS without conflict */
+    /* xdg.mimeApps = { */
+    /*   enable = true; */
+    /*   defaultApplications = { */
+    /*     "application/pdf" = [ "zathura" "firefox.desktop" ]; */
+    /*     "video/H264" = [ "mpv.desktop" ]; */
+    /*   }; */
+    /* }; */
 
     # disable keyboard management using home-manager
     home.keyboard = null;

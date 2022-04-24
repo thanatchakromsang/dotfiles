@@ -55,8 +55,8 @@ in
     programs.kitty = {
       enable = true;
       font = {
-        name = fonts.sansSerif.family;
-        size = fonts.sansSerif.size;
+        name = fonts.monospace.family;
+        size = fonts.monospace.size;
       };
       settings = {
         clear_all_shortcuts = true;
@@ -78,6 +78,8 @@ in
         enabled_layouts grid,fat, horizontal, stack, tall, vertical
 
         scrollback_pager ${pkgs.neovim}/bin/nvim -u NONE -c "set norelativenumber nonumber nolist showtabline=0 foldcolumn=0 laststatus=0" -c "autocmd TermOpen * normal G" -c "vnoremap y myy`y:qa!<CR>" -c "map q :qa!<CR>" -c "map i <nop>" -c "set clipboard+=unnamedplus" -c "silent write! /tmp/kitty_scrollback_buffer | te cat /tmp/kitty_scrollback_buffer - "
+
+        mouse_map shift+left release grabbed,ungrabbed mouse_handle_click selection link prompt
 
         ${style}
       '';

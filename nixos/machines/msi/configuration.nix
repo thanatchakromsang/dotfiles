@@ -42,7 +42,7 @@
   hardware.bluetooth.enable = true;
 
   networking = {
-    hostName = "t14s";
+    hostName = "msi";
     domain = "local";
   };
 

@@ -1,4 +1,6 @@
-require("which-key").setup {
+local wk = require("which-key")
+
+wk.setup {
     marks = true, -- shows a list of your marks on ' and `
     registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
     presets = {
@@ -31,14 +33,12 @@ require("which-key").setup {
     triggers = {"<leader>", "<localleader>", "g", "\'", "\"", "<C-r>", "z"} -- automatically setup triggers
 }
 
-local wk = require("which-key")
-
 -- Normal Leader
 wk.register({
     ["<leader>"] = {
         name = "leader",
-        [" "] = {"fold toggle"},
-        e = "explorer toggle",
+        [" "] = {"fold"},
+        e = "explorer",
         r = {":FloatermNew --height=0.8 --width=0.8 --name=ranger --wintype=float ranger<CR>", "ranger"},
         o = {":SymbolsOutline<CR>", "outline"},
         p = {
@@ -63,11 +63,12 @@ wk.register({
             m = {":Telescope marks<CR>", "marks"},
             o = {":Telescope vim_options<CR>", "vim options"},
             t = {":Telescope live_grep<CR>", "text"},
+            T = {":TodoTelescope<CR>", "TODO"},
             b = {":Telescope buffers<CR>", "buffers"},
             q = {":Telescope quickfix<CR>", "quickfix"},
             l = {":Telescope loclist<CR>", "loclist"},
             c = {":Telescope git_commits<CR>", "git current file history"},
-            C = {":Telescope git_commits<CR>", "git history"},
+            C = {":Telescope git_commits<CR>", "git history"}
         },
         s = {
             name = "+startify",
@@ -80,13 +81,7 @@ wk.register({
         g = {
             name = "+git",
             g = {"<cmd>FloatermNew --height=0.9 --width=0.9 --name=git --wintype=float lazygit<CR>", "lazygit"},
-            d = {
-                name = "+diff",
-                d = {"diff open"},
-                c = {"diff close"},
-                r = {"diff refresh"},
-            },
-            l = {"neogit log"},
+            d = {name = "+diff", d = {"diff this"}, o = {"diff view open"}, c = {"diff view close"}, r = {"diff view refresh"}},
             S = {":Telescope git_stash<CR>", "git stash"},
             c = {":Telescope git_bcommits<CR>", "git current file history"},
             C = {":Telescope git_commits<CR>", "git history"},
@@ -97,15 +92,25 @@ wk.register({
             r = {"reset hunk"},
             R = {"reset buffer"},
             P = {"preview hunk"},
-            b = {"blame line"}
+            b = {"blame line"},
+            B = {"browse git remote"}
         },
         t = {
             name = "+trouble",
+            T = "TODO",
             t = "toggle",
             w = "workspace diagnostics",
             d = "document diagnostics",
             l = "local list",
             q = "quickfix list"
+        },
+        T = {
+            name = "+test",
+            t = "test nearest",
+            f = "test file",
+            l = "test last",
+            v = "test visit",
+            s = "test suite",
         }
     }
 }, {
@@ -115,18 +120,18 @@ wk.register({
     nowait = false -- use `nowait` when creating keymaps
 })
 
--- wk.register({["<leader>"] = {name = "leader", g = {name = "+git", B = {"browse git visual line"}}}}, {
---     mode = "v",
---     silent = true, -- use `silent` when creating keymaps
---     noremap = true, -- use `noremap` when creating keymaps
---     nowait = false -- use `nowait` when creating keymaps
--- })
+wk.register({["<leader>"] = {name = "leader", g = {name = "+git", B = {"browse git remote"}}}}, {
+    mode = "v",
+    silent = true, -- use `silent` when creating keymaps
+    noremap = true, -- use `noremap` when creating keymaps
+    nowait = false -- use `nowait` when creating keymaps
+})
 
 -- Normal Local Leader
 wk.register({
     ["<localleader>"] = {
         name = "localleader",
-        ['.'] = "set working dir",
+        ['.'] = "set current working dir",
         a = "code action",
         b = "horizontal split",
         c = "close buffer",
@@ -134,7 +139,8 @@ wk.register({
         f = "code format",
         v = "vertical split",
         w = "close window",
-        r = "rename"
+        r = "rename",
+        R = "set root working dir"
     }
 }, {
     mode = "n", -- NORMAL mode

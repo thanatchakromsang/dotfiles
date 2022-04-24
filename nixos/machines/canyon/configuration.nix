@@ -17,6 +17,7 @@
       /* ../../profiles/streaming.nix */
       ../../profiles/gaming.nix
       ../../profiles/keyboard.nix
+      /* ../../profiles/plex.nix */
 
       ../../profiles/monitoring/home-server.nix
       ../../profiles/monitoring/home-client.nix
@@ -26,6 +27,8 @@
 
   nix = {
     package = pkgs.nixUnstable;
+    gc.automatic = true;
+    gc.options = "--delete-older-than 8d";
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
@@ -42,6 +45,8 @@
     };
   };
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   hardware.bluetooth.enable = true;
 
   networking = {
@@ -49,5 +54,5 @@
     domain = "local";
   };
 
-  system.stateVersion = "21.05";
+  system.stateVersion = "22.05";
 }

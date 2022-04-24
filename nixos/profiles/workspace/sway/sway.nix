@@ -53,15 +53,19 @@ in
 
     home.packages = with pkgs; [
       wl-clipboard
+      nur.repos.reedrw.bitwarden-rofi-patched
     ];
 
     wayland.windowManager.sway = {
       enable = true;
-      xwayland = false;
       wrapperFeatures.gtk = true;
+      /* extraConfig = '' */
+      /*   bindsym --input-device=1390:269:ELECOM_TrackBall_Mouse_HUGE_TrackBall --whole-window BTN_EXTRA seat - cursor press BTN_LEFT, seat - cursor release BTN_LEFT */
+      /*   bindsym --input-device=1390:269:ELECOM_TrackBall_Mouse_HUGE_TrackBall --whole-window BTN_SIDE seat - cursor press BTN_RIGHT, seat - cursor release BTN_RIGHT */
+      /* ''; */
       config = rec {
         modifier = "Mod4";
-        workspaceAutoBackAndForth = false;
+        workspaceAutoBackAndForth = true;
         fonts = {
           names = [ config.themes.fonts.sansSerif.family ];
           style = "Regular";
@@ -69,11 +73,15 @@ in
         };
         window = {
           titlebar = false;
-          hideEdgeBorders = "smart";
+          hideEdgeBorders = "none";
           commands = [
             {
               criteria = { title = "Firefox — Sharing Indicator"; };
               command = "floating enable, kill";
+            }
+            {
+              criteria = { app_id = "tridactyl_editor"; };
+              command = "floating enable";
             }
           ];
         };
@@ -90,28 +98,29 @@ in
             '';
           }
           { command = "${pkgs.mako}/bin/mako --default-timeout 5000 &"; always = true; }
+          { command = "${pkgs.keyutils}/bin/keyctl link @u @s"; } # Workaround for bitwarden-rofi https://github.com/NixOS/nixpkgs/issues/95928
         ];
         # swaymsg -t get_inputs
         # read `man 5 sway-input` for more information
         input = {
           # External keyboards
           "12951:18804:ZSA_Technology_Labs_ErgoDox_EZ" = {
-            xkb_layout = "colemak_dh_matrix,manoonchai";
-            xkb_variant = ",";
+            xkb_layout = "en,th";
+            xkb_variant = "colemak_dh_matrix,manoonchai";
             xkb_options = "grp:alt_space_toggle";
             repeat_delay = "300";
             repeat_rate = "30";
           };
           "18003:1:foostan_Corne" = {
-            xkb_layout = "colemak_dh_matrix,manoonchai";
-            xkb_variant = ",";
+            xkb_layout = "en,th";
+            xkb_variant = "colemak_dh_matrix,manoonchai";
             xkb_options = "grp:alt_space_toggle";
             repeat_delay = "300";
             repeat_rate = "30";
           };
           "4617:8963:Keyboardio_Atreus" = {
-            xkb_layout = "colemak_dh_matrix,manoonchai";
-            xkb_variant = ",";
+            xkb_layout = "en,th";
+            xkb_variant = "colemak_dh_matrix,manoonchai";
             xkb_options = "grp:alt_space_toggle";
             repeat_delay = "300";
             repeat_rate = "30";
@@ -137,39 +146,22 @@ in
           };
           "2:14:ETPS/2_Elantech_TrackPoint" = {
             accel_profile = "adaptive";
-            pointer_accel = "0.5";
+            pointer_accel = "0.0";
             dwt = "enabled";
-            events = "disabled";
+            events = "enabled";
           };
-        };
-        output = {
-          "*".bg = "~/.dotfiles/wallpapers/gruvbox-dark-rainbow.png fill";
-        } // lib.optionalAttrs (config.networking.hostName == "canyon") {
-          HDMI-A-1 = {
-            resolution = "1920x1080";
-            transform = "90";
-            position = "0 0";
-          };
-          HDMI-A-2 = {
-            resolution = "1920x1080";
-            position = "1080 480";
-          };
-        } // lib.optionalAttrs (config.networking.hostName == "t14s") {
-          eDP-1 = {
-            resolution = "1920x1080";
-            position = "0 0";
-          };
-          HDMI-A-1 = {
-            resolution = "1920x1080";
-            position = "1920 0";
+          "1390:269:ELECOM_TrackBall_Mouse_HUGE_TrackBall" = {
+            events = "enabled";
+            middle_emulation = "enabled";
           };
         };
         seat = {
           "*".hide_cursor = "when-typing enable";
         };
-        colors = let
-          color = config.themes.colors;
-        in
+        colors =
+          let
+            color = config.themes.colors;
+          in
           {
             background = color.bg;
             focused = {
@@ -203,24 +195,24 @@ in
           };
         gaps = {
           inner = 5;
-          smartGaps = true;
-          smartBorders = "on";
+          smartGaps = false;
+          smartBorders = "off";
         };
         defaultWorkspace = "1";
-        workspaceOutputAssign = [];
+        workspaceOutputAssign = [ ];
         focus = {
           followMouse = true;
           forceWrapping = true;
         };
         keybindings = {
           # Start terminal
-          "${modifier}+Return" = "exec ${pkgs.kitty}/bin/kitty";
+          "${modifier}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
 
           # Kill focused window
           "${modifier}+q" = "kill";
 
           # Start launcher
-          "${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -width 30 -show drun | xargs swaymsg exec";
+          "${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -width 30 -show drun | xargs swaymsg exec &";
 
           "${modifier}+Shift+r" = "reload";
 
@@ -321,8 +313,9 @@ in
           "--locked XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -T 1.4";
           "--locked XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -T 0.72";
 
-          "${modifier}+n" = "exec ${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
+          "${modifier}+n" = "exec ${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu &";
           "${modifier}+u" = "exec ${pkgs.rofi-bluetooth}/bin/rofi-bluetooth &";
+          "${modifier}+y" = "exec ${pkgs.nur.repos.reedrw.bitwarden-rofi-patched}/bin/bwmenu &";
 
           # Mode binding
           "${modifier}+r" = "mode resize";
@@ -355,14 +348,14 @@ in
             let
               screenshot_dir = "Pictures/$(date +'%Y-%m-%d+%H:%M:%S').png";
             in
-              {
-                "s" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save output ${screenshot_dir}, mode default";
-                "a" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save area ${screenshot_dir}, mode default";
-                "w" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save window ${screenshot_dir}, mode default";
-                "o" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save output ${screenshot_dir}, mode default";
-                "Escape" = "mode default";
-                "Return" = "mode default";
-              };
+            {
+              "s" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save output ${screenshot_dir}, mode default";
+              "a" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save area ${screenshot_dir}, mode default";
+              "w" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save window ${screenshot_dir}, mode default";
+              "o" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot save output ${screenshot_dir}, mode default";
+              "Escape" = "mode default";
+              "Return" = "mode default";
+            };
           "poweroff (p), reboot (r), suspend (s), lock (l)" =
             {
               "p" = "exec ${pkgs.systemd}/bin/systemctl poweroff, mode default";

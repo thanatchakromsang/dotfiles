@@ -3,3 +3,5 @@
 
 #undef DEBOUNCE
 #define DEBOUNCE 25
+
+#define SPLIT_USB_DETECT

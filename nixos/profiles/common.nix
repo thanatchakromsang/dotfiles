@@ -20,10 +20,10 @@
       htop
       wget
       curl
-      telnet
+      inetutils
       unzip
       jq
-      yq
+      yq-go
       vim
       exa
       bat
@@ -33,8 +33,8 @@
       gnupg
       ripgrep
       ranger
-      unstable.neovim
-      unstable.bitwarden-cli
+      neovim
+      bitwarden-cli
       zsh-powerlevel10k
     ];
 
@@ -43,7 +43,7 @@
     enableCompletion = true;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
-    histSize = 10000;
+    histSize = 1000000000;
     ohMyZsh = {
       enable = true;
       plugins =
@@ -89,7 +89,8 @@
     pbcopy = "wl-copy";
     pbpaste = "wl-paste";
     g = "lazygit";
-    r = "ranger";
+    r = "ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd $LASTDIR";
     c = "clear";
+    ssh = "kitty +kitten ssh"; # INFO: copy kitty term info over to ssh server
   };
 }

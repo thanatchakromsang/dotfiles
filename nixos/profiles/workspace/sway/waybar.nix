@@ -3,6 +3,7 @@ let
   colors = config.themes.colors;
   fonts = config.themes.fonts;
   waybar = config.themes.waybar;
+  ddcutils-pkgs = "~/.dotfiles/nixos/profiles/workspace/sway/waybar-modules/ddcutil-brightness";
 in
 {
   themes.waybar = {
@@ -28,79 +29,93 @@ in
           modules-left = [ "sway/workspaces" "sway/mode" "sway/window" ];
           modules-center = [ "clock" ];
           modules-right = waybar.modules-right;
-          modules = {
-            "sway/workspaces" = {
-              disable-scroll = true;
-              format = "{name}";
-              format-icon = {
-                "1" = "";
-                "2" = "";
-                "3" = "";
-                "4" = "";
-                "5" = "";
-                "6" = "";
-                "7" = "";
-                "8" = "";
-                "9" = "";
-                /* "10" = ""; */
-                "urgent" = "";
-                "focused" = "";
-                "default" = "";
-              };
+          "sway/workspaces" = {
+            disable-scroll = true;
+            format = "{name}:{icon}";
+            format-icons = {
+              "1" = "";
+              "2" = "";
+              "3" = "";
+              "4" = "";
+              "5" = "";
+              "6" = "";
+              "7" = "";
+              "8" = "";
+              "9" = "";
+              "urgent" = "";
+              "focused" = "";
+              "default" = "";
             };
-            "sway/language" = {
-              format = "{}";
+          };
+          "sway/language" = {
+            format = "{shortDescription}";
+            on-click = "swaymsg input type:keyboard xkb_switch_layout next";
+          };
+          "idle_inhibitor" = {
+            format = "{icon}";
+            format-icons = {
+              activated = "";
+              deactivated = "";
             };
-            idle_inhibitor = {
-              format = "{icon}";
-              format-icons = {
-                activated = "";
-                deactivated = "";
-              };
+          };
+          "clock" = {
+            tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+            format = " {:%b %-d, %Y %H:%M}";
+          };
+          "backlight" = {
+            format = "{percent}%{icon}";
+            format-icons = [ "" "" "" "" ];
+          };
+          "battery" = {
+            states = {
+              critical = 5;
             };
-            clock = {
-              tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-              format = " {:%b %-d, %Y %H:%M}";
+            format = "{capacity}%{icon}";
+            format-charging = "{capacity}%";
+            format-critical = "";
+            format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
+          };
+          "network" = {
+            format-wifi = "{essid}直";
+            format-ethernet = "{ifname}:{ipaddr}/{cidr}";
+            format-disconnected = "Disconnected⚠";
+            format-alt = "{ifname}:{ipaddr}/{cidr}";
+          };
+          "pulseaudio" = {
+            scroll-step = 1;
+            format = "{volume}%{icon} {format_source}";
+            format-bluetooth = "{volume}%{icon} {format_source}";
+            format-bluetooth-muted = "muted";
+            format-source = "{volume}%";
+            format-source-muted = "muted";
+            format-muted = "muted {format_source}";
+            format-icons = {
+              headphone = "";
+              hands-free = "";
+              headset = "";
+              phone = "";
+              portable = "";
+              car = "";
+              default = [ "" "" "" ];
             };
-            backlight = {
-              format = "{percent}%{icon}";
-              format-icons = [ "" "" "" "" ];
-            };
-            battery = {
-              states = {
-                critical = 5;
-              };
-              format = "{capacity}%{icon}";
-              format-charging = "{capacity}%";
-              format-critical = "";
-              format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
-            };
-            network = {
-              format-wifi = "{essid}直";
-              format-ethernet = "{ifname}:{ipaddr}/{cidr}";
-              format-disconnected = "Disconnected⚠";
-              format-alt = "{ifname}:{ipaddr}/{cidr}";
-            };
-            pulseaudio = {
-              scroll-step = 1;
-              format = "{volume}%{icon} {format_source}";
-              format-bluetooth = "{volume}%";
-              format-bluetooth-muted = "muted";
-              format-source = "{volume}%";
-              format-source-muted = "muted";
-              format-muted = "muted {format_source}";
-              format-icons = {
-                headphone = "";
-                hands-free = "";
-                headset = "";
-                phone = "";
-                portable = "";
-                car = "";
-                default = [ "" "" "" ];
-              };
-              on-click = "~/.config/sway/volume.sh toggle &";
-              on-click-right = "~/.config/sway/mic.sh toggle &";
-            };
+            on-click = "${pkgs.pamixer}/bin/pamixer --toggle-mute &";
+            on-click-right = "${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute";
+          };
+          "disk" = {
+            interval = 30;
+            format = "{percentage_used}%";
+            path = "/";
+          };
+          "custom/ddcutil" = {
+            interval = "once";
+            format = "{percentage}%{icon}";
+            format-icons = [ "" "" "" "" ];
+            exec = "${ddcutils-pkgs} -c";
+            on-scroll-up = "${ddcutils-pkgs} -m 1.4; pkill -SIGRTMIN+15 waybar";
+            on-scroll-down = "${ddcutils-pkgs} -m 0.72; pkill -SIGRTMIN+15 waybar";
+            signal = 15;
+            exec-on-event = "true";
+            return-type = "json";
           };
         }
       ];
@@ -108,12 +123,13 @@ in
         * {
             border: none;
             border-radius: 0;
-            font-family: ${fonts.sansSerif.family};
-            font-size: ${toString fonts.sansSerif.size}px;
+            font-family: ${fonts.monospace.family};
+            font-size: ${toString fonts.monospace.size}px;
             min-height: 0;
             box-shadow: none;
             text-shadow: none;
             transition-duration: 0s;
+            font-weight: 600;
         }
         window#waybar {
           background: ${colors.bg1};
@@ -166,6 +182,8 @@ in
         #tray,
         #language,
         #idle_inhibitor,
+        #disk,
+        #custom-ddcutil,
         #mpd {
             padding: 0 4px;
             /* margin: 0 4px; */

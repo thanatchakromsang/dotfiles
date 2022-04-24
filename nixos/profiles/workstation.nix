@@ -9,11 +9,13 @@ in
       ./common.nix
       ../users/thanatchaya/base.nix
       ../services/avahi.nix
+      ../services/ddc-ci.nix
     ];
 
   programs.ssh.startAgent = true;
   programs.gnupg.agent = {
     enable = true;
+    pinentryFlavor = "curses";
   };
   services.gnome.gnome-keyring.enable = true;
 

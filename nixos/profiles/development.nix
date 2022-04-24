@@ -11,6 +11,9 @@
     pipenv
     poetry
     nodePackages.pyright
+    black
+    python39Packages.isort
+    cookiecutter
 
     # Javascript / Typescript
     yarn
@@ -30,10 +33,6 @@
     gcc
     gnumake
 
-    # Terraform
-    unstable.terraform
-    unstable.terraform-ls
-
     # Rust
     rustc
     rustup
@@ -48,7 +47,7 @@
     luaformatter
 
     # General
-    unstable.efm-langserver
+    efm-langserver
 
     # Docker
     nodePackages.dockerfile-language-server-nodejs
@@ -57,28 +56,46 @@
     nodePackages.vim-language-server
 
     # YAML
-    unstable.nodePackages.yaml-language-server
+    nodePackages.yaml-language-server
 
     # Nix
     rnix-lsp
 
     # Ops Toolsets
-    unstable.kubectl
+    kubectl
     kubectx
-    unstable.kubernetes-helm
-    unstable.kind
-    unstable.fluxcd
+    kubernetes-helm
+    kind
+    fluxcd
     fluxctl # v1
     awscli2
     docker-compose
     google-cloud-sdk
+    cloud-sql-proxy
     kubeseal
     sops
-    unstable.cloudflared
+    cloudflared
     k9s
+    pulumi-bin
+    step-cli
+    linkerd
+
+    # Terraform
+    terraform
+    terraform-ls
 
     # Static site generator
     hugo
+
+    # Database
+    dbeaver
+    postgresql
+
+    # Network
+    dnsutils
+
+    # API
+    postman
   ];
 
   virtualisation.docker = {

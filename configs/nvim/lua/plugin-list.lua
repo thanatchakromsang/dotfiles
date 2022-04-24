@@ -27,21 +27,26 @@ return require('packer').startup(function(use)
     use {
       'neovim/nvim-lspconfig',
       config = function()
-          require "lsp.lspconfig"
+          require 'lsp.lspconfig'
       end
     }
     -- use 'glepnir/lspsaga.nvim'
     use {
-      'folke/lsp-trouble.nvim',
-      cmd = {'LspTroubleToggle', 'LspTrouble'},
+      'folke/trouble.nvim',
       config = function()
         require 'lsp.trouble'
+      end
+    }
+    use {
+      "folke/todo-comments.nvim",
+      requires = "nvim-lua/plenary.nvim",
+      config = function()
+        require 'plugins.todo-comments'
       end
     }
     -- use 'kosayoda/nvim-lightbulb'
     use {
       'simrat39/symbols-outline.nvim',
-      cmd = 'SymbolsOutline',
       config = function()
         require 'plugins.symbols-outline'
       end
@@ -63,6 +68,10 @@ return require('packer').startup(function(use)
       end
     }
 
+    -- Test
+    use 'vim-test/vim-test'
+
+
     -- Autocomplete
     use {
       'hrsh7th/nvim-cmp',
@@ -70,6 +79,7 @@ return require('packer').startup(function(use)
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-path',
+        'hrsh7th/cmp-cmdline',
         'ray-x/cmp-treesitter',
         'L3MON4D3/LuaSnip',
         'saadparwaiz1/cmp_luasnip',
@@ -114,11 +124,11 @@ return require('packer').startup(function(use)
       end
     }
     use {
-      'glepnir/galaxyline.nvim',
+      'nvim-lualine/lualine.nvim',
       after = 'gruvbox-material',
       requires = {'kyazdani42/nvim-web-devicons', opt = true},
       config = function()
-          require 'plugins.galaxyline'
+          require 'plugins.lualine'
       end
     }
     use {
@@ -154,12 +164,39 @@ return require('packer').startup(function(use)
 
     -- Explorer
     use {
-      'kyazdani42/nvim-tree.lua',
-      -- cmd = 'NvimTreeToggle',
-      config = function()
-        require 'plugins.nvim-tree'
-      end
-    }
+      "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        requires = {
+          "nvim-lua/plenary.nvim",
+          "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+          "MunifTanjim/nui.nvim",
+          {
+            -- only needed if you want to use the "open_window_picker" command
+            's1n7ax/nvim-window-picker',
+            tag = "1.*",
+            config = function()
+              require'window-picker'.setup({
+                autoselect_one = true,
+                include_current = false,
+                filter_rules = {
+                  -- filter using buffer options
+                  bo = {
+                    -- if the file type is one of following, the window will be ignored
+                    filetype = { 'neo-tree', "neo-tree-popup", "notify", "quickfix" },
+
+                    -- if the buffer type is one of following, the window will be ignored
+                    buftype = { 'terminal' },
+                  },
+                },
+                other_win_hl_color = '#e35e4f',
+              })
+            end,
+      }
+        },
+        config = function()
+          require 'plugins.neo-tree'
+        end
+      }
 
     -- Git
     use {
@@ -175,6 +212,10 @@ return require('packer').startup(function(use)
       config = function()
         require 'plugins.neogit'
       end
+    }
+    use {
+      'tpope/vim-fugitive',
+      requires = {'shumphrey/fugitive-gitlab.vim', 'tpope/vim-rhubarb' },
     }
 
     -- General Plugins
@@ -192,7 +233,12 @@ return require('packer').startup(function(use)
         require 'plugins.lightspeed'
       end
     }
-    use 'airblade/vim-rooter'
+    use {
+      'airblade/vim-rooter',
+      config = function()
+        require 'plugins.vim-rooter'
+      end
+    }
     use {
       'mhinz/vim-startify',
       config = function()
@@ -219,7 +265,6 @@ return require('packer').startup(function(use)
         require 'plugins.vim-floaterm'
       end
     }
-    -- use 'liuchengxu/vista.vim' -- lsp outline
     use {
       'andymass/vim-matchup',
       event = 'CursorMoved',
@@ -230,5 +275,4 @@ return require('packer').startup(function(use)
     use 'tpope/vim-repeat'
     use 'tpope/vim-surround'
     use 'wellle/targets.vim' -- vim text object on steroid
-
 end)

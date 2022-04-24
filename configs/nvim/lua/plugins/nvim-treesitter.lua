@@ -1,5 +1,8 @@
 require'nvim-treesitter.configs'.setup {
-    ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    ensure_installed = {
+        "bash", "c", "cpp", "css", "comment", "dockerfile", "go", "gomod", "javascript", "json", "jsdoc", "lua", "make", "python", "scala",
+        "typescript", "tsx", "vim", "yaml", "zig", "nix", "graphql"
+    },
 
     highlight = {
         enable = true -- false will disable the whole extension
@@ -21,10 +24,9 @@ require'nvim-treesitter.configs'.setup {
         -- },
     },
 
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false,
-    },
+    match_up = {enable = true},
+
+    context_commentstring = {enable = true, enable_autocmd = false, config = {nix = "# %s"}},
 
     textobjects = {
         select = {

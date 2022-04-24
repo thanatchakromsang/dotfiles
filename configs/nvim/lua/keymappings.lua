@@ -35,8 +35,8 @@ map('', '<PageUp>', '10<C-U>', {silent = true})
 map('', '<PageDown>', '10<C-D>', {silent = true})
 
 -- Move text
-map('x', 'J', ':move \'<-2<CR>gvgv', {noremap = true, silent = true})
-map('x', 'K', ':move \'>+1<CR>gv-gv', {noremap = true, silent = true})
+map('x', 'K', ':move \'<-2<CR>gvgv', {noremap = true, silent = true})
+map('x', 'J', ':move \'>+1<CR>gv-gv', {noremap = true, silent = true})
 map('i', '<C-j>', '<esc>:m .+1<CR>==', {noremap = true, silent = true})
 map('i', '<C-k>', '<esc>:m .-2<CR>==', {noremap = true, silent = true})
 
@@ -80,7 +80,6 @@ map('n', '<ESC>', ':noh<CR>', {noremap = true, silent = true}) -- Remove search 
 map('n', 'Q', '<nop>', {noremap = true, silent = true})
 
 -- Bufferline
-map('n', 'gb', '<cmd>BufferLinePick<CR>', {noremap = true, silent = true})
 map('n', '<TAB>', '<cmd>BufferLineCycleNext<CR>', {noremap = true, silent = true})
 map('n', '<S-TAB>', '<cmd>BufferLineCyclePrev<CR>', {noremap = true, silent = true})
 
@@ -92,13 +91,13 @@ map('n', '<leader>gP', '<cmd>lua require"gitsigns".preview_hunk()<CR>', {noremap
 map('n', '<leader>gn', '<cmd>lua require"gitsigns".next_hunk()<CR>', {noremap = true, silent = true})
 map('n', '<leader>gp', '<cmd>lua require"gitsigns".prev_hunk()<CR>', {noremap = true, silent = true})
 map('n', '<leader>gb', '<cmd>lua require"gitsigns".blame_line()<CR>', {noremap = true, silent = true})
+map('n', '<leader>gdd', '<cmd>Gitsigns diffthis<CR>', {noremap = true, silent = true})
 
--- Neogit
-map('n', '<leader>gg', '<cmd>Neogit kind=vsplit<CR>', {noremap = true, silent = true})
-map('n', '<leader>gl', '<cmd>Neogit kind=vsplit log<CR>', {noremap = true, silent = true})
+-- Fugitive
+map('', '<leader>gB', '<cmd>GBrowse!<CR>', {noremap = true, silent = true})
 
 -- Diffview.nvim
-map('n', '<leader>gdd', '<cmd>DiffviewOpen<CR>', {noremap = true, silent = true})
+map('n', '<leader>gdo', '<cmd>DiffviewOpen<CR>', {noremap = true, silent = true})
 map('n', '<leader>gdc', '<cmd>DiffviewClose<CR>', {noremap = true, silent = true})
 map('n', '<leader>gdr', '<cmd>DiffviewRefresh<CR>', {noremap = true, silent = true})
 
@@ -109,22 +108,31 @@ map('n', '<localleader>v', '<cmd>vsplit<CR>', {noremap = true, silent = true})
 -- local leader misc
 map('n', '<localleader>c', '<cmd>Bdelete<CR>', {noremap = true, silent = true})
 map('n', '<localleader>w', '<cmd>close<CR>', {noremap = true, silent = true})
-map('n', '<localleader>.', '<cmd>lcd %:p:h<CR>', {noremap = true, silent = true}) -- set working dir
+map('n', '<localleader>.', '<cmd>lcd %:p:h<CR>', {noremap = true, silent = true}) -- set current working dir
+map('n', '<localleader>R', '<cmd>Rooter<CR>', {noremap = true, silent = true}) -- set current working dir
 
--- Lua
-map("n", "<F11>", "<cmd>LspTroubleToggle<CR>", {silent = true, noremap = true})
-map("n", "<leader>tt", "<cmd>LspTroubleToggle<CR>", {silent = true, noremap = true})
-map("n", "<leader>tw", "<cmd>LspTroubleToggle lsp_workspace_diagnostics<CR>", {silent = true, noremap = true})
-map("n", "<leader>td", "<cmd>LspTroubleToggle lsp_document_diagnostics<CR>", {silent = true, noremap = true})
-map("n", "<leader>tl", "<cmd>LspTroubleToggle loclist<CR>", {silent = true, noremap = true})
-map("n", "<leader>tq", "<cmd>LspTroubleToggle quickfix<CR>", {silent = true, noremap = true})
-map("n", "gR", "<cmd>LspTrouble lsp_references<CR>", {silent = true, noremap = true})
+-- Trouble
+map("n", "<F11>", "<cmd>TroubleToggle<CR>", {silent = true, noremap = true})
+map("n", "<leader>tt", "<cmd>TroubleToggle<CR>", {silent = true, noremap = true})
+map("n", "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<CR>", {silent = true, noremap = true})
+map("n", "<leader>td", "<cmd>TroubleToggle document_diagnostics<CR>", {silent = true, noremap = true})
+map("n", "<leader>tl", "<cmd>TroubleToggle loclist<CR>", {silent = true, noremap = true})
+map("n", "<leader>tq", "<cmd>TroubleToggle quickfix<CR>", {silent = true, noremap = true})
+map("n", "<leader>tT", "<cmd>TodoTrouble<CR>", {silent = true, noremap = true})
+map("n", "gR", "<cmd>Trouble lsp_references<CR>", {silent = true, noremap = true})
 
--- NvimTree
-map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", {silent = true, noremap = true})
+-- Neotree
+map("n", "<leader>e", "<cmd>NeoTreeFocusToggle<CR>", {silent = true, noremap = true})
 
 -- Telescope
 map('n', 'gb', '<cmd>Telescope buffers<CR>', {noremap = true, silent = true})
+
+-- Test.vim
+map('n', '<leader>Tt', '<cmd>TestNearest -strategy=neovim<CR>', {noremap = true, silent = true})
+map('n', '<leader>Tf', '<cmd>TestFile -strategy=neovim<CR>', {noremap = true, silent = true})
+map('n', '<leader>Tl', '<cmd>TestLast -strategy=neovim<CR>', {noremap = true, silent = true})
+map('n', '<leader>Tv', '<cmd>TestVisit -strategy=neovim<CR>', {noremap = true, silent = true})
+map('n', '<leader>Ts', '<cmd>TestSuite -strategy=neovim<CR>', {noremap = true, silent = true})
 
 -- Packer commands till because we are not loading it at startup
 vim.cmd("silent! command PackerCompile lua require 'plugin-list' require('packer').compile()")
