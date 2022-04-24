@@ -5,8 +5,15 @@
     isNormalUser = true;
     createHome = true;
     uid = 1000;
-    extraGroups = lib.mkDefault [ "wheel" "networkmanager" "audio" "video" "docker" "i2c"];
+    extraGroups = lib.mkDefault [ "wheel" "networkmanager" "audio" "video" "docker" "i2c" ];
     shell = pkgs.zsh;
+  };
+
+  programs.git = {
+    enable = true;
+    config = {
+      safe = { directory = "/home/thanatchaya/.dotfiles"; }; # Workaround for https://github.com/NixOS/nixpkgs/issues/169193
+    };
   };
 
   home-manager.users.thanatchaya = { pkgs, config, ... }: {

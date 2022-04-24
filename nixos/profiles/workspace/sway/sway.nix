@@ -166,17 +166,17 @@ in
             background = color.bg;
             focused = {
               text = color.bg1;
-              border = color.aqua;
-              background = color.aqua;
-              childBorder = color.aqua;
-              indicator = color.aqua;
+              border = color.yellow;
+              background = color.yellow;
+              childBorder = color.yellow;
+              indicator = color.yellow;
             };
             focusedInactive = {
               text = color.bg1;
               border = color.purple;
               background = color.purple;
               childBorder = color.purple;
-              indicator = color.bg1;
+              indicator = color.purple;
             };
             unfocused = {
               text = color.bg1;

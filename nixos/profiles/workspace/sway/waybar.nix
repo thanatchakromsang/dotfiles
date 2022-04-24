@@ -85,7 +85,7 @@ in
             scroll-step = 1;
             format = "{volume}%{icon} {format_source}";
             format-bluetooth = "{volume}%{icon} {format_source}";
-            format-bluetooth-muted = "muted";
+            format-bluetooth-muted = "muted {format_source}";
             format-source = "{volume}%";
             format-source-muted = "muted";
             format-muted = "muted {format_source}";
@@ -158,12 +158,13 @@ in
         }
 
         #workspaces button.focused {
-            background: ${colors.aqua};
+            background: ${colors.yellow};
             color: ${colors.bg};
         }
 
         #workspaces button.urgent {
-            background-color: ${colors.red};
+            background: ${colors.red};
+            color: ${colors.bg};
         }
 
         #mode {
