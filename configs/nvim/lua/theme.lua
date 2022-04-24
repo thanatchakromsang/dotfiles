@@ -74,4 +74,8 @@ vim.api.nvim_exec([[
 vim.api.nvim_exec([[
     hi! link CmpItemMenu CmpItemAbbrDeprecatedDefault
     hi! link CmpItemKind Aqua
+    hi! link CmpPmenu Pmenu
+    hi! link CmpPmenuBorder Pmenu
+    hi! CmpPmenu guibg=#282828
+    hi! CmpPmenuBorder guifg=#615750
 ]], false)

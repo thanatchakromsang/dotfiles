@@ -11,6 +11,20 @@ local has_words_before = function()
 end
 
 cmp.setup({
+    experimental = {ghost_text = true},
+    window = {
+        -- completion = cmp.config.window.bordered(),
+        -- documentation = cmp.config.window.bordered(),
+        --
+        documentation = {
+            border = {'┌', '─', '┐', '│', '┘', '─', '└', '│'},
+            winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None'
+        },
+        completion = {
+            border = {'┌', '─', '┐', '│', '┘', '─', '└', '│'},
+            winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None'
+        }
+    },
     preselect = cmp.PreselectMode.None,
     snippet = {expand = function(args) luasnip.lsp_expand(args.body) end},
     mapping = cmp.mapping.preset.insert({
@@ -101,6 +115,7 @@ cmp.setup({
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {mapping = cmp.mapping.preset.cmdline(), sources = {{name = 'buffer'}}})
+cmp.setup.cmdline('?', {mapping = cmp.mapping.preset.cmdline(), sources = {{name = 'buffer'}}})
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {mapping = cmp.mapping.preset.cmdline(), sources = cmp.config.sources({{name = 'path'}}, {{name = 'cmdline'}})})
