@@ -44,3 +44,16 @@ require'nvim-treesitter.configs'.setup {
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.o.foldlevelstart = 99
+vim.o.foldtext =
+    [[substitute(getline(v:foldstart),'\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+vim.o.fillchars = "fold: "
+vim.wo.foldnestmax = 20
+vim.wo.foldminlines = 1
+-- TODO: AutoSaveFolds not working not sure why, might have to dig into various Augroup something might mess with fold
+-- vim.api.nvim_command([[
+--   augroup AutoSaveFolds
+--     autocmd!
+--     autocmd BufWinLeave * mkview
+--     autocmd BufWinEnter * silent loadview
+--   augroup END
+-- ]])
