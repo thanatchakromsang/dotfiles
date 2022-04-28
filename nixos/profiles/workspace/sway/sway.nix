@@ -272,8 +272,8 @@ in
           "${modifier}+Shift+0" = "move container to workspace number 10";
 
           # Configure split to match vim configuration
-          "${modifier}+v" = "splitv";
-          "${modifier}+b" = "splitb";
+          "${modifier}+v" = "splith";
+          "${modifier}+b" = "splitv";
 
           # Switch the current container between different layout styles
           "${modifier}+s" = "layout stacking";
@@ -325,14 +325,14 @@ in
         };
         modes = {
           resize = {
-            "h" = "resize shrink width 10 px";
-            "j" = "resize grow height 10 px";
-            "k" = "resize shrink height 10 px";
-            "l" = "resize grow width 10 px";
-            "Left" = "resize shrink width 10 px";
-            "Down" = "resize grow height 10 px";
-            "Up" = "resize shrink height 10 px";
-            "Right" = "resize grow width 10 px";
+            "h" = "resize shrink width 20 px";
+            "j" = "resize grow height 20 px";
+            "k" = "resize shrink height 20 px";
+            "l" = "resize grow width 20 px";
+            "Left" = "resize shrink width 20 px";
+            "Down" = "resize grow height 20 px";
+            "Up" = "resize shrink height 20 px";
+            "Right" = "resize grow width 20 px";
             "Escape" = "mode default";
             "Return" = "mode default";
           };
