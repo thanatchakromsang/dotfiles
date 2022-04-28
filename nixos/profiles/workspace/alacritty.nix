@@ -60,16 +60,26 @@ in
             background = colors.yellow;
             foreground = colors.bg;
           };
-          mouse = {
-            hide_when_typing = false; # Enable this on sway level
-          };
-          selection = {
-            save_to_clipboard = true;
-          };
+        };
+        mouse = {
+          hide_when_typing = false; # Enable this on sway level
+        };
+        selection = {
+          save_to_clipboard = true;
         };
         debug = {
           print_events = false;
         };
+        key_bindings = [
+          # Vi Mode
+          { key = "Slash"; mode = "Vi|~Search"; action = "SearchBackward"; }
+          { key = "Slash"; mods = "Shift"; mode = "Vi|~Search"; action = "SearchForward"; }
+          { key = "Escape"; mode = "Vi|~Search"; action = "ToggleViMode"; }
+          { key = "PageUp"; mode = "Vi|~Search"; action = "ScrollPageUp"; }
+          { key = "PageDown"; mode = "Vi|~Search"; action = "ScrollPageDown"; }
+          { key = "Home"; mode = "Vi|~Search"; action = "ScrollToTop"; }
+          { key = "End"; mode = "Vi|~Search"; action = "ScrollToBottom"; }
+        ];
       };
     };
   };
