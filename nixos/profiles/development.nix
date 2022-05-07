@@ -4,6 +4,7 @@
     # Go
     go
     gopls
+    protolint
 
     # Python
     python39
@@ -44,7 +45,7 @@
 
     # Lua
     sumneko-lua-language-server
-    luaformatter
+    stylua
 
     # General
     efm-langserver
