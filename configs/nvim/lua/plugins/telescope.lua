@@ -68,3 +68,4 @@ telescope.setup({
 
 -- TODO: add dap integration with telescope
 telescope.load_extension("media_files")
+telescope.load_extension("refactoring")

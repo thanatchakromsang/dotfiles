@@ -26,11 +26,18 @@ return require('packer').startup(function(use)
     -- LSP
     use {
       'neovim/nvim-lspconfig',
+      requires = "RRethy/vim-illuminate",
       config = function()
           require 'lsp.lspconfig'
       end
     }
-    -- use 'glepnir/lspsaga.nvim'
+    use {
+        'jose-elias-alvarez/null-ls.nvim',
+        requires = { "nvim-lua/plenary.nvim" },
+        config = function()
+            require 'lsp.null-ls'
+        end,
+    }
     use {
       'folke/trouble.nvim',
       config = function()
@@ -71,7 +78,6 @@ return require('packer').startup(function(use)
     -- Test
     use 'vim-test/vim-test'
 
-
     -- Autocomplete
     use {
       'hrsh7th/nvim-cmp',
@@ -105,8 +111,16 @@ return require('packer').startup(function(use)
         require 'plugins.nvim-treesitter'
       end
     }
-    -- TODO(refactoring.nvim): Support/revisit configuration
-    use { 'ThePrimeagen/refactoring.nvim', opt = true }
+    use {
+        "ThePrimeagen/refactoring.nvim",
+        requires = {
+            {"nvim-lua/plenary.nvim"},
+            {"nvim-treesitter/nvim-treesitter"}
+        },
+        config = function()
+          require 'refactoring'.setup({})
+        end
+    }
 
     -- Individual Syntax highlights without Treesitter support
     use 'google/vim-jsonnet'

@@ -120,7 +120,7 @@ wk.register({
     nowait = false -- use `nowait` when creating keymaps
 })
 
-wk.register({["<leader>"] = {name = "leader", g = {name = "+git", B = {"browse git remote"}}}}, {
+wk.register({["<leader>"] = {name = "leader", r = {"refactoring"}, g = {name = "+git", B = {"browse git remote"}}}}, {
     mode = "v",
     silent = true, -- use `silent` when creating keymaps
     noremap = true, -- use `noremap` when creating keymaps

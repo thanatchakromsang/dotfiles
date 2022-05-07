@@ -53,18 +53,12 @@ local custom_attach = function(client, bufnr)
     if client.resolved_capabilities.rename then buf_set_keymap("n", "<localleader>r", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts) end
     if client.resolved_capabilities.signature_help then buf_set_keymap("n", "gs", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts) end
 
-    -- Set autocommands conditional on server_capabilities
+    -- Set document highlight using illuminate
     if client.resolved_capabilities.document_highlight then
-        vim.api.nvim_exec([[
-          augroup lsp_document_highlight
-            autocmd! * <buffer>
-            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-          augroup END
-    ]], false)
+      require "illuminate".on_attach(client)
     end
 
-    -- -- TODO: codelens integration
+    -- -- -- TODO: codelens integration
     -- if client.resolved_capabilities.code_lens then
     --     vim.api.nvim_exec([[
     --       augroup lsp_code_lens_refresh
@@ -109,7 +103,11 @@ lspconfig.gopls.setup {
 lspconfig.sumneko_lua.setup {
     -- cmd = {"lua-language-server", "-E", "/usr/share/lua-language-server/main.lua"},
     cmd = {"lua-language-server"},
-    on_attach = custom_attach,
+    on_attach = function(client)
+        -- Disable formatting, use stylua instead
+        client.resolved_capabilities.document_formatting = false
+        custom_attach(client)
+    end,
     capabilities = capabilities,
     settings = {
         Lua = {
@@ -131,10 +129,15 @@ lspconfig.yamlls.setup {
     capabilities = capabilities,
     settings = {
         yaml = {
-            -- schemas = {
-            --   Kubernetes = "*.yaml"
-            -- },
-            schemaStore = {enable = true}
+            schemas = {
+                ["https://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
+                ["https://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
+                ["https://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+                ["https://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+                ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "*gitlab-ci*.{yml,yaml}",
+                kubernetes = "/*.{yml,yaml}",
+            },
+            -- schemaStore = {enable = true}
         }
     },
     flags = {debounce_text_changes = 150}
@@ -146,73 +149,13 @@ lspconfig.yamlls.setup {
 
 lspconfig.tsserver.setup {
     on_attach = function(client)
-        -- Disable tsserver formatting, use prettier in efm lsp instead
+        -- Disable tsserver formatting, use prettier in null-ls instead
         client.resolved_capabilities.document_formatting = false
         custom_attach(client)
     end,
     capabilities = capabilities,
     filetypes = {"javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx"},
     flags = {debounce_text_changes = 150}
-}
-
------------------------------------------------------
--- efm LSP
------------------------------------------------------
-
-local luafmt = {formatCommand = "lua-format -i --column-limit=150", formatStdin = true}
-
-local isort = {formatCommand = "isort --quiet -", formatStdin = true}
--- local yapf = {formatCommand = "yapf --quiet", formatStdin = true}
-local black = {formatCommand = "black --quiet -", formatStdin = true}
-
--- JavaScript/React/TypeScript
--- local prettier = {formatCommand = "./node_modules/.bin/prettier --stdin-filepath ${INPUT}", formatStdin = true}
-local prettier = {formatCommand = "prettier --stdin-filepath ${INPUT}", formatStdin = true}
-local eslint = {
-    lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
-    lintIgnoreExitCode = true,
-    lintStdin = true,
-    lintFormats = {"%f:%l:%c: %m"}
-}
-
-local shellcheck = {LintCommand = 'shellcheck -f gcc -x', lintFormats = {'%f:%l:%c: %trror: %m', '%f:%l:%c: %tarning: %m', '%f:%l:%c: %tote: %m'}}
-
-local shfmt = {formatCommand = 'shfmt -ci -s -bn', formatStdin = true}
-
--- local misspell = {
---     lintCommand = "misspell",
---     lintIgnoreExitCode = true,
---     lintStdin = true,
---     lintFormats = {"%f:%l:%c: %m"}
--- }
-
-local markdownlint = {lintCommand = 'markdownlint -s', lintStdin = true, lintFormats = {'%f:%l %m', '%f:%l:%c %m', '%f: %l: %m'}}
-
-local languages = {
-    lua = {luafmt},
-    typescript = {prettier, eslint},
-    javascript = {prettier, eslint},
-    typescriptreact = {prettier, eslint},
-    javascriptreact = {prettier, eslint},
-    ["javascript.jsx"] = {prettier, eslint},
-    ["typescript.tsx"] = {prettier, eslint},
-    yaml = {prettier},
-    json = {prettier},
-    html = {prettier},
-    scss = {prettier},
-    css = {prettier},
-    markdown = {markdownlint},
-    python = {isort, black},
-    sh = {shfmt, shellcheck}
-}
-
-lspconfig.efm.setup {
-    -- root_dir = function() return vim.fn.getcwd() end,
-    -- cmd = {'efm-langserver', '-logfile', '/tmp/efm.log', '-loglevel', '5'}, -- debug cmd
-    on_attach = custom_attach,
-    init_options = {documentFormatting = true, codeAction = false},
-    filetypes = vim.tbl_keys(languages),
-    settings = {rootMarkers = {"package.json", ".git"}, languages = languages, lintDebounce = 500}
 }
 
 -----------------------------------------------------
@@ -233,6 +176,41 @@ lspconfig.terraformls.setup {
     capabilities = capabilities,
     flags = {debounce_text_changes = 150}
 }
+
+-----------------------------------------------------
+-- Null LSP
+-----------------------------------------------------
+
+local null_ls = require('null-ls')
+
+local formatting = null_ls.builtins.formatting
+local diagnostics = null_ls.builtins.diagnostics
+local code_actions = null_ls.builtins.code_actions
+
+null_ls.setup({
+  sources = {
+    -- Javascript, Typescript
+    formatting.eslint_d,
+    formatting.prettier,
+    -- Python
+    formatting.black,
+    formatting.isort,
+    -- markdown
+    formatting.markdownlint,
+    -- proto
+    formatting.protolint,
+    -- sh
+    formatting.shfmt,
+    code_actions.shellcheck,
+    diagnostics.shellcheck,
+    -- lua
+    formatting.stylua,
+    -- general
+    code_actions.refactoring,
+    diagnostics.misspell,
+  },
+  on_attach = custom_attach
+})
 
 -----------------------------------------------------
 -- general LSP

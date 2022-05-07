@@ -134,6 +134,9 @@ map('n', '<leader>Tl', '<cmd>TestLast -strategy=neovim<CR>', {noremap = true, si
 map('n', '<leader>Tv', '<cmd>TestVisit -strategy=neovim<CR>', {noremap = true, silent = true})
 map('n', '<leader>Ts', '<cmd>TestSuite -strategy=neovim<CR>', {noremap = true, silent = true})
 
+-- Refactoring.nvim
+map("v", "<leader>r", "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>", { noremap = true })
+
 -- Packer commands till because we are not loading it at startup
 vim.cmd("silent! command PackerCompile lua require 'plugin-list' require('packer').compile()")
 vim.cmd("silent! command PackerInstall lua require 'plugin-list' require('packer').install()")
