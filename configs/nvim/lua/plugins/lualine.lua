@@ -47,5 +47,5 @@ require('lualine').setup {
         lualine_y = {'progress'},
         lualine_z = {'location'}
     },
-    extensions = {'symbols-outline', 'quickfix'}
+    extensions = {'symbols-outline', 'quickfix', 'neo-tree'}
 }
