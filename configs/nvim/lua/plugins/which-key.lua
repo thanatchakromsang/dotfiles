@@ -95,7 +95,7 @@ wk.register({
             b = {"blame line"},
             B = {"browse git remote"}
         },
-        t = {
+        T = {
             name = "+trouble",
             T = "TODO",
             t = "toggle",
@@ -104,7 +104,7 @@ wk.register({
             l = "local list",
             q = "quickfix list"
         },
-        T = {
+        t = {
             name = "+test",
             t = "test nearest",
             f = "test file",

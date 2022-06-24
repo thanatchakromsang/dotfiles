@@ -113,12 +113,12 @@ map('n', '<localleader>R', '<cmd>Rooter<CR>', {noremap = true, silent = true}) -
 
 -- Trouble
 map("n", "<F11>", "<cmd>TroubleToggle<CR>", {silent = true, noremap = true})
-map("n", "<leader>tt", "<cmd>TroubleToggle<CR>", {silent = true, noremap = true})
-map("n", "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<CR>", {silent = true, noremap = true})
-map("n", "<leader>td", "<cmd>TroubleToggle document_diagnostics<CR>", {silent = true, noremap = true})
-map("n", "<leader>tl", "<cmd>TroubleToggle loclist<CR>", {silent = true, noremap = true})
-map("n", "<leader>tq", "<cmd>TroubleToggle quickfix<CR>", {silent = true, noremap = true})
-map("n", "<leader>tT", "<cmd>TodoTrouble<CR>", {silent = true, noremap = true})
+map("n", "<leader>Tt", "<cmd>TroubleToggle<CR>", {silent = true, noremap = true})
+map("n", "<leader>Tw", "<cmd>TroubleToggle workspace_diagnostics<CR>", {silent = true, noremap = true})
+map("n", "<leader>Td", "<cmd>TroubleToggle document_diagnostics<CR>", {silent = true, noremap = true})
+map("n", "<leader>Tl", "<cmd>TroubleToggle loclist<CR>", {silent = true, noremap = true})
+map("n", "<leader>Tq", "<cmd>TroubleToggle quickfix<CR>", {silent = true, noremap = true})
+map("n", "<leader>TT", "<cmd>TodoTrouble<CR>", {silent = true, noremap = true})
 map("n", "gR", "<cmd>Trouble lsp_references<CR>", {silent = true, noremap = true})
 
 -- Neotree
@@ -128,11 +128,11 @@ map("n", "<leader>e", "<cmd>NeoTreeFocusToggle<CR>", {silent = true, noremap = t
 map('n', 'gb', '<cmd>Telescope buffers<CR>', {noremap = true, silent = true})
 
 -- Test.vim
-map('n', '<leader>Tt', '<cmd>TestNearest -strategy=neovim<CR>', {noremap = true, silent = true})
-map('n', '<leader>Tf', '<cmd>TestFile -strategy=neovim<CR>', {noremap = true, silent = true})
-map('n', '<leader>Tl', '<cmd>TestLast -strategy=neovim<CR>', {noremap = true, silent = true})
-map('n', '<leader>Tv', '<cmd>TestVisit -strategy=neovim<CR>', {noremap = true, silent = true})
-map('n', '<leader>Ts', '<cmd>TestSuite -strategy=neovim<CR>', {noremap = true, silent = true})
+map('n', '<leader>tt', '<cmd>TestNearest -strategy=neovim<CR>', {noremap = true, silent = true})
+map('n', '<leader>tf', '<cmd>TestFile -strategy=neovim<CR>', {noremap = true, silent = true})
+map('n', '<leader>tl', '<cmd>TestLast -strategy=neovim<CR>', {noremap = true, silent = true})
+map('n', '<leader>tv', '<cmd>TestVisit -strategy=neovim<CR>', {noremap = true, silent = true})
+map('n', '<leader>ts', '<cmd>TestSuite -strategy=neovim<CR>', {noremap = true, silent = true})
 
 -- Refactoring.nvim
 map("v", "<leader>r", "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>", { noremap = true })
