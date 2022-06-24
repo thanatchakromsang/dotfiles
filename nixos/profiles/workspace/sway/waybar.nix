@@ -26,7 +26,7 @@ in
           layer = "top";
           position = "top";
           height = waybar.height;
-          modules-left = [ "sway/workspaces" "sway/mode" "sway/window" ];
+          modules-left = [ "sway/workspaces" "sway/mode"];
           modules-center = [ "clock" ];
           modules-right = waybar.modules-right;
           "sway/workspaces" = {

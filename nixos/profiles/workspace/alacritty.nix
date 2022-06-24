@@ -16,7 +16,7 @@ in
           normal = {
             family = fonts.monospace.family;
           };
-          size = 13;
+          size = fonts.monospace.size;
         };
         colors = {
           primary = {

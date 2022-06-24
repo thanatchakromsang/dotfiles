@@ -1,6 +1,9 @@
 { config, pkgs, lib, ... }:
 {
   environment.systemPackages = with pkgs; [
+    # General
+    codespell
+
     # Go
     go
     gopls

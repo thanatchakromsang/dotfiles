@@ -9,7 +9,7 @@ in
   home-manager.users.thanatchaya = {
     programs.rofi = {
       enable = true;
-      package = pkgs.nur.repos.kira-bruneau.rofi-wayland;
+      package = pkgs.nur.repos.c0deaddict.rofi-wayland;
       font = "${fonts.sansSerif.family} ${toString fonts.sansSerif.size}";
       terminal = "${pkgs.kitty}/bin/kitty";
       theme = "gruvbox-dark";

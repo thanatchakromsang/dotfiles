@@ -44,6 +44,7 @@ let
     "network.allow-experiments" = false;
 
     "layout.css.prefers-color-scheme.content-override" = 1; # INFO: default to 3 (use browser theme text color), 1 will force light
+    "layout.css.devPixelsPerPx" = "1.25";
   };
   userChrome = ''
     /* Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/autohide_main_toolbar.css made available under Mozilla Public License v. 2.0

@@ -12,6 +12,12 @@ let
   '';
 in
 {
+  themes.fonts = {
+    sansSerif.size = lib.mkForce 15;
+    serif.size = lib.mkForce 15;
+    monospace.size = lib.mkForce 15;
+  };
+
   home-manager.users.thanatchaya = {
     wayland.windowManager.sway = {
       config = {

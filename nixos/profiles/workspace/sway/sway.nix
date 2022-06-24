@@ -69,7 +69,7 @@ in
         fonts = {
           names = [ config.themes.fonts.sansSerif.family ];
           style = "Regular";
-          size = 9.0;
+          size = 13.0;
         };
         window = {
           titlebar = false;
