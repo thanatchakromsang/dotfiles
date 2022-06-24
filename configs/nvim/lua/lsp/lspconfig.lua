@@ -30,6 +30,7 @@ local custom_init = function(client)
     client.config.flags.allow_incremental_sync = true
 end
 
+-- TODO: after 0.8 update format function to this https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
 local custom_attach = function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -103,10 +104,10 @@ lspconfig.gopls.setup {
 lspconfig.sumneko_lua.setup {
     -- cmd = {"lua-language-server", "-E", "/usr/share/lua-language-server/main.lua"},
     cmd = {"lua-language-server"},
-    on_attach = function(client)
+    on_attach = function(client, bufnr)
         -- Disable formatting, use stylua instead
         client.resolved_capabilities.document_formatting = false
-        custom_attach(client)
+        custom_attach(client, bufnr)
     end,
     capabilities = capabilities,
     settings = {
@@ -130,14 +131,14 @@ lspconfig.yamlls.setup {
     settings = {
         yaml = {
             schemas = {
-                ["https://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
-                ["https://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
-                ["https://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
-                ["https://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
-                ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "*gitlab-ci*.{yml,yaml}",
-                kubernetes = "/*.{yml,yaml}",
+                -- ["https://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
+                -- ["https://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
+                -- ["https://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+                -- ["https://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+                -- ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "*gitlab-ci*.{yml,yaml}",
+                kubernetes = "*.{yml,yaml}",
             },
-            -- schemaStore = {enable = true}
+            schemaStore = {enable = true}
         }
     },
     flags = {debounce_text_changes = 150}
@@ -148,10 +149,10 @@ lspconfig.yamlls.setup {
 -----------------------------------------------------
 
 lspconfig.tsserver.setup {
-    on_attach = function(client)
+    on_attach = function(client, bufnr)
         -- Disable tsserver formatting, use prettier in null-ls instead
         client.resolved_capabilities.document_formatting = false
-        custom_attach(client)
+        custom_attach(client, bufnr)
     end,
     capabilities = capabilities,
     filetypes = {"javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx"},
@@ -169,9 +170,9 @@ lspconfig.bashls.setup {on_init = custom_init, on_attach = custom_attach, capabi
 -----------------------------------------------------
 
 lspconfig.terraformls.setup {
-    on_attach = function(client)
+    on_attach = function(client, bufnr)
         client.resolved_capabilities.signature_help = false
-        custom_attach(client)
+        custom_attach(client, bufnr)
     end,
     capabilities = capabilities,
     flags = {debounce_text_changes = 150}
@@ -195,8 +196,6 @@ null_ls.setup({
     -- Python
     formatting.black,
     formatting.isort,
-    -- markdown
-    formatting.markdownlint,
     -- proto
     formatting.protolint,
     -- sh
@@ -207,7 +206,7 @@ null_ls.setup({
     formatting.stylua,
     -- general
     code_actions.refactoring,
-    diagnostics.misspell,
+    diagnostics.codespell,
   },
   on_attach = custom_attach
 })
