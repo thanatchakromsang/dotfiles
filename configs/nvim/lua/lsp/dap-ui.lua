@@ -14,23 +14,26 @@ require("dapui").setup({
     remove = "d",
     edit = "e",
   },
-  sidebar = {
-    elements = {
-      -- You can change the order of elements in the sidebar
-      "scopes",
-      "breakpoints",
-      "stacks",
-      "watches"
+  layouts = {
+    {
+      elements = {
+      -- Elements can be strings or table with id and size keys.
+        { id = "scopes", size = 0.25 },
+        "breakpoints",
+        "stacks",
+        "watches",
+      },
+      size = 40,
+      position = "left",
     },
-    size = 40,
-    position = "left" -- Can be "left" or "right"
-  },
-  tray = {
-    elements = {
-      "repl"
+    {
+      elements = {
+        "repl",
+        "console",
+      },
+      size = 10,
+      position = "bottom",
     },
-    size = 10,
-    position = "bottom" -- Can be "bottom" or "top"
   },
   floating = {
     max_height = nil, -- These can be integers or a float between 0 and 1.
