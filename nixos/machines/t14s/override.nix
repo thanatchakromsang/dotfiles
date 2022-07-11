@@ -1,5 +1,6 @@
 { config, pkgs, lib, ... }:
 
+
 let
   monitor = "eDP-1";
   clamshell-mode-reset = pkgs.writeScriptBin "clamshell-mode-reset" ''
@@ -26,10 +27,10 @@ in
           { workspace = "2"; output = "DP-1"; }
           { workspace = "3"; output = "DP-1"; }
           { workspace = "4"; output = "DP-1"; }
-          { workspace = "5"; output = "eDP-1"; }
-          { workspace = "6"; output = "eDP-1"; }
-          { workspace = "7"; output = "eDP-1"; }
-          { workspace = "8"; output = "eDP-1"; }
+          { workspace = "5"; output = "DP-2"; }
+          { workspace = "6"; output = "DP-2"; }
+          { workspace = "7"; output = "DP-2"; }
+          { workspace = "8"; output = "DP-2"; }
           { workspace = "9"; output = "eDP-1"; }
           { workspace = "10"; output = "eDP-1"; }
         ];
@@ -37,12 +38,17 @@ in
           "*".bg = "~/.dotfiles/wallpapers/gruvbox-dark-rainbow.png fill";
           DP-1 = {
             resolution = "3840x1600";
-            position = "0 0";
+            position = "0 160";
+          };
+          DP-2 = {
+            resolution = "1920x1080";
+            position = "3840 0";
+            transform = "90";
           };
           # Center Below Main Monitor
           eDP-1 = {
             resolution = "1920x1080";
-            position = "960 1600";
+            position = "960 1760";
           };
         };
       };
