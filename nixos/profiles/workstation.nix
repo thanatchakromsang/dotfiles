@@ -12,11 +12,6 @@ in
       ../services/ddc-ci.nix
     ];
 
-  environment.systemPackages = with pkgs;
-    [
-      pinentry-curses
-    ];
-
   programs.ssh.startAgent = true;
   programs.gnupg.agent = {
     enable = true;

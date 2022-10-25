@@ -13,7 +13,7 @@ in
   programs.ssh.startAgent = true;
   programs.gnupg.agent = {
     enable = true;
-    # pinentryFlavor = "curses";
+    pinentryFlavor = "curses";
   };
   services.gnome.gnome-keyring.enable = true;
 }
