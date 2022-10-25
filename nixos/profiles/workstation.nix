@@ -12,6 +12,11 @@ in
       ../services/ddc-ci.nix
     ];
 
+  environment.systemPackages = with pkgs;
+    [
+      pinentry-curses
+    ];
+
   programs.ssh.startAgent = true;
   programs.gnupg.agent = {
     enable = true;
@@ -22,7 +27,7 @@ in
   networking = {
     networkmanager.enable = true;
     networkmanager.insertNameservers =
-      [];
+      [ ];
     firewall.enable = true;
     firewall.allowPing = true;
   };

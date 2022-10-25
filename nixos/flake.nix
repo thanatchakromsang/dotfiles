@@ -120,5 +120,21 @@
         ];
         specialArgs = { inherit inputs; };
       };
+      nixosConfigurations.militech = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          {
+            nixpkgs.overlays = overlays;
+            nixpkgs.config.allowUnfree = true;
+            home-manager.useUserPackages = true;
+            system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
+          }
+          nixpkgs.nixosModules.notDetected
+          home-manager.nixosModules.home-manager
+          ./modules
+          ./machines/militech/configuration.nix
+        ];
+        specialArgs = { inherit inputs; };
+      };
     };
 }
