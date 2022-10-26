@@ -21,21 +21,21 @@ require "bufferline".setup {
     },
     highlights = {
         buffer_selected = {
-            guibg = "#3c3836",
-            gui = "bold",
+            bg = "#3c3836",
+            bold = true,
         },
         duplicate_selected = {
-            gui = "italic",
-            guibg = "#3c3836",
+            italic = true,
+            bg = "#3c3836",
         },
         separator_selected = {
-            guibg = "#3c3836",
+            bg = "#3c3836",
         },
         separator = {
-            guibg = "#3c3836",
+            bg = "#3c3836",
         },
         indicator_selected = {
-            guibg = "#3c3836",
+            bg = "#3c3836",
         },
     }
 }
