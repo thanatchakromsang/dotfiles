@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, modulesPath,... }:
+{ config, pkgs, lib, modulesPath, ... }:
 
 with lib;
 let
@@ -26,7 +26,10 @@ in
     defaultUser = "thanatchaya";
     startMenuLaunchers = true;
 
-    docker-native.enable = true;
+    docker-native = {
+      enable = true;
+      addToDockerGroup = true;
+    };
   };
 
   nix = {

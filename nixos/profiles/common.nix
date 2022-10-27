@@ -4,10 +4,10 @@
 {
   imports =
     [
-      ../services/grub.nix
+      # ../services/grub.nix # TODO: move else where to make WSL work
       ../services/ssh.nix
       ../services/ntp.nix
-      ../services/dns.nix
+      # ../services/dns.nix
       ../services/localization.nix
 
       ./workspace/lazygit.nix

@@ -10,6 +10,11 @@ in
       ../users/thanatchaya/base.nix
     ];
 
+  # environment.systemPackages = with pkgs;
+  #   [
+  #     win32yank
+  #   ];
+
   programs.ssh.startAgent = true;
   programs.gnupg.agent = {
     enable = true;
