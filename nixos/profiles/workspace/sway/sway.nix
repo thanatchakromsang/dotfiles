@@ -39,6 +39,12 @@ in
   programs.sway.enable = true;
   programs.light.enable = true;
 
+  environment.shellAliases = {
+    open = "xdg-open";
+    pbcopy = "${wl-clipboard}/bin/wl-copy";
+    pbpaste = "${wl-clipboard}/bin/wl-paste";
+  };
+
   home-manager.users.thanatchaya = {
     programs.zsh.loginExtra = ''
       [[ "$(tty)" == /dev/tty1 ]] && sway

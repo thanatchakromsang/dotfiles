@@ -1,38 +1,26 @@
-{ stdenv, fetchFromGitHub, pkgs, lib, rustPlatform }:
+{ stdenv, fetchurl, pkgs, lib }:
 
-rustPlatform.buildRustPackage rec {
+# nix-prefetch-url https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
+stdenv.mkDerivation rec {
   name = "win32yank";
-  pname = "win32yank";
+  # pname = "win32yank";
 
-  src = fetchFromGitHub {
-    owner = "equalsraf";
-    repo = "win32yank";
-    rev = "4669e6249acc7b8ec9f502b9fafc7252186eea55";
-    sha256 = "15cznv7xsz750f4nkjxxicpnx04hmgrjy8h21ss89rxg4nv8dcnd";
+  src = fetchurl {
+    url = "https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip";
+    sha256 = "081a2k6ww8w6q2fzwifml88j941x3mkggnwfcrgbc3x65nllg9rk";
   };
 
-  # installPhase = ''
-  #   mkdir -p $out/bin
-  #   cp win32yank.exe $out/bin/win32yank.exe
-  # '';
+  nativeBuildInputs = [ pkgs.unzip ];
 
-  cargoLock = {
-    lockFile = ./Cargo.lock;
-  };
-
-  # cargoLock =
-  #   let
-  #     fixupLockFile = path: f (builtins.readFile path);
-  #   in
-  #   {
-  #     lockFileContents = fixupLockFile ./Cargo.lock;
-  #   };
-
-  postPatch = ''
-    cp ${./Cargo.lock} Cargo.lock
+  unpackPhase = ''
+    ${pkgs.unzip}/bin/unzip -j -o $src -d $out
   '';
 
-  cargoSha256 = lib.fakeSha256;
+  installPhase = ''
+    mkdir -p $out/bin
+    chmod +x $out/win32yank.exe
+    mv $out/win32yank.exe $out/bin/win32yank
+  '';
 
   meta = with lib; {
     license = licenses.unlicense;

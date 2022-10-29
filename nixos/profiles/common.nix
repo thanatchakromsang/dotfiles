@@ -72,9 +72,9 @@
   };
 
   environment.shellAliases = {
-    cat = "bat";
-    grep = "rg";
-    ls = "exa";
+    cat = "${pkgs.bat}/bin/bat";
+    grep = "${pkgs.ripgrep}/bin/rg";
+    ls = "${pkgs.exa}/bin/exa";
     l = "ls -lFn"; # size,show type,human readable
     la = "ls -lAFn"; # long list,show almost all,show type,human readable
     lt = "ls -ltFh"; # long list,sorted by date,show type,human readable
@@ -83,9 +83,6 @@
     vim = "nvim";
     k = "kubectl";
     tmp = "vim ~/.tmp.md";
-    open = "xdg-open";
-    pbcopy = "wl-copy";
-    pbpaste = "wl-paste";
     g = "lazygit";
     r = "ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd $LASTDIR";
     c = "clear";

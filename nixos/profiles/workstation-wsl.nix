@@ -12,10 +12,13 @@ in
 
   environment.systemPackages = with pkgs;
     [
-      # win32yank
+      win32yank
     ];
 
-
+  environment.shellAliases = {
+    pbcopy = "${pkgs.win32yank}/bin/win32yank -i --crlf";
+    pbpaste = "${pkgs.win32yank}/bin/win32yank -o --lf";
+  };
 
   programs.ssh.startAgent = true;
   programs.gnupg.agent = {

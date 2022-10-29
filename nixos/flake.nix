@@ -46,7 +46,7 @@
         (
           self: super: {
             rofi-bluetooth = super.callPackage ./packages/rofi-bluetooth { };
-            # win32yank = super.callPackage ./packages/win32yank { }; TODO: Windows support
+            win32yank = super.callPackage ./packages/win32yank { };
             # Override to create `kubectl-ctx`, `kubectl-ns` as kubectl plugins
             kubectx = super.kubectx.overrideAttrs (
               old: {

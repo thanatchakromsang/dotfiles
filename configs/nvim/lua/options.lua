@@ -20,6 +20,22 @@ opt.writebackup = false -- Disable backup
 opt.swapfile = false -- Disable because save time is huge
 opt.updatetime = 50 -- Faster completion
 opt.clipboard = "unnamedplus" -- Copy paste between vim and everything else
+
+-- WSL support
+if vim.fn.has("wsl") == 1 then
+	vim.g.clipboard = {
+		name = "win32yank-wsl",
+		copy = {
+			["+"] = "win32yank -i --crlf",
+			["*"] = "win32yank -i --crlf",
+		},
+		paste = {
+			["+"] = "win32yank -o --lf",
+			["*"] = "win32yank -o --lf",
+		},
+		cache_enable = 0,
+	}
+end
 opt.autoread = true -- Detect and update file have been changed outside vim
 opt.backspace = "indent,eol,start" -- Fix backspace indentation
 opt.completeopt = "menu,menuone,noselect" -- Enable completion
@@ -27,7 +43,8 @@ opt.scrolloff = 10 -- Cursor move offset
 opt.sidescrolloff = 5 -- Cursor move sideway by 5
 opt.showbreak = "↳"
 opt.wildignorecase = true
-opt.wildignore = ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**";
+opt.wildignore =
+	".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
 opt.listchars = "tab:» ,nbsp:+,trail:·,extends:→,precedes:←,eol:¬,space:⋅"
 opt.expandtab = true -- Converts tabs to spaces
 opt.smartindent = true -- Makes indenting smart
@@ -54,28 +71,28 @@ wo.number = true -- Show number line
 wo.relativenumber = true -- Show relative to current line number instead
 
 local disabled_built_ins = {
-    -- "netrw",
-    -- "netrwPlugin",
-    -- "netrwSettings",
-    -- "netrwFileHandlers",
-    "gzip",
-    "zip",
-    "zipPlugin",
-    "tar",
-    "tarPlugin",
-    "getscript",
-    "getscriptPlugin",
-    "vimball",
-    "vimballPlugin",
-    "2html_plugin",
-    "logipat",
-    "rrhelper",
-    "spellfile_plugin",
-    "matchit"
+	-- "netrw",
+	-- "netrwPlugin",
+	-- "netrwSettings",
+	-- "netrwFileHandlers",
+	"gzip",
+	"zip",
+	"zipPlugin",
+	"tar",
+	"tarPlugin",
+	"getscript",
+	"getscriptPlugin",
+	"vimball",
+	"vimballPlugin",
+	"2html_plugin",
+	"logipat",
+	"rrhelper",
+	"spellfile_plugin",
+	"matchit",
 }
 
 for _, plugin in pairs(disabled_built_ins) do
-    vim.g["loaded_" .. plugin] = 1
+	vim.g["loaded_" .. plugin] = 1
 end
 
 vim.api.nvim_command([[
