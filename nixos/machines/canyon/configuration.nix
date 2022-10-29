@@ -11,7 +11,7 @@
       ./override.nix
 
       ../../profiles/workstation.nix
-      ../../profiles/desktop.nix
+      ../../profiles/linux-desktop.nix
       ../../profiles/notebook.nix
       ../../profiles/development.nix
       /* ../../profiles/streaming.nix */

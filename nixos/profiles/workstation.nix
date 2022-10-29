@@ -10,6 +10,8 @@ in
       ../users/thanatchaya/base.nix
       ../services/avahi.nix
       ../services/ddc-ci.nix
+      ../services/grub.nix
+      ../services/dns.nix
     ];
 
   programs.ssh.startAgent = true;

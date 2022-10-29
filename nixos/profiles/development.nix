@@ -97,9 +97,6 @@
 
     # Network
     dnsutils
-
-    # API
-    postman
   ];
 
   virtualisation.docker = {
