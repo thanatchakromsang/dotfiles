@@ -32,6 +32,22 @@
             };
           };
         }
+        {
+          condition = "gitdir:~/Developers/sertis/scb/";
+          contents = {
+            user = {
+              email = "aad.thanatchaya.kromsaeng@scb.co.th";
+              name = "Thanatchaya Kromsaeng";
+              signingKey = "5C0E779514D3F8218A58E627844EE25B2216DCDB";
+            };
+            core = {
+              sshCommand = "ssh -i ~/.ssh/sertis.pri";
+            };
+            commit = {
+              gpgSign = true;
+            };
+          };
+        }
       ];
     };
   };
