@@ -19,16 +19,26 @@ vim.cmd([[
 
 map('n', '<space><space>', 'za', {silent = true})
 
--- better window movement
-map('n', '<c-h>', '<c-w>h', {silent = true})
-map('n', '<c-j>', '<c-w>j', {silent = true})
-map('n', '<C-k>', '<C-w>k', {silent = true})
-map('n', '<C-l>', '<C-w>l', {silent = true})
+-- -- better window movement w/tmux support
+-- map('n', '<c-h>', '<c-w>h', {silent = true})
+-- map('n', '<c-j>', '<c-w>j', {silent = true})
+-- map('n', '<C-k>', '<C-w>k', {silent = true})
+-- map('n', '<C-l>', '<C-w>l', {silent = true})
 
-map('n', '<c-Left>', '<c-w>h', {silent = true})
-map('n', '<c-Down>', '<c-w>j', {silent = true})
-map('n', '<C-Up>', '<C-w>k', {silent = true})
-map('n', '<C-Right>', '<C-w>l', {silent = true})
+-- map('n', '<c-Left>', '<c-w>h', {silent = true})
+-- map('n', '<c-Down>', '<c-w>j', {silent = true})
+-- map('n', '<C-Up>', '<C-w>k', {silent = true})
+-- map('n', '<C-Right>', '<C-w>l', {silent = true})
+
+map('n', '<c-h>', '<cmd>TmuxNavigateLeft<CR>', {noremap = true, silent = true})
+map('n', '<c-j>', '<cmd>TmuxNavigateDown<CR>', {noremap = true, silent = true})
+map('n', '<c-k>', '<cmd>TmuxNavigateUp<CR>', {noremap = true, silent = true})
+map('n', '<c-l>', '<cmd>TmuxNavigateRight<CR>', {noremap = true, silent = true})
+
+map('n', '<c-Left>', '<cmd>TmuxNavigateLeft<CR>', {noremap = true, silent = true})
+map('n', '<c-Down>', '<cmd>TmuxNavigateDown<CR>', {noremap = true, silent = true})
+map('n', '<C-Up>', '<cmd>TmuxNavigateUp<CR>', {noremap = true, silent = true})
+map('n', '<C-Right>', '<cmd>TmuxNavigateRight<CR>', {noremap = true, silent = true})
 
 -- PageUp PageDown movement up/down 5 lines
 map('', '<PageUp>', '10<C-U>', {silent = true})

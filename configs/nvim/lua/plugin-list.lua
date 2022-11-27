@@ -291,5 +291,10 @@ return require('packer').startup(function(use)
     use 'tpope/vim-repeat'
     use 'tpope/vim-surround'
     use 'wellle/targets.vim' -- vim text object on steroid
-    use 'christoomey/vim-tmux-navigator'
+    use {
+      'christoomey/vim-tmux-navigator',
+      config = function()
+        require 'plugins.misc'.tmux()
+      end
+    }
 end)
