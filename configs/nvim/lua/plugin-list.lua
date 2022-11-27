@@ -44,8 +44,10 @@ return require('packer').startup(function(use)
         require 'lsp.trouble'
       end
     }
+    -- TODO: Update to main branch once use vim 0.8.x
     use {
       "folke/todo-comments.nvim",
+      branch = "neovim-pre-0.8.0",
       requires = "nvim-lua/plenary.nvim",
       config = function()
         require 'plugins.todo-comments'
@@ -289,4 +291,5 @@ return require('packer').startup(function(use)
     use 'tpope/vim-repeat'
     use 'tpope/vim-surround'
     use 'wellle/targets.vim' -- vim text object on steroid
+    use 'christoomey/vim-tmux-navigator'
 end)
