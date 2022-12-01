@@ -42,6 +42,10 @@
         bindkey '^n' down-line-or-beginning-search
         bindkey '^H' backward-kill-word
 
+        # Ctrl movement
+        bindkey "^[[1;5D" backward-word
+        bindkey "^[[1;5C" forward-word
+
         # Alt movement
         bindkey '^[[1;3D' backward-word
         bindkey '^[[1;3C' forward-word

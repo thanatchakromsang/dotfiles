@@ -80,10 +80,10 @@
     lt = "ls -ltFh"; # long list,sorted by date,show type,human readable
     ll = "ls -l"; # long list
     ldot = "ls -ld .*";
-    vim = "nvim";
-    k = "kubectl";
+    vim = "${pkgs.neovim}/bin/nvim";
+    k = "${pkgs.kubectl}/bin/kubectl";
     tmp = "vim ~/.tmp.md";
-    g = "lazygit";
+    g = "${pkgs.lazygit}/bin/lazygit";
     r = "ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd $LASTDIR";
     c = "clear";
   };

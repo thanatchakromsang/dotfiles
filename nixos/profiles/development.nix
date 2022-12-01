@@ -120,11 +120,13 @@
     extraConfig = ''
       # Improve colors
       set -g default-terminal "tmux-256color"
-      set -ga terminal-overrides ",*:Tc"
       set-environment -g COLORTERM "truecolor"
 
       # Enable mouse support
       set-option -g mouse on
+
+      # Enable focus-events
+      set-option -g focus-events on
 
       # Bind Keys
       bind-key Space next-layout
@@ -143,24 +145,6 @@
       bind b split-window -v
       bind v split-window -h
       unbind-key %
-
-      # Extra Movement aside from C-(h,j,k,l)
-      is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
-          | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
-      bind-key -n C-Left if-shell "$is_vim" "send-keys C-Left"  "select-pane -L"
-      bind-key -n C-Down if-shell "$is_vim" "send-keys C-Down"  "select-pane -D"
-      bind-key -n C-Up if-shell "$is_vim" "send-keys C-Up"  "select-pane -U"
-      bind-key -n C-Right if-shell "$is_vim" "send-keys C-Right"  "select-pane -R"
-      tmux_version='$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
-      if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
-          "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
-      if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
-          "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
-
-      bind-key -T copy-mode-vi C-Up select-pane -U
-      bind-key -T copy-mode-vi C-Down select-pane -D
-      bind-key -T copy-mode-vi C-Left select-pane -L
-      bind-key -T copy-mode-vi C-Right select-pane -R
 
       bind-key -r BTab previous-window # Shift tab
       bind-key -r Tab next-window
