@@ -35,10 +35,10 @@ map('n', '<c-j>', '<cmd>TmuxNavigateDown<CR>', {noremap = true, silent = true})
 map('n', '<c-k>', '<cmd>TmuxNavigateUp<CR>', {noremap = true, silent = true})
 map('n', '<c-l>', '<cmd>TmuxNavigateRight<CR>', {noremap = true, silent = true})
 
-map('n', '<c-Left>', '<cmd>TmuxNavigateLeft<CR>', {noremap = true, silent = true})
-map('n', '<c-Down>', '<cmd>TmuxNavigateDown<CR>', {noremap = true, silent = true})
-map('n', '<C-Up>', '<cmd>TmuxNavigateUp<CR>', {noremap = true, silent = true})
-map('n', '<C-Right>', '<cmd>TmuxNavigateRight<CR>', {noremap = true, silent = true})
+-- map('n', '<c-Left>', '<cmd>TmuxNavigateLeft<CR>', {noremap = true, silent = true})
+-- map('n', '<c-Down>', '<cmd>TmuxNavigateDown<CR>', {noremap = true, silent = true})
+-- map('n', '<C-Up>', '<cmd>TmuxNavigateUp<CR>', {noremap = true, silent = true})
+-- map('n', '<C-Right>', '<cmd>TmuxNavigateRight<CR>', {noremap = true, silent = true})
 
 -- PageUp PageDown movement up/down 5 lines
 map('', '<PageUp>', '10<C-U>', {silent = true})

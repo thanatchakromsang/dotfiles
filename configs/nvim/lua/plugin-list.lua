@@ -148,10 +148,11 @@ return require('packer').startup(function(use)
       end
     }
     use {
-      'akinsho/nvim-bufferline.lua',
+      'akinsho/bufferline.nvim',
+      tag = "v3.*",
       requires = {'kyazdani42/nvim-web-devicons'},
       config = function()
-        require 'plugins.nvim-bufferline'
+        require 'plugins.bufferline'
       end
     }
 
