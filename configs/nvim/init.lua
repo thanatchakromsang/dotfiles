@@ -1,4 +1,5 @@
 require('options')
+require('clipboards')
 require('keymappings')
 require('utils')
 -- require('plugin-list')
