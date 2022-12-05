@@ -104,7 +104,7 @@
     clock24 = true;
     historyLimit = 20000;
     baseIndex = 1;
-    escapeTime = 0;
+    escapeTime = 1; # avoid tmux prints chars on session start in wsl Ref: https://github.com/microsoft/WSL/issues/5931
     newSession = true;
     keyMode = "vi";
     shortcut = "a";
@@ -115,11 +115,13 @@
       tmuxPlugins.yank
       tmuxPlugins.resurrect
       tmuxPlugins.vim-tmux-navigator
+      tmuxPlugins.tmux-colors-solarized
     ];
 
     extraConfig = ''
       # Improve colors
-      set -g default-terminal "tmux-256color"
+      set -g default-terminal "screen-256color"
+      set-option -sa terminal-overrides ",*256col*:Tc"
       set-environment -g COLORTERM "truecolor"
 
       # Enable mouse support
@@ -138,9 +140,6 @@
       bind-key w display-panes
       bind-key , command-prompt -I "rename-window "
 
-      unbind-key z
-      bind-key f resize-pane -Z
-
       # Split panes
       bind b split-window -v
       bind v split-window -h
@@ -154,67 +153,6 @@
       set-option -g allow-rename off
       set-option -g set-titles on
       set-option -g set-titles-string "#W - #T"
-
-      #########################################################
-      # Design
-      #########################################################
-
-      # This tmux statusbar config was created based on gruvbox colorscheme
-
-      ## COLORSCHEME: gruvbox dark
-      set-option -g status on
-
-      # default statusbar colors
-      set-option -g status-style fg=colour223,bg=colour237,none
-      set-option -g status-left-style none
-      set-option -g status-right-style none
-
-      # default window title colors
-      set-option -g window-status-style fg=colour237,bg=colour214,none
-      set-option -g window-status-activity-style fg=colour248,bg=colour237,bold
-
-      # active window title colors
-      set-option -g window-status-current-style fg=colour237,bg=default
-
-      # pane border
-      set-option -g pane-active-border-style fg=colour250
-      set-option -g pane-border-style fg=colour237
-
-      # message infos
-      set-option -g message-style fg=colour223,bg=colour239
-
-      # writing commands inactive
-      set-option -g message-command-style fg=colour223,bg=colour239
-
-      # pane number display
-      set-option -g display-panes-active-colour colour250 #fg2
-      set-option -g display-panes-colour colour237 #bg1
-
-      # clock
-      set-window-option -g clock-mode-colour colour109 #blue
-
-      # bell
-      set-window-option -g window-status-bell-style fg=colour235,bg=colour167 #bg, red
-
-
-      ## Theme settings mixed with colors (unfortunately, but there is no cleaner way)
-      set-option -g status-justify left
-      set-option -g status-left-length 80
-      set-option -g status-right-length 80
-      set-window-option -g window-status-separator ""
-
-      set-option -g status-left "#[fg=colour248, bg=colour241] #S #[fg=colour241, bg=colour237, nobold, noitalics, nounderscore]"
-
-      set-option -g status-right \
-      "#[fg=colour239,bg=colour214]#{?client_prefix, Prefix ,}\
-      #[fg=colour246,bg=colour239]#{?pane_in_mode, Copy ,}\
-      #[fg=colour237,bg=colour248]#{?window_zoomed_flag, Zoomed ,}\
-      #[fg=colour239,bg=colour237,nobold,nounderscore,noitalics]\
-      #[fg=colour246,bg=colour239] %Y-%m-%d | %H:%M #[fg=colour248,bg=colour239,nobold,nounderscore,noitalics]\
-      #[fg=colour237,bg=colour248] #H "
-
-      set-option -g window-status-format "#[fg=colour237,bg=colour239,noitalics]#[fg=colour223,bg=colour239] #I|#[fg=colour223,bg=colour239]#W #[fg=colour239,bg=colour237,noitalics]"
-      set-option -g window-status-current-format "#[fg=colour239,bg=colour214,nobold,nounderscore,noitalics] #[fg=colour239,bg=colour214]#I|#[fg=colour239,bg=colour214,bold]#W #[fg=colour214,bg=colour237,nobold,nounderscore,noitalics]"
     '';
   };
 
