@@ -149,13 +149,6 @@ wk.register({
     nowait = false -- use `nowait` when creating keymaps
 })
 
-wk.register({["<localleader>"] = {name = "localleader", a = "range code action", f = "range code format"}}, {
-    mode = "v", -- NORMAL mode
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = false -- use `nowait` when creating keymaps
-})
-
 -- Normal G
 wk.register({
     g = {
