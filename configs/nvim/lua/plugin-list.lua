@@ -47,7 +47,7 @@ return require('packer').startup(function(use)
     -- TODO: Update to main branch once use vim 0.8.x
     use {
       "folke/todo-comments.nvim",
-      branch = "neovim-pre-0.8.0",
+      branch = "main",
       requires = "nvim-lua/plenary.nvim",
       config = function()
         require 'plugins.todo-comments'
