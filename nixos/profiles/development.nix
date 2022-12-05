@@ -116,6 +116,7 @@
       tmuxPlugins.resurrect
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.tmux-colors-solarized
+      tmuxPlugins.fpp
     ];
 
     extraConfig = ''
