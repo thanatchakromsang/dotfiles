@@ -74,7 +74,7 @@
     fluxctl # v1
     awscli2
     docker-compose
-    google-cloud-sdk
+    (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
     cloud-sql-proxy
     kubeseal
     sops
@@ -98,6 +98,10 @@
     # Network
     dnsutils
   ];
+
+  environment.variables = {
+    "USE_GKE_GCLOUD_AUTH_PLUGIN" = "True";
+  };
 
   programs.tmux = {
     enable = true;
