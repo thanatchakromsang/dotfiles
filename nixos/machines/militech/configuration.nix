@@ -2,17 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, modulesPath, ... }:
+{ config, pkgs, lib, modulesPath, inputs, ... }:
 
-with lib;
-let
-  nixos-wsl = import /etc/nixos/nixos-wsl;
-in
 {
   imports =
     [
       "${modulesPath}/profiles/minimal.nix"
-      nixos-wsl.nixosModules.wsl
+      inputs.nixos-wsl.nixosModules.wsl
 
       ../../profiles/workstation-wsl.nix
       ../../profiles/development.nix
@@ -22,9 +18,10 @@ in
 
   wsl = {
     enable = true;
-    automountPath = "/mnt";
+    wslConf.automount.root = "/mnt";
     defaultUser = "thanatchaya";
     startMenuLaunchers = true;
+    nativeSystemd = true;
 
     docker-native = {
       enable = true;
@@ -50,5 +47,5 @@ in
     domain = "local";
   };
 
-  system.stateVersion = "22.05";
+  system.stateVersion = "22.11";
 }

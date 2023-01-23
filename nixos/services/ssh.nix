@@ -6,8 +6,10 @@ in
 {
   services.openssh = {
     enable = true;
-    permitRootLogin = "no";
-    passwordAuthentication = lib.mkDefault false;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = lib.mkDefault false;
+    };
   };
 
   home-manager.users.thanatchaya = { pkgs, ... }: {

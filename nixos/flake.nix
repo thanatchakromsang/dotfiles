@@ -2,7 +2,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     /* nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable"; */
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nur.url = "github:nix-community/NUR";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     # # TODO: use sops-nix for secrets
@@ -22,6 +23,7 @@
     , nur
     , nixos-hardware
       # , sops-nix
+    , nixos-wsl
     }@inputs:
     let
       inherit (nixpkgs) lib;

@@ -9,6 +9,8 @@
       ../services/localization.nix
 
       ./workspace/lazygit.nix
+
+      ./applications/neovim.nix
     ];
 
   environment.systemPackages = with pkgs;
@@ -31,7 +33,6 @@
       gnupg
       ripgrep
       ranger
-      neovim
       bitwarden-cli
       zsh-powerlevel10k
     ];
@@ -80,7 +81,6 @@
     lt = "ls -ltFh"; # long list,sorted by date,show type,human readable
     ll = "ls -l"; # long list
     ldot = "ls -ld .*";
-    vim = "${pkgs.neovim}/bin/nvim";
     k = "${pkgs.kubectl}/bin/kubectl";
     tmp = "vim ~/.tmp.md";
     g = "${pkgs.lazygit}/bin/lazygit";

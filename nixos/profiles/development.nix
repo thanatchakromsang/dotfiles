@@ -11,7 +11,6 @@
 
     # Python
     python39
-    python27Full
     pipenv
     poetry
     nodePackages.pyright
