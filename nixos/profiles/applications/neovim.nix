@@ -46,6 +46,8 @@
 
         # Syntax without Treesitter support
         vim-jsonnet
+        vim-terraform
+        vim-helm
 
         # Icons
         vim-devicons

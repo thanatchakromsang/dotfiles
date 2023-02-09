@@ -82,6 +82,7 @@
     pulumi-bin
     step-cli
     linkerd
+    doctl
 
     # Terraform
     terraform
