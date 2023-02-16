@@ -22,6 +22,7 @@
       curl
       inetutils
       unzip
+      p7zip
       jq
       yq-go
       vim
@@ -86,5 +87,6 @@
     g = "${pkgs.lazygit}/bin/lazygit";
     r = "ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd $LASTDIR";
     c = "clear";
+    ssh = "TERM=xterm-256color ssh";
   };
 }

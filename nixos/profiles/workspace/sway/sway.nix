@@ -113,21 +113,21 @@ in
           "12951:18804:ZSA_Technology_Labs_ErgoDox_EZ" = {
             xkb_layout = "colemak_dh_matrix,manoonchai";
             xkb_variant = ",";
-            xkb_options = "grp:alt_space_toggle";
+            xkb_options = "grp:win_space_toggle";
             repeat_delay = "300";
             repeat_rate = "30";
           };
           "18003:1:foostan_Corne" = {
             xkb_layout = "colemak_dh_matrix,manoonchai";
             xkb_variant = ",";
-            xkb_options = "grp:alt_space_toggle";
+            xkb_options = "grp:win_space_toggle";
             repeat_delay = "300";
             repeat_rate = "30";
           };
           "4617:8963:Keyboardio_Atreus" = {
             xkb_layout = "colemak_dh_matrix,manoonchai";
             xkb_variant = ",";
-            xkb_options = "grp:alt_space_toggle";
+            xkb_options = "grp:win_space_toggle";
             repeat_delay = "300";
             repeat_rate = "30";
           };
@@ -135,7 +135,7 @@ in
           "1:1:AT_Translated_Set_2_keyboard" = {
             xkb_layout = "us,th";
             xkb_variant = ",";
-            xkb_options = "grp:alt_space_toggle,caps:escape";
+            xkb_options = "grp:win_space_toggle,caps:escape";
             repeat_delay = "300";
             repeat_rate = "30";
           };

@@ -58,9 +58,14 @@ in
               deactivated = "";
             };
           };
+          # "clock" = {
+          #   tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+          #   format = " {:%b %-d, %Y %H:%M}";
+          # };
           "clock" = {
-            tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-            format = " {:%b %-d, %Y %H:%M}";
+              interval = 60;
+              format = "{:%b %d, %Y %H:%M}";
+              max-length = 25;
           };
           "backlight" = {
             format = "{percent}%{icon}";
