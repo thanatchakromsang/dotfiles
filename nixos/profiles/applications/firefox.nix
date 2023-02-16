@@ -148,21 +148,21 @@ in
         id = 0;
         userChrome = userChrome;
         settings = defaultSettings;
-      };
       # https://github.com/nix-community/nur-combined/blob/master/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        bitwarden
-        darkreader
-        ublock-origin
-        multi-account-containers
-        # vimium
-        # tab-session-manager
-        # tree-style-tab
-        i-dont-care-about-cookies
-        # refined-github
-        tridactyl # vimium alternative
-        leechblock-ng
+	bitwarden
+	darkreader
+	ublock-origin
+	multi-account-containers
+	# vimium
+	# tab-session-manager
+	# tree-style-tab
+	i-dont-care-about-cookies
+	# refined-github
+	tridactyl # vimium alternative
+	leechblock-ng
       ];
+      };
     };
 
     xdg.configFile."tridactyl/tridactylrc".source = ./tridactylrc;

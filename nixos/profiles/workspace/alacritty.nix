@@ -51,12 +51,12 @@ in
               background = "#ea6962";
               foreground = colors.bg;
             };
-            bar = {
-              background = colors.yellow;
-              foreground = colors.bg;
-            };
           };
           line_indicator = {
+            background = colors.yellow;
+            foreground = colors.bg;
+          };
+          footer_bar = {
             background = colors.yellow;
             foreground = colors.bg;
           };

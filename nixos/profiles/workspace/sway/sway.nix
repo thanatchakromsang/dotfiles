@@ -41,8 +41,8 @@ in
 
   environment.shellAliases = {
     open = "xdg-open";
-    pbcopy = "${wl-clipboard}/bin/wl-copy";
-    pbpaste = "${wl-clipboard}/bin/wl-paste";
+    pbcopy = "${pkgs.wl-clipboard}/bin/wl-copy";
+    pbpaste = "${pkgs.wl-clipboard}/bin/wl-paste";
   };
 
   home-manager.users.thanatchaya = {
@@ -59,7 +59,7 @@ in
 
     home.packages = with pkgs; [
       wl-clipboard
-      nur.repos.reedrw.bitwarden-rofi-patched
+      nur.repos.reedrw.bitwarden-rofi
     ];
 
     wayland.windowManager.sway = {
@@ -208,7 +208,7 @@ in
         workspaceOutputAssign = [ ];
         focus = {
           followMouse = true;
-          forceWrapping = true;
+          wrapping = "force";
         };
         keybindings = {
           # Start terminal
@@ -321,7 +321,7 @@ in
 
           "${modifier}+n" = "exec ${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu &";
           "${modifier}+u" = "exec ${pkgs.rofi-bluetooth}/bin/rofi-bluetooth &";
-          "${modifier}+y" = "exec ${pkgs.nur.repos.reedrw.bitwarden-rofi-patched}/bin/bwmenu &";
+          "${modifier}+y" = "exec ${pkgs.nur.repos.reedrw.bitwarden-rofi}/bin/bwmenu &";
 
           # Mode binding
           "${modifier}+r" = "mode resize";

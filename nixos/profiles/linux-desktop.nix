@@ -70,7 +70,10 @@
         xdg-desktop-portal-wlr
         xdg-desktop-portal-gtk
       ];
-      gtkUsePortal = true;
     };
+  };
+
+  environment.sessionVariables = {
+    GTK_USE_PORTAL = "1";
   };
 }
