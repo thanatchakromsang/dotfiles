@@ -10,7 +10,7 @@ in
     programs.rofi = {
       enable = true;
       font = "${fonts.sansSerif.family} ${toString fonts.sansSerif.size}";
-      terminal = "${pkgs.kitty}/bin/kitty";
+      terminal = "${pkgs.alacritty}/bin/alacritty";
       theme = "gruvbox-dark";
       extraConfig = {
         /* columns = 1; */
@@ -30,7 +30,7 @@ in
       rofi_highlight = True
 
       [editor]
-      terminal = ${pkgs.kitty}/bin/kitty
+      terminal = ${pkgs.alacritty}/bin/alacritty
       gui_if_available = true
     '';
   };
