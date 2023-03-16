@@ -67,6 +67,7 @@
     # Ops Toolsets
     kubectl
     kubectx
+    kubent
     kubernetes-helm
     kind
     fluxcd
