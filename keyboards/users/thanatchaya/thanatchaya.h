@@ -177,11 +177,11 @@ enum user_layers {
    *
    *   ADJUST
    *     ┌─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┐
-   *     │ F12 │ F7  │ F8  │ F9  │PrScn│   │     │GAMER│    │QWRTY│CLKMK│
+   *     │ F12 │ F7  │ F8  │ F9  │PrScn│   │ XXX │ XXX │    │QWRTY│CLKMK│
    *     ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
    *     │ F10 │ F4  │ F5  │ F6  │     │   │  ◀  │    │    │  ▶  │    │
    *     ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
-   *     │ F11 │ F1  │ F2  │ F3  │     │   │     │     │    │     │     │
+   *     │ F11 │ F1  │ F2  │ F3  │     │   │ XXX │ XXX │    │ XXX │ XXX │
    *     └─────┴─────┴─────┴─────┴─────┘   └─────┴─────┴─────┴─────┴─────┘
    *
    *                ┌─────┐┌─────┬─────┐   ┌─────┬─────┐┌─────┐
@@ -197,7 +197,7 @@ enum user_layers {
 #define ______ADJL2_____ _______, _______
 #define ________ADJUST_L4________ _ADJL1_, ______ADJL2_____
 
-#define __________________ADJUST_R1________________ _______, TO(GAMER), KC_F20, TO(QWERTY), TO(COLEMAK)
+#define __________________ADJUST_R1________________ XXXXXXX, XXXXXXX, KC_F20, TO(QWERTY), TO(COLEMAK)
 #define __________________ADJUST_R2________________ KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, KC_MUTE
 #define __________________ADJUST_R3________________ XXXXXXX, XXXXXXX, KC_MPLY, XXXXXXX, XXXXXXX
 #define ______ADJR2_____ _______, _______
