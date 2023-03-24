@@ -97,3 +97,9 @@ Problem arise while trying to flash Atreus booloader and stuck at writing phase
 ```bash
 sudo chmod a+rw /dev/ttyACM0
 ```
+
+## Using QMK Toolbox (Windows 11 w/ WSL)
+
+Instead of `flash` we use `compile` command to create .hex file and flash using QMK Toolbox
+
+
