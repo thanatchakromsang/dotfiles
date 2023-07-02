@@ -13,14 +13,6 @@ require("gitsigns").setup({
 		},
 		untracked = { hl = "GitSignsAdd", text = "▌", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
 	},
-	keymaps = {
-		buffer = true,
-		noremap = true,
-
-		-- Text objects
-		["o ih"] = ':<C-U>lua require"gitsigns".text_object()<CR>',
-		["x ih"] = ':<C-U>lua require"gitsigns".text_object()<CR>',
-	},
 	numhl = false,
 	linehl = false,
 	watch_gitdir = { interval = 100 },

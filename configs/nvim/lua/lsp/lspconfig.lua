@@ -105,7 +105,7 @@ lspconfig.gopls.setup({
 -- lua LSP
 -----------------------------------------------------
 
-lspconfig.sumneko_lua.setup({
+lspconfig.lua_ls.setup({
 	-- cmd = {"lua-language-server", "-E", "/usr/share/lua-language-server/main.lua"},
 	cmd = { "lua-language-server" },
 	on_attach = function(client, bufnr)
