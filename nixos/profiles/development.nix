@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 {
   environment.systemPackages = with pkgs; [
+    nerdfix
     # General
     codespell
 
@@ -10,17 +11,17 @@
     protolint
 
     # Python
-    python39
+    python3Full
     pipenv
     poetry
     nodePackages.pyright
     black
-    python39Packages.isort
+    isort
     cookiecutter
 
     # Javascript / Typescript
     yarn
-    nodejs-16_x
+    nodejs_18
     nodePackages.typescript
     nodePackages.graphql-cli
     nodePackages.typescript-language-server

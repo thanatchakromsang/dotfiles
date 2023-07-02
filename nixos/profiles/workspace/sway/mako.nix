@@ -7,7 +7,7 @@ let
 in
 {
   home-manager.users.thanatchaya = {
-    programs.mako = {
+    services.mako = {
       enable = true;
       font = "${fonts.sansSerif.family} ${toString fonts.sansSerif.size}";
       backgroundColor = "${colors.yellow}";

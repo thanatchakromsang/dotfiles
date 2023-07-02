@@ -16,7 +16,7 @@
       ../../profiles/development.nix
       ../../profiles/gaming.nix
 
-      ../../profiles/monitoring/home-client.nix
+      # ../../profiles/monitoring/home-client.nix
 
       ../../users/thanatchaya/personal.nix
     ];
