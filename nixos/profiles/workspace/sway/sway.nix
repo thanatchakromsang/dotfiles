@@ -205,7 +205,8 @@ in
           smartBorders = "off";
         };
         defaultWorkspace = "1";
-        workspaceOutputAssign = [ ];
+        workspaceOutputAssign = [ ]; # NOTE: Override in machine configuration
+        output = { }; # NOTE: Override in machine configuration
         focus = {
           followMouse = true;
           wrapping = "force";

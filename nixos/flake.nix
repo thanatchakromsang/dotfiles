@@ -61,6 +61,17 @@
                 '';
               }
             );
+
+            kubent = super.kubent.overrideAttrs (
+              old: {
+                postInstall = ''
+                  mkdir -p $out/bin
+                  ls -la
+                  ls -la ./cmd
+                  # cp /cmd/kubent $out/bin/kubectl-nt
+                '';
+              }
+            );
           }
         )
         /* unstable-overlay */
