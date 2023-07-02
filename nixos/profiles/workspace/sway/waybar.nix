@@ -34,33 +34,33 @@ in
             format = "{name}:{icon}";
             format-icons = {
               "1" = "";
-              "2" = "";
-              "3" = "";
-              "4" = "";
+              "2" = "󰈹";
+              "3" = "󰈹";
+              "4" = "󰊴";
               "5" = "";
-              "6" = "";
+              "6" = "󰈹";
               "7" = "";
-              "8" = "";
-              "9" = "";
+              "8" = "󰇮";
+              "9" = "󰇮";
               "urgent" = "";
               "focused" = "";
               "default" = "";
             };
           };
           "sway/language" = {
-            format = "{shortDescription}";
+            format = "{shortDescription}󰌌";
             on-click = "swaymsg input type:keyboard xkb_switch_layout next";
           };
           "idle_inhibitor" = {
             format = "{icon}";
             format-icons = {
-              activated = "";
-              deactivated = "";
+              activated = "󰈈";
+              deactivated = "󰈉";
             };
           };
           # "clock" = {
           #   tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          #   format = " {:%b %-d, %Y %H:%M}";
+          #   format = "󰥔 {:%b %-d, %Y %H:%M}";
           # };
           "clock" = {
               interval = 60;
@@ -69,20 +69,20 @@ in
           };
           "backlight" = {
             format = "{percent}%{icon}";
-            format-icons = [ "" "" "" "" ];
+            format-icons = [ "󰃞" "󰃟" "󰃝" "󰃠" ];
           };
           "battery" = {
             states = {
               critical = 5;
             };
             format = "{capacity}%{icon}";
-            format-charging = "{capacity}%";
-            format-critical = "";
-            format-icons = [ "" "" "" "" "" "" "" "" "" "" ];
+            format-charging = "{capacity}%󰂄";
+            format-critical = "󰂃";
+            format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
           };
           "network" = {
-            format-wifi = "{essid}直";
-            format-ethernet = "{ifname}:{ipaddr}/{cidr}";
+            format-wifi = "{essid}󰖩";
+            format-ethernet = "{ifname}:{ipaddr}/{cidr}󰈀";
             format-disconnected = "Disconnected⚠";
             format-alt = "{ifname}:{ipaddr}/{cidr}";
           };
@@ -90,7 +90,7 @@ in
             scroll-step = 1;
             format = "{volume}%{icon} {format_source}";
             format-bluetooth = "{volume}%{icon} {format_source}";
-            format-bluetooth-muted = "muted {format_source}";
+            format-bluetooth-muted = "muted󰂲 {format_source}";
             format-source = "{volume}%";
             format-source-muted = "muted";
             format-muted = "muted {format_source}";
@@ -113,8 +113,8 @@ in
           };
           "custom/ddcutil" = {
             interval = "once";
-            format = "{percentage}%{icon}";
-            format-icons = [ "" "" "" "" ];
+            format = "󰍹{percentage}%{icon}";
+            format-icons = [ "󰃞" "󰃟" "󰃝" "󰃠" ];
             exec = "${ddcutils-pkgs} -c";
             on-scroll-up = "${ddcutils-pkgs} -m 1.4; pkill -SIGRTMIN+15 waybar";
             on-scroll-down = "${ddcutils-pkgs} -m 0.72; pkill -SIGRTMIN+15 waybar";
