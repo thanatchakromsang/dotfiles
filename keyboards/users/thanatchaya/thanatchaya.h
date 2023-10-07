@@ -82,6 +82,37 @@ enum user_layers {
 #define _________________COLEMAK_R2________________ KC_M, LGUI_T(KC_N), LALT_T(KC_E), LCTL_T(KC_I), LSFT_T(KC_O)
 #define _________________COLEMAK_R3________________ KC_K, KC_H,         KC_COMM,      KC_DOT,       KC_SLSH
 
+  /* ---------------------------------------------------------------------
+   *
+   *   GAMER Layout
+   *
+   *     ┌─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┐
+   *     │  Q  │  W  │  E  │  R  │  T  │   │  Y  │  U  │  I  │  O  │  P  │
+   *     ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
+   *     │ A/⇧ │ S/^ │ D/⌥ │ F/⌘ │  G  │   │  H  │ J/⌘ │ K/⌥ │ L/^ │ ;/⇧ │
+   *     ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
+   *     │  Z  │  X  │  C  │  V  │  B  │   │  N  │  M  │  ,  │  .  │  /  │
+   *     └─────┴─────┴─────┴─────┴─────┘   └─────┴─────┴─────┴─────┴─────┘
+   *                ┌─────┐┌─────┬─────┐   ┌─────┬─────┐┌─────┐
+   *                │     ││L-BTN│R-BTN│   │ WH↑ │ WH↓ ││QWRTY│
+   *                └─────┘└─────┴─────┘   └─────┴─────┘└─────┘
+   */
+
+#define __________________GAMER_L1_________________ KC_Q, KC_W, KC_E, KC_R, KC_T
+#define __________________GAMER_L2_________________ LSFT_T(KC_A), LCTL_T(KC_S), LALT_T(KC_D), LGUI_T(KC_F), KC_G
+#define __________________GAMER_L3_________________ KC_Z, KC_X, KC_C, KC_V, KC_B
+
+#define _GAML1_ _______
+#define ______GAML2_____ KC_BTN1, KC_BTN2
+#define _______GAMER_L4__________ _GAML1_, ______GAML2_____
+
+#define __________________GAMER_R1_________________ KC_Y, KC_U, KC_I, KC_O, KC_P
+#define __________________GAMER_R2_________________ KC_H, LGUI_T(KC_J), LALT_T(KC_K), LCTL_T(KC_L), LSFT_T(KC_SCLN)
+#define __________________GAMER_R3_________________ KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH
+
+#define _GAMR1_ KC_WH_U
+#define ______GAMR2_____ KC_WH_D, TO(QWERTY)
+#define _______GAMER_R4__________ _GAMR1_, ______GAMR2_____
 
   /* ---------------------------------------------------------------------
    *
@@ -177,7 +208,7 @@ enum user_layers {
    *
    *   ADJUST
    *     ┌─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┐
-   *     │ F12 │ F7  │ F8  │ F9  │PrScn│   │ XXX │ XXX │    │QWRTY│CLKMK│
+   *     │ F12 │ F7  │ F8  │ F9  │PrScn│   │GAMER│ XXX │    │QWRTY│CLKMK│
    *     ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
    *     │ F10 │ F4  │ F5  │ F6  │     │   │  ◀  │    │    │  ▶  │    │
    *     ├─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
@@ -197,7 +228,7 @@ enum user_layers {
 #define ______ADJL2_____ _______, _______
 #define ________ADJUST_L4________ _ADJL1_, ______ADJL2_____
 
-#define __________________ADJUST_R1________________ XXXXXXX, XXXXXXX, KC_F20, TO(QWERTY), TO(COLEMAK)
+#define __________________ADJUST_R1________________ TO(GAMER), XXXXXXX, KC_F20, TO(QWERTY), TO(COLEMAK)
 #define __________________ADJUST_R2________________ KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, KC_MUTE
 #define __________________ADJUST_R3________________ XXXXXXX, XXXXXXX, KC_MPLY, XXXXXXX, XXXXXXX
 #define ______ADJR2_____ _______, _______
@@ -254,25 +285,3 @@ enum user_layers {
 #define _MOUR1_ _______
 #define ______MOUR2_____ KC_BTN2, KC_BTN1
 #define _______MOUSE_R4__________ ______MOUR2_____, _MOUR1_
-
-  /* ---------------------------------------------------------------------
-   *
-   *   GAMER Layout
-   *
-   *     ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┐
-   *     │  ~  │  Q  │  W  │  E  │  R  │  T  │   │  Y  │  U  │  I  │  O  │  P  │
-   *     ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
-   *     │ SHFT│  A  │  S  │  D  │  F  │  G  │   │  H  │  J  │  K  │  L  │  ;  │
-   *     ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┤
-   *     │ CTRL│  Z  │  X  │  C  │  V  │  B  │   │  N  │  M  │  ,  │  .  │  /  │
-   *     └─────┴─────┴─────┴─────┴─────┴─────┘   └─────┴─────┴─────┴─────┴─────┘
-   */
-
-
-#define ___________________________GAMER_L1_________________ KC_GRV, KC_Q, KC_W, KC_E, KC_R, KC_T
-#define ___________________________GAMER_L2_________________ KC_LSFT, KC_A, KC_S, KC_D, KC_F, KC_G
-#define ___________________________GAMER_L3_________________ KC_LCTL, KC_Z, KC_X, KC_C, KC_V, KC_B
-
-#define __________________GAMER_R1_________________ KC_Y, KC_U, KC_I, KC_O, KC_P
-#define __________________GAMER_R2_________________ KC_H, KC_J, KC_K, KC_L, KC_SCLN
-#define __________________GAMER_R3_________________ KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH
