@@ -17,14 +17,14 @@ require("neogit").setup {
         --
         diffview = true
     },
-    -- override/add mappings
-    mappings = {
-        -- modify status buffer mappings
-        status = {
-            -- Adds a mapping with "B" as key that does the "BranchPopup" command
-            ["B"] = "BranchPopup",
-            ["b"] = "",
-            ["za"] = "Toggle"
-        }
-    }
+    -- -- override/add mappings
+    -- mappings = {
+    --     -- modify status buffer mappings
+    --     status = {
+    --         -- Adds a mapping with "B" as key that does the "BranchPopup" command
+    --         ["B"] = "BranchPopup",
+    --         ["b"] = "",
+    --         ["za"] = "Toggle"
+    --     }
+    -- }
 }
