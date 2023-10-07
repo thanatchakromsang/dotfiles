@@ -22,11 +22,6 @@
     defaultUser = "thanatchaya";
     startMenuLaunchers = true;
     nativeSystemd = true;
-
-    docker-native = {
-      enable = true;
-      addToDockerGroup = true;
-    };
   };
 
   nix = {

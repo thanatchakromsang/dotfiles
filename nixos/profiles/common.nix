@@ -26,7 +26,7 @@
       jq
       yq-go
       vim
-      exa
+      eza
       bat
       stow
       fzf
@@ -77,7 +77,7 @@
   environment.shellAliases = {
     cat = "${pkgs.bat}/bin/bat";
     grep = "${pkgs.ripgrep}/bin/rg";
-    ls = "${pkgs.exa}/bin/exa";
+    ls = "${pkgs.eza}/bin/eza";
     l = "ls -lFn"; # size,show type,human readable
     la = "ls -lAFn"; # long list,show almost all,show type,human readable
     lt = "ls -ltFh"; # long list,sorted by date,show type,human readable
