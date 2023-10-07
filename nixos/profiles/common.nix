@@ -32,6 +32,7 @@
       fzf
       fd
       gnupg
+      age
       ripgrep
       ranger
       bitwarden-cli
