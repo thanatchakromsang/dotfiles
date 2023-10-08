@@ -6,7 +6,6 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nur.url = "github:nix-community/NUR";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    # # TODO: use sops-nix for secrets
     # sops-nix.url = "github:Mic92/sops-nix";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -49,6 +48,7 @@
           self: super: {
             rofi-bluetooth = super.callPackage ./packages/rofi-bluetooth { };
             win32yank = super.callPackage ./packages/win32yank { };
+            nvchad = super.callPackage ./packages/nvchad { };
             # Override to create `kubectl-ctx`, `kubectl-ns` as kubectl plugins
             kubectx = super.kubectx.overrideAttrs (
               old: {
@@ -58,17 +58,6 @@
                   mkdir -p $out/bin
                   cp kubectx $out/bin/kubectl-ctx
                   cp kubens $out/bin/kubectl-ns
-                '';
-              }
-            );
-
-            kubent = super.kubent.overrideAttrs (
-              old: {
-                postInstall = ''
-                  mkdir -p $out/bin
-                  ls -la
-                  ls -la ./cmd
-                  # cp /cmd/kubent $out/bin/kubectl-nt
                 '';
               }
             );

@@ -27,8 +27,6 @@
         size = 1000000000;
       };
       initExtraFirst = ''
-        ZSH_DOTENV_PROMPT=false
-
         if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
           source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
         fi
@@ -87,7 +85,6 @@
 
     # ~/.config symlinks
     xdg.configFile = {
-      "nvim" = { source = config.lib.file.mkOutOfStoreSymlink (config.home.homeDirectory + "/.dotfiles/configs/nvim"); recursive = true; };
       "ranger" = { source = config.lib.file.mkOutOfStoreSymlink (config.home.homeDirectory + "/.dotfiles/configs/ranger"); recursive = true; };
     };
 

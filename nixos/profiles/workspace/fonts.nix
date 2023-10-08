@@ -9,7 +9,7 @@
       ubuntu_font_family
       twemoji-color-font
       tlwg
-      (nerdfonts.override { fonts = [ "Hack" "FiraCode" ]; })
+      (nerdfonts.override { fonts = [ "Hack" "FiraCode", "Jetbrains" ]; })
     ];
 
     fontconfig =
@@ -39,7 +39,7 @@
       size = 13;
     };
     monospace = {
-      family = "FiraCode Nerd Font Mono";
+      family = "JetbrainsMono Nerd Font";
       size = 13;
     };
   };

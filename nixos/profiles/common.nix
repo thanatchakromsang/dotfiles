@@ -55,7 +55,6 @@
           "node"
           "npm"
           "kubectl"
-          "dotenv"
           "wd"
           "fzf"
           "helm"
