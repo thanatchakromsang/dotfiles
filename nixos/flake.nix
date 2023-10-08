@@ -6,7 +6,7 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nur.url = "github:nix-community/NUR";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    # sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.url = "github:Mic92/sops-nix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,7 +21,7 @@
     , home-manager
     , nur
     , nixos-hardware
-      # , sops-nix
+    , sops-nix
     , nixos-wsl
     }@inputs:
     let
@@ -99,27 +99,9 @@
           nixos-hardware.nixosModules.common-gpu-amd
           nixpkgs.nixosModules.notDetected
           home-manager.nixosModules.home-manager
+          sops-nix.nixosModules.sops
           ./modules
           ./machines/canyon/configuration.nix
-        ];
-        specialArgs = { inherit inputs; };
-      };
-      nixosConfigurations.msi = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          {
-            nixpkgs.overlays = overlays;
-            nixpkgs.config.allowUnfree = true;
-            home-manager.useUserPackages = true;
-            system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
-          }
-          nixos-hardware.nixosModules.common-pc-laptop-ssd
-          nixos-hardware.nixosModules.common-cpu-intel
-          /* nixos-hardware.nixosModules.common-gpu-nvidia */
-          nixpkgs.nixosModules.notDetected
-          home-manager.nixosModules.home-manager
-          ./modules
-          ./machines/msi/configuration.nix
         ];
         specialArgs = { inherit inputs; };
       };
@@ -134,6 +116,7 @@
           }
           nixpkgs.nixosModules.notDetected
           home-manager.nixosModules.home-manager
+          sops-nix.nixosModules.sops
           ./modules
           ./machines/militech/configuration.nix
         ];

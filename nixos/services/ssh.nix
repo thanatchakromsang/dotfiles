@@ -18,24 +18,24 @@ in
       extraConfig = ''
         Include ~/.ssh/cloudflared.conf
       '';
-      # matchBlocks = {
-      #   "gitlab.com" = {
-      #     hostname = "gitlab.com";
-      #     identityFile = "~/.ssh/personal.pri";
-      #     extraOptions = {
-      #       Preferredauthentications = "publickey";
-      #       AddKeysToAgent = "yes";
-      #     };
-      #   };
-      #   "github.com" = {
-      #     hostname = "github.com";
-      #     identityFile = "~/.ssh/personal.pri";
-      #     extraOptions = {
-      #       Preferredauthentications = "publickey";
-      #       AddKeysToAgent = "yes";
-      #     };
-      #   };
-      # };
+      matchBlocks = {
+        "gitlab.com" = {
+          hostname = "gitlab.com";
+          identityFile = "~/.ssh/personal.pri";
+          extraOptions = {
+            Preferredauthentications = "publickey";
+            AddKeysToAgent = "yes";
+          };
+        };
+        "github.com" = {
+          hostname = "github.com";
+          identityFile = "~/.ssh/personal.pri";
+          extraOptions = {
+            Preferredauthentications = "publickey";
+            AddKeysToAgent = "yes";
+          };
+        };
+      };
     };
   };
 
