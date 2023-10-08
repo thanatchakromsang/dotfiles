@@ -11,9 +11,6 @@
 
   programs.git = {
     enable = true;
-    config = {
-      safe = { directory = "/home/thanatchaya/.dotfiles"; }; # Workaround for https://github.com/NixOS/nixpkgs/issues/169193
-    };
   };
 
   home-manager.users.thanatchaya = { pkgs, config, ... }: {
