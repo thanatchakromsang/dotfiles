@@ -132,7 +132,7 @@ map("n", "<leader>TT", "<cmd>TodoTrouble<CR>", {silent = true, noremap = true})
 map("n", "gR", "<cmd>Trouble lsp_references<CR>", {silent = true, noremap = true})
 
 -- Neotree
-map("n", "<leader>e", "<cmd>NeoTreeFocusToggle<CR>", {silent = true, noremap = true})
+map("n", "<leader>e", "<cmd>Neotree toggle<CR>", {silent = true, noremap = true})
 
 -- Telescope
 map('n', 'gb', '<cmd>Telescope buffers<CR>', {noremap = true, silent = true})
