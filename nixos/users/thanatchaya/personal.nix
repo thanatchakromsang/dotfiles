@@ -31,6 +31,15 @@
             };
           };
         }
+        {
+          condition = "gitdir:~/Developers/codemonday/";
+          contents = {
+            user = {
+              email = "thanatchaya.k@codemonday.com";
+              name = "Thanatchaya Pipe K.";
+            };
+          };
+        }
       ];
     };
   };

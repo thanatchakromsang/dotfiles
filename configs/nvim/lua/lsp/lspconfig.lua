@@ -230,7 +230,7 @@ null_ls.setup({
 -----------------------------------------------------
 
 -- Available LSP https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
-local servers = { "dockerls", "rust_analyzer", "pyright", "vimls", "rnix" }
+local servers = { "dockerls", "rust_analyzer", "pyright", "vimls" }
 
 for _, server in ipairs(servers) do
 	lspconfig[server].setup({

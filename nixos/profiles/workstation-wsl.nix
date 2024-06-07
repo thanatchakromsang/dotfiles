@@ -46,7 +46,7 @@ in
   programs.ssh.startAgent = true;
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "curses";
+    pinentryPackage = pkgs.pinentry-curses;
   };
   services.gnome.gnome-keyring.enable = true;
 }

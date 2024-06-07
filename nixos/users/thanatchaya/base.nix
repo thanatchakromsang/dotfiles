@@ -5,7 +5,7 @@
     isNormalUser = true;
     createHome = true;
     uid = 1000;
-    extraGroups = lib.mkDefault [ "wheel" "networkmanager" "audio" "video" "docker" "i2c" ];
+    extraGroups = [ "wheel" "networkmanager" "audio" "video" "docker" "i2c" ];
     shell = pkgs.zsh;
   };
 

@@ -21,8 +21,6 @@ require'nvim-treesitter.configs'.setup {
 
     match_up = {enable = true},
 
-    context_commentstring = {enable = true, enable_autocmd = false, config = {nix = "# %s"}},
-
     textobjects = {
         select = {
             enable = true,
@@ -52,3 +50,10 @@ vim.wo.foldminlines = 1
 --     autocmd BufWinEnter * silent loadview
 --   augroup END
 -- ]])
+
+require('ts_context_commentstring').setup {
+  enable_autocmd = false,
+  languages = {
+    nix = '# %s',
+  },
+}

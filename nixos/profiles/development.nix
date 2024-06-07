@@ -63,7 +63,7 @@
     nodePackages.yaml-language-server
 
     # Nix
-    rnix-lsp
+    # rnix-lsp
 
     # Ops Toolsets
     kubectl
@@ -76,7 +76,7 @@
     awscli2
     docker-compose
     (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
-    cloud-sql-proxy
+    google-cloud-sql-proxy
     kubeseal
     sops
     cloudflared
@@ -94,7 +94,7 @@
     hugo
 
     # Database
-    dbeaver
+    dbeaver-bin
     postgresql
 
     # Network
@@ -127,8 +127,8 @@
 
     extraConfig = ''
       # Improve colors
-      set -g default-terminal "screen-256color"
-      set-option -sa terminal-overrides ",*256col*:Tc"
+      set -g default-terminal "tmux-256color"
+      set -sg terminal-overrides ",*:RGB"
       set-environment -g COLORTERM "truecolor"
 
       # Enable mouse support
