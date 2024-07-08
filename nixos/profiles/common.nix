@@ -36,6 +36,7 @@
       ripgrep
       ranger
       bitwarden-cli
+      bitwarden-desktop
       zsh-powerlevel10k
     ];
 

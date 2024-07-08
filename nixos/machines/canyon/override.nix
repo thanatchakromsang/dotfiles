@@ -41,9 +41,8 @@
             position = "0 150";
           };
           DP-4 = {
-            resolution = "1920x1080";
+            resolution = "2560x1440";
             position = "3840 0";
-            transform = "90";
           };
         };
       };

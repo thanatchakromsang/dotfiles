@@ -142,14 +142,14 @@ in
           #   repeat_delay = "300";
           #   repeat_rate = "30";
           # };
-          # # Laptop keyboards
-          # "1:1:AT_Translated_Set_2_keyboard" = {
-          #   xkb_layout = "us,th";
-          #   xkb_variant = ",";
-          #   xkb_options = "grp:win_space_toggle,caps:escape";
-          #   repeat_delay = "300";
-          #   repeat_rate = "30";
-          # };
+          # Laptop keyboards
+          "1:1:AT_Translated_Set_2_keyboard" = {
+            xkb_layout = "us,th";
+            xkb_variant = ",";
+            xkb_options = "grp:win_space_toggle,caps:escape,ctrl:swap_lalt_lctl";
+            repeat_delay = "300";
+            repeat_rate = "30";
+          };
           # t14s inputs
           "2:14:ETPS/2_Elantech_Touchpad" = {
             accel_profile = "adaptive";
@@ -174,6 +174,7 @@ in
         };
         seat = {
           "*".hide_cursor = "when-typing enable";
+          "seat0".xcursor_theme = "default 48";
         };
         colors =
           let

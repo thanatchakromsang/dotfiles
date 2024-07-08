@@ -11,7 +11,7 @@
       ../profiles/workspace/alacritty.nix
       ../profiles/workspace/zathura.nix
 
-      # ../profiles/applications/chromium.nix
+      ../profiles/applications/chromium.nix
       ../profiles/applications/firefox.nix
       # ../profiles/applications/slack.nix
     ];
@@ -19,7 +19,7 @@
   boot.plymouth.enable = true;
 
   environment.systemPackages = with pkgs; [
-    anki
+    # anki
     tdesktop # telegram
     bluez
     pavucontrol
