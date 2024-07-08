@@ -78,9 +78,9 @@
     cat = "${pkgs.bat}/bin/bat";
     grep = "${pkgs.ripgrep}/bin/rg";
     ls = "${pkgs.eza}/bin/eza";
-    l = "ls -lFn"; # size,show type,human readable
-    la = "ls -lAFn"; # long list,show almost all,show type,human readable
-    lt = "ls -ltFh"; # long list,sorted by date,show type,human readable
+    l = "ls -ln"; # size,show type,human readable
+    la = "ls -lAn"; # long list,show almost all,show type,human readable
+    lt = "ls -lth"; # long list,sorted by date,show type,human readable
     ll = "ls -l"; # long list
     ldot = "ls -ld .*";
     k = "${pkgs.kubectl}/bin/kubectl";

@@ -75,6 +75,7 @@ in
 
     wayland.windowManager.sway = {
       enable = true;
+      checkConfig = false; # NOTE: Workaround for local path mapping from outside NixOS eg. fonts, wallpaper Ref: https://github.com/nix-community/home-manager/issues/5311
       wrapperFeatures.gtk = true;
       /* extraConfig = '' */
       /*   bindsym --input-device=1390:269:ELECOM_TrackBall_Mouse_HUGE_TrackBall --whole-window BTN_EXTRA seat - cursor press BTN_LEFT, seat - cursor release BTN_LEFT */
@@ -120,28 +121,28 @@ in
         # swaymsg -t get_inputs
         # read `man 5 sway-input` for more information
         input = {
-          # # External keyboards
-          # "12951:18804:ZSA_Technology_Labs_ErgoDox_EZ" = {
-          #   xkb_layout = "colemak_dh_matrix,manoonchai";
-          #   xkb_variant = ",";
-          #   xkb_options = "grp:win_space_toggle";
-          #   repeat_delay = "300";
-          #   repeat_rate = "30";
-          # };
-          # "18003:1:foostan_Corne" = {
-          #   xkb_layout = "colemak_dh_matrix,manoonchai";
-          #   xkb_variant = ",";
-          #   xkb_options = "grp:win_space_toggle";
-          #   repeat_delay = "300";
-          #   repeat_rate = "30";
-          # };
-          # "4617:8963:Keyboardio_Atreus" = {
-          #   xkb_layout = "colemak_dh_matrix,manoonchai";
-          #   xkb_variant = ",";
-          #   xkb_options = "grp:win_space_toggle";
-          #   repeat_delay = "300";
-          #   repeat_rate = "30";
-          # };
+          # External keyboards
+          "12951:18804:ZSA_Technology_Labs_ErgoDox_EZ" = {
+            xkb_layout = "colemak_dh_matrix,manoonchai";
+            xkb_variant = ",";
+            xkb_options = "grp:win_space_toggle";
+            repeat_delay = "300";
+            repeat_rate = "30";
+          };
+          "18003:1:foostan_Corne" = {
+            xkb_layout = "colemak_dh_matrix,manoonchai";
+            xkb_variant = ",";
+            xkb_options = "grp:win_space_toggle";
+            repeat_delay = "300";
+            repeat_rate = "30";
+          };
+          "4617:8963:Keyboardio_Atreus" = {
+            xkb_layout = "colemak_dh_matrix,manoonchai";
+            xkb_variant = ",";
+            xkb_options = "grp:win_space_toggle";
+            repeat_delay = "300";
+            repeat_rate = "30";
+          };
           # Laptop keyboards
           "1:1:AT_Translated_Set_2_keyboard" = {
             xkb_layout = "us,th";

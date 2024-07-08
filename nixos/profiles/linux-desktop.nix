@@ -29,6 +29,18 @@
     xdg-utils # for xdg-open
   ];
 
+  home-manager.users.thanatchaya = {
+    home.pointerCursor = {
+      name = "Adwaita";
+      package = pkgs.gnome.adwaita-icon-theme;
+      size = 48;
+      x11 = {
+        enable = true;
+        defaultCursor = "Adwaita";
+      };
+    };
+  };
+
   # Sound / Screen sharing
   security.rtkit.enable = true;
 

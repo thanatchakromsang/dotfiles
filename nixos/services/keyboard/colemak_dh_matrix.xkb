@@ -1,5 +1,5 @@
 xkb_symbols "colemak_dh_matrix" {
-    name[Group1]= "English (Colemak-DH)";
+    name[Group1] = "English";
 
     key <TLDE> { [        grave,   asciitilde,      dead_tilde,       asciitilde ] };
     key <AE01> { [            1,       exclam,      exclamdown,      onesuperior ] };
