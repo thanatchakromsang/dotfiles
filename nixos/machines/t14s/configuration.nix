@@ -22,7 +22,7 @@
     ];
 
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixVersions.latest;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
@@ -46,5 +46,5 @@
     domain = "local";
   };
 
-  system.stateVersion = "22.11";
+  system.stateVersion = "24.05";
 }

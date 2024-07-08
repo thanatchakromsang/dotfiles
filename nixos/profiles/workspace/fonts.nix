@@ -3,13 +3,13 @@
 {
   fonts = {
     fontDir.enable = true;
-    enableDefaultFonts = true;
+    enableDefaultPackages = true;
 
-    fonts = with pkgs; [
+    packages = with pkgs; [
       ubuntu_font_family
       twemoji-color-font
       tlwg
-      (nerdfonts.override { fonts = [ "Hack" "FiraCode", "Jetbrains" ]; })
+      (nerdfonts.override { fonts = [ "Hack" "FiraCode" "JetBrainsMono" ]; })
     ];
 
     fontconfig =

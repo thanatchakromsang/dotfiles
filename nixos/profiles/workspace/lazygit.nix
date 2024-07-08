@@ -16,6 +16,9 @@
             subprocess = true;
           }
         ];
+        commit = {
+          signOff = true;
+        };
       };
     };
   };

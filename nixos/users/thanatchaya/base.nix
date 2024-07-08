@@ -15,7 +15,7 @@
 
   home-manager.users.thanatchaya = { pkgs, config, ... }: {
     # Workaround for firefox pkgs error ref: https://github.com/nix-community/home-manager/issues/2010
-    home.stateVersion = "22.11";
+    home.stateVersion = "24.05";
 
     programs.zsh = {
       enable = true;

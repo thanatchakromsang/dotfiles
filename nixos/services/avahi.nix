@@ -4,7 +4,7 @@
   # discover/publish *.local hostname on local network
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
     publish = {
       enable = true;
       addresses = true;

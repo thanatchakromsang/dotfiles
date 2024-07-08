@@ -7,6 +7,6 @@
       ./sway.nix
       ./waybar.nix
       ./mako.nix
-      ./rofi.nix
+      ./fuzzel.nix
     ];
 }

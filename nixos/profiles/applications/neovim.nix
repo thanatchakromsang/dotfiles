@@ -69,7 +69,7 @@
         telescope-media-files-nvim
 
         # Explorer
-        neo-tree-nvim
+        nvim-tree-lua
         nui-nvim
 
         # Git

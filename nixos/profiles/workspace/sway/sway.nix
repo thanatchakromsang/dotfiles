@@ -34,6 +34,17 @@ let
   #           ;;
   #   esac
   # '';
+
+          # "--locked XF86AudioMicMute" = "exec ${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute";
+
+  toggle-mic = pkgs.writeScriptBin "toggle-mic" ''
+    #!${pkgs.bash}/bin/bash
+    if [ "$(${pkgs.pamixer}/bin/pamixer --default-source --get-mute)" = "true" ]; then
+        exec ${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute && echo "0" > /sys/class/leds/platform\:\:micmute/brightness
+    else
+        exec ${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute && echo "1" > /sys/class/leds/platform\:\:micmute/brightness
+    fi
+  '';
 in
 {
   programs.sway.enable = true;
@@ -59,7 +70,7 @@ in
 
     home.packages = with pkgs; [
       wl-clipboard
-      nur.repos.reedrw.bitwarden-rofi
+      # nur.repos.reedrw.bitwarden-rofi
     ];
 
     wayland.windowManager.sway = {
@@ -109,36 +120,36 @@ in
         # swaymsg -t get_inputs
         # read `man 5 sway-input` for more information
         input = {
-          # External keyboards
-          "12951:18804:ZSA_Technology_Labs_ErgoDox_EZ" = {
-            xkb_layout = "colemak_dh_matrix,manoonchai";
-            xkb_variant = ",";
-            xkb_options = "grp:win_space_toggle";
-            repeat_delay = "300";
-            repeat_rate = "30";
-          };
-          "18003:1:foostan_Corne" = {
-            xkb_layout = "colemak_dh_matrix,manoonchai";
-            xkb_variant = ",";
-            xkb_options = "grp:win_space_toggle";
-            repeat_delay = "300";
-            repeat_rate = "30";
-          };
-          "4617:8963:Keyboardio_Atreus" = {
-            xkb_layout = "colemak_dh_matrix,manoonchai";
-            xkb_variant = ",";
-            xkb_options = "grp:win_space_toggle";
-            repeat_delay = "300";
-            repeat_rate = "30";
-          };
-          # Laptop keyboards
-          "1:1:AT_Translated_Set_2_keyboard" = {
-            xkb_layout = "us,th";
-            xkb_variant = ",";
-            xkb_options = "grp:win_space_toggle,caps:escape";
-            repeat_delay = "300";
-            repeat_rate = "30";
-          };
+          # # External keyboards
+          # "12951:18804:ZSA_Technology_Labs_ErgoDox_EZ" = {
+          #   xkb_layout = "colemak_dh_matrix,manoonchai";
+          #   xkb_variant = ",";
+          #   xkb_options = "grp:win_space_toggle";
+          #   repeat_delay = "300";
+          #   repeat_rate = "30";
+          # };
+          # "18003:1:foostan_Corne" = {
+          #   xkb_layout = "colemak_dh_matrix,manoonchai";
+          #   xkb_variant = ",";
+          #   xkb_options = "grp:win_space_toggle";
+          #   repeat_delay = "300";
+          #   repeat_rate = "30";
+          # };
+          # "4617:8963:Keyboardio_Atreus" = {
+          #   xkb_layout = "colemak_dh_matrix,manoonchai";
+          #   xkb_variant = ",";
+          #   xkb_options = "grp:win_space_toggle";
+          #   repeat_delay = "300";
+          #   repeat_rate = "30";
+          # };
+          # # Laptop keyboards
+          # "1:1:AT_Translated_Set_2_keyboard" = {
+          #   xkb_layout = "us,th";
+          #   xkb_variant = ",";
+          #   xkb_options = "grp:win_space_toggle,caps:escape";
+          #   repeat_delay = "300";
+          #   repeat_rate = "30";
+          # };
           # t14s inputs
           "2:14:ETPS/2_Elantech_Touchpad" = {
             accel_profile = "adaptive";
@@ -219,7 +230,7 @@ in
           "${modifier}+q" = "kill";
 
           # Start launcher
-          "${modifier}+d" = "exec ${pkgs.rofi}/bin/rofi -width 30 -show drun | xargs swaymsg exec &";
+          "${modifier}+d" = "exec ${pkgs.fuzzel}/bin/fuzzel --width 30 | xargs swaymsg exec --";
 
           "${modifier}+Shift+r" = "reload";
 
@@ -312,7 +323,7 @@ in
           "--locked XF86AudioLowerVolume" = "exec ${pkgs.pamixer}/bin/pamixer -d 3";
           "--locked XF86AudioRaiseVolume" = "exec ${pkgs.pamixer}/bin/pamixer -i 3";
           "--locked XF86AudioMute" = "exec ${pkgs.pamixer}/bin/pamixer --toggle-mute";
-          "--locked XF86AudioMicMute" = "exec ${pkgs.pamixer}/bin/pamixer --default-source --toggle-mute";
+          "--locked XF86AudioMicMute" = "exec ${toggle-mic}/bin/toggle-mic";
           "--locked XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
           "--locked XF86AudioPause" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
           "--locked XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";

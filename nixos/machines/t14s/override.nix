@@ -35,7 +35,7 @@ in
           { workspace = "10"; output = "DP-2"; }
         ];
         output = {
-          "*".bg = "~/.dotfiles/wallpapers/gruvbox-dark-rainbow.png fill";
+          # "*".bg = "~/.dotfiles/wallpapers/gruvbox-dark-rainbow.png fill";
           DP-1 = {
             resolution = "3840x1600";
             position = "0 160";
