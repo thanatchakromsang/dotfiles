@@ -37,19 +37,24 @@ in
         ];
         output = {
           "*".bg = "~/.dotfiles/wallpapers/gruvbox-dark-rainbow.png fill";
+          # NOTE: Calculated from wdisplays placement
           DP-1 = {
             resolution = "3840x1600";
-            position = "0 160";
+            position = "1080 0";
           };
           DP-2 = {
             resolution = "1920x1080";
-            position = "3840 0";
+            position = "0 0";
             transform = "90";
+          };
+          HDMI-A-1 = {
+            resolution = "2560x1440";
+            position = "4920 160";
           };
           # Center Below Main Monitor
           eDP-1 = {
             resolution = "1920x1080";
-            position = "960 1760";
+            position = "2040 1600";
           };
         };
       };

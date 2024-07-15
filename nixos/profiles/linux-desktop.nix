@@ -26,6 +26,7 @@
     wdisplays
     wf-recorder
     mpv
+    discord
     xdg-utils # for xdg-open
   ];
 
