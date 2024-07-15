@@ -73,7 +73,10 @@
     kind
     fluxcd
     fluxctl # v1
+
     awscli2
+    ssm-session-manager-plugin
+
     docker-compose
     (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
     google-cloud-sql-proxy
