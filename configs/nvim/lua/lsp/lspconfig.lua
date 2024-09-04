@@ -205,7 +205,6 @@ local code_actions = null_ls.builtins.code_actions
 null_ls.setup({
 	sources = {
 		-- Javascript, Typescript
-		formatting.eslint_d,
 		formatting.prettier,
 		-- Python
 		formatting.black,
@@ -214,8 +213,6 @@ null_ls.setup({
 		formatting.protolint,
 		-- sh
 		formatting.shfmt,
-		code_actions.shellcheck,
-		diagnostics.shellcheck,
 		-- lua
 		formatting.stylua,
 		-- general

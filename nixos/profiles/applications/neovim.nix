@@ -15,7 +15,7 @@
         vim-illuminate
         todo-comments-nvim
         trouble-nvim
-        null-ls-nvim
+        none-ls-nvim
         symbols-outline-nvim
 
         # Debugging

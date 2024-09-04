@@ -118,7 +118,7 @@ map('n', '<localleader>v', '<cmd>vsplit<CR>', {noremap = true, silent = true})
 -- local leader misc
 map('n', '<localleader>c', '<cmd>Bdelete<CR>', {noremap = true, silent = true})
 map('n', '<localleader>w', '<cmd>close<CR>', {noremap = true, silent = true})
-map('n', '<localleader>.', '<cmd>lcd %:p:h<CR>', {noremap = true, silent = true}) -- set current working dir
+map('n', '<localleader>.', '<cmd>cd %:p:h<CR>', {noremap = true, silent = true}) -- set current working dir
 map('n', '<localleader>R', '<cmd>Rooter<CR>', {noremap = true, silent = true}) -- set current working dir
 
 -- Trouble
