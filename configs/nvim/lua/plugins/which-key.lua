@@ -1,8 +1,6 @@
 local wk = require("which-key")
 
 wk.setup {
-    marks = true, -- shows a list of your marks on ' and `
-    registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
     presets = {
         operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
         motions = true, -- adds help for motions
@@ -15,157 +13,140 @@ wk.setup {
     icons = {
         breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
         separator = "➜", -- symbol used between a key and it's label
-        group = "+" -- symbol prepended to a group
+        group = "+", -- symbol prepended to a group
+        rules = false,
+        mappings = false,
     },
-    window = {
-        border = "double", -- none, single, double, shadow
-        position = "bottom", -- bottom, top
-        margin = {1, 0, 1, 0}, -- extra window margin [top, right, bottom, left]
-        padding = {2, 2, 2, 2} -- extra window padding [top, right, bottom, left]
+    win = {
+        padding = {2, 2} -- extra window padding [top, right, bottom, left]
     },
     layout = {
         height = {min = 4, max = 25}, -- min and max height of the columns
         width = {min = 20, max = 50}, -- min and max width of the columns
         spacing = 3 -- spacing between columns
     },
-    hidden = {"<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "}, -- hide mapping boilerplate
     show_help = true, -- show help message on the command line when the popup is visible
-    triggers = {"<leader>", "<localleader>", "g", "\'", "\"", "<C-r>", "z"} -- automatically setup triggers
+    -- triggers = {"<leader>", "<localleader>", "g", "\'", "\"", "<C-r>", "z"} -- automatically setup triggers
 }
 
 -- Normal Leader
-wk.register({
-    ["<leader>"] = {
-        name = "leader",
-        [" "] = {"fold"},
-        e = "explorer",
-        r = {":FloatermNew --height=0.8 --width=0.8 --name=ranger --wintype=float ranger<CR>", "ranger"},
-        o = {":SymbolsOutline<CR>", "outline"},
-        p = {
-            name = "+packer",
-            u = {":PackerUpdate<CR>", "update"},
-            i = {":PackerInstall<CR>", "install"},
-            c = {":PackerCompile<CR>", "compile"},
-            C = {":PackerClean<CR>", "clean"},
-            s = {":PackerSync<CR>", "sync"}
-        },
-        f = {
-            name = "+find",
-            ['.'] = {":Telescope filetypes<CR>", "filetypes"},
-            B = {":Telescope git_branches<CR>", "git branches"},
-            s = {":Telescope lsp_document_symbols<CR>", "document diagnostics"},
-            d = {":Telescope lsp_document_diagnostics<CR>", "document diagnostics"},
-            D = {":Telescope lsp_workspace_diagnostics<CR>", "workspace diagnostics"},
-            f = {":Telescope find_files<CR>", "find files"},
-            g = {":Telescope git_files<CR>", "find git files"},
-            h = {":Telescope command_history<CR>", "command history"},
-            i = {":Telescope media_files<CR>", "media files"},
-            m = {":Telescope marks<CR>", "marks"},
-            o = {":Telescope vim_options<CR>", "vim options"},
-            t = {":Telescope live_grep<CR>", "text"},
-            T = {":TodoTelescope<CR>", "TODO"},
-            b = {":Telescope buffers<CR>", "buffers"},
-            q = {":Telescope quickfix<CR>", "quickfix"},
-            l = {":Telescope loclist<CR>", "loclist"},
-            c = {":Telescope git_commits<CR>", "git current file history"},
-            C = {":Telescope git_commits<CR>", "git history"}
-        },
-        s = {
-            name = "+startify",
-            s = {":SSave<CR>", "save session"},
-            l = {":SLoad<CR>", "load session"},
-            d = {":SDelete<CR>", "delete session"},
-            c = {":SClose<CR>", "close session"},
-            h = {":Startify<CR>", "home"}
-        },
-        g = {
-            name = "+git",
-            g = {"<cmd>FloatermNew --height=0.9 --width=0.9 --name=git --wintype=float lazygit<CR>", "lazygit"},
-            d = {name = "+diff", d = {"diff this"}, o = {"diff view open"}, c = {"diff view close"}, r = {"diff view refresh"}},
-            S = {":Telescope git_stash<CR>", "git stash"},
-            c = {":Telescope git_bcommits<CR>", "git current file history"},
-            C = {":Telescope git_commits<CR>", "git history"},
-            p = {"go to prev hunk"},
-            n = {"go to next hunk"},
-            s = {"stage hunk"},
-            u = {"undo stage hunk"},
-            r = {"reset hunk"},
-            R = {"reset buffer"},
-            P = {"preview hunk"},
-            b = {"blame line"},
-            B = {"browse git remote"}
-        },
-        T = {
-            name = "+trouble",
-            T = "TODO",
-            t = "toggle",
-            w = "workspace diagnostics",
-            d = "document diagnostics",
-            l = "local list",
-            q = "quickfix list"
-        },
-        t = {
-            name = "+test",
-            t = "test nearest",
-            f = "test file",
-            l = "test last",
-            v = "test visit",
-            s = "test suite",
-        }
-    }
-}, {
-    mode = "n", -- NORMAL mode
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = false -- use `nowait` when creating keymaps
-})
+wk.add(
+  {
+    { "<leader>", group = "leader", nowait = false, remap = false },
+    { "<leader> ", desc = "fold", nowait = false, remap = false },
+    { "<leader>T", group = "trouble", nowait = false, remap = false },
+    { "<leader>TT", desc = "TODO", nowait = false, remap = false },
+    { "<leader>Td", desc = "document diagnostics", nowait = false, remap = false },
+    { "<leader>Tl", desc = "local list", nowait = false, remap = false },
+    { "<leader>Tq", desc = "quickfix list", nowait = false, remap = false },
+    { "<leader>Tt", desc = "toggle", nowait = false, remap = false },
+    { "<leader>Tw", desc = "workspace diagnostics", nowait = false, remap = false },
+    { "<leader>e", desc = "explorer", nowait = false, remap = false },
+    { "<leader>f", group = "find", nowait = false, remap = false },
+    { "<leader>f.", ":Telescope filetypes<CR>", desc = "filetypes", nowait = false, remap = false },
+    { "<leader>fB", ":Telescope git_branches<CR>", desc = "git branches", nowait = false, remap = false },
+    { "<leader>fC", ":Telescope git_commits<CR>", desc = "git history", nowait = false, remap = false },
+    { "<leader>fD", ":Telescope lsp_workspace_diagnostics<CR>", desc = "workspace diagnostics", nowait = false, remap = false },
+    { "<leader>fT", ":TodoTelescope<CR>", desc = "TODO", nowait = false, remap = false },
+    { "<leader>fb", ":Telescope buffers<CR>", desc = "buffers", nowait = false, remap = false },
+    { "<leader>fc", ":Telescope git_commits<CR>", desc = "git current file history", nowait = false, remap = false },
+    { "<leader>fd", ":Telescope lsp_document_diagnostics<CR>", desc = "document diagnostics", nowait = false, remap = false },
+    { "<leader>ff", ":Telescope find_files<CR>", desc = "find files", nowait = false, remap = false },
+    { "<leader>fg", ":Telescope git_files<CR>", desc = "find git files", nowait = false, remap = false },
+    { "<leader>fh", ":Telescope command_history<CR>", desc = "command history", nowait = false, remap = false },
+    { "<leader>fi", ":Telescope media_files<CR>", desc = "media files", nowait = false, remap = false },
+    { "<leader>fl", ":Telescope loclist<CR>", desc = "loclist", nowait = false, remap = false },
+    { "<leader>fm", ":Telescope marks<CR>", desc = "marks", nowait = false, remap = false },
+    { "<leader>fo", ":Telescope vim_options<CR>", desc = "vim options", nowait = false, remap = false },
+    { "<leader>fq", ":Telescope quickfix<CR>", desc = "quickfix", nowait = false, remap = false },
+    { "<leader>fs", ":Telescope lsp_document_symbols<CR>", desc = "document diagnostics", nowait = false, remap = false },
+    { "<leader>ft", ":Telescope live_grep<CR>", desc = "text", nowait = false, remap = false },
+    { "<leader>g", group = "git", nowait = false, remap = false },
+    { "<leader>gB", desc = "browse git remote", nowait = false, remap = false },
+    { "<leader>gC", ":Telescope git_commits<CR>", desc = "git history", nowait = false, remap = false },
+    { "<leader>gP", desc = "preview hunk", nowait = false, remap = false },
+    { "<leader>gR", desc = "reset buffer", nowait = false, remap = false },
+    { "<leader>gS", ":Telescope git_stash<CR>", desc = "git stash", nowait = false, remap = false },
+    { "<leader>gb", desc = "blame line", nowait = false, remap = false },
+    { "<leader>gc", ":Telescope git_bcommits<CR>", desc = "git current file history", nowait = false, remap = false },
+    { "<leader>gd", group = "diff", nowait = false, remap = false },
+    { "<leader>gdc", desc = "diff view close", nowait = false, remap = false },
+    { "<leader>gdd", desc = "diff this", nowait = false, remap = false },
+    { "<leader>gdo", desc = "diff view open", nowait = false, remap = false },
+    { "<leader>gdr", desc = "diff view refresh", nowait = false, remap = false },
+    { "<leader>gg", "<cmd>FloatermNew --height=0.9 --width=0.9 --name=git --wintype=float lazygit<CR>", desc = "lazygit", nowait = false, remap = false },
+    { "<leader>gn", desc = "go to next hunk", nowait = false, remap = false },
+    { "<leader>gp", desc = "go to prev hunk", nowait = false, remap = false },
+    { "<leader>gr", desc = "reset hunk", nowait = false, remap = false },
+    { "<leader>gs", desc = "stage hunk", nowait = false, remap = false },
+    { "<leader>gu", desc = "undo stage hunk", nowait = false, remap = false },
+    { "<leader>o", ":SymbolsOutline<CR>", desc = "outline", nowait = false, remap = false },
+    { "<leader>p", group = "packer", nowait = false, remap = false },
+    { "<leader>pC", ":PackerClean<CR>", desc = "clean", nowait = false, remap = false },
+    { "<leader>pc", ":PackerCompile<CR>", desc = "compile", nowait = false, remap = false },
+    { "<leader>pi", ":PackerInstall<CR>", desc = "install", nowait = false, remap = false },
+    { "<leader>ps", ":PackerSync<CR>", desc = "sync", nowait = false, remap = false },
+    { "<leader>pu", ":PackerUpdate<CR>", desc = "update", nowait = false, remap = false },
+    { "<leader>r", ":FloatermNew --height=0.8 --width=0.8 --name=ranger --wintype=float ranger<CR>", desc = "ranger", nowait = false, remap = false },
+    { "<leader>s", group = "startify", nowait = false, remap = false },
+    { "<leader>sc", ":SClose<CR>", desc = "close session", nowait = false, remap = false },
+    { "<leader>sd", ":SDelete<CR>", desc = "delete session", nowait = false, remap = false },
+    { "<leader>sh", ":Startify<CR>", desc = "home", nowait = false, remap = false },
+    { "<leader>sl", ":SLoad<CR>", desc = "load session", nowait = false, remap = false },
+    { "<leader>ss", ":SSave<CR>", desc = "save session", nowait = false, remap = false },
+    { "<leader>t", group = "test", nowait = false, remap = false },
+    { "<leader>tf", desc = "test file", nowait = false, remap = false },
+    { "<leader>tl", desc = "test last", nowait = false, remap = false },
+    { "<leader>ts", desc = "test suite", nowait = false, remap = false },
+    { "<leader>tt", desc = "test nearest", nowait = false, remap = false },
+    { "<leader>tv", desc = "test visit", nowait = false, remap = false },
+  }
+)
 
-wk.register({["<leader>"] = {name = "leader", r = {"refactoring"}, g = {name = "+git", B = {"browse git remote"}}}}, {
-    mode = "v",
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = false -- use `nowait` when creating keymaps
-})
+wk.add(
+  {
+    {
+      mode = { "v" },
+      { "<leader>", group = "leader", nowait = false, remap = false },
+      { "<leader>g", group = "git", nowait = false, remap = false },
+      { "<leader>gB", desc = "browse git remote", nowait = false, remap = false },
+      { "<leader>r", desc = "refactoring", nowait = false, remap = false },
+    },
+  }
+)
 
 -- Normal Local Leader
-wk.register({
-    ["<localleader>"] = {
-        name = "localleader",
-        ['.'] = "set current working dir",
-        a = "code action",
-        b = "horizontal split",
-        c = "close buffer",
-        d = {name = "+dap", t = "toggle breakpoint", l = "log breakpoint", r = "repl open"},
-        f = "code format",
-        v = "vertical split",
-        w = "close window",
-        r = "rename",
-        R = "set root working dir"
-    }
-}, {
-    mode = "n", -- NORMAL mode
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = false -- use `nowait` when creating keymaps
-})
+wk.add(
+  {
+    { "<localleader>", group = "localleader", nowait = false, remap = false },
+    { "<localleader>.", desc = "set current working dir", nowait = false, remap = false },
+    { "<localleader>R", desc = "set root working dir", nowait = false, remap = false },
+    { "<localleader>a", desc = "code action", nowait = false, remap = false },
+    { "<localleader>b", desc = "horizontal split", nowait = false, remap = false },
+    { "<localleader>c", desc = "close buffer", nowait = false, remap = false },
+    { "<localleader>d", group = "dap", nowait = false, remap = false },
+    { "<localleader>dl", desc = "log breakpoint", nowait = false, remap = false },
+    { "<localleader>dr", desc = "repl open", nowait = false, remap = false },
+    { "<localleader>dt", desc = "toggle breakpoint", nowait = false, remap = false },
+    { "<localleader>f", desc = "code format", nowait = false, remap = false },
+    { "<localleader>r", desc = "rename", nowait = false, remap = false },
+    { "<localleader>v", desc = "vertical split", nowait = false, remap = false },
+    { "<localleader>w", desc = "close window", nowait = false, remap = false },
+  }
+)
 
 -- Normal G
-wk.register({
-    g = {
-        name = "goto",
-        d = "definition",
-        D = "declaration",
-        n = "next diagnostic",
-        p = "prev diagnostic",
-        i = "implementation",
-        r = "reference",
-        t = "type definition",
-        R = "references",
-        s = "signature help"
-    }
-}, {
-    mode = "n", -- NORMAL mode
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = false -- use `nowait` when creating keymaps
-})
+wk.add(
+  {
+    { "g", group = "goto", nowait = false, remap = false },
+    { "gD", desc = "declaration", nowait = false, remap = false },
+    { "gR", desc = "references", nowait = false, remap = false },
+    { "gd", desc = "definition", nowait = false, remap = false },
+    { "gi", desc = "implementation", nowait = false, remap = false },
+    { "gn", desc = "next diagnostic", nowait = false, remap = false },
+    { "gp", desc = "prev diagnostic", nowait = false, remap = false },
+    { "gr", desc = "reference", nowait = false, remap = false },
+    { "gs", desc = "signature help", nowait = false, remap = false },
+    { "gt", desc = "type definition", nowait = false, remap = false },
+  }
+)

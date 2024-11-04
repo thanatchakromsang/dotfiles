@@ -154,10 +154,10 @@ lspconfig.yamlls.setup({
 })
 
 -----------------------------------------------------
--- tsserver LSP
+-- ts_ls LSP
 -----------------------------------------------------
 
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
 	on_attach = function(client, bufnr)
 		-- Disable tsserver formatting, use prettier in null-ls instead
 		client.server_capabilities.documentFormattingProvider = false

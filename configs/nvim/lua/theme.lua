@@ -7,30 +7,30 @@ vim.cmd('colorscheme gruvbox-material')
 vim.cmd('set background=dark')
 
 -- Telescope
-vim.api.nvim_exec([[
+vim.api.nvim_exec2([[
     hi! TelescopeBorder         guifg=#665c54
     hi! TelescopePromptBorder   guifg=#665c54
     hi! TelescopeResultsBorder  guifg=#665c54
     hi! TelescopePreviewBorder  guifg=#665c54
-]], false)
+]], {})
 
 -- Highlight yank
-vim.api.nvim_exec([[
+vim.api.nvim_exec2([[
     augroup highlight_yank
         autocmd!
         au TextYankPost * silent! lua vim.highlight.on_yank { higroup='Search', timeout=500 }
     augroup END
-]], false)
+]], {})
 
 -- WhichKey
-vim.api.nvim_exec([[
+vim.api.nvim_exec2([[
     hi! link WhichKey Yellow
     hi! link WhichKeyGroup RedBold
     hi! link WhichKeyDesc Green
-]], false)
+]], {})
 
 -- Lsp
-vim.api.nvim_exec([[
+vim.api.nvim_exec2([[
     hi! link LspDiagnosticsSignError RedSign
     hi! link LspDiagnosticsSignWarning YellowSign
     hi! link LspDiagnosticsSignInformation GreenSign
@@ -39,19 +39,19 @@ vim.api.nvim_exec([[
     hi! LspReferenceRead cterm=bold ctermbg=red guibg=#464646
     hi! LspReferenceText cterm=bold ctermbg=red guibg=#464646
     hi! LspReferenceWrite cterm=bold ctermbg=red guibg=#464646
-]], false)
+]], {})
 
 -- Indent Blankline
 vim.cmd('hi! link IndentBlanklineContextChar Yellow')
 
 -- folke/lsp-trouble.nvim
-vim.api.nvim_exec([[
+vim.api.nvim_exec2([[
     hi! link LspTroubleSignWarning LspDiagnosticsDefaultWarning
     hi! link LspTroubleSignError LspDiagnosticsDefaultError
     hi! link LspTroubleSignHint LspDiagnosticsDefaultHint
     hi! link LspTroubleSignInformation LspDiagnosticsDefaultInformation
     hi! link LspTroubleFoldIcon LspDiagnosticsDefaultWarning
-]], false)
+]], {})
 
 -- WhichKey
 vim.cmd('hi! link WhichKeyFloat Normal')
@@ -60,21 +60,21 @@ vim.cmd('hi! link WhichKeyFloat Normal')
 vim.cmd('hi! link FocusedSymbol IncSearch')
 
 -- Neogit
-vim.api.nvim_exec([[
+vim.api.nvim_exec2([[
     hi! link NeogitHunkHeader TabLine
     hi! link NeogitHunkHeaderHighlight TabLine
     sign define NeogitOpen:section texthl=StatusLine
     sign define NeogitClosed:section texthl=StatusLine
     sign define NeogitOpen:item texthl=StatusLine
     sign define NeogitClosed:item texthl=StatusLine
-]], false)
+]], {})
 
 -- nvim-cmp
-vim.api.nvim_exec([[
+vim.api.nvim_exec2([[
     hi! link CmpItemMenu CmpItemAbbrDeprecatedDefault
     hi! link CmpItemKind Aqua
     hi! link CmpPmenu Pmenu
     hi! link CmpPmenuBorder Pmenu
     hi! CmpPmenu guibg=#282828
     hi! CmpPmenuBorder guifg=#615750
-]], false)
+]], {})
