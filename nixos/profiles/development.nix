@@ -118,6 +118,7 @@
     keyMode = "vi";
     shortcut = "a";
     terminal = "tmux-256color";
+    shell = pkgs.zsh;
 
     plugins = with pkgs; [
       tmuxPlugins.better-mouse-mode
