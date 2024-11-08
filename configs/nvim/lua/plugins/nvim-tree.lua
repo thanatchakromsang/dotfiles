@@ -29,7 +29,7 @@ require("nvim-tree").setup({
 	},
 	filters = {
 		dotfiles = false,
-		custom = { ".git", "node_modules", ".cache" },
+		custom = { "node_modules", ".cache" },
 	},
 	on_attach = function(bufnr)
 		local api = require("nvim-tree.api")
