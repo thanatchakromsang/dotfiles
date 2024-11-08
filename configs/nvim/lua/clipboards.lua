@@ -28,6 +28,13 @@
 --   }
 -- end
 
+function paste(reg)
+	return function(lines)
+		local content = vim.fn.getreg('"')
+		return vim.split(content, "\n")
+	end
+end
+
 -- NOTE: https://www.reddit.com/r/neovim/comments/10y3t48/comment/j7y7jst/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 if vim.fn.has("wsl") == 1 then
 	vim.g.clipboard = {
@@ -53,10 +60,9 @@ elseif os.getenv("SSH_CONNECTION") ~= nil or os.getenv("SSH_TTY") ~= nil then
 			["*"] = osc52.copy("*"),
 		},
 		paste = {
-			["+"] = osc52.paste("+"),
-			["*"] = osc52.paste("*"),
+			["+"] = paste("+"),
+			["*"] = paste("*"),
 		},
 		cache_enabled = 0,
 	}
 end
-
