@@ -131,8 +131,18 @@ map("n", "<leader>Tq", "<cmd>TroubleToggle quickfix<CR>", {silent = true, norema
 map("n", "<leader>TT", "<cmd>TodoTrouble<CR>", {silent = true, noremap = true})
 map("n", "gR", "<cmd>Trouble lsp_references<CR>", {silent = true, noremap = true})
 
--- Neotree
-map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", {silent = true, noremap = true})
+-- NvimTree
+local nvimTreeFocusOrToggle = function ()
+	local nvimTree=require("nvim-tree.api")
+	local currentBuf = vim.api.nvim_get_current_buf()
+	local currentBufFt = vim.api.nvim_get_option_value("filetype", { buf = currentBuf })
+	if currentBufFt == "NvimTree" then
+		nvimTree.tree.toggle()
+	else
+		nvimTree.tree.focus()
+	end
+end
+vim.keymap.set("n", "<leader>e", nvimTreeFocusOrToggle)
 
 -- Telescope
 map('n', 'gb', '<cmd>Telescope buffers<CR>', {noremap = true, silent = true})

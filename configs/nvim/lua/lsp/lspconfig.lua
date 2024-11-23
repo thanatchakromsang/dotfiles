@@ -140,17 +140,39 @@ lspconfig.yamlls.setup({
 	settings = {
 		yaml = {
 			schemas = {
-				-- ["https://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
+				["https://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
 				-- ["https://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
-				-- ["https://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
-				-- ["https://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+				["https://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+				["https://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
 				-- ["https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json"] = "*gitlab-ci*.{yml,yaml}",
-				kubernetes = "*.{yml,yaml}",
+				-- kubernetes = "*.{yml,yaml}",
 			},
 			schemaStore = { enable = true },
 		},
 	},
 	flags = { debounce_text_changes = 150 },
+	filetypes = { "yaml" },
+})
+
+-----------------------------------------------------
+-- helm-ls LSP
+-----------------------------------------------------
+
+lspconfig.helm_ls.setup({
+	on_attach = custom_attach,
+	capabilities = capabilities,
+	settings = {
+		yamlls = {
+			enabled = true,
+		},
+	},
+	flags = { debounce_text_changes = 150 },
+	filetypes = { "helm", "helmfile" },
+})
+-- INFO: Workaround to fix yamlls lsp in helm ft
+vim.api.nvim_create_autocmd({ "Filetype" }, {
+	pattern = { "helm" },
+	command = "LspRestart",
 })
 
 -----------------------------------------------------

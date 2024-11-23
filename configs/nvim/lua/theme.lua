@@ -1,7 +1,9 @@
 vim.g.gruvbox_material_background = 'medium'
-vim.g.gruvbox_material_background = 'medium'
-vim.g.gruvbox_material_enable_italic = 0
+vim.g.gruvbox_material_foreground = 'material'
+vim.g.gruvbox_material_visual = 'green background'
+vim.g.gruvbox_material_menu_selection_background = 'green'
 vim.g.gruvbox_material_disable_italic_comment = 1
+-- vim.g.gruvbox_material_current_word = 'bold'
 vim.o.termguicolors = true
 vim.cmd('colorscheme gruvbox-material')
 vim.cmd('set background=dark')
@@ -18,7 +20,7 @@ vim.api.nvim_exec2([[
 vim.api.nvim_exec2([[
     augroup highlight_yank
         autocmd!
-        au TextYankPost * silent! lua vim.highlight.on_yank { higroup='Search', timeout=500 }
+        au TextYankPost * silent! lua vim.highlight.on_yank({ higroup='PmenuSel', timeout=500})
     augroup END
 ]], {})
 
@@ -35,10 +37,6 @@ vim.api.nvim_exec2([[
     hi! link LspDiagnosticsSignWarning YellowSign
     hi! link LspDiagnosticsSignInformation GreenSign
     hi! link LspDiagnosticsSignHint BlueSign
-
-    hi! LspReferenceRead cterm=bold ctermbg=red guibg=#464646
-    hi! LspReferenceText cterm=bold ctermbg=red guibg=#464646
-    hi! LspReferenceWrite cterm=bold ctermbg=red guibg=#464646
 ]], {})
 
 -- Indent Blankline
@@ -59,15 +57,15 @@ vim.cmd('hi! link WhichKeyFloat Normal')
 -- symbols-outline.nvim
 vim.cmd('hi! link FocusedSymbol IncSearch')
 
--- Neogit
-vim.api.nvim_exec2([[
-    hi! link NeogitHunkHeader TabLine
-    hi! link NeogitHunkHeaderHighlight TabLine
-    sign define NeogitOpen:section texthl=StatusLine
-    sign define NeogitClosed:section texthl=StatusLine
-    sign define NeogitOpen:item texthl=StatusLine
-    sign define NeogitClosed:item texthl=StatusLine
-]], {})
+-- -- Neogit
+-- vim.api.nvim_exec2([[
+--     hi! link NeogitHunkHeader TabLine
+--     hi! link NeogitHunkHeaderHighlight TabLine
+--     sign define NeogitOpen:section texthl=StatusLine
+--     sign define NeogitClosed:section texthl=StatusLine
+--     sign define NeogitOpen:item texthl=StatusLine
+--     sign define NeogitClosed:item texthl=StatusLine
+-- ]], {})
 
 -- nvim-cmp
 vim.api.nvim_exec2([[
@@ -77,4 +75,12 @@ vim.api.nvim_exec2([[
     hi! link CmpPmenuBorder Pmenu
     hi! CmpPmenu guibg=#282828
     hi! CmpPmenuBorder guifg=#615750
+]], {})
+
+-- avante-ai
+vim.api.nvim_exec2([[
+    hi! link AvanteConflictCurrentLabel DiffText
+    hi! link AvanteConflictCurrent DiffChange
+    hi! link AvanteConflictIncoming DiffAdd
+    hi! link AvanteInlineHint Green
 ]], {})

@@ -100,6 +100,7 @@ wk.add(
     { "<leader>ts", desc = "test suite", nowait = false, remap = false },
     { "<leader>tt", desc = "test nearest", nowait = false, remap = false },
     { "<leader>tv", desc = "test visit", nowait = false, remap = false },
+    { "<leader>a", group = "avante-ai", nowait = false, remap = false },
   }
 )
 

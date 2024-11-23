@@ -60,6 +60,8 @@ elseif os.getenv("SSH_CONNECTION") ~= nil or os.getenv("SSH_TTY") ~= nil then
 			["*"] = osc52.copy("*"),
 		},
 		paste = {
+			-- ["+"] = osc52.paste("+"),
+			-- ["*"] = osc52.paste("*"),
 			["+"] = paste("+"),
 			["*"] = paste("*"),
 		},
