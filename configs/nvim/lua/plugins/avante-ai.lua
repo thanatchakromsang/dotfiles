@@ -27,6 +27,17 @@ require('avante').setup ({
   hints = {
     enabled = false
   },
+  windows = {
+    sidebar_header = {
+      rounded = false
+    },
+    edit = {
+      border = "none"
+    },
+    ask = {
+      border = "none"
+    }
+  },
   mappings = {
     diff = {
       ours = "co",
