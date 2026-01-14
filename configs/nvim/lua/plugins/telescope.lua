@@ -1,5 +1,6 @@
 local telescope = require('telescope')
 local actions = require('telescope.actions')
+local action_state = require('telescope.actions.state')
 
 telescope.setup({
     defaults = {
@@ -44,7 +45,7 @@ telescope.setup({
                 i = {
                     ["<CR>"] = function(prompt_bufnr)
                         actions.close(prompt_bufnr)
-                        local value = actions.get_selected_entry(prompt_bufnr).value
+                        local value = action_state.get_selected_entry().value
                         -- changes from commit against current index
                         vim.cmd('DiffviewOpen ' .. value)
                     end
@@ -57,7 +58,7 @@ telescope.setup({
                     -- change from current commit against current index specific file
                     ["<CR>"] = function(prompt_bufnr)
                         actions.close(prompt_bufnr)
-                        local value = actions.get_selected_entry(prompt_bufnr).value
+                        local value = action_state.get_selected_entry().value
                         vim.cmd('DiffviewOpen ' .. value .. ' -- %')
                     end
                 }

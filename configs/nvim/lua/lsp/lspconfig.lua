@@ -1,15 +1,28 @@
+-- Suppress lspconfig deprecation warnings for now
+-- TODO: Migrate to vim.lsp.config when nvim-lspconfig v3.0.0 is released
 local lspconfig = require("lspconfig")
 
-vim.fn.sign_define("LspDiagnosticsSignError", { texthl = "LspDiagnosticsSignError", text = "" })
-vim.fn.sign_define("LspDiagnosticsSignWarning", { texthl = "LspDiagnosticsSignWarning", text = "" })
-vim.fn.sign_define("LspDiagnosticsSignInformation", { texthl = "LspDiagnosticsSignInformation", text = "" })
-vim.fn.sign_define("LspDiagnosticsSignHint", { texthl = "LspDiagnosticsSignHint", text = "" })
+-- Disable deprecation warnings globally for lspconfig server access
+local original_deprecate = vim.deprecate
+vim.deprecate = function() end
+
+-- Configure diagnostic signs using modern vim.diagnostic.config
+vim.diagnostic.config({
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.INFO] = "",
+			[vim.diagnostic.severity.HINT] = "",
+		},
+	},
+})
 
 -----------------------------------------------------
 -- Handler overrides
 -----------------------------------------------------
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.handlers["textDocument/publishDiagnostics"], {
 	underline = true,
 	virtual_text = { prefix = "", spacing = 0 },
 	signs = true,
@@ -30,13 +43,12 @@ local custom_init = function(client)
 	client.config.flags.allow_incremental_sync = true
 end
 
--- TODO: after 0.8 update format function to this https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
 local custom_attach = function(client, bufnr)
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
-	local function buf_set_option(...)
-		vim.api.nvim_buf_set_option(bufnr, ...)
+	local function buf_set_option(option, value)
+		vim.api.nvim_set_option_value(option, value, { buf = bufnr })
 	end
 
 	buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
@@ -181,7 +193,7 @@ vim.api.nvim_create_autocmd({ "Filetype" }, {
 
 lspconfig.ts_ls.setup({
 	on_attach = function(client, bufnr)
-		-- Disable tsserver formatting, use prettier in null-ls instead
+		-- Disable tsserver formatting, use prettier in none-ls instead
 		client.server_capabilities.documentFormattingProvider = false
 		custom_attach(client, bufnr)
 	end,
@@ -215,16 +227,16 @@ lspconfig.terraformls.setup({
 })
 
 -----------------------------------------------------
--- Null LSP
+-- None LSP
 -----------------------------------------------------
 
-local null_ls = require("null-ls")
+local none_ls = require("null-ls")
 
-local formatting = null_ls.builtins.formatting
-local diagnostics = null_ls.builtins.diagnostics
-local code_actions = null_ls.builtins.code_actions
+local formatting = none_ls.builtins.formatting
+local diagnostics = none_ls.builtins.diagnostics
+local code_actions = none_ls.builtins.code_actions
 
-null_ls.setup({
+none_ls.setup({
 	sources = {
 		-- Javascript, Typescript
 		formatting.prettier,
@@ -259,3 +271,6 @@ for _, server in ipairs(servers) do
 		flags = { debounce_text_changes = 150 },
 	})
 end
+
+-- Restore original deprecate function after all LSP setup
+vim.deprecate = original_deprecate
