@@ -5,6 +5,14 @@ require("render-markdown").setup({
   }
 })
 
+-- Enable treesitter highlighting for markdown buffers (required for render-markdown)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function(args)
+    vim.treesitter.start(args.buf, "markdown")
+  end,
+})
+
 -- claudecode.nvim wraps the `claude` CLI command
 -- It will automatically use your existing Claude CLI configuration:
 -- - AWS Bedrock if configured via Claude CLI
