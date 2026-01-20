@@ -20,6 +20,7 @@ opt.writebackup = false -- Disable backup
 opt.swapfile = false -- Disable because save time is huge
 opt.updatetime = 50 -- Faster completion
 opt.clipboard = "unnamedplus" -- Copy paste between vim and everything else
+opt.textwidth = 0 -- Disable auto newlines
 
 opt.autoread = true -- Detect and update file have been changed outside vim
 opt.backspace = "indent,eol,start" -- Fix backspace indentation

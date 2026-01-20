@@ -33,10 +33,10 @@ vim.api.nvim_exec2([[
 
 -- Lsp
 vim.api.nvim_exec2([[
-    hi! link LspDiagnosticsSignError RedSign
-    hi! link LspDiagnosticsSignWarning YellowSign
-    hi! link LspDiagnosticsSignInformation GreenSign
-    hi! link LspDiagnosticsSignHint BlueSign
+    hi! link DiagnosticSignError RedSign
+    hi! link DiagnosticSignWarn YellowSign
+    hi! link DiagnosticSignInfo GreenSign
+    hi! link DiagnosticSignHint BlueSign
 ]], {})
 
 -- Indent Blankline
@@ -44,11 +44,11 @@ vim.cmd('hi! link IndentBlanklineContextChar Yellow')
 
 -- folke/lsp-trouble.nvim
 vim.api.nvim_exec2([[
-    hi! link LspTroubleSignWarning LspDiagnosticsDefaultWarning
-    hi! link LspTroubleSignError LspDiagnosticsDefaultError
-    hi! link LspTroubleSignHint LspDiagnosticsDefaultHint
-    hi! link LspTroubleSignInformation LspDiagnosticsDefaultInformation
-    hi! link LspTroubleFoldIcon LspDiagnosticsDefaultWarning
+    hi! link LspTroubleSignWarning DiagnosticDefaultWarn
+    hi! link LspTroubleSignError DiagnosticDefaultError
+    hi! link LspTroubleSignHint DiagnosticDefaultHint
+    hi! link LspTroubleSignInformation DiagnosticDefaultInfo
+    hi! link LspTroubleFoldIcon DiagnosticDefaultWarn
 ]], {})
 
 -- WhichKey
@@ -77,10 +77,3 @@ vim.api.nvim_exec2([[
     hi! CmpPmenuBorder guifg=#615750
 ]], {})
 
--- avante-ai
-vim.api.nvim_exec2([[
-    hi! link AvanteConflictCurrentLabel DiffText
-    hi! link AvanteConflictCurrent DiffChange
-    hi! link AvanteConflictIncoming DiffAdd
-    hi! link AvanteInlineHint Green
-]], {})

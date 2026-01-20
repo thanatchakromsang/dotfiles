@@ -1,37 +1,40 @@
-require'nvim-treesitter.configs'.setup {
-    highlight = {
-        enable = true -- false will disable the whole extension
-    },
+local status_ok, treesitter_configs = pcall(require, 'nvim-treesitter.configs')
+if status_ok then
+    treesitter_configs.setup {
+        highlight = {
+            enable = true -- false will disable the whole extension
+        },
 
-    playground = {
-        enable = true,
-        disable = {},
-        updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-        persist_queries = false -- Whether the query persists across vim sessions
-    },
-
-    autotag = {enable = true},
-    rainbow = {enable = true},
-
-    refactor = {
-        -- smart_rename = {
-        --     enable = true,
-        -- },
-    },
-
-    match_up = {enable = true},
-
-    textobjects = {
-        select = {
+        playground = {
             enable = true,
+            disable = {},
+            updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+            persist_queries = false -- Whether the query persists across vim sessions
+        },
 
-            -- Automatically jump forward to textobj, similar to targets.vim
-            lookahead = true,
+        autotag = {enable = true},
+        rainbow = {enable = true},
 
-            keymaps = {["af"] = "@function.outer", ["if"] = "@function.inner", ["ac"] = "@class.outer", ["ic"] = "@class.inner"}
+        refactor = {
+            -- smart_rename = {
+            --     enable = true,
+            -- },
+        },
+
+        match_up = {enable = true},
+
+        textobjects = {
+            select = {
+                enable = true,
+
+                -- Automatically jump forward to textobj, similar to targets.vim
+                lookahead = true,
+
+                keymaps = {["af"] = "@function.outer", ["if"] = "@function.inner", ["ac"] = "@class.outer", ["ic"] = "@class.inner"}
+            }
         }
     }
-}
+end
 
 -- Fold
 vim.wo.foldmethod = 'expr'
@@ -51,9 +54,12 @@ vim.wo.foldminlines = 1
 --   augroup END
 -- ]])
 
-require('ts_context_commentstring').setup {
-  enable_autocmd = false,
-  languages = {
-    nix = '# %s',
-  },
-}
+local status_ok_commentstring, ts_context_commentstring = pcall(require, 'ts_context_commentstring')
+if status_ok_commentstring then
+    ts_context_commentstring.setup {
+      enable_autocmd = false,
+      languages = {
+        nix = '# %s',
+      },
+    }
+end
