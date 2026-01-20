@@ -100,15 +100,6 @@ wk.add(
     { "<leader>ts", desc = "test suite", nowait = false, remap = false },
     { "<leader>tt", desc = "test nearest", nowait = false, remap = false },
     { "<leader>tv", desc = "test visit", nowait = false, remap = false },
-    { "<leader>a", group = "ai/claudecode", nowait = false, remap = false },
-    { "<leader>aa", desc = "accept diff", nowait = false, remap = false },
-    { "<leader>ab", desc = "add current buffer", nowait = false, remap = false },
-    { "<leader>ac", desc = "toggle claude", nowait = false, remap = false },
-    { "<leader>aC", desc = "continue claude", nowait = false, remap = false },
-    { "<leader>ad", desc = "deny diff", nowait = false, remap = false },
-    { "<leader>af", desc = "focus claude", nowait = false, remap = false },
-    { "<leader>am", desc = "select claude model", nowait = false, remap = false },
-    { "<leader>ar", desc = "resume claude", nowait = false, remap = false },
   }
 )
 
@@ -117,8 +108,6 @@ wk.add(
     {
       mode = { "v" },
       { "<leader>", group = "leader", nowait = false, remap = false },
-      { "<leader>a", group = "ai/claudecode", nowait = false, remap = false },
-      { "<leader>as", desc = "send to claude", nowait = false, remap = false },
       { "<leader>g", group = "git", nowait = false, remap = false },
       { "<leader>gB", desc = "browse git remote", nowait = false, remap = false },
       { "<leader>r", desc = "refactoring", nowait = false, remap = false },
@@ -155,9 +144,21 @@ wk.add(
     { "gd", desc = "definition", nowait = false, remap = false },
     { "gi", desc = "implementation", nowait = false, remap = false },
     { "gn", desc = "next diagnostic", nowait = false, remap = false },
+    { "go", desc = "opencode operator", nowait = false, remap = false },
     { "gp", desc = "prev diagnostic", nowait = false, remap = false },
     { "gr", desc = "reference", nowait = false, remap = false },
     { "gs", desc = "signature help", nowait = false, remap = false },
     { "gt", desc = "type definition", nowait = false, remap = false },
+  }
+)
+
+-- OpenCode keymaps
+wk.add(
+  {
+    { "<C-a>", desc = "ask opencode", mode = { "n", "x" }, nowait = false, remap = false },
+    { "<C-x>", desc = "opencode select", mode = { "n", "x" }, nowait = false, remap = false },
+    { "<C-.>", desc = "toggle opencode", mode = { "n", "t" }, nowait = false, remap = false },
+    { "+", desc = "increment", nowait = false, remap = false },
+    { "-", desc = "decrement", nowait = false, remap = false },
   }
 )
