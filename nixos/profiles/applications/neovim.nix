@@ -9,6 +9,35 @@
       vimdiffAlias = true;
       defaultEditor = true;
 
+      extraPackages = with pkgs; [
+        # Typescript
+        nodePackages.typescript-language-server
+
+        # Kubernetes
+        helm-ls
+
+        # Shell
+        shellcheck
+        shfmt
+        nodePackages.bash-language-server
+
+        # Lua
+        lua-language-server
+        stylua
+
+        # Docker
+        dockerfile-language-server
+
+        # Vim
+        nodePackages.vim-language-server
+
+        # YAML
+        nodePackages.yaml-language-server
+
+        # Terraform
+        terraform-ls
+      ];
+
       plugins = with pkgs.vimPlugins; [
         # LSP
         nvim-lspconfig
@@ -17,6 +46,8 @@
         trouble-nvim
         none-ls-nvim
         symbols-outline-nvim
+        conform-nvim
+        nvim-lint
 
         # Debugging
         nvim-dap
@@ -38,12 +69,15 @@
 
         # Treesitter
         nvim-treesitter.withAllGrammars
-        playground
         rainbow-delimiters-nvim
         nvim-ts-context-commentstring
-        nvim-treesitter-refactor
-        nvim-treesitter-textobjects
         refactoring-nvim
+
+        # OpenCode
+        opencode-nvim
+        snacks-nvim
+        dressing-nvim
+        render-markdown-nvim
 
         # Syntax without Treesitter support
         vim-jsonnet
@@ -53,6 +87,7 @@
         # Icons
         vim-devicons
         nvim-web-devicons
+        mini-nvim # provides mini.icons and other mini modules
 
         # Appearance, Status Line and Bufferline
         gruvbox-material
@@ -73,7 +108,6 @@
         nui-nvim
 
         # Git
-        neogit
         gitsigns-nvim
         diffview-nvim
         vim-fugitive
@@ -82,9 +116,8 @@
 
         # General Plugins
         editorconfig-vim
-        lightspeed-nvim
+        leap-nvim
         lualine-nvim
-        vim-rooter
         vim-startify
         vim-bbye
         nvim-comment
@@ -96,8 +129,6 @@
         vim-surround
         targets-vim # vim text object on steroid
         vim-tmux-navigator # tmux integration
-
-        impatient-nvim
       ];
     };
 
