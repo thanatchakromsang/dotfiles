@@ -11,6 +11,7 @@
       ./workspace/lazygit.nix
 
       ./applications/neovim.nix
+      ./applications/opencode/opencode.nix
     ];
 
   environment.systemPackages = with pkgs;
@@ -32,12 +33,15 @@
       fzf
       fd
       gnupg
-      age
       ripgrep
       ranger
       bitwarden-cli
       bitwarden-desktop
       zsh-powerlevel10k
+
+      age
+      sops
+      ssh-to-age
     ];
 
   programs.zsh = {
