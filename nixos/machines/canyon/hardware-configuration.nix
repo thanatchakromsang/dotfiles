@@ -8,25 +8,27 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "sdhci_pci" "ahci" "usbhid" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
-  /* boot.extraModulePackages = [ pkgs.linuxKernel.packages.linux_5_15.hid-nintendo ]; */
+  boot.kernelParams = [ "nomodeset" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/3eaac046-253a-4f1e-baab-9047725a812f";
+    { device = "/dev/disk/by-uuid/df15177e-05ae-4842-940e-7bd6ff9efe7c";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/E782-A028";
+    { device = "/dev/disk/by-uuid/1C81-C8D9";
       fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/11678589-7553-4545-b7d7-5724db20051a"; }
+    [ { device = "/dev/disk/by-uuid/e2c47282-fd77-4707-975c-bb1b177751e2"; }
     ];
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

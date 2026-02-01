@@ -21,7 +21,6 @@
     wslConf.automount.root = "/mnt";
     defaultUser = "thanatchaya";
     startMenuLaunchers = true;
-    nativeSystemd = true;
   };
 
   nix = {
@@ -42,5 +41,5 @@
     domain = "local";
   };
 
-  system.stateVersion = "22.11";
+  system.stateVersion = "25.11";
 }

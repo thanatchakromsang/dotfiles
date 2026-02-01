@@ -2,7 +2,10 @@
 
 {
   services.resolved.enable = lib.mkDefault true;
-  services.resolved.domains = [ "local" ];
-  # workaround for https://github.com/NixOS/nixpkgs/issues/66451
-  services.resolved.dnssec = "false";
+  services.resolved.settings = {
+    Resolve = {
+      Domains = [ "local" ];
+      DNSSEC = "false";
+    };
+  };
 }

@@ -8,19 +8,19 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./override.nix
+      # ./override.nix
 
       ../../profiles/workstation.nix
-      ../../profiles/linux-desktop.nix
-      ../../profiles/notebook.nix
+      # ../../profiles/linux-desktop.nix
+      # ../../profiles/notebook.nix
       ../../profiles/development.nix
       /* ../../profiles/streaming.nix */
-      ../../profiles/gaming.nix
-      ../../profiles/keyboard.nix
+      # ../../profiles/gaming.nix
+      # ../../profiles/keyboard.nix
       /* ../../profiles/plex.nix */
 
-      ../../profiles/monitoring/home-server.nix
-      ../../profiles/monitoring/home-client.nix
+      # ../../profiles/monitoring/home-server.nix
+      # ../../profiles/monitoring/home-client.nix
 
       ../../users/thanatchaya/personal.nix
     ];
@@ -58,5 +58,5 @@
     domain = "local";
   };
 
-  system.stateVersion = "22.05";
+  system.stateVersion = "25.11";
 }

@@ -4,7 +4,6 @@
   home-manager.users.thanatchaya = { config, ... }: {
     # Symlink package.json, agents, skills, commands, and plugins directories for direct editing
     home.file.".config/opencode/package.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/nixos/profiles/applications/opencode/package.json";
-    home.file.".config/opencode/opencode.json".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/nixos/profiles/applications/opencode/opencode.json";
     home.file.".config/opencode/agents".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/nixos/profiles/applications/opencode/agents";
     home.file.".config/opencode/skills".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/nixos/profiles/applications/opencode/skills";
     home.file.".config/opencode/commands".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/nixos/profiles/applications/opencode/commands";
@@ -17,31 +16,31 @@
         autoshare = false;
         autoupdate = false;
 
-        provider = {
-          amazon-bedrock = {
-            options = {
-              region = "ap-southeast-1";
-              profile = "";
-            };
-            # NOTE: Custom model because amazon-bedrock not have default global model
-            models = {
-              "global.anthropic.claude-opus-4-5-20251101-v1:0" = {
-                name = "Claude Opus 4.5 (Best)";
-              };
-              "global.anthropic.claude-sonnet-4-5-20250929-v1:0" = {
-                name = "Claude Sonnet 4.5 (Balanced)";
-              };
-              "global.anthropic.claude-haiku-4-5-20251001-v1:0" = {
-                name = "Claude Haiku 4.5 (Fast)";
-              };
-            };
-          };
-        };
+        # provider = {
+        #   amazon-bedrock = {
+        #     options = {
+        #       region = "ap-southeast-1";
+        #       profile = "";
+        #     };
+        #     # NOTE: Custom model because amazon-bedrock not have default global model
+        #     models = {
+        #       "global.anthropic.claude-opus-4-5-20251101-v1:0" = {
+        #         name = "Claude Opus 4.5 (Best)";
+        #       };
+        #       "global.anthropic.claude-sonnet-4-5-20250929-v1:0" = {
+        #         name = "Claude Sonnet 4.5 (Balanced)";
+        #       };
+        #       "global.anthropic.claude-haiku-4-5-20251001-v1:0" = {
+        #         name = "Claude Haiku 4.5 (Fast)";
+        #       };
+        #     };
+        #   };
+        # };
 
         agent = {
           build = {
             mode = "primary";
-            model = "amazon-bedrock/global.anthropic.claude-sonnet-4-5-20250929-v1:0";
+            model = "zai-coding-plan/glm-4.7";
             tools = {
               write = true;
               edit = true;
@@ -50,7 +49,7 @@
           };
           plan = {
             mode = "primary";
-            model = "amazon-bedrock/global.anthropic.claude-opus-4-5-20251101-v1:0";
+            model = "zai-coding-plan/glm-4.7";
             tools = {
               write = false;
               edit = false;

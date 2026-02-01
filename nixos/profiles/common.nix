@@ -39,6 +39,7 @@
       bitwarden-desktop
       zsh-powerlevel10k
 
+      lsof
       age
       sops
       ssh-to-age

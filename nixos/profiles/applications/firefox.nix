@@ -139,7 +139,7 @@ in
     programs.firefox = {
       enable = true;
       /* INFO: Reverted to stable firefox due to https://github.com/NixOS/nixpkgs/issues/167785 */
-      package = pkgs.stable.firefox-wayland.override {
+      package = pkgs.stable.firefox.override {
         cfg = {
           enableTridactylNative = true;
         };

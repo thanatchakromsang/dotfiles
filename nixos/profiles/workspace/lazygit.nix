@@ -13,7 +13,7 @@
             command = "git commit -v";
             context = "files";
             loadingText = "opening git commit verbose";
-            subprocess = true;
+            output = "terminal";
           }
         ];
         commit = {

@@ -15,7 +15,7 @@
 
   home-manager.users.thanatchaya = { pkgs, config, ... }: {
     # Workaround for firefox pkgs error ref: https://github.com/nix-community/home-manager/issues/2010
-    home.stateVersion = "24.05";
+    home.stateVersion = "25.11";
 
     programs.zsh = {
       enable = true;
@@ -23,7 +23,7 @@
         save = 1000000000;
         size = 1000000000;
       };
-      initExtraFirst = ''
+      initContent = lib.mkBefore ''
         if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
           source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
         fi
@@ -67,16 +67,9 @@
 
     programs.ssh = {
       enable = true;
-      serverAliveInterval = 60;
-    };
-
-    programs.git = {
-      enable = true;
-      extraConfig = {
-        core = { hooksPath = "git-hooks"; };
-        push = { default = "current"; };
-        pull = { rebase = true; };
-        init = { defaultBranch = "main"; };
+      enableDefaultConfig = false;
+      matchBlocks."*" = {
+        serverAliveInterval = 60;
       };
     };
 
