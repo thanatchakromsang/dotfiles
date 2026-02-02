@@ -20,7 +20,7 @@
 
   environment.systemPackages = with pkgs; [
     # anki
-    tdesktop # telegram
+    telegram-desktop
     bluez
     pavucontrol
     wdisplays
