@@ -11,6 +11,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # nix-openclaw.url = "github:openclaw/nix-openclaw";
   };
 
   outputs =
@@ -23,6 +24,7 @@
     , nixos-hardware
     , sops-nix
     , nixos-wsl
+    # , nix-openclaw
     }@inputs:
     let
       inherit (nixpkgs) lib;
@@ -66,6 +68,7 @@
         /* unstable-overlay */
         stable-overlay
         nur.overlays.default
+        # nix-openclaw.overlays.default
       ];
     in
     {
@@ -81,7 +84,7 @@
           nixos-hardware.nixosModules.lenovo-thinkpad-t14s-amd-gen1
           nixpkgs.nixosModules.notDetected
           home-manager.nixosModules.home-manager
-          # sops-nix.nixosModules.sops
+          sops-nix.nixosModules.sops
           ./modules
           ./machines/t14s/configuration.nix
         ];
@@ -100,6 +103,7 @@
           nixpkgs.nixosModules.notDetected
           home-manager.nixosModules.home-manager
           sops-nix.nixosModules.sops
+          # nix-openclaw.homeManagerModules.openclaw
           ./modules
           ./machines/canyon/configuration.nix
         ];
