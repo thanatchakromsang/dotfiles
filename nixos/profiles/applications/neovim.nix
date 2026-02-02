@@ -36,6 +36,9 @@
 
         # Terraform
         terraform-ls
+
+        # Neovim dependencies
+        lsof
       ];
 
       plugins = with pkgs.vimPlugins; [
