@@ -14,6 +14,7 @@
       # ../../profiles/linux-desktop.nix
       # ../../profiles/notebook.nix
       ../../profiles/development.nix
+      ../../profiles/docker.nix
       /* ../../profiles/streaming.nix */
       # ../../profiles/gaming.nix
       # ../../profiles/keyboard.nix

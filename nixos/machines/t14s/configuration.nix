@@ -14,6 +14,7 @@
       ../../profiles/linux-desktop.nix
       ../../profiles/notebook.nix
       ../../profiles/development.nix
+      ../../profiles/docker.nix
       ../../profiles/gaming.nix
 
       # ../../profiles/monitoring/home-client.nix
