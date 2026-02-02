@@ -38,9 +38,6 @@
       go-jsonnet
       jsonnet-bundler
 
-      # GitHub
-      gh
-
       # Ops Toolsets
       kubectl
       kubectx
