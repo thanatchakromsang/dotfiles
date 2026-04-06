@@ -23,9 +23,9 @@
       # Javascript / Typescript
       yarn
       nodejs_22
-      nodePackages.typescript
-      nodePackages.prettier
-      nodePackages.eslint_d
+      typescript
+      prettier
+      eslint_d
       bun
       asdf-vm
 
@@ -63,14 +63,8 @@
       # ArgoCD
       argocd
 
-      # Cassandra
-      cassandra
-
       # Vault
       vault-bin
-
-      # AI Agentic Coding
-      claude-code
     ];
 
     home.sessionVariables = {

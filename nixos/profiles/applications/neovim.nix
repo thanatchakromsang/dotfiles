@@ -11,7 +11,7 @@
 
       extraPackages = with pkgs; [
         # Typescript
-        nodePackages.typescript-language-server
+        typescript-language-server
 
         # Kubernetes
         helm-ls
@@ -19,7 +19,7 @@
         # Shell
         shellcheck
         shfmt
-        nodePackages.bash-language-server
+        bash-language-server
 
         # Lua
         lua-language-server
@@ -29,10 +29,10 @@
         dockerfile-language-server
 
         # Vim
-        nodePackages.vim-language-server
+        vim-language-server
 
         # YAML
-        nodePackages.yaml-language-server
+        yaml-language-server
 
         # Terraform
         terraform-ls

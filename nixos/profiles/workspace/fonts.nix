@@ -9,7 +9,7 @@
       ubuntu_font_family
       twemoji-color-font
       tlwg
-      (nerdfonts.override { fonts = [ "Hack" "FiraCode" "JetBrainsMono" ]; })
+      # (nerdfonts.override { fonts = [ "Hack" "FiraCode" "JetBrainsMono" ]; })
     ];
 
     fontconfig =

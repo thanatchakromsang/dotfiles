@@ -48,7 +48,6 @@ let
 in
 {
   programs.sway.enable = true;
-  programs.light.enable = true;
 
   environment.shellAliases = {
     open = "xdg-open";
@@ -70,6 +69,7 @@ in
 
     home.packages = with pkgs; [
       wl-clipboard
+      brightnessctl
       # nur.repos.reedrw.bitwarden-rofi
     ];
 
@@ -330,8 +330,8 @@ in
           "--locked XF86AudioPause" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
           "--locked XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
           "--locked XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
-          "--locked XF86MonBrightnessUp" = "exec ${pkgs.light}/bin/light -T 1.4";
-          "--locked XF86MonBrightnessDown" = "exec ${pkgs.light}/bin/light -T 0.72";
+          "--locked XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set +10%";
+          "--locked XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 10%-";
 
           "${modifier}+n" = "exec ${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu &";
           "${modifier}+u" = "exec ${pkgs.rofi-bluetooth}/bin/rofi-bluetooth &";
