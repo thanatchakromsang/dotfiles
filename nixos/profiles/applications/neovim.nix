@@ -36,10 +36,28 @@
 
         # Terraform
         terraform-ls
-
-        # Neovim dependencies
-        lsof
       ];
+
+      initLua = ''
+        _G.__luacache_config = {
+          chunks = {
+            enable = true,
+            path = vim.fn.stdpath('cache')..'/luacache_chunks',
+          },
+          modpaths = {
+            enable = true,
+            path = vim.fn.stdpath('cache')..'/luacache_modpaths',
+          }
+        }
+        vim.loader.enable()
+        require('options')
+        require('clipboards')
+        require('keymappings')
+        require('utils')
+        require('lsp')
+        require('theme')
+        require('plugins')
+      '';
 
       plugins = with pkgs.vimPlugins; [
         # LSP
@@ -135,10 +153,12 @@
       ];
     };
 
-    # ~/.config symlinks
-    xdg.configFile.nvim = {
-      source = config.lib.file.mkOutOfStoreSymlink (config.home.homeDirectory + "/.dotfiles/configs/nvim");
-      recursive = true;
+    # ~/.config/nvim symlinks — init.lua is managed via initLua above
+    xdg.configFile."nvim/lua" = {
+      source = config.lib.file.mkOutOfStoreSymlink (config.home.homeDirectory + "/.dotfiles/configs/nvim/lua");
+    };
+    xdg.configFile."nvim/ftplugin" = {
+      source = config.lib.file.mkOutOfStoreSymlink (config.home.homeDirectory + "/.dotfiles/configs/nvim/ftplugin");
     };
   };
 }
