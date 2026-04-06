@@ -6,7 +6,7 @@ end
 
 -- Configure opencode.nvim options
 vim.g.opencode_opts = {
-  provider = {
+  server = {
     enabled = "snacks",
     -- Fallback to tmux if snacks is not available
     -- fallback = "tmux",
