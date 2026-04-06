@@ -12,6 +12,7 @@
 
       ../../profiles/workstation-wsl.nix
       ../../profiles/development.nix
+      ../../profiles/ai.nix
 
       ../../users/thanatchaya/personal.nix
     ];
