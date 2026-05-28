@@ -40,7 +40,7 @@
         agent = {
           build = {
             mode = "primary";
-            model = "zai-coding-plan/glm-4.7";
+            model = "deepseek-v4-flash-free";
             tools = {
               write = true;
               edit = true;
@@ -49,7 +49,7 @@
           };
           plan = {
             mode = "primary";
-            model = "zai-coding-plan/glm-4.7";
+            model = "deepseek-v4-flash-free";
             tools = {
               write = false;
               edit = false;
@@ -58,60 +58,18 @@
           };
         };
 
-        mcp = {
-          notion = {
-            url = "https://mcp.notion.com/mcp";
-            type = "remote";
-            enabled = true;
-          };
-          linear = {
-            url = "https://mcp.linear.app/mcp";
-            type = "remote";
-            enabled = true;
-          };
-        };
-
         permission = {
           bash = {
-            "mkdir *" = "allow";
-            "go *" = "allow";
-            "ls *" = "allow";
-            "git *" = "allow";
-            "mv *" = "allow";
-            "echo *" = "allow";
-            "sed *" = "allow";
-            "source *" = "allow";
-            "head *" = "allow";
-            "tail *" = "allow";
-            "npm *" = "allow";
-            "npx *" = "allow";
-            "pkill *" = "allow";
-            "touch *" = "allow";
-            "grep *" = "allow";
-            "deadcode *" = "allow";
-            "sqlite3 *" = "allow";
-            "rg *" = "allow";
-            "chmod *" = "allow";
-            "lsof *" = "allow";
-            "make *" = "allow";
-            "PORT= *" = "allow";
-            "find *" = "allow";
-            "docker *" = "allow";
-            "poetry *" = "allow";
-            "python *" = "allow";
-            "python3 *" = "allow";
-            "curl *" = "ask";
-            "git push *" = "ask";
+            "*" = "allow";
           };
           edit = {
             "*" = "allow";
           };
           read = {
-            "~/.dotfiles/**" = "allow";
             "*" = "allow";
-            "*.env" ="deny";
-            "*.env.*" =  "deny";
-            "*.env.example" =  "allow";
+            "*.env" = "deny";
+            "*.env.*" = "deny";
+            "*.env.example" = "allow";
           };
         };
       };

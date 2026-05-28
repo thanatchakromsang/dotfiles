@@ -1,0 +1,4 @@
+# QMK build output directories (symlinks to parent)
+/crkbd/crkbd
+/ergodox-ez/ergodox-ez
+/keyboardio/atreus/atreus

@@ -6,5 +6,5 @@ echo "*** Initialize submodule... ***"
 git submodule init
 git submodule update --remote
 
-cd "$DIR"/qmk || return
-nix-shell
+# cd "$DIR"/qmk || return
+nix-shell -p qmk
